@@ -1,0 +1,749 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Windows下折腾pythonUnable to find vcvarsall.bat命令行下执行1SET VS90COMNTOOLS=%VS100COMNTOOLS% 如果你安装的是 2012 版1SET VS90COMNTOOLS=%VS110COMNTOOLS% 如果你安装的是 2013版1SET VS90COMNTOOLS=%VS120COMNTOOLS% 或者更暴力，直接配置系统环境变">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Window折腾Python">
+<meta property="og:url" content="http://fsxchen.github.io/2016/04/09/python/2016_04_09_window下折腾python/index.html">
+<meta property="og:site_name" content="CouCou&#39;s Blog">
+<meta property="og:description" content="Windows下折腾pythonUnable to find vcvarsall.bat命令行下执行1SET VS90COMNTOOLS=%VS100COMNTOOLS% 如果你安装的是 2012 版1SET VS90COMNTOOLS=%VS110COMNTOOLS% 如果你安装的是 2013版1SET VS90COMNTOOLS=%VS120COMNTOOLS% 或者更暴力，直接配置系统环境变">
+<meta property="og:updated_time" content="2017-05-10T08:26:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Window折腾Python">
+<meta name="twitter:description" content="Windows下折腾pythonUnable to find vcvarsall.bat命令行下执行1SET VS90COMNTOOLS=%VS100COMNTOOLS% 如果你安装的是 2012 版1SET VS90COMNTOOLS=%VS110COMNTOOLS% 如果你安装的是 2013版1SET VS90COMNTOOLS=%VS120COMNTOOLS% 或者更暴力，直接配置系统环境变">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://fsxchen.github.io/2016/04/09/python/2016_04_09_window下折腾python/"/>
+
+
+
+
+
+  <title>Window折腾Python | CouCou's Blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CouCou's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://fsxchen.github.io/2016/04/09/python/2016_04_09_window下折腾python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="arron">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CouCou's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Window折腾Python</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-04-09T18:41:00+08:00">
+                2016-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Windows下折腾python"><a href="#Windows下折腾python" class="headerlink" title="Windows下折腾python"></a>Windows下折腾python</h1><h2 id="Unable-to-find-vcvarsall-bat"><a href="#Unable-to-find-vcvarsall-bat" class="headerlink" title="Unable to find vcvarsall.bat"></a>Unable to find vcvarsall.bat</h2><p>命令行下执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SET VS90COMNTOOLS=%VS100COMNTOOLS%</div></pre></td></tr></table></figure></p>
+<p>如果你安装的是 2012 版<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SET VS90COMNTOOLS=%VS110COMNTOOLS%</div></pre></td></tr></table></figure></p>
+<p>如果你安装的是 2013版<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SET VS90COMNTOOLS=%VS120COMNTOOLS%</div></pre></td></tr></table></figure></p>
+<p>或者更暴力，直接配置系统环境变量 VS90COMNTOOLS指向 %VS你的版本COMNTOOLS%</p>
+<p>你还可以更暴力，在<code>..python安装路径...\Lib\distutils目录下有个msvc9compiler.py</code>找到243行  </p>
+<p><code>toolskey = &quot;VS%0.f0COMNTOOLS&quot; % version</code>   直接改为 <code>toolskey = &quot;VS你的版本COMNTOOLS&quot;(这个就是为什么要配 ”VS90COMNTOOLS“ 的原因，因为人家文件名都告诉你了是  Microsoft vc 9的compiler,   代码都写死了要vc9的comntools，就要找这个玩意儿，找不到不干活)</code></p>
+<p>这么做的理由是<code>Python2.7</code> 扩展包是可以用08版或者更高的VS编译的，其<code>setup.py</code>(安装脚本)都是去windows系统寻找08版的VS,所以设置VS90的path</p>
+<p>如果Python版本小于2.7，强烈建议使用 VS08版，用2010或者更高可能部分扩展不好使。给个例子：</p>
+<p>在安装一些Python模块时，大部分是cpython写的模块时会发生如下错误 <code>error: Unable to find vcvarsall.bat</code>先前的一篇文章：在Windows上安装Scrapy时也讲到了这个问题。当时讲到的方案是，安装VS 2008进行解决，但是Vs 2008又太大，不想装，所以这次想到了另外的方案，同样是上次说的，当时上次很不完整。<br>解决方案一：安装Vs2008（实测）<br>完全的无脑流，安装完问题直接解决。<br>解决方案二：安装Vs2010（未测试）<br>上次在电脑上装个Vs2010并不能像 vs2008那样直接解决问题，从网上找到如下解决方案，不知是否可行。<br>打开<code>&lt;python安装目录&gt;\Lib\distutils\msvc9compiler.py</code><br>找到 <code>toolskey = &quot;VS%0.f0COMNTOOLS&quot; % version</code>，直接修改为 <code>toolskey = &quot;VS100COMNTOOLS&quot;</code><br>解决方案三：安装MinGW（实测）</p>
+<h3 id="1、下载安装MinGW，下载地址为：MinGW"><a href="#1、下载安装MinGW，下载地址为：MinGW" class="headerlink" title="1、下载安装MinGW，下载地址为：MinGW"></a>1、下载安装MinGW，下载地址为：<a href="http://sourceforge.net/projects/mingw/files/latest/download?source=files" target="_blank" rel="external">MinGW</a></h3><h3 id="2、在MinGW的安装目录下找到bin文件夹，找到mingw32-make-exe，复制一份更名为make-exe"><a href="#2、在MinGW的安装目录下找到bin文件夹，找到mingw32-make-exe，复制一份更名为make-exe" class="headerlink" title="2、在MinGW的安装目录下找到bin文件夹，找到mingw32-make.exe，复制一份更名为make.exe"></a>2、在<code>MinGW</code>的安装目录下找到<code>bin</code>文件夹，找到<code>mingw32-make.exe</code>，复制一份更名为<code>make.exe</code></h3><h3 id="3、把MinGW的路径添加到环境变量path中，比如我把MinGW安装到D-MinGW-中，就把D-MinGW-bin添加到path中；"><a href="#3、把MinGW的路径添加到环境变量path中，比如我把MinGW安装到D-MinGW-中，就把D-MinGW-bin添加到path中；" class="headerlink" title="3、把MinGW的路径添加到环境变量path中，比如我把MinGW安装到D:\MinGW\中，就把D:\MinGW\bin添加到path中；"></a>3、把<code>MinGW</code>的路径添加到环境变量<code>path</code>中，比如我把M<code>inGW</code>安装到<code>D:\MinGW\</code>中，就把<code>D:\MinGW\bin</code>添加到<code>path</code>中；</h3><h3 id="4、在-lt-python安装目录-gt-distutils增加文件distutils-cfg，在文件里输入"><a href="#4、在-lt-python安装目录-gt-distutils增加文件distutils-cfg，在文件里输入" class="headerlink" title="4、在&lt;python安装目录&gt;\distutils增加文件distutils.cfg，在文件里输入"></a>4、在<code>&lt;python安装目录&gt;\distutils</code>增加文件<code>distutils.cfg</code>，在文件里输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[build]</div><div class="line">compiler=mingw32</div></pre></td></tr></table></figure>
+<p>保存；</p>
+<h3 id="5、执行原先的模块安装，发现还是报错，报错内容为"><a href="#5、执行原先的模块安装，发现还是报错，报错内容为" class="headerlink" title="5、执行原先的模块安装，发现还是报错，报错内容为"></a>5、执行原先的模块安装，发现还是报错，报错内容为</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">：error: command ‘gcc’ failed: No such file or directory</div></pre></td></tr></table></figure>
+<p>解决方案是将<code>D:\MinGW\lib</code>再添加到PATH中。</p>
+<h3 id="6、如果安装过程中出现-error-Could-not-find-‘openssl-exe’-则直接到http-pypi-python-org-pypi-pyOpenSSL-0-13-下载安装即可。"><a href="#6、如果安装过程中出现-error-Could-not-find-‘openssl-exe’-则直接到http-pypi-python-org-pypi-pyOpenSSL-0-13-下载安装即可。" class="headerlink" title="6、如果安装过程中出现 error: Could not find ‘openssl.exe’ 则直接到http://pypi.python.org/pypi/pyOpenSSL/0.13 下载安装即可。"></a>6、如果安装过程中出现 error: Could not find ‘openssl.exe’ 则直接到<a href="http://pypi.python.org/pypi/pyOpenSSL/0.13" target="_blank" rel="external">http://pypi.python.org/pypi/pyOpenSSL/0.13</a> 下载安装即可。</h3><h3 id="7、再次执行时安装模块时，发现如下错误："><a href="#7、再次执行时安装模块时，发现如下错误：" class="headerlink" title="7、再次执行时安装模块时，发现如下错误："></a>7、再次执行时安装模块时，发现如下错误：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">D:\MinGW\bin\gcc.exe -mno-cygwin -mdll -O -Wall “-ID:\Program Files\Python27\inc</div><div class="line">lude” “-ID:\Program Files\Python27\include” “-ID:\Program Files\Python27\PC” -c</div><div class="line">../libdasm.c -o build\temp.win32-2.7\Release\..\libdasm.o</div><div class="line">cc1.exe: error:unrecognized command line option ‘-mno-cygwin’</div><div class="line">error: command ‘gcc’ failed with exit status 1</div></pre></td></tr></table></figure>
+<p>原因是<code>gcc 4.6.x</code> 以后不再接受<code>-mno-cygwin</code>为了解决这个问题需要修改<code>&lt;python安装目录&gt;\distutils\cygwinccompiler.py</code>文件。找到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">self.set_executables(compiler=&amp;#039;gcc -mno-cygwin -O -Wall&amp;#039;,</div><div class="line">                            compiler_so=&amp;#039;gcc -mno-cygwin -mdll -O -Wall&amp;#039;,</div><div class="line">                            compiler_cxx=&amp;#039;g++ -mno-cygwin -O -Wall&amp;#039;,</div><div class="line">                            linker_exe=&amp;#039;gcc&amp;#039;,</div><div class="line">                            linker_so=&amp;#039;%s -mno-cygwin %s %s&amp;#039;</div><div class="line">                                       % (self.linker_dll, shared_option,</div><div class="line">                                          entry_point))</div></pre></td></tr></table></figure>
+<p>   修改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">self.set_executables(compiler=&amp;#039;gcc -O -Wall&amp;#039;,</div><div class="line">                            compiler_so=&amp;#039;gcc -mdll -O -Wall&amp;#039;,</div><div class="line">                            compiler_cxx=&amp;#039;g++ -mno-cygwin -O -Wall&amp;#039;,</div><div class="line">                            linker_exe=&amp;#039;gcc&amp;#039;,</div><div class="line">                            linker_so=&amp;#039;%s -mno-cygwin %s %s&amp;#039;</div><div class="line">                                       % (self.linker_dll, shared_option,</div><div class="line">                                          entry_point))</div></pre></td></tr></table></figure>
+<p>   an</p>
+<h2 id="No-module-named-Crypto-PublicKey"><a href="#No-module-named-Crypto-PublicKey" class="headerlink" title="No module named Crypto.PublicKey"></a>No module named Crypto.PublicKey</h2><p>明明安装了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install pycrypto</div></pre></td></tr></table></figure></p>
+<p>解决方法：<br>We should rename crypto directory under “Lib/site-packages” to Crypto<br>因为windows是不区分大小写的，但是py加载模块区分。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/05/HTTP/2016_04_05_raml初识/" rel="next" title="RAML初识">
+                <i class="fa fa-chevron-left"></i> RAML初识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/14/python/2016_04_14_python和mongodb--using-mongoengine/" rel="prev" title="python和MongoDB--Using MongoEngine">
+                python和MongoDB--Using MongoEngine <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="arron" />
+          <p class="site-author-name" itemprop="name">arron</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows下折腾python"><span class="nav-number">1.</span> <span class="nav-text">Windows下折腾python</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Unable-to-find-vcvarsall-bat"><span class="nav-number">1.1.</span> <span class="nav-text">Unable to find vcvarsall.bat</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、下载安装MinGW，下载地址为：MinGW"><span class="nav-number">1.1.1.</span> <span class="nav-text">1、下载安装MinGW，下载地址为：MinGW</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、在MinGW的安装目录下找到bin文件夹，找到mingw32-make-exe，复制一份更名为make-exe"><span class="nav-number">1.1.2.</span> <span class="nav-text">2、在MinGW的安装目录下找到bin文件夹，找到mingw32-make.exe，复制一份更名为make.exe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、把MinGW的路径添加到环境变量path中，比如我把MinGW安装到D-MinGW-中，就把D-MinGW-bin添加到path中；"><span class="nav-number">1.1.3.</span> <span class="nav-text">3、把MinGW的路径添加到环境变量path中，比如我把MinGW安装到D:\MinGW\中，就把D:\MinGW\bin添加到path中；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、在-lt-python安装目录-gt-distutils增加文件distutils-cfg，在文件里输入"><span class="nav-number">1.1.4.</span> <span class="nav-text">4、在<python安装目录>\distutils增加文件distutils.cfg，在文件里输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、执行原先的模块安装，发现还是报错，报错内容为"><span class="nav-number">1.1.5.</span> <span class="nav-text">5、执行原先的模块安装，发现还是报错，报错内容为</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、如果安装过程中出现-error-Could-not-find-‘openssl-exe’-则直接到http-pypi-python-org-pypi-pyOpenSSL-0-13-下载安装即可。"><span class="nav-number">1.1.6.</span> <span class="nav-text">6、如果安装过程中出现 error: Could not find ‘openssl.exe’ 则直接到http://pypi.python.org/pypi/pyOpenSSL/0.13 下载安装即可。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、再次执行时安装模块时，发现如下错误："><span class="nav-number">1.1.7.</span> <span class="nav-text">7、再次执行时安装模块时，发现如下错误：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#No-module-named-Crypto-PublicKey"><span class="nav-number">1.2.</span> <span class="nav-text">No module named Crypto.PublicKey</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">arron</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

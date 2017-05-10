@@ -1,0 +1,779 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python,mro," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="python面向对象–继承(MRO)最近觉得py的基础还是有必要再看一下的。 python的多继承的属性继承搜索Python在处理多继承时同名函数，如果处理呢？ Ex 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657#!/usr/ben/">
+<meta name="keywords" content="python,mro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python面向对象--继承">
+<meta property="og:url" content="http://fsxchen.github.io/2015/12/03/python/2015_12_03_python面向对象--继承/index.html">
+<meta property="og:site_name" content="CouCou&#39;s Blog">
+<meta property="og:description" content="python面向对象–继承(MRO)最近觉得py的基础还是有必要再看一下的。 python的多继承的属性继承搜索Python在处理多继承时同名函数，如果处理呢？ Ex 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657#!/usr/ben/">
+<meta property="og:image" content="http://7xrn62.com1.z0.glb.clouddn.com/ca07fd0c356a5e1c9bcedad6536d44c2.png">
+<meta property="og:updated_time" content="2017-05-10T08:23:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python面向对象--继承">
+<meta name="twitter:description" content="python面向对象–继承(MRO)最近觉得py的基础还是有必要再看一下的。 python的多继承的属性继承搜索Python在处理多继承时同名函数，如果处理呢？ Ex 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657#!/usr/ben/">
+<meta name="twitter:image" content="http://7xrn62.com1.z0.glb.clouddn.com/ca07fd0c356a5e1c9bcedad6536d44c2.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://fsxchen.github.io/2015/12/03/python/2015_12_03_python面向对象--继承/"/>
+
+
+
+
+
+  <title>python面向对象--继承 | CouCou's Blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CouCou's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://fsxchen.github.io/2015/12/03/python/2015_12_03_python面向对象--继承/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="arron">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CouCou's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python面向对象--继承</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-03T11:24:00+08:00">
+                2015-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="python面向对象–继承-MRO"><a href="#python面向对象–继承-MRO" class="headerlink" title="python面向对象–继承(MRO)"></a>python面向对象–继承(MRO)</h1><p>最近觉得py的基础还是有必要再看一下的。</p>
+<h2 id="python的多继承的属性继承搜索"><a href="#python的多继承的属性继承搜索" class="headerlink" title="python的多继承的属性继承搜索"></a>python的多继承的属性继承搜索</h2><p>Python在处理多继承时同名函数，如果处理呢？</p>
+<p>Ex</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/ben/env python</span></div><div class="line"><span class="comment">#coding:utf-8</span></div><div class="line"></div><div class="line"><span class="comment"># __metaclass__ = type</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"A-foo"</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bar</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"A-bar"</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"B-foo"</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bar</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"B-bar"</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AA</span><span class="params">(A)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bar</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"AA-bar"</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BB</span><span class="params">(B)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"BB-bar"</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(AA, BB)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line">c = C()</div><div class="line">c.foo()</div><div class="line">c.bar()</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">P1</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"p1-foo"</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">P2</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"p2-foo"</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bar</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"p2-bar"</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">C1</span><span class="params">(P1, P2)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">C2</span><span class="params">(P1, P2)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bar</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"C2-bar"</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">D</span><span class="params">(C1, C2)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> D.__mro__</div><div class="line">d = D();</div><div class="line">d.foo()</div><div class="line">d.bar()</div><div class="line"></div><div class="line">cc = CC()</div><div class="line">cc.show()</div></pre></td></tr></table></figure>
+<p>在经典类中输出如下:output</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">A-foo</div><div class="line">AA-bar</div><div class="line">p1-foo</div><div class="line">p2-bar</div></pre></td></tr></table></figure>
+<p>在新类中输出如下:output</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">A-foo</div><div class="line">AA-bar</div><div class="line">p1-foo</div><div class="line">C2-bar</div></pre></td></tr></table></figure>
+<p>很明显的是,在老式的py类(py2.3以前的版本或者在py2.3+之后的版本中没有显示声明)中,依据的是<code>从左到右,深度优先</code>的规则.然而在新式类中,采用的是另外一套规则.所以在代码中混合新式类和旧式类,在MRO中会有不用的表现</p>
+<p><img src="http://7xrn62.com1.z0.glb.clouddn.com/ca07fd0c356a5e1c9bcedad6536d44c2.png" alt="类继承"></p>
+<p>使用类的<code>__mro__</code>属性可以得到一个可读的查找顺序表</p>
+<p>mro即method resolution order，主要用于在多继承时判断调的属性的路径(来自于哪个类)。python在2.3中使用的是C3算法.</p>
+<p>python 需要对其进行线性化(C3 Linearization),将继承图关系线性化。通过线性化，再依次查找类方法，直至找到该方法为止。线性化算法是python多继承的核心部分。线性化过程中，必须满足两个性质:</p>
+<ul>
+<li><p>单调性</p>
+</li>
+<li><p>一致性<br>直接父类的顺序通过用户来声明，父类线性化的顺序为从左到右。在进行线性化归并过程中，一致性主要保证类的局部优先级顺序，它定义了两个变量:</p>
+</li>
+</ul>
+<h2 id="python多重继承"><a href="#python多重继承" class="headerlink" title="python多重继承"></a>python多重继承</h2><p>python在多重继承中的问题?<br>来看&lt;<python基础编>&gt;中的栗子</python基础编></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/ben/env python</span></div><div class="line"><span class="comment">#coding:utf-8</span></div><div class="line"></div><div class="line"><span class="comment"># __metaclass__ = type</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Brid</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.hungry = <span class="keyword">True</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eat</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.hungry:</div><div class="line">            <span class="keyword">print</span> <span class="string">"Aaaah..."</span></div><div class="line">            self.hungry = <span class="keyword">False</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">print</span> <span class="string">'No, thanks'</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SongBrid</span><span class="params">(Brid)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.sound = <span class="string">'Squawk'</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sing</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">print</span> self.sound</div><div class="line"></div><div class="line">sb = SongBrid()</div><div class="line">sb.sing()</div><div class="line">sb.eat()</div></pre></td></tr></table></figure>
+<p>结果报错,输出如下:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Squawk</div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"inherit_2.py"</span>, line 25, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    sb.eat()</div><div class="line">  File <span class="string">"inherit_2.py"</span>, line 10, <span class="keyword">in</span> eat</div><div class="line">    <span class="keyword">if</span> self.hungry:</div><div class="line">AttributeError: SongBrid instance has no attribute <span class="string">'hungry'</span></div></pre></td></tr></table></figure>
+<p>why?</p>
+<p>因为在SongBrid中,构造方法被重写.所以找不到属性了</p>
+<p>解决方法:</p>
+<ul>
+<li>1:调用未绑定的超类构造方法.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SongBrid</span><span class="params">(Brid)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        Brid.__init__(self)</div><div class="line">        self.sound = <span class="string">'Squawk'</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sing</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">print</span> self.sound</div></pre></td></tr></table></figure>
+<ul>
+<li>2:使用super函数(新式类才可以这么做)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">lass SongBrid(Brid):</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        super(SongBrid, self).__init__()</div><div class="line">        self.sound = <span class="string">'Squawk'</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sing</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">print</span> self.sound</div></pre></td></tr></table></figure>
+<h2 id="super-类还是方法"><a href="#super-类还是方法" class="headerlink" title="super()类还是方法?"></a>super()类还是方法?</h2><p>打印了以下<code>super()</code>的类型,发现类型是<type></type></p>
+<h2 id="Super的缺陷"><a href="#Super的缺陷" class="headerlink" title="Super的缺陷"></a>Super的缺陷</h2><p>基类中的<code>__init__</code>不会被显示调用,所以需要开发人员调用.</p>
+<h3 id="混用super和传统调用"><a href="#混用super和传统调用" class="headerlink" title="混用super和传统调用"></a>混用super和传统调用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line">#coding:utf-8</div><div class="line"></div><div class="line">class A(object):</div><div class="line">	def __init__(self):</div><div class="line">		print &quot;A&quot;</div><div class="line">		super(A, self).__init__()</div><div class="line"></div><div class="line">class B(object):</div><div class="line">	def __init__(self):</div><div class="line">		print &quot;B&quot;</div><div class="line">		super(B, self).__init__()</div><div class="line"></div><div class="line">class C(A, B):</div><div class="line">	def __init__(self):</div><div class="line">		print &quot;C&quot;</div><div class="line">		A.__init__(self)      # 传统调用</div><div class="line">		B.__init__(self)</div><div class="line"></div><div class="line">print &quot;MRO:&quot;, [x.__name__ for x in C.__mro__]</div><div class="line">C()</div></pre></td></tr></table></figure>
+<p>output:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">MRO: [&apos;C&apos;, &apos;A&apos;, &apos;B&apos;, &apos;object&apos;]</div><div class="line">C</div><div class="line">A</div><div class="line">B</div><div class="line">B</div></pre></td></tr></table></figure>
+<p>可以看到,当C实例调用<code>A.__init__(self)</code>,因为super(A, self).<strong>init</strong>()将调用B的构造程序.</p>
+<h3 id="不同类型的参数"><a href="#不同类型的参数" class="headerlink" title="不同类型的参数"></a>不同类型的参数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">class BaseBase(object):</div><div class="line">	def __init__(self):</div><div class="line">		print &quot;basebase&quot;</div><div class="line">		super(BaseBase, self).__init__()</div><div class="line"></div><div class="line">class Base1(BaseBase):</div><div class="line">	def __init__(self):</div><div class="line">		print &quot;base1&quot;</div><div class="line">		super(Base1, self).__init__()</div><div class="line"></div><div class="line">class Base2(BaseBase):</div><div class="line">	def __init__(self, arg):</div><div class="line">		print &apos;base2&apos;</div><div class="line">		super(Base2, self).__init__(arg)</div><div class="line"></div><div class="line">class MyClass(Base1, Base2):</div><div class="line">	def __init__(self):</div><div class="line">		print &quot;my base&quot;</div><div class="line">		super(MyClass, self).__init__()</div><div class="line"></div><div class="line">m = MyClass(10)</div></pre></td></tr></table></figure>
+<p>一种解决方式,就是给所有的<strong>init</strong>(self), 替换成<strong>init</strong>(self, <em>args, *</em>kw)</p>
+<h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h3><ul>
+<li>减少使用多继承</li>
+<li>super不能混用</li>
+<li>检查MRO</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/mro/" rel="tag"># mro</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/19/python/2015_11_19_利用virtualenv来管理python运行环境/" rel="next" title="利用virtualenv来管理python运行环境">
+                <i class="fa fa-chevron-left"></i> 利用virtualenv来管理python运行环境
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/03/python/2015_12_03_迭代器和生成器/" rel="prev" title="迭代器和生成器">
+                迭代器和生成器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="arron" />
+          <p class="site-author-name" itemprop="name">arron</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#python面向对象–继承-MRO"><span class="nav-number">1.</span> <span class="nav-text">python面向对象–继承(MRO)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#python的多继承的属性继承搜索"><span class="nav-number">1.1.</span> <span class="nav-text">python的多继承的属性继承搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python多重继承"><span class="nav-number">1.2.</span> <span class="nav-text">python多重继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#super-类还是方法"><span class="nav-number">1.3.</span> <span class="nav-text">super()类还是方法?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Super的缺陷"><span class="nav-number">1.4.</span> <span class="nav-text">Super的缺陷</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#混用super和传统调用"><span class="nav-number">1.4.1.</span> <span class="nav-text">混用super和传统调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不同类型的参数"><span class="nav-number">1.4.2.</span> <span class="nav-text">不同类型的参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最佳实践"><span class="nav-number">1.4.3.</span> <span class="nav-text">最佳实践</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">arron</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

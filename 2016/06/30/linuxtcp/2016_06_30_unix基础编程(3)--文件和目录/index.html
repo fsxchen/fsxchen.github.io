@@ -1,0 +1,823 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Misc," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="文件和目录stat, fstat, fstatat 和 lstat1234567891011121314SYNOPSIS       #include &amp;lt;sys/types.h&amp;gt;       #include &amp;lt;sys/stat.h&amp;gt;       #include &amp;lt;unistd.h&amp;gt;       int stat(const char *path, struc">
+<meta name="keywords" content="Misc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="unix基础编程(3)--文件和目录">
+<meta property="og:url" content="http://fsxchen.github.io/2016/06/30/linuxtcp/2016_06_30_unix基础编程(3)--文件和目录/index.html">
+<meta property="og:site_name" content="CouCou&#39;s Blog">
+<meta property="og:description" content="文件和目录stat, fstat, fstatat 和 lstat1234567891011121314SYNOPSIS       #include &amp;lt;sys/types.h&amp;gt;       #include &amp;lt;sys/stat.h&amp;gt;       #include &amp;lt;unistd.h&amp;gt;       int stat(const char *path, struc">
+<meta property="og:updated_time" content="2017-05-10T08:30:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="unix基础编程(3)--文件和目录">
+<meta name="twitter:description" content="文件和目录stat, fstat, fstatat 和 lstat1234567891011121314SYNOPSIS       #include &amp;lt;sys/types.h&amp;gt;       #include &amp;lt;sys/stat.h&amp;gt;       #include &amp;lt;unistd.h&amp;gt;       int stat(const char *path, struc">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://fsxchen.github.io/2016/06/30/linuxtcp/2016_06_30_unix基础编程(3)--文件和目录/"/>
+
+
+
+
+
+  <title>unix基础编程(3)--文件和目录 | CouCou's Blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CouCou's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://fsxchen.github.io/2016/06/30/linuxtcp/2016_06_30_unix基础编程(3)--文件和目录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="arron">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CouCou's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">unix基础编程(3)--文件和目录</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-30T15:29:00+08:00">
+                2016-06-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Read/" itemprop="url" rel="index">
+                    <span itemprop="name">Read</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="文件和目录"><a href="#文件和目录" class="headerlink" title="文件和目录"></a>文件和目录</h1><h2 id="stat-fstat-fstatat-和-lstat"><a href="#stat-fstat-fstatat-和-lstat" class="headerlink" title="stat, fstat, fstatat 和 lstat"></a>stat, fstat, fstatat 和 lstat</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">SYNOPSIS</div><div class="line">       #include &lt;sys/types.h&gt;</div><div class="line">       #include &lt;sys/stat.h&gt;</div><div class="line">       #include &lt;unistd.h&gt;</div><div class="line"></div><div class="line">       int stat(const char *path, struct stat *buf);</div><div class="line">       int fstat(int fd, struct stat *buf);</div><div class="line">       int lstat(const char *path, struct stat *buf);</div><div class="line">SYNOPSIS</div><div class="line">      #include &lt;fcntl.h&gt; /* Definition of AT_* constants */</div><div class="line">      #include &lt;sys/stat.h&gt;</div><div class="line"></div><div class="line">      int fstatat(int dirfd, const char *pathname, struct stat *buf,</div><div class="line">                  int flags);</div></pre></td></tr></table></figure>
+<p>关于结构 <code>stat</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">struct stat &#123;</div><div class="line">    dev_t     st_dev;     /* ID of device containing file */</div><div class="line">    ino_t     st_ino;     /* inode number */</div><div class="line">    mode_t    st_mode;    /* protection */</div><div class="line">    nlink_t   st_nlink;   /* number of hard links */</div><div class="line">    uid_t     st_uid;     /* user ID of owner */</div><div class="line">    gid_t     st_gid;     /* group ID of owner */</div><div class="line">    dev_t     st_rdev;    /* device ID (if special file) */</div><div class="line">    off_t     st_size;    /* total size, in bytes */</div><div class="line">    blksize_t st_blksize; /* blocksize for filesystem I/O */</div><div class="line">    blkcnt_t  st_blocks;  /* number of 512B blocks allocated */</div><div class="line">    time_t    st_atime;   /* time of last access */</div><div class="line">    time_t    st_mtime;   /* time of last modification */</div><div class="line">    time_t    st_ctime;   /* time of last status change */</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h2><ul>
+<li>1 普通文件</li>
+<li>2 目录文件</li>
+<li>3 块特殊文件(block special file).这种类型的文件提供对设备(如磁带)带缓冲的访问,每次访问以固定长度为单位进行.</li>
+<li>4 字符特殊文件.这种类型的文件提供对设备不带缓冲的访问,每次访问长度是可变的.</li>
+<li>5 FIFO 这种类型的文件用于进程间通信.</li>
+<li>6 socket 用于进程间网络通信</li>
+<li>7 符号链接</li>
+</ul>
+<p>文件类型信息包含在stat结构的<code>st_mode</code>中</p>
+<table>
+<thead>
+<tr>
+<th>宏</th>
+<th style="text-align:center">文件类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S_ISREG()</td>
+<td style="text-align:center">普通文件</td>
+</tr>
+<tr>
+<td>S_ISDIR()</td>
+<td style="text-align:center">目录文件</td>
+</tr>
+<tr>
+<td>S_ISCHR()</td>
+<td style="text-align:center">字符特殊文件</td>
+</tr>
+<tr>
+<td>S_ISBLK()</td>
+<td style="text-align:center">块特殊文件</td>
+</tr>
+<tr>
+<td>S_ISFIFO()</td>
+<td style="text-align:center">管道文件</td>
+</tr>
+<tr>
+<td>S_ISLINK()</td>
+<td style="text-align:center">符号链接</td>
+</tr>
+<tr>
+<td>S_ISSOCK()</td>
+<td style="text-align:center">套接字</td>
+</tr>
+</tbody>
+</table>
+<p>POSIX.1允许实现将进程间通信(IPC)对象说明文件,使用<code>stat</code>结构中确定IPC对象类型,参数是指向<code>stat</code>结构的指针.<br>| 宏        | 对象类型           |<br>| ————- |:————-:|<br>| S_TYPEISMQ()      | 消息队列 |<br>| S_TYPEISEM()  | 信号量      |<br>| S_TYPEISSHM()  | 共享存储对象      |</p>
+<h2 id="设置用户ID与组ID"><a href="#设置用户ID与组ID" class="headerlink" title="设置用户ID与组ID"></a>设置用户ID与组ID</h2><p>一个进程相关联的ID有6个或者更多</p>
+<p>| S_TYPEISMQ()      | 消息队列 |<br>| S_TYPEISEM()  | 信号量      |<br>| S_TYPEISSHM()  | 共享存储对象      |</p>
+<h2 id="设置用户ID和设置组ID"><a href="#设置用户ID和设置组ID" class="headerlink" title="设置用户ID和设置组ID"></a>设置用户ID和设置组ID</h2><p>实际用户ID<br>实际组ID</p>
+<p>有效用户ID<br>有效组ID<br>附属组ID</p>
+<p>保存的设置用户ID<br>保存的设置组ID    由exec函数保存</p>
+<ul>
+<li><p>实际用户ID和实际组ID标识我们究竟是谁,这两个字段在登录时,取自哦令文件</p>
+</li>
+<li><p>有效用户,有效组ID以及附属组ID决定了我们的文件访问权限</p>
+</li>
+<li><p>保存的设置用户ID和保存的设置组ID在执行一个程序时,包含了一个有效用户ID和有效组ID的副本.</p>
+</li>
+</ul>
+<p>每一个文件有一个所有者和组所有者,所有者由<code>stat</code>结构中的<code>st_uid</code>指定,组所有者有<code>st_git</code>指定.</p>
+<p>当执行一个程序文件时,进程的有效用户ID通常就是实际用户ID,有效组ID是实际组ID,但是可以在文件模式字<code>std_mode</code>中设置一个特殊标志,其含义是”当执行文件时,将进程的有效用户ID设置为文件所有者用户ID”,与此类似,文件模式字中可以设置的另一位,它将执行文件的有效组ID设置未文件的组所有者ID.<br>可以使用<code>S_ISUID</code>和<code>S_ISGID</code>测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line"></div><div class="line">#include &lt;sys/types.h&gt;</div><div class="line">#include &lt;sys/stat.h&gt;</div><div class="line">#include &lt;unistd.h&gt;</div><div class="line"></div><div class="line"></div><div class="line">int main(int argc, char **argv) &#123;</div><div class="line">	int i;</div><div class="line">	struct stat buf;</div><div class="line">	char *ptr;</div><div class="line"></div><div class="line">	for(i = 1; i &lt; argc; i++) &#123;</div><div class="line">		printf(&quot;%s, &quot;, argv[i]);</div><div class="line">		if (lstat(argv[i], &amp;buf) &lt; 0) &#123;</div><div class="line">			printf(&quot;lstat error\n&quot;);</div><div class="line">			continue;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		if (S_ISREG(buf.st_mode)) &#123;</div><div class="line">			ptr = &quot;regular&quot;;</div><div class="line">		&#125; else if (S_ISDIR(buf.st_mode)) &#123;</div><div class="line">			ptr = &quot;dirctory&quot;;</div><div class="line">		&#125; else if (S_ISCHR(buf.st_mode)) &#123;</div><div class="line">			ptr = &quot;char special&quot;;</div><div class="line">		&#125; else if(S_ISBLK(buf.st_mode)) &#123;</div><div class="line">			ptr = &quot;kuai te shu&quot;;</div><div class="line">		&#125; else if(S_ISFIFO(buf.st_mode)) &#123;</div><div class="line">			ptr = &quot;FIFO&quot;;</div><div class="line">		&#125; else if (S_ISLNK(buf.st_mode)) &#123;</div><div class="line">			ptr = &quot;Link&quot;;</div><div class="line">		&#125; else if(S_ISSOCK(buf.st_mode)) &#123;</div><div class="line">			ptr = &quot;SOCKET&quot;;</div><div class="line">		&#125; else &#123;</div><div class="line">			ptr = &quot;UNKONWN&quot;;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		if (buf.st_mode &amp; S_ISUID) &#123;</div><div class="line">			printf(&quot;suid\n&quot;);</div><div class="line">		&#125;</div><div class="line">		if (buf.st_mode &amp; S_ISGID) &#123;</div><div class="line">			printf(&quot;sgid\n&quot;);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		printf(&quot;%s\n&quot;, ptr);</div><div class="line"> 	&#125;</div><div class="line"> 	exit(0);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>output:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">./a.out /usr/bin/passwd</div><div class="line">/usr/bin/passwd, suid</div><div class="line">regular</div></pre></td></tr></table></figure></p>
+<h2 id="文件访问权限"><a href="#文件访问权限" class="headerlink" title="文件访问权限"></a>文件访问权限</h2><p><code>st_mode</code>也包含了文件的访问权限.<br><code>S_IRUSR</code>   用户读<br><code>S_IWUSR</code>   用户写<br><code>S_IXUSR</code>   用户执行</p>
+<p><code>S_IRGRP</code>   组读<br><code>S_IWGRP</code>   组写<br><code>S_IXGRP</code>   组执行</p>
+<p><code>S_IROTH</code>   其他读<br><code>S_IWOTH</code>   其他写<br><code>S_IXOTH</code>   其他执行</p>
+<p>规则一,当我们用名字打开任一类型的文件时,对名字中包含的每一个目录,包括<code>.</code>和<code>..</code>都应该具有执行权限,目录的执行权限对应于搜索位.<br>对目录而言,读权限和执行权限的区别:<br>读权限允许我们读目录,获取该目录中所有文件列表名.<br>当一个目录是我们要访问的文件路径名的一个组成部分时,对该目录的执行权限使我们可以通过该目录.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;ll /var/log -d</div><div class="line">drwxrwxr-x 20 root syslog 4096  7月  6 09:05 /var/log</div><div class="line">sudo chmod 774 /var/log</div><div class="line">&gt;ll /var/log -d</div><div class="line">drwxrwxr-- 20 root syslog 4096  7月  6 09:05 /var/log</div></pre></td></tr></table></figure></p>
+<p>结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ll /var/log/dmesg</div><div class="line">ls: cannot access /var/log/dmesg: Permission denied</div><div class="line">/var &gt;cd log</div><div class="line">cd: permission denied: log</div></pre></td></tr></table></figure></p>
+<p>可以ls,但是不能cd<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;sys/types.h&gt;</div><div class="line">#include &lt;dirent.h&gt;</div><div class="line">#include &lt;errno.h&gt;</div><div class="line"></div><div class="line">extern int errno ;</div><div class="line"></div><div class="line">int main(int argc, char** argv) &#123;</div><div class="line"></div><div class="line">	if (argc &lt; 2) &#123;</div><div class="line">		printf(&quot;usage a.out &lt;dirname&gt;\n&quot;);</div><div class="line">		exit(-1);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	DIR *dptr = NULL;</div><div class="line">	struct dirent *entry;</div><div class="line"></div><div class="line">    if ((dptr = opendir(argv[1])) == NULL) &#123;</div><div class="line"></div><div class="line">    	perror(&quot;Error:&quot;);</div><div class="line">    &#125; else &#123;</div><div class="line">    	while (entry = readdir(dptr)) &#123;</div><div class="line">    		printf(&quot;%s\n&quot;, entry-&gt;d_name);</div><div class="line">    	&#125;</div><div class="line">    	closedir(dptr);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>因为对其他人都取消了执行权限,所以其他人无法通过该目录了.</p>
+<p><strong>为了在目录中创建一个新文件,需要有写和执行的权限</strong></p>
+<p><strong>为了删除一个现有文件文件,必须对包含该文件的目录有写权限和执行权限,对该文件本身则不需要读写权限</strong></p>
+<p><strong>如果用7个<code>exec</code>函数中的任何一个执行文件,必须对该文件具有执行权限,并且该文件为普通文件.</strong></p>
+<h2 id="新文件和目录的所有权"><a href="#新文件和目录的所有权" class="headerlink" title="新文件和目录的所有权"></a>新文件和目录的所有权</h2><p>新文件的用户ID设置为进程的有效用户ID,<br>新文件的组ID:可以是进程的有效组ID;也可以是所在目录的组ID.</p>
+<p><em>在ubuntu下是哪种情况?</em><br>使用sudo,改变进程的有效用户,发现组ID是进程的有效组ID.<br>在Mac里面则是所在目录的组ID</p>
+<h2 id="函数access和faccessat"><a href="#函数access和faccessat" class="headerlink" title="函数access和faccessat"></a>函数<code>access</code>和<code>faccessat</code></h2><p>当<code>open</code>函数打开一个文件时,内核以进程的有效用户ID和有效组ID为基础进行访问权限测试.有时候,进程也希望按照实际用户ID和实际组ID来测试其访问能力.可以使用这两个函数.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SYNOPSIS</div><div class="line">       #include &lt;unistd.h&gt;</div><div class="line"></div><div class="line">       int access(const char *pathname, int mode);</div></pre></td></tr></table></figure>
+<h2 id="umask函数"><a href="#umask函数" class="headerlink" title="umask函数"></a><code>umask</code>函数</h2><p>为一个进程设置文件模式创建屏蔽字,在进程创建一个新文件或者目录.参数是设置的umask值,返回的是之前的umask值.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SYNOPSIS</div><div class="line">       #include &lt;sys/types.h&gt;</div><div class="line">       #include &lt;sys/stat.h&gt;</div><div class="line"></div><div class="line">       mode_t umask(mode_t mask);</div></pre></td></tr></table></figure></p>
+<h2 id="函数chmod-fchmod和fchmodat"><a href="#函数chmod-fchmod和fchmodat" class="headerlink" title="函数chmod, fchmod和fchmodat"></a>函数<code>chmod</code>, <code>fchmod</code>和<code>fchmodat</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SYNOPSIS</div><div class="line">       #include &lt;sys/stat.h&gt;</div><div class="line"></div><div class="line">       int chmod(const char *path, mode_t mode);</div><div class="line">       int fchmod(int fd, mode_t mode);</div></pre></td></tr></table></figure>
+<p>为了能够改变一个文件的权限位,进车个的有效用户ID必须等于文件的所有者ID.</p>
+<h2 id="粘着位-sticky-bit"><a href="#粘着位-sticky-bit" class="headerlink" title="粘着位(sticky bit)"></a>粘着位(sticky bit)</h2><p>允许目录设置,如果对一个目录设置了粘着位,只有对该目录具有写权限的用户并且满足下列条件之一,才能删除或者重命名该目录下的文件.</p>
+<ul>
+<li>拥有此文件</li>
+<li>拥有此目录</li>
+<li>是超级用户</li>
+</ul>
+<p><code>/tmp</code>和<code>/var/tmp</code>设置了粘着位,任何用户都可以创建目录,但其他人无法删除.</p>
+<h2 id="chown-fchown-fchownat-lchown"><a href="#chown-fchown-fchownat-lchown" class="headerlink" title="chown,fchown,fchownat, lchown"></a><code>chown</code>,<code>fchown</code>,<code>fchownat</code>, <code>lchown</code></h2><h2 id="文件长度"><a href="#文件长度" class="headerlink" title="文件长度"></a>文件长度</h2><h2 id="其他一些操作"><a href="#其他一些操作" class="headerlink" title="其他一些操作"></a>其他一些操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#include &lt;unistd.h&gt;</div><div class="line">#include &lt;sys/types.h&gt;</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;sys/types.h&gt;</div><div class="line">#include &lt;sys/stat.h&gt;</div><div class="line">#include &lt;fcntl.h&gt;</div><div class="line"></div><div class="line"></div><div class="line">int main(int argv, char ** args) &#123;</div><div class="line">	if(argv &gt; 1) &#123;</div><div class="line">		const char * FILENAME = args[1];</div><div class="line">		int r_fd = open(FILENAME, O_RDWR);</div><div class="line">		printf(&quot;%d\n&quot;, r_fd);</div><div class="line"></div><div class="line">		off_t offeset = 2;</div><div class="line">		int ft_res = ftruncate(r_fd, offeset);</div><div class="line">		close(r_fd);</div><div class="line"></div><div class="line">	&#125; else &#123;</div><div class="line">		printf(&quot;%s &lt;filename&gt;\n&quot;, args[0]);</div><div class="line">	&#125;</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>fstat  获取文件的状态<br>    <code>stat(const char *path, struct stat *buf)</code><br>    <code>fstat(int fd, struct stat *buf)</code><br>    <code>lstat(const char *path, struct *buf)</code>    //链接文件<br>返回：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">struct stat &#123;</div><div class="line">          dev_t    st_dev;    /* ID of device containing file */</div><div class="line">          ino_t    st_ino;    /* inode number */</div><div class="line">          mode_t    st_mode;    /* protection */</div><div class="line">          nlink_t  st_nlink;  /* number of hard links */</div><div class="line">          uid_t    st_uid;    /* user ID of owner */</div><div class="line">          gid_t    st_gid;    /* group ID of owner */</div><div class="line">          dev_t    st_rdev;    /* device ID (if special file) */</div><div class="line">          off_t    st_size;    /* total size, in bytes */ 文件的大小</div><div class="line">          blksize_t st_blksize; /* blocksize for file system I/O */</div><div class="line">          blkcnt_t  st_blocks;  /* number of 512B blocks allocated */</div><div class="line">          time_t    st_atime;  /* time of last access */</div><div class="line">          time_t    st_mtime;  /* time of last modification */</div><div class="line">          time_t    st_ctime;  /* time of last status change */</div><div class="line">      &#125;;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Misc/" rel="tag"># Misc</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/23/linuxtcp/2016_06_23_unix编程基础(2)--文件io/" rel="next" title="unix编程基础(2)--文件IO">
+                <i class="fa fa-chevron-left"></i> unix编程基础(2)--文件IO
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/01/vim/2016_07_01_vim基本/" rel="prev" title="vim基本">
+                vim基本 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="arron" />
+          <p class="site-author-name" itemprop="name">arron</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#文件和目录"><span class="nav-number">1.</span> <span class="nav-text">文件和目录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#stat-fstat-fstatat-和-lstat"><span class="nav-number">1.1.</span> <span class="nav-text">stat, fstat, fstatat 和 lstat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件类型"><span class="nav-number">1.2.</span> <span class="nav-text">文件类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置用户ID与组ID"><span class="nav-number">1.3.</span> <span class="nav-text">设置用户ID与组ID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置用户ID和设置组ID"><span class="nav-number">1.4.</span> <span class="nav-text">设置用户ID和设置组ID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件访问权限"><span class="nav-number">1.5.</span> <span class="nav-text">文件访问权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新文件和目录的所有权"><span class="nav-number">1.6.</span> <span class="nav-text">新文件和目录的所有权</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数access和faccessat"><span class="nav-number">1.7.</span> <span class="nav-text">函数access和faccessat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#umask函数"><span class="nav-number">1.8.</span> <span class="nav-text">umask函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数chmod-fchmod和fchmodat"><span class="nav-number">1.9.</span> <span class="nav-text">函数chmod, fchmod和fchmodat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#粘着位-sticky-bit"><span class="nav-number">1.10.</span> <span class="nav-text">粘着位(sticky bit)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chown-fchown-fchownat-lchown"><span class="nav-number">1.11.</span> <span class="nav-text">chown,fchown,fchownat, lchown</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件长度"><span class="nav-number">1.12.</span> <span class="nav-text">文件长度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他一些操作"><span class="nav-number">1.13.</span> <span class="nav-text">其他一些操作</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">arron</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

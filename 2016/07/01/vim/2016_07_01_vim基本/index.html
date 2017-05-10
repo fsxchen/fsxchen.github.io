@@ -1,0 +1,914 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="vim," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="VIM1 关于Vim vim是我最喜欢的编辑器，也是linux下第二强大的编辑器。虽然emacs是公认的世界第一，我认为使用emacs并没有使用vi进行编辑来得高效。如果是初学vi，运行一下vimtutor是个聪明的决定。2 启动Vim时的选项 * vim -c cmd file: 在打开文件前，先执行指定的命令； * vim -r file: 恢复上次异常退出的文件； * vim -R file">
+<meta name="keywords" content="vim">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim基本">
+<meta property="og:url" content="http://fsxchen.github.io/2016/07/01/vim/2016_07_01_vim基本/index.html">
+<meta property="og:site_name" content="CouCou&#39;s Blog">
+<meta property="og:description" content="VIM1 关于Vim vim是我最喜欢的编辑器，也是linux下第二强大的编辑器。虽然emacs是公认的世界第一，我认为使用emacs并没有使用vi进行编辑来得高效。如果是初学vi，运行一下vimtutor是个聪明的决定。2 启动Vim时的选项 * vim -c cmd file: 在打开文件前，先执行指定的命令； * vim -r file: 恢复上次异常退出的文件； * vim -R file">
+<meta property="og:updated_time" content="2017-05-10T08:18:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vim基本">
+<meta name="twitter:description" content="VIM1 关于Vim vim是我最喜欢的编辑器，也是linux下第二强大的编辑器。虽然emacs是公认的世界第一，我认为使用emacs并没有使用vi进行编辑来得高效。如果是初学vi，运行一下vimtutor是个聪明的决定。2 启动Vim时的选项 * vim -c cmd file: 在打开文件前，先执行指定的命令； * vim -r file: 恢复上次异常退出的文件； * vim -R file">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://fsxchen.github.io/2016/07/01/vim/2016_07_01_vim基本/"/>
+
+
+
+
+
+  <title>vim基本 | CouCou's Blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CouCou's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://fsxchen.github.io/2016/07/01/vim/2016_07_01_vim基本/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="arron">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CouCou's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vim基本</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-01T17:32:00+08:00">
+                2016-07-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Misc/" itemprop="url" rel="index">
+                    <span itemprop="name">Misc</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="VIM"><a href="#VIM" class="headerlink" title="VIM"></a>VIM</h1><p>1 关于Vim</p>
+<p>vim是我最喜欢的编辑器，也是linux下第二强大的编辑器。虽然emacs是公认的世界第一，我认为使用emacs并没有使用vi进行编辑来得高效。如果是初学vi，运行一下vimtutor是个聪明的决定。<br>2 启动Vim时的选项</p>
+<pre><code>* vim -c cmd file: 在打开文件前，先执行指定的命令；
+* vim -r file: 恢复上次异常退出的文件；
+* vim -R file: 以只读的方式打开文件；
+* vim -y num file: 将编辑窗口的大小设为num行；
+* vim + file: 从文件的末尾开始；
+* vim +num file: 从第num行开始；
+</code></pre><p>3 光标的移动</p>
+<pre><code>* h: 左移一个字符；
+* l: 右移一个字符；
+* j: 下移一个字符；
+* k: 上移一个字符；
+* w: 前移一个单词，光标停在下一个单词开头；
+* e: 前移一个单词，光标停在下一个单词末尾；
+* b: 后移一个单词，光标停在上一个单词开头；
+* ge: 后移一个单词，光标停在上一个单词末尾；
+* fc: 把光标移到同一行的下一个c字符处
+</code></pre><p>上面的操作都可以配合n使用，比如在正常模式(下面会讲到)下输入3h，则光标向左移动3个字符。</p>
+<pre><code>* 0或^:移动到行首。
+* $: 移动到行尾。
+* gg: 到文件头部。
+* G: 到文件尾部。
+* nG: 到文件第n行。
+* :n&lt;cr&gt; 移动到第n行。
+* :$&lt;cr&gt; 移动到最后一行。
+* n|: 把光标移到递n列上。
+* +或Enter:把光标移至下一行第一个非空白字符。
+* -: 把光标移至上一行第一个非空白字符。
+* H: 把光标移到屏幕最顶端一行。
+* L: 把光标移到屏幕最底端一行。
+* ctrl+f: 下翻一屏。
+* ctrl+b: 上翻一屏。
+* ctrl+d: 下翻半屏。
+* ctrl+u: 上翻半屏。
+</code></pre><p>4 Vim的几种模式</p>
+<pre><code>* 正常模式：可以使用快捷键命令，或按:输入命令行。
+* 插入模式：可以输入文本，在正常模式下，按i、a、o等都可以进入插入模式。
+* 可视模式：正常模式下按v可以进入可视模式，在可视模式下，移动光标可以选择文本。
+* 块选择模式：正常模式下按ctrl+v进入。
+* 替换模式：正常模式下，按R进入。
+</code></pre><p>5 插入</p>
+<pre><code>* i: 在光标前插入；
+* I: 在当前行最前插入；
+* a: 在光标后插入；
+* A: 在当前行最后插入；
+* o: 在下面新建一行插入；
+* O: 在上面新建一行插入；
+* :r filename 在当前位置插入另一个文件的内容。
+* :r !date 在光标处插入当前日期与时间。同理，:r!command可以将其它shell命令的输出插入当前文档。
+</code></pre><p>6 改写</p>
+<pre><code>* c[n]w: 改写光标后1(n)个词。
+* c[n]l: 改写光标后n个字母。
+* c[n]h: 改写光标前n个字母。
+* [n]cc: 修改当前[n]行。
+* [n]s: 以输入的文本替代光标之后1(n)个字符，相当于c[n]l。
+* [n]S: 删除指定数目的行，并以所输入文本代替之。
+</code></pre><p>注意，类似cnw,dnw,ynw的形式同样可以写为ncw,ndw,nyw。<br>7 替换</p>
+<ul>
+<li>r: 替换光标处的字符，同样支持汉字。<ul>
+<li>R: 进入替换模式，按esc回到正常模式。</li>
+</ul>
+</li>
+</ul>
+<p>8 撤消与重做</p>
+<pre><code>* [n] u: 取消一(n)个改动。
+* ctrl + r: 重做最后的改动。
+* U: 取消当前行中所有的改动。
+</code></pre><p>9 剪切和复制、粘贴</p>
+<ul>
+<li><p>[n]x: 剪切光标右边n个字符，相当于d[n]l。</p>
+<ul>
+<li>[n]X: 剪切光标左边n个字符，相当于d[n]h。</li>
+<li>y: 复制在可视模式下选中的文本。</li>
+<li>yy or Y: 复制整行文本。</li>
+<li>y[n]w: 复制一(n)个词。</li>
+<li>y[n]l: 复制光标右边1(n)个字符。</li>
+<li>y[n]h: 复制光标左边1(n)个字符。</li>
+<li>y$: 从光标当前位置复制到行尾。</li>
+<li>y0: 从光标当前位置复制到行首。</li>
+<li>:m,ny<cr> 复制m行到n行的内容。</cr></li>
+<li>y1G或ygg:复制光标以上的所有行。</li>
+<li>yG: 复制光标以下的所有行。</li>
+<li>d: 删除（剪切）在可视模式下选中的文本。</li>
+<li>d$ or D: 删除（剪切）当前位置到行尾的内容。</li>
+<li>d[n]w: 删除（剪切）1(n)个单词</li>
+<li>d[n]l: 删除（剪切）光标右边1(n)个字符。</li>
+<li>d[n]h: 删除（剪切）光标左边1(n)个字符。</li>
+<li>d0: 删除（剪切）当前位置到行首的内容</li>
+<li>[n] dd: 删除（剪切）1(n)行。</li>
+<li>:m,nd<cr> 剪切m行到n行的内容。</cr></li>
+<li>d1G或dgg:剪切光标以上的所有行。</li>
+<li>dG: 剪切光标以下的所有行。</li>
+<li>p: 在光标之后粘贴。</li>
+<li><p>P: 在光标之前粘贴。<br>10 查找和替换</p>
+</li>
+<li><p>/something: 在后面的文本中查找something。</p>
+</li>
+<li>?something: 在前面的文本中查找something。</li>
+<li>n: 向后查找下一个。</li>
+<li>N: 向前查找下一个。</li>
+<li>:s/old/new: 用new替换当前行第一个old。</li>
+<li>:s/old/new/g: 用new替换当前行所有的old。</li>
+<li>:n1,n2s/old/new/g: 用new替换文件n1行到n2行所有的old。</li>
+<li>:%s/old/new/g: 用new替换文件中所有的old。</li>
+<li>:%s/^/xxx/g: 在每一行的行首插入xxx，^表示行首。</li>
+<li>:%s/$/xxx/g: 在每一行的行尾插入xxx，^表示行尾。</li>
+<li>所有替换命令末尾加上c，每个替换都将需要用户确认。如：%s/old/new/gc</li>
+<li>%: 找到对应的([{.</li>
+</ul>
+</li>
+</ul>
+<p>11 多行缩进缩出</p>
+<pre><code>* 正常模式下，按两下&gt;;光标所在行会缩进。
+* 如果先按了n，再按两下&gt;;，光标以下的n行会缩进。
+* 对应的，按两下&lt;;，光标所在行会缩出。
+* 如果在编辑代码文件，可以用=进行调整。
+* 在可视模式下，选择要调整的代码块，按=，代码会按书写规则缩排好。
+* 或者n=，调整n行代码的缩排。
+</code></pre><p>12 打开和关闭文档</p>
+<pre><code>* :e file –关闭当前编辑的文件，并开启新的文件。如果对当前文件的修改未保存，vi会警告。
+* :e! file –放弃对当前文件的修改，编辑新的文件。
+* :e+file – 开始新的文件，并从文件尾开始编辑。
+* :e+n file – 开始新的文件，并从第n行开始编辑。
+* :enew –编译一个未命名的新文档。
+* :e – 重新加载当前文档。
+* :e! – 重新加载当前文档，并丢弃已做的改动。
+* :w – 保存修改。
+* :n1,n2w filename – 选择性保存从某n1行到另n2行的内容。
+* :wq – 保存并退出。
+* :x – 保存并退出。
+* :saveas newfilename – 另存为
+</code></pre><p>13 多标签编辑</p>
+<pre><code>* :tabe filename – 在新的标签中打开一个文件。
+* :tabn – 切换到下一个标签。
+* :tabp – 切换到上一个标签。
+</code></pre><p>14 分屏编辑<br>14.1 水平分割</p>
+<pre><code>* :split(:sp) – 把当前窗水平分割成两个窗口。
+* :split filename – 水平分割窗口，并在新窗口中显示另一个文件。
+* :nsplit(:nsp) – 水平分割出一个n行高的窗口。
+* :new – 水平分割出一个窗口，并编辑一个新文件。
+* ctrl+w + –当前窗口增高一行。也可以用n增高n行。
+* ctrl+w - –当前窗口减小一行。也可以用n减小n行。
+* ctrl+w _ –当前窗口扩展到尽可能的大。
+* n ctrl+w _ – 当前窗口的高度设定为n行。
+</code></pre><p>14.2 垂直分割</p>
+<pre><code>* :vsplit(:vsp) – 把当前窗口分割成水平分布的两个窗口。
+* :vnew – 垂直分割出一个新窗口。
+* :vertical 水平分割的命令：相应的垂直分割。
+</code></pre><p>14.3 关闭子窗口</p>
+<pre><code>* :qall – 关闭所有窗口，退出vim。
+* :wall – 保存所有修改过的窗口。
+* :only – 只保留当前窗口，关闭其它窗口。
+* :close – 关闭当前窗口。(象 :q :x同样工作 )
+</code></pre><p>4.4 切换和移动窗口</p>
+<p>［如果支持鼠标，切换和调整子窗口的大小就简单了。］</p>
+<pre><code>* ctrl+w ctrl+w: 切换到下一个窗口。或者是ctrl+ww。
+* ctrl+w h(l,j,k):切换到左（右，下，上）的窗口。
+* ctrl+w t(b):切换到最上（下）面的窗口。&lt;BR&gt;
+* ctrl+w H(L,K,J): 将当前窗口移动到最左（右、上、下）面。
+</code></pre><p>正因为vim强大的分屏功能，我们可以把vim打造成功能强大的IDE。<br>15 一次编辑多个文件</p>
+<p>我们可以一次打开多个文件，如</p>
+<p>vi a.txt b.txt c.txt</p>
+<pre><code>* 使用:next(:n)编辑下一个文件。
+* 使用:previous编辑上一个文件。
+* 使用:wnext，保存当前文件，并编辑下一个文件。
+* 使用:wprevious，保存当前文件，并编辑上一个文件。
+* 使用:args显示文件列表。
+</code></pre><p>16 文件的编码</p>
+<pre><code>* :e ++enc=utf8 filename, 让vim用utf-8的编码打开这个文件。
+* :w ++enc=gbk，不管当前文件什么编码，把它转存成gbk编码。
+* :set fenc或:setfileencoding，查看当前文件的编码。
+* 在vimrc中添加setfileencoding=utf-8,cp936,ucs-bom，vim会根据要打开的文件选择合适的编码。注意：编码之间不要留空格。cp936对应于gbk编码。ucs-bom对应于windows下的文件格式。
+</code></pre><p>让vim正确处理文件格式和文件编码，有赖于~/.vimrc的正确配置。<br>17 执行命令</p>
+<pre><code>* :! cmd 执行外部命令。
+* :!! 执行上一次的外部命令。
+* @: 重复上一次的冒号命令。
+* :sh 调用shell，用exit返回vim。
+* :r !cmd 将命令的返回结果插入文件当前位置。
+* :m,nw !cmd 将文件的m行到n行之间的内容做为命令输入执行命令。
+</code></pre><p>18 一些快捷键（收集中）</p>
+<pre><code>* K: 打开光标所在词的manpage。
+* *: 向下搜索光标所在词。
+* #: 向上搜索光标所在词。
+* ~: 反转光标所在字符的大小写。
+* %: 移动到匹配的(),{}或[]上。
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vim/" rel="tag"># vim</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/30/linuxtcp/2016_06_30_unix基础编程(3)--文件和目录/" rel="next" title="unix基础编程(3)--文件和目录">
+                <i class="fa fa-chevron-left"></i> unix基础编程(3)--文件和目录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/17/linuxtcp/2016_07_17_unix-network(1)-基础/" rel="prev" title="Unix-Network(1)-基础">
+                Unix-Network(1)-基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="arron" />
+          <p class="site-author-name" itemprop="name">arron</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VIM"><span class="nav-number">1.</span> <span class="nav-text">VIM</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">arron</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

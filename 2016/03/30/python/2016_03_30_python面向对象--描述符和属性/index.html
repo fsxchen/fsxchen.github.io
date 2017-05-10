@@ -1,0 +1,749 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python,oop," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="python面向对象–描述符和属性python中的私有属性python中没有访问限制的描速符.通过__符号来实现 Ex: 12class MyClass(object):    __secret_value = 1 1234567In [3]: m.__secret_value-------------------------------------------------------------">
+<meta name="keywords" content="Python,oop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python面向对象--描述符和属性">
+<meta property="og:url" content="http://fsxchen.github.io/2016/03/30/python/2016_03_30_python面向对象--描述符和属性/index.html">
+<meta property="og:site_name" content="CouCou&#39;s Blog">
+<meta property="og:description" content="python面向对象–描述符和属性python中的私有属性python中没有访问限制的描速符.通过__符号来实现 Ex: 12class MyClass(object):    __secret_value = 1 1234567In [3]: m.__secret_value-------------------------------------------------------------">
+<meta property="og:updated_time" content="2017-05-10T08:26:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python面向对象--描述符和属性">
+<meta name="twitter:description" content="python面向对象–描述符和属性python中的私有属性python中没有访问限制的描速符.通过__符号来实现 Ex: 12class MyClass(object):    __secret_value = 1 1234567In [3]: m.__secret_value-------------------------------------------------------------">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://fsxchen.github.io/2016/03/30/python/2016_03_30_python面向对象--描述符和属性/"/>
+
+
+
+
+
+  <title>python面向对象--描述符和属性 | CouCou's Blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CouCou's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://fsxchen.github.io/2016/03/30/python/2016_03_30_python面向对象--描述符和属性/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="arron">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CouCou's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python面向对象--描述符和属性</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-30T17:27:00+08:00">
+                2016-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="python面向对象–描述符和属性"><a href="#python面向对象–描述符和属性" class="headerlink" title="python面向对象–描述符和属性"></a>python面向对象–描述符和属性</h1><h2 id="python中的私有属性"><a href="#python中的私有属性" class="headerlink" title="python中的私有属性"></a>python中的私有属性</h2><p>python中没有访问限制的描速符.通过<code>__</code>符号来实现</p>
+<p>Ex:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">class MyClass(object):</div><div class="line">    __secret_value = 1</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">In [3]: m.__secret_value</div><div class="line">---------------------------------------------------------------------------</div><div class="line">AttributeError                            Traceback (most recent call last)</div><div class="line">&lt;ipython-input-3-3a26128381d5&gt; in &lt;module&gt;()</div><div class="line">----&gt; 1 m.__secret_value</div><div class="line"></div><div class="line">AttributeError: &apos;MyClass&apos; object has no attribute &apos;__secret_value&apos;</div></pre></td></tr></table></figure>
+<p>查看属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">In [4]: dir(m)</div><div class="line">Out[4]:</div><div class="line">[&apos;_MyClass__secret_value&apos;,</div><div class="line"> &apos;__class__&apos;,</div></pre></td></tr></table></figure></p>
+<p>其实也并不是真正意义上的私有属性.</p>
+<h2 id="描述符"><a href="#描述符" class="headerlink" title="描述符"></a>描述符</h2><p>描述符用来自定义在引用一个对象上的特性时所应该完成的事情.<br>基于如下三个特殊的方法</p>
+<ul>
+<li><code>__set__</code> 在任何属性被设置时调用,setter;</li>
+<li><code>__get__</code> 在任何属性被读取的时候被调用,getter;</li>
+<li><code>__delete__</code><br>这些方法都在 <code>__dict__</code>之前被调用.</li>
+</ul>
+<p>其实就是通过一个类,对另外一个类的某个属性进行控制</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">class UpperString(object):</div><div class="line">	def __init__(self):</div><div class="line">		self._val = &quot;&quot;</div><div class="line">	def __get__(self, instance, klass):</div><div class="line">		return self._val</div><div class="line">	def __set__(self, instance, value):</div><div class="line">		self._val = value.upper()</div><div class="line"></div><div class="line">class MyClass(object):</div><div class="line">	attribute = UpperString()</div><div class="line"></div><div class="line">mc = MyClass()</div><div class="line">mc.attribute = &quot;my value&quot;</div><div class="line">print mc.attribute</div></pre></td></tr></table></figure>
+<h2 id="自省描述符"><a href="#自省描述符" class="headerlink" title="自省描述符"></a>自省描述符</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">API</span><span class="params">(object)</span>:</span></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">_print_values</span><span class="params">(self, obj)</span>:</span></div><div class="line">		<span class="function"><span class="keyword">def</span> <span class="title">_print_value</span><span class="params">(key)</span>:</span></div><div class="line">			<span class="keyword">if</span> key.startswith(<span class="string">'_'</span>):</div><div class="line">				<span class="keyword">return</span> <span class="string">''</span></div><div class="line">			value = getattr(obj, key)</div><div class="line">			<span class="keyword">if</span> <span class="keyword">not</span> hasattr(value, <span class="string">'im_func'</span>):</div><div class="line">				doc = type(value).__name__</div><div class="line">			<span class="keyword">else</span>:</div><div class="line">				<span class="keyword">if</span> value.__doc__ <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">					doc = <span class="string">'no docstring'</span></div><div class="line">				<span class="keyword">else</span>:</div><div class="line">					doc = value.__doc__</div><div class="line">			<span class="keyword">return</span> <span class="string">" %s : %s"</span> % (key, value)</div><div class="line">		res = [_print_value(el) <span class="keyword">for</span> el <span class="keyword">in</span> dir(obj)]</div><div class="line">		<span class="keyword">return</span> <span class="string">'\n'</span>.join([el <span class="keyword">for</span> el <span class="keyword">in</span> res <span class="keyword">if</span> el != <span class="string">""</span>])</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__get__</span><span class="params">(self, instance, klass)</span>:</span></div><div class="line">		<span class="keyword">if</span> instance <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</div><div class="line">			<span class="keyword">return</span> self._print_values(instance)</div><div class="line">		<span class="keyword">else</span>:</div><div class="line">			<span class="keyword">return</span> self._print_values(klass)</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span><span class="params">(object)</span>:</span></div><div class="line">	__doc__ = API()</div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">		self.a = <span class="number">2</span></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">meth</span><span class="params">(self)</span>:</span></div><div class="line">		<span class="string">'''</span></div><div class="line">		my method</div><div class="line">		'''</div><div class="line">		<span class="keyword">return</span> <span class="number">1</span></div><div class="line"><span class="keyword">print</span> MyClass.__doc__</div><div class="line">instance = MyClass()</div><div class="line"><span class="keyword">print</span> <span class="string">"========"</span></div><div class="line"><span class="keyword">print</span> instance.__doc__</div></pre></td></tr></table></figure>
+<p>output:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">meth : &lt;unbound method MyClass.meth&gt;</div><div class="line">========</div><div class="line">a : 2</div><div class="line">meth : &lt;bound method MyClass.meth of &lt;__main__.MyClass object at 0x7fe3295bcad0&gt;&gt;</div></pre></td></tr></table></figure>
+<h2 id="元描述符"><a href="#元描述符" class="headerlink" title="元描述符"></a>元描述符</h2><h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p>属性提供了一个内建的描述符类型,属性采用<code>fget</code>和3个可选的参数–<code>fset</code>, <code>fdel</code>和<code>doc</code></p>
+<h2 id="槽"><a href="#槽" class="headerlink" title="槽"></a>槽</h2><p>这个概念很少遇到</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/oop/" rel="tag"># oop</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/28/python/2016_03_28_with和contextlib/" rel="next" title="with和contextlib">
+                <i class="fa fa-chevron-left"></i> with和contextlib
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/05/HTTP/2016_04_05_raml初识/" rel="prev" title="RAML初识">
+                RAML初识 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="arron" />
+          <p class="site-author-name" itemprop="name">arron</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#python面向对象–描述符和属性"><span class="nav-number">1.</span> <span class="nav-text">python面向对象–描述符和属性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#python中的私有属性"><span class="nav-number">1.1.</span> <span class="nav-text">python中的私有属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#描述符"><span class="nav-number">1.2.</span> <span class="nav-text">描述符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自省描述符"><span class="nav-number">1.3.</span> <span class="nav-text">自省描述符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元描述符"><span class="nav-number">1.4.</span> <span class="nav-text">元描述符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性"><span class="nav-number">1.5.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#槽"><span class="nav-number">1.6.</span> <span class="nav-text">槽</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">arron</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

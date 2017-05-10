@@ -1,0 +1,771 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="yeoman,bower,gulp," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="工具codekitfis grunt Build tool构建工具类似的有ant gmake等 NodeJSgrunt依赖NodeJS 1npm install -g grunt-cli package.json中的~和^，版本更新的控制 yo 使用yeoman来生成项目的文件，代码结构。 yeoman自动将最佳实践和工具整合进来，大大加速和方便  1npm install -g yo 依赖Nod">
+<meta name="keywords" content="yeoman,bower,gulp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端代码-yeoman-bower-gulp">
+<meta property="og:url" content="http://fsxchen.github.io/2015/12/15/front-end/2015_12_15_前端代码-yeoman-bower-gulp/index.html">
+<meta property="og:site_name" content="CouCou&#39;s Blog">
+<meta property="og:description" content="工具codekitfis grunt Build tool构建工具类似的有ant gmake等 NodeJSgrunt依赖NodeJS 1npm install -g grunt-cli package.json中的~和^，版本更新的控制 yo 使用yeoman来生成项目的文件，代码结构。 yeoman自动将最佳实践和工具整合进来，大大加速和方便  1npm install -g yo 依赖Nod">
+<meta property="og:image" content="http://7xrn62.com1.z0.glb.clouddn.com/9c2763e916bdcdf0174a5f511b6829d8.png">
+<meta property="og:updated_time" content="2017-05-10T08:40:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端代码-yeoman-bower-gulp">
+<meta name="twitter:description" content="工具codekitfis grunt Build tool构建工具类似的有ant gmake等 NodeJSgrunt依赖NodeJS 1npm install -g grunt-cli package.json中的~和^，版本更新的控制 yo 使用yeoman来生成项目的文件，代码结构。 yeoman自动将最佳实践和工具整合进来，大大加速和方便  1npm install -g yo 依赖Nod">
+<meta name="twitter:image" content="http://7xrn62.com1.z0.glb.clouddn.com/9c2763e916bdcdf0174a5f511b6829d8.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://fsxchen.github.io/2015/12/15/front-end/2015_12_15_前端代码-yeoman-bower-gulp/"/>
+
+
+
+
+
+  <title>前端代码-yeoman-bower-gulp | CouCou's Blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CouCou's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://fsxchen.github.io/2015/12/15/front-end/2015_12_15_前端代码-yeoman-bower-gulp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="arron">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CouCou's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端代码-yeoman-bower-gulp</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-15T14:13:00+08:00">
+                2015-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><p>codekit<br>fis</p>
+<p>grunt Build tool构建工具<br>类似的有ant gmake等</p>
+<h2 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h2><p>grunt依赖NodeJS</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g grunt-cli</div></pre></td></tr></table></figure>
+<p><code>package.json</code>中的<code>~</code>和<code>^</code>，版本更新的控制</p>
+<h2 id="yo"><a href="#yo" class="headerlink" title="yo"></a>yo</h2><ul>
+<li>使用yeoman来生成项目的文件，代码结构。</li>
+<li>yeoman自动将最佳实践和工具整合进来，大大加速和方便</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g yo</div></pre></td></tr></table></figure>
+<p>依赖<code>Node.js</code></p>
+<h3 id="安装模板生成器"><a href="#安装模板生成器" class="headerlink" title="安装模板生成器"></a>安装模板生成器</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm install -g generator-webapp</div><div class="line">or</div><div class="line">npm install -g generator-angular</div></pre></td></tr></table></figure>
+<h3 id="生成"><a href="#生成" class="headerlink" title="生成"></a>生成</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yo angular</div></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yo angular --coffee</div></pre></td></tr></table></figure>
+<p><strong>在Angular中</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ yo angular:controller myController</div><div class="line">$ yo angular:directive myDirective</div><div class="line">$ yo angular:filter myFilter</div><div class="line">$ yo angular:service myService</div></pre></td></tr></table></figure>
+<p><strong>查看已经安装的模板生成器</strong></p>
+<p>npm ls -g  –depth=1 2&gt;/dev/null | grep generator-</p>
+<h2 id="bower"><a href="#bower" class="headerlink" title="bower"></a>bower</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm install -g bower</div><div class="line">bower install</div><div class="line">bower install xxx --save</div></pre></td></tr></table></figure>
+<h3 id="bower安装github上的应用"><a href="#bower安装github上的应用" class="headerlink" title="bower安装github上的应用"></a>bower安装github上的应用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">bower install jquery/jquery</div><div class="line">bower install https://xxx.xx.git</div></pre></td></tr></table></figure>
+<h3 id="通过url安装"><a href="#通过url安装" class="headerlink" title="通过url安装"></a>通过url安装</h3><p>直接bower install 地址</p>
+<h3 id="bower的两个配置文件"><a href="#bower的两个配置文件" class="headerlink" title="bower的两个配置文件"></a>bower的两个配置文件</h3><p>bower.json</p>
+<p>bowerrc</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"directory"</span>: <span class="string">"bower_components"</span>,</div><div class="line">    <span class="attr">"proxy"</span>: <span class="string">"http://.com"</span>,</div><div class="line">    <span class="attr">"https-proxy"</span>: <span class="string">"https://..."</span>,</div><div class="line">    <span class="attr">"timeout"</span>: <span class="number">6666</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="grunt"><a href="#grunt" class="headerlink" title="grunt"></a>grunt</h2><p>Build tool</p>
+<p>3个 概念  Task Options Target</p>
+<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g grunt-cli</div></pre></td></tr></table></figure>
+<h2 id="gulp"><a href="#gulp" class="headerlink" title="gulp"></a>gulp</h2><p><a href="http://www.gulpjs.com.cn/docs/api/" target="_blank" rel="external">中文官方API</a></p>
+<p>启用一个默认的任务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var gulp = require(&quot;gulp&quot;)</div><div class="line"></div><div class="line">gulp.task(&apos;default&apos;, function() &#123;</div><div class="line">	console.log(&quot;I have configured a gulpfile&quot;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h2><p>相对于gulp,webpack更加高级,关注的是web发布的逻辑构建,二gulp(grunt)是从底层构建</p>
+<p>webpack的配置文件.webpack.config.js<br>入口文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">entry: [</div><div class="line">    &apos;webpack/hot/only-dev-server&apos;,</div><div class="line">    &apos;./src/components/GalleryByReactApp.js&apos;</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>出口文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">output: &#123;</div><div class="line">    filename: &apos;main.js&apos;</div><div class="line">    publicPath: &apos;/assets/&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>resolve</code>: 模块解析配置项<br><code>alias</code>的好处是:<br>require(“…/src/style/main.css”)可以简写成<br>require(“styles/main.css”)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">resolve: &#123;</div><div class="line">    extensions: [&apos;&apos;, &apos;.js&apos;, &apos;.jsx&apos;],</div><div class="line">    alias: &#123;</div><div class="line">        &apos;styles&apos;: __dirname + &apos;/src/styles&apos;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>webpack的loader机制, <code>loaders</code></p>
+<p><img src="http://7xrn62.com1.z0.glb.clouddn.com/9c2763e916bdcdf0174a5f511b6829d8.png" alt="webpack的loaders"></p>
+<p>autoprefixerloader解决不同浏览器兼容CSS的问题.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/yeoman/" rel="tag"># yeoman</a>
+          
+            <a href="/tags/bower/" rel="tag"># bower</a>
+          
+            <a href="/tags/gulp/" rel="tag"># gulp</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/14/python/2015_12_14_装饰器/" rel="next" title="装饰器">
+                <i class="fa fa-chevron-left"></i> 装饰器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/22/tool/2015_12_22_ubuntu下搭建openvpn/" rel="prev" title="ubuntu下搭建openvpn">
+                ubuntu下搭建openvpn <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="arron" />
+          <p class="site-author-name" itemprop="name">arron</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#工具"><span class="nav-number">1.</span> <span class="nav-text">工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NodeJS"><span class="nav-number">1.1.</span> <span class="nav-text">NodeJS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yo"><span class="nav-number">1.2.</span> <span class="nav-text">yo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装模板生成器"><span class="nav-number">1.2.1.</span> <span class="nav-text">安装模板生成器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成"><span class="nav-number">1.2.2.</span> <span class="nav-text">生成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bower"><span class="nav-number">1.3.</span> <span class="nav-text">bower</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.3.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bower安装github上的应用"><span class="nav-number">1.3.2.</span> <span class="nav-text">bower安装github上的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过url安装"><span class="nav-number">1.3.3.</span> <span class="nav-text">通过url安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bower的两个配置文件"><span class="nav-number">1.3.4.</span> <span class="nav-text">bower的两个配置文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#grunt"><span class="nav-number">1.4.</span> <span class="nav-text">grunt</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-1"><span class="nav-number">1.4.1.</span> <span class="nav-text">安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gulp"><span class="nav-number">1.5.</span> <span class="nav-text">gulp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack"><span class="nav-number">1.6.</span> <span class="nav-text">webpack</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">arron</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
