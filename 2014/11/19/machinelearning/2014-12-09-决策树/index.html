@@ -97,18 +97,18 @@
 <meta property="og:url" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/index.html">
 <meta property="og:site_name" content="CouCou&#39;s Blog">
 <meta property="og:description" content="决策树决策数的构造熵和信息增益​        划分数据集的大原则是：将无序的数据变得更加有序。划分数据的方式有很多种，但是每种都有相应的优缺点。组织杂乱无章数据的一种方式就是使用信息论度量信息。在划分数据集之前之后信息发生的变化称为信息增益.集合信息的度量方式称为香农熵或者简称熵如果待分类的事物可能划分在多个分类之中，则符号$$x_{i}$$的信息定义为 $$l(x{i})=-\log{2}p(">
-<meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/68b64b56389482cd68c139d2fee78897.png">
-<meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/1f8f79605d845169ea08d2090efbecad.png">
-<meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/c1860ef516bc123d8d80719c961c376a.png">
-<meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/c8d8c4c0a44f0a7e19d9de1fdcae0101.png">
-<meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/a5e03fe04ec3b27d730c916f37d4c78f.png">
-<meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/54c4eac6875702c2fd379213eb455ecc.png">
-<meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/3a7547780fc77d84e53236bd39661fa5.png">
+<meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/2014-12-09-决策树/68b64b56389482cd68c139d2fee78897.png">
+<meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/2014-12-09-决策树/1f8f79605d845169ea08d2090efbecad.png">
+<meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/2014-12-09-决策树/c1860ef516bc123d8d80719c961c376a.png">
+<meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/2014-12-09-决策树/c8d8c4c0a44f0a7e19d9de1fdcae0101.png">
+<meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/2014-12-09-决策树/a5e03fe04ec3b27d730c916f37d4c78f.png">
+<meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/2014-12-09-决策树/54c4eac6875702c2fd379213eb455ecc.png">
+<meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/2014-12-09-决策树/3a7547780fc77d84e53236bd39661fa5.png">
 <meta property="og:updated_time" content="2017-05-10T07:39:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="决策树">
 <meta name="twitter:description" content="决策树决策数的构造熵和信息增益​        划分数据集的大原则是：将无序的数据变得更加有序。划分数据的方式有很多种，但是每种都有相应的优缺点。组织杂乱无章数据的一种方式就是使用信息论度量信息。在划分数据集之前之后信息发生的变化称为信息增益.集合信息的度量方式称为香农熵或者简称熵如果待分类的事物可能划分在多个分类之中，则符号$$x_{i}$$的信息定义为 $$l(x{i})=-\log{2}p(">
-<meta name="twitter:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/68b64b56389482cd68c139d2fee78897.png">
+<meta name="twitter:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/2014-12-09-决策树/68b64b56389482cd68c139d2fee78897.png">
 
 
 
@@ -371,14 +371,14 @@
 <p>$$<br>l(x<em>{i})=-\log</em>{2}p(x_{i})<br>$$</p>
 <p>其中$$p(x_{i})$$是选择该分类的概率<br>为了计算熵，我们需要计算所有类别所有可能包含值的信息期望值</p>
 <p>$$<br>H=-\sum<em>{i=1}^{n}p(x</em>{i})log<em>{2}p(x</em>{i})<br>$$</p>
-<p>Eg：计算熵<br><img src="/2014/11/19/machinelearning/2014-12-09-决策树/68b64b56389482cd68c139d2fee78897.png" alt=""></p>
+<p>Eg：计算熵<br><img src="2014-12-09-决策树/68b64b56389482cd68c139d2fee78897.png" alt=""></p>
 <p>下面用代码来实现计算数据集合的香农熵</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> math <span class="keyword">import</span> log</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">calcShannonEnt</span><span class="params">(dataSet)</span>:</span></div><div class="line">    numEntries = len(dataSet)</div><div class="line">    lableCounts = &#123;&#125;</div><div class="line">    <span class="keyword">for</span> featVec <span class="keyword">in</span> dataSet:</div><div class="line">        currentLable = featVec[<span class="number">-1</span>]</div><div class="line">        <span class="keyword">if</span> currentLable <span class="keyword">not</span> <span class="keyword">in</span> lableCounts.keys():</div><div class="line">            lableCounts[currentLable] = <span class="number">0</span></div><div class="line">        lableCounts[currentLable] += <span class="number">1</span></div><div class="line"></div><div class="line">    shannonENt = <span class="number">0.0</span></div><div class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> lableCounts:</div><div class="line">        prob = float(lableCounts[key])/ numEntries</div><div class="line">        shannonENt = -= prob * log(prob, <span class="number">2</span>)</div><div class="line">    <span class="keyword">return</span> shannonENt</div></pre></td></tr></table></figure>
-<p><img src="/2014/11/19/machinelearning/2014-12-09-决策树/1f8f79605d845169ea08d2090efbecad.png" alt="信息增益"></p>
-<p>熵的计算<br><img src="/2014/11/19/machinelearning/2014-12-09-决策树/c1860ef516bc123d8d80719c961c376a.png" alt="熵计算"></p>
-<p>计算信息增益<br><img src="/2014/11/19/machinelearning/2014-12-09-决策树/c8d8c4c0a44f0a7e19d9de1fdcae0101.png" alt="信息增益"></p>
+<p><img src="2014-12-09-决策树/1f8f79605d845169ea08d2090efbecad.png" alt="信息增益"></p>
+<p>熵的计算<br><img src="2014-12-09-决策树/c1860ef516bc123d8d80719c961c376a.png" alt="熵计算"></p>
+<p>计算信息增益<br><img src="2014-12-09-决策树/c8d8c4c0a44f0a7e19d9de1fdcae0101.png" alt="信息增益"></p>
 <p>如图所示：计算关于速度的信息增益，因为如果以速度划分，熵为0，由于父数据集的熵为1，所以信息增益为1.这个是一个最好的信息增益，所以应该从这里划分数据集。</p>
-<p><img src="/2014/11/19/machinelearning/2014-12-09-决策树/a5e03fe04ec3b27d730c916f37d4c78f.png" alt=""></p>
+<p><img src="2014-12-09-决策树/a5e03fe04ec3b27d730c916f37d4c78f.png" alt=""></p>
 <p>在ipython里面找一个集合测试一下：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">In [1]: import trees</div><div class="line"></div><div class="line">In [2]: myDat, lables = trees.createDataSet()</div><div class="line"></div><div class="line">In [3]: myDat</div><div class="line">Out[3]: [[1, 1, <span class="string">'yes'</span>], [1, 1, <span class="string">'yes'</span>], [1, 0, <span class="string">'no'</span>], [0, 1, <span class="string">'no'</span>], [0, 1, <span class="string">'no'</span>]]</div><div class="line"></div><div class="line">In [4]: lables</div><div class="line">Out[4]: [<span class="string">'no surfacing'</span>, <span class="string">'flippers'</span>]</div><div class="line"></div><div class="line">In [5]: trees.calcShannonEnt(myDat)</div><div class="line">Out[5]: 0.9709505944546686</div></pre></td></tr></table></figure>
 <p>香农熵的计算还是比较简单的，但是使用比较复杂</p>
@@ -441,8 +441,8 @@
 <h2 id="使用算法：决策数的存储"><a href="#使用算法：决策数的存储" class="headerlink" title="使用算法：决策数的存储"></a>使用算法：决策数的存储</h2><p>使用pickle模块存储决策树，序列化对象可以在磁盘上保存对象。并且在需要的时候读取。任何对象都支持序列化操作。</p>
 <h2 id="sklearn-决策树分类"><a href="#sklearn-决策树分类" class="headerlink" title="sklearn 决策树分类"></a>sklearn 决策树分类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">In [1]: from sklearn import tree</div><div class="line"></div><div class="line">In [2]: x = [[0,0], [1, 1]]</div><div class="line"></div><div class="line">In [3]: y = [0, 1]</div><div class="line"></div><div class="line">In [4]: clf = tree.DecisionTreeClassifier(</div><div class="line">   ...: )</div><div class="line"></div><div class="line">In [5]: clf.fit(x, y)</div><div class="line">Out[5]:</div><div class="line">DecisionTreeClassifier(class_weight=None, criterion=&apos;gini&apos;, max_depth=None,</div><div class="line">            max_features=None, max_leaf_nodes=None,</div><div class="line">            min_impurity_split=1e-07, min_samples_leaf=1,</div><div class="line">            min_samples_split=2, min_weight_fraction_leaf=0.0,</div><div class="line">            presort=False, random_state=None, splitter=&apos;best&apos;)</div><div class="line"></div><div class="line">In [6]: clf.predict([0,0])</div><div class="line">Out[6]: array([0])</div></pre></td></tr></table></figure>
 <h3 id="调节参数提高准确率"><a href="#调节参数提高准确率" class="headerlink" title="调节参数提高准确率"></a>调节参数提高准确率</h3><p><code>min_samples_split</code> 最少分割样本,分割的最小的样本数量</p>
-<p><img src="/2014/11/19/machinelearning/2014-12-09-决策树/54c4eac6875702c2fd379213eb455ecc.png" alt=""></p>
-<p><img src="/2014/11/19/machinelearning/2014-12-09-决策树/3a7547780fc77d84e53236bd39661fa5.png" alt="决策边界简单，精确度越高"></p>
+<p><img src="2014-12-09-决策树/54c4eac6875702c2fd379213eb455ecc.png" alt=""></p>
+<p><img src="2014-12-09-决策树/3a7547780fc77d84e53236bd39661fa5.png" alt="决策边界简单，精确度越高"></p>
 <h2 id="决策树优缺点"><a href="#决策树优缺点" class="headerlink" title="决策树优缺点"></a>决策树优缺点</h2><p>缺点： 容易过度拟合</p>
 
       
