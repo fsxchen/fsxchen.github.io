@@ -320,7 +320,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://fsxchen.github.io/2016/07/17/linuxtcp/2016_07_17_unix-network(2)-地址以及字符串操作函数/">
+    <link itemprop="mainEntityOfPage" href="http://fsxchen.github.io/2016/07/17/linuxtcp/2016_07_17_unix-network(3)-基本socket/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="arron">
@@ -339,7 +339,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/07/17/linuxtcp/2016_07_17_unix-network(2)-地址以及字符串操作函数/" itemprop="url">Unix-Network(2)-地址以及字符串操作函数</a></h1>
+                <a class="post-title-link" href="/2016/07/17/linuxtcp/2016_07_17_unix-network(3)-基本socket/" itemprop="url">Unix-Network(3)-基本socket</a></h1>
         
 
         <div class="post-meta">
@@ -391,7 +391,7 @@
 
           
           
-             <span id="/2016/07/17/linuxtcp/2016_07_17_unix-network(2)-地址以及字符串操作函数/" class="leancloud_visitors" data-flag-title="Unix-Network(2)-地址以及字符串操作函数">
+             <span id="/2016/07/17/linuxtcp/2016_07_17_unix-network(3)-基本socket/" class="leancloud_visitors" data-flag-title="Unix-Network(3)-基本socket">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -421,17 +421,17 @@
       
         
           
-            <h1 id="套接字地址结构"><a href="#套接字地址结构" class="headerlink" title="套接字地址结构"></a>套接字地址结构</h1><h2 id="IPV4套接字地址结构"><a href="#IPV4套接字地址结构" class="headerlink" title="IPV4套接字地址结构"></a>IPV4套接字地址结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">struct in_addr &#123;</div><div class="line">    in_addr_t s_addr;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">struct sockaddr_in &#123;</div><div class="line">    uint8_t         sin_len;</div><div class="line">    sa_family_t     sin_family;</div><div class="line">    in_port_t       sin_port;</div><div class="line">    struct in_addr  sin_addr;</div><div class="line"></div><div class="line">    char            sin_zero[8];</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h2 id="通用套接字"><a href="#通用套接字" class="headerlink" title="通用套接字"></a>通用套接字</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">## 字节排序函数</div><div class="line">大端机和小端机</div></pre></td></tr></table></figure>
-<p>uint16_t htons(uint16_t host16bitvalue);<br>uint32_t htonl(uint32_t host32bitvalue);</p>
-<p>uint16_t htonl(uint16_t net16bitvalue);<br>uint32_t ntohl(uint32_t net32bitvalue);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 网络字节序和主机字节序</div><div class="line"></div><div class="line">## 字节操纵函数</div><div class="line"></div><div class="line">Berkeley的函数</div></pre></td></tr></table></figure></p>
-<p>#include <strings.h><br>void bzero(void <em>dest, size_t nbytes);<br>void bcopy(const void </em>src, void <em>dest, size_t nbytes);<br>int bcmp(const void </em>ptrl, const void *ptr2, size_t nbytes);</strings.h></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">ANSI C的函数</div></pre></td></tr></table></figure>
-<p>void <em>memset(void </em>dest, int c, size_t len);<br>void <em>memcpy(void </em>dest, const void <em>src, size_t nbytes);<br>int memcmp(const void </em>ptrl, const void *ptr2, size_t nbytes);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 两组地址转换函数</div></pre></td></tr></table></figure></p>
-<p>int inet_aton(const char <em>strptr, struct in_addr </em>addrptr);<br>in_addr_t inet_addr(const char <em>strptr);<br>char </em>inet_ntoa(struct in_addr inaddr);<br>```</p>
-<h2 id="readn-writen和readline函数"><a href="#readn-writen和readline函数" class="headerlink" title="readn, writen和readline函数"></a>readn, writen和readline函数</h2><p>字节流套接字（例如<code>TCP</code>套接字）上的<code>read</code>和<code>write</code>函数所表现的行为不同于通常的文件I/O。字节流套接字上调用<code>read</code>或<code>write</code>输入或输出的字节数可能比请求的数量少，然而这不是出错的状态。这个现象的原因在于内核中用于套接字的缓冲区可能已经达到了极限。</p>
-
-          
+          基本socketsocket函数12345SYNOPSIS     #include &lt;sys/socket.h&gt;     int     socket(int domain, int type, int protocol);
+family: 协议地址族
+AF_xxx:表示地址族PF_x
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/07/17/linuxtcp/2016_07_17_unix-network(3)-基本socket/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -574,8 +574,15 @@
       
         
           
-            <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><h2 id="TCP的三次握手"><a href="#TCP的三次握手" class="headerlink" title="TCP的三次握手"></a>TCP的三次握手</h2><h2 id="TCP选项"><a href="#TCP选项" class="headerlink" title="TCP选项"></a>TCP选项</h2><h2 id="TCP连接终止"><a href="#TCP连接终止" class="headerlink" title="TCP连接终止"></a>TCP连接终止</h2><h2 id="TCP的状态转换图"><a href="#TCP的状态转换图" class="headerlink" title="TCP的状态转换图"></a>TCP的状态转换图</h2><h2 id="TCP分组"><a href="#TCP分组" class="headerlink" title="TCP分组"></a>TCP分组</h2><h2 id="TIME-WAIT状态"><a href="#TIME-WAIT状态" class="headerlink" title="TIME_WAIT状态"></a>TIME_WAIT状态</h2>
+          基本概念TCP的三次握手TCP选项TCP连接终止TCP的状态转换图TCP分组TIME_WAIT状态
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/07/17/linuxtcp/2016_07_17_unix-network(1)-基础/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -718,194 +725,17 @@
       
         
           
-            <h1 id="VIM"><a href="#VIM" class="headerlink" title="VIM"></a>VIM</h1><p>1 关于Vim</p>
-<p>vim是我最喜欢的编辑器，也是linux下第二强大的编辑器。虽然emacs是公认的世界第一，我认为使用emacs并没有使用vi进行编辑来得高效。如果是初学vi，运行一下vimtutor是个聪明的决定。<br>2 启动Vim时的选项</p>
-<pre><code>* vim -c cmd file: 在打开文件前，先执行指定的命令；
-* vim -r file: 恢复上次异常退出的文件；
-* vim -R file: 以只读的方式打开文件；
-* vim -y num file: 将编辑窗口的大小设为num行；
-* vim + file: 从文件的末尾开始；
-* vim +num file: 从第num行开始；
-</code></pre><p>3 光标的移动</p>
-<pre><code>* h: 左移一个字符；
-* l: 右移一个字符；
-* j: 下移一个字符；
-* k: 上移一个字符；
-* w: 前移一个单词，光标停在下一个单词开头；
-* e: 前移一个单词，光标停在下一个单词末尾；
-* b: 后移一个单词，光标停在上一个单词开头；
-* ge: 后移一个单词，光标停在上一个单词末尾；
-* fc: 把光标移到同一行的下一个c字符处
-</code></pre><p>上面的操作都可以配合n使用，比如在正常模式(下面会讲到)下输入3h，则光标向左移动3个字符。</p>
-<pre><code>* 0或^:移动到行首。
-* $: 移动到行尾。
-* gg: 到文件头部。
-* G: 到文件尾部。
-* nG: 到文件第n行。
-* :n&lt;cr&gt; 移动到第n行。
-* :$&lt;cr&gt; 移动到最后一行。
-* n|: 把光标移到递n列上。
-* +或Enter:把光标移至下一行第一个非空白字符。
-* -: 把光标移至上一行第一个非空白字符。
-* H: 把光标移到屏幕最顶端一行。
-* L: 把光标移到屏幕最底端一行。
-* ctrl+f: 下翻一屏。
-* ctrl+b: 上翻一屏。
-* ctrl+d: 下翻半屏。
-* ctrl+u: 上翻半屏。
-</code></pre><p>4 Vim的几种模式</p>
-<pre><code>* 正常模式：可以使用快捷键命令，或按:输入命令行。
-* 插入模式：可以输入文本，在正常模式下，按i、a、o等都可以进入插入模式。
-* 可视模式：正常模式下按v可以进入可视模式，在可视模式下，移动光标可以选择文本。
-* 块选择模式：正常模式下按ctrl+v进入。
-* 替换模式：正常模式下，按R进入。
-</code></pre><p>5 插入</p>
-<pre><code>* i: 在光标前插入；
-* I: 在当前行最前插入；
-* a: 在光标后插入；
-* A: 在当前行最后插入；
-* o: 在下面新建一行插入；
-* O: 在上面新建一行插入；
-* :r filename 在当前位置插入另一个文件的内容。
-* :r !date 在光标处插入当前日期与时间。同理，:r!command可以将其它shell命令的输出插入当前文档。
-</code></pre><p>6 改写</p>
-<pre><code>* c[n]w: 改写光标后1(n)个词。
-* c[n]l: 改写光标后n个字母。
-* c[n]h: 改写光标前n个字母。
-* [n]cc: 修改当前[n]行。
-* [n]s: 以输入的文本替代光标之后1(n)个字符，相当于c[n]l。
-* [n]S: 删除指定数目的行，并以所输入文本代替之。
-</code></pre><p>注意，类似cnw,dnw,ynw的形式同样可以写为ncw,ndw,nyw。<br>7 替换</p>
-<ul>
-<li>r: 替换光标处的字符，同样支持汉字。<ul>
-<li>R: 进入替换模式，按esc回到正常模式。</li>
-</ul>
-</li>
-</ul>
-<p>8 撤消与重做</p>
-<pre><code>* [n] u: 取消一(n)个改动。
-* ctrl + r: 重做最后的改动。
-* U: 取消当前行中所有的改动。
-</code></pre><p>9 剪切和复制、粘贴</p>
-<ul>
-<li><p>[n]x: 剪切光标右边n个字符，相当于d[n]l。</p>
-<ul>
-<li>[n]X: 剪切光标左边n个字符，相当于d[n]h。</li>
-<li>y: 复制在可视模式下选中的文本。</li>
-<li>yy or Y: 复制整行文本。</li>
-<li>y[n]w: 复制一(n)个词。</li>
-<li>y[n]l: 复制光标右边1(n)个字符。</li>
-<li>y[n]h: 复制光标左边1(n)个字符。</li>
-<li>y$: 从光标当前位置复制到行尾。</li>
-<li>y0: 从光标当前位置复制到行首。</li>
-<li>:m,ny<cr> 复制m行到n行的内容。</cr></li>
-<li>y1G或ygg:复制光标以上的所有行。</li>
-<li>yG: 复制光标以下的所有行。</li>
-<li>d: 删除（剪切）在可视模式下选中的文本。</li>
-<li>d$ or D: 删除（剪切）当前位置到行尾的内容。</li>
-<li>d[n]w: 删除（剪切）1(n)个单词</li>
-<li>d[n]l: 删除（剪切）光标右边1(n)个字符。</li>
-<li>d[n]h: 删除（剪切）光标左边1(n)个字符。</li>
-<li>d0: 删除（剪切）当前位置到行首的内容</li>
-<li>[n] dd: 删除（剪切）1(n)行。</li>
-<li>:m,nd<cr> 剪切m行到n行的内容。</cr></li>
-<li>d1G或dgg:剪切光标以上的所有行。</li>
-<li>dG: 剪切光标以下的所有行。</li>
-<li>p: 在光标之后粘贴。</li>
-<li><p>P: 在光标之前粘贴。<br>10 查找和替换</p>
-</li>
-<li><p>/something: 在后面的文本中查找something。</p>
-</li>
-<li>?something: 在前面的文本中查找something。</li>
-<li>n: 向后查找下一个。</li>
-<li>N: 向前查找下一个。</li>
-<li>:s/old/new: 用new替换当前行第一个old。</li>
-<li>:s/old/new/g: 用new替换当前行所有的old。</li>
-<li>:n1,n2s/old/new/g: 用new替换文件n1行到n2行所有的old。</li>
-<li>:%s/old/new/g: 用new替换文件中所有的old。</li>
-<li>:%s/^/xxx/g: 在每一行的行首插入xxx，^表示行首。</li>
-<li>:%s/$/xxx/g: 在每一行的行尾插入xxx，^表示行尾。</li>
-<li>所有替换命令末尾加上c，每个替换都将需要用户确认。如：%s/old/new/gc</li>
-<li>%: 找到对应的([{.</li>
-</ul>
-</li>
-</ul>
-<p>11 多行缩进缩出</p>
-<pre><code>* 正常模式下，按两下&gt;;光标所在行会缩进。
-* 如果先按了n，再按两下&gt;;，光标以下的n行会缩进。
-* 对应的，按两下&lt;;，光标所在行会缩出。
-* 如果在编辑代码文件，可以用=进行调整。
-* 在可视模式下，选择要调整的代码块，按=，代码会按书写规则缩排好。
-* 或者n=，调整n行代码的缩排。
-</code></pre><p>12 打开和关闭文档</p>
-<pre><code>* :e file –关闭当前编辑的文件，并开启新的文件。如果对当前文件的修改未保存，vi会警告。
-* :e! file –放弃对当前文件的修改，编辑新的文件。
-* :e+file – 开始新的文件，并从文件尾开始编辑。
-* :e+n file – 开始新的文件，并从第n行开始编辑。
-* :enew –编译一个未命名的新文档。
-* :e – 重新加载当前文档。
-* :e! – 重新加载当前文档，并丢弃已做的改动。
-* :w – 保存修改。
-* :n1,n2w filename – 选择性保存从某n1行到另n2行的内容。
-* :wq – 保存并退出。
-* :x – 保存并退出。
-* :saveas newfilename – 另存为
-</code></pre><p>13 多标签编辑</p>
-<pre><code>* :tabe filename – 在新的标签中打开一个文件。
-* :tabn – 切换到下一个标签。
-* :tabp – 切换到上一个标签。
-</code></pre><p>14 分屏编辑<br>14.1 水平分割</p>
-<pre><code>* :split(:sp) – 把当前窗水平分割成两个窗口。
-* :split filename – 水平分割窗口，并在新窗口中显示另一个文件。
-* :nsplit(:nsp) – 水平分割出一个n行高的窗口。
-* :new – 水平分割出一个窗口，并编辑一个新文件。
-* ctrl+w + –当前窗口增高一行。也可以用n增高n行。
-* ctrl+w - –当前窗口减小一行。也可以用n减小n行。
-* ctrl+w _ –当前窗口扩展到尽可能的大。
-* n ctrl+w _ – 当前窗口的高度设定为n行。
-</code></pre><p>14.2 垂直分割</p>
-<pre><code>* :vsplit(:vsp) – 把当前窗口分割成水平分布的两个窗口。
-* :vnew – 垂直分割出一个新窗口。
-* :vertical 水平分割的命令：相应的垂直分割。
-</code></pre><p>14.3 关闭子窗口</p>
-<pre><code>* :qall – 关闭所有窗口，退出vim。
-* :wall – 保存所有修改过的窗口。
-* :only – 只保留当前窗口，关闭其它窗口。
-* :close – 关闭当前窗口。(象 :q :x同样工作 )
-</code></pre><p>4.4 切换和移动窗口</p>
-<p>［如果支持鼠标，切换和调整子窗口的大小就简单了。］</p>
-<pre><code>* ctrl+w ctrl+w: 切换到下一个窗口。或者是ctrl+ww。
-* ctrl+w h(l,j,k):切换到左（右，下，上）的窗口。
-* ctrl+w t(b):切换到最上（下）面的窗口。&lt;BR&gt;
-* ctrl+w H(L,K,J): 将当前窗口移动到最左（右、上、下）面。
-</code></pre><p>正因为vim强大的分屏功能，我们可以把vim打造成功能强大的IDE。<br>15 一次编辑多个文件</p>
-<p>我们可以一次打开多个文件，如</p>
-<p>vi a.txt b.txt c.txt</p>
-<pre><code>* 使用:next(:n)编辑下一个文件。
-* 使用:previous编辑上一个文件。
-* 使用:wnext，保存当前文件，并编辑下一个文件。
-* 使用:wprevious，保存当前文件，并编辑上一个文件。
-* 使用:args显示文件列表。
-</code></pre><p>16 文件的编码</p>
-<pre><code>* :e ++enc=utf8 filename, 让vim用utf-8的编码打开这个文件。
-* :w ++enc=gbk，不管当前文件什么编码，把它转存成gbk编码。
-* :set fenc或:setfileencoding，查看当前文件的编码。
-* 在vimrc中添加setfileencoding=utf-8,cp936,ucs-bom，vim会根据要打开的文件选择合适的编码。注意：编码之间不要留空格。cp936对应于gbk编码。ucs-bom对应于windows下的文件格式。
-</code></pre><p>让vim正确处理文件格式和文件编码，有赖于~/.vimrc的正确配置。<br>17 执行命令</p>
-<pre><code>* :! cmd 执行外部命令。
-* :!! 执行上一次的外部命令。
-* @: 重复上一次的冒号命令。
-* :sh 调用shell，用exit返回vim。
-* :r !cmd 将命令的返回结果插入文件当前位置。
-* :m,nw !cmd 将文件的m行到n行之间的内容做为命令输入执行命令。
-</code></pre><p>18 一些快捷键（收集中）</p>
-<pre><code>* K: 打开光标所在词的manpage。
-* *: 向下搜索光标所在词。
-* #: 向上搜索光标所在词。
-* ~: 反转光标所在字符的大小写。
-* %: 移动到匹配的(),{}或[]上。
-</code></pre>
-          
+          VIM1 关于Vim
+vim是我最喜欢的编辑器，也是linux下第二强大的编辑器。虽然emacs是公认的世界第一，我认为使用emacs并没有使用vi进行编辑来得高效。如果是初学vi，运行一下vimtutor是个聪明的决定。2 启动Vim时的选项
+* vim -c cmd file: 在打开文件前，先
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/07/01/vim/2016_07_01_vim基本/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1048,103 +878,15 @@
       
         
           
-            <h1 id="文件和目录"><a href="#文件和目录" class="headerlink" title="文件和目录"></a>文件和目录</h1><h2 id="stat-fstat-fstatat-和-lstat"><a href="#stat-fstat-fstatat-和-lstat" class="headerlink" title="stat, fstat, fstatat 和 lstat"></a>stat, fstat, fstatat 和 lstat</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">SYNOPSIS</div><div class="line">       #include &lt;sys/types.h&gt;</div><div class="line">       #include &lt;sys/stat.h&gt;</div><div class="line">       #include &lt;unistd.h&gt;</div><div class="line"></div><div class="line">       int stat(const char *path, struct stat *buf);</div><div class="line">       int fstat(int fd, struct stat *buf);</div><div class="line">       int lstat(const char *path, struct stat *buf);</div><div class="line">SYNOPSIS</div><div class="line">      #include &lt;fcntl.h&gt; /* Definition of AT_* constants */</div><div class="line">      #include &lt;sys/stat.h&gt;</div><div class="line"></div><div class="line">      int fstatat(int dirfd, const char *pathname, struct stat *buf,</div><div class="line">                  int flags);</div></pre></td></tr></table></figure>
-<p>关于结构 <code>stat</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">struct stat &#123;</div><div class="line">    dev_t     st_dev;     /* ID of device containing file */</div><div class="line">    ino_t     st_ino;     /* inode number */</div><div class="line">    mode_t    st_mode;    /* protection */</div><div class="line">    nlink_t   st_nlink;   /* number of hard links */</div><div class="line">    uid_t     st_uid;     /* user ID of owner */</div><div class="line">    gid_t     st_gid;     /* group ID of owner */</div><div class="line">    dev_t     st_rdev;    /* device ID (if special file) */</div><div class="line">    off_t     st_size;    /* total size, in bytes */</div><div class="line">    blksize_t st_blksize; /* blocksize for filesystem I/O */</div><div class="line">    blkcnt_t  st_blocks;  /* number of 512B blocks allocated */</div><div class="line">    time_t    st_atime;   /* time of last access */</div><div class="line">    time_t    st_mtime;   /* time of last modification */</div><div class="line">    time_t    st_ctime;   /* time of last status change */</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h2 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h2><ul>
-<li>1 普通文件</li>
-<li>2 目录文件</li>
-<li>3 块特殊文件(block special file).这种类型的文件提供对设备(如磁带)带缓冲的访问,每次访问以固定长度为单位进行.</li>
-<li>4 字符特殊文件.这种类型的文件提供对设备不带缓冲的访问,每次访问长度是可变的.</li>
-<li>5 FIFO 这种类型的文件用于进程间通信.</li>
-<li>6 socket 用于进程间网络通信</li>
-<li>7 符号链接</li>
-</ul>
-<p>文件类型信息包含在stat结构的<code>st_mode</code>中</p>
-<table>
-<thead>
-<tr>
-<th>宏</th>
-<th style="text-align:center">文件类型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>S_ISREG()</td>
-<td style="text-align:center">普通文件</td>
-</tr>
-<tr>
-<td>S_ISDIR()</td>
-<td style="text-align:center">目录文件</td>
-</tr>
-<tr>
-<td>S_ISCHR()</td>
-<td style="text-align:center">字符特殊文件</td>
-</tr>
-<tr>
-<td>S_ISBLK()</td>
-<td style="text-align:center">块特殊文件</td>
-</tr>
-<tr>
-<td>S_ISFIFO()</td>
-<td style="text-align:center">管道文件</td>
-</tr>
-<tr>
-<td>S_ISLINK()</td>
-<td style="text-align:center">符号链接</td>
-</tr>
-<tr>
-<td>S_ISSOCK()</td>
-<td style="text-align:center">套接字</td>
-</tr>
-</tbody>
-</table>
-<p>POSIX.1允许实现将进程间通信(IPC)对象说明文件,使用<code>stat</code>结构中确定IPC对象类型,参数是指向<code>stat</code>结构的指针.<br>| 宏        | 对象类型           |<br>| ————- |:————-:|<br>| S_TYPEISMQ()      | 消息队列 |<br>| S_TYPEISEM()  | 信号量      |<br>| S_TYPEISSHM()  | 共享存储对象      |</p>
-<h2 id="设置用户ID与组ID"><a href="#设置用户ID与组ID" class="headerlink" title="设置用户ID与组ID"></a>设置用户ID与组ID</h2><p>一个进程相关联的ID有6个或者更多</p>
-<p>| S_TYPEISMQ()      | 消息队列 |<br>| S_TYPEISEM()  | 信号量      |<br>| S_TYPEISSHM()  | 共享存储对象      |</p>
-<h2 id="设置用户ID和设置组ID"><a href="#设置用户ID和设置组ID" class="headerlink" title="设置用户ID和设置组ID"></a>设置用户ID和设置组ID</h2><p>实际用户ID<br>实际组ID</p>
-<p>有效用户ID<br>有效组ID<br>附属组ID</p>
-<p>保存的设置用户ID<br>保存的设置组ID    由exec函数保存</p>
-<ul>
-<li><p>实际用户ID和实际组ID标识我们究竟是谁,这两个字段在登录时,取自哦令文件</p>
-</li>
-<li><p>有效用户,有效组ID以及附属组ID决定了我们的文件访问权限</p>
-</li>
-<li><p>保存的设置用户ID和保存的设置组ID在执行一个程序时,包含了一个有效用户ID和有效组ID的副本.</p>
-</li>
-</ul>
-<p>每一个文件有一个所有者和组所有者,所有者由<code>stat</code>结构中的<code>st_uid</code>指定,组所有者有<code>st_git</code>指定.</p>
-<p>当执行一个程序文件时,进程的有效用户ID通常就是实际用户ID,有效组ID是实际组ID,但是可以在文件模式字<code>std_mode</code>中设置一个特殊标志,其含义是”当执行文件时,将进程的有效用户ID设置为文件所有者用户ID”,与此类似,文件模式字中可以设置的另一位,它将执行文件的有效组ID设置未文件的组所有者ID.<br>可以使用<code>S_ISUID</code>和<code>S_ISGID</code>测试</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line"></div><div class="line">#include &lt;sys/types.h&gt;</div><div class="line">#include &lt;sys/stat.h&gt;</div><div class="line">#include &lt;unistd.h&gt;</div><div class="line"></div><div class="line"></div><div class="line">int main(int argc, char **argv) &#123;</div><div class="line">	int i;</div><div class="line">	struct stat buf;</div><div class="line">	char *ptr;</div><div class="line"></div><div class="line">	for(i = 1; i &lt; argc; i++) &#123;</div><div class="line">		printf(&quot;%s, &quot;, argv[i]);</div><div class="line">		if (lstat(argv[i], &amp;buf) &lt; 0) &#123;</div><div class="line">			printf(&quot;lstat error\n&quot;);</div><div class="line">			continue;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		if (S_ISREG(buf.st_mode)) &#123;</div><div class="line">			ptr = &quot;regular&quot;;</div><div class="line">		&#125; else if (S_ISDIR(buf.st_mode)) &#123;</div><div class="line">			ptr = &quot;dirctory&quot;;</div><div class="line">		&#125; else if (S_ISCHR(buf.st_mode)) &#123;</div><div class="line">			ptr = &quot;char special&quot;;</div><div class="line">		&#125; else if(S_ISBLK(buf.st_mode)) &#123;</div><div class="line">			ptr = &quot;kuai te shu&quot;;</div><div class="line">		&#125; else if(S_ISFIFO(buf.st_mode)) &#123;</div><div class="line">			ptr = &quot;FIFO&quot;;</div><div class="line">		&#125; else if (S_ISLNK(buf.st_mode)) &#123;</div><div class="line">			ptr = &quot;Link&quot;;</div><div class="line">		&#125; else if(S_ISSOCK(buf.st_mode)) &#123;</div><div class="line">			ptr = &quot;SOCKET&quot;;</div><div class="line">		&#125; else &#123;</div><div class="line">			ptr = &quot;UNKONWN&quot;;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		if (buf.st_mode &amp; S_ISUID) &#123;</div><div class="line">			printf(&quot;suid\n&quot;);</div><div class="line">		&#125;</div><div class="line">		if (buf.st_mode &amp; S_ISGID) &#123;</div><div class="line">			printf(&quot;sgid\n&quot;);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		printf(&quot;%s\n&quot;, ptr);</div><div class="line"> 	&#125;</div><div class="line"> 	exit(0);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>output:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">./a.out /usr/bin/passwd</div><div class="line">/usr/bin/passwd, suid</div><div class="line">regular</div></pre></td></tr></table></figure></p>
-<h2 id="文件访问权限"><a href="#文件访问权限" class="headerlink" title="文件访问权限"></a>文件访问权限</h2><p><code>st_mode</code>也包含了文件的访问权限.<br><code>S_IRUSR</code>   用户读<br><code>S_IWUSR</code>   用户写<br><code>S_IXUSR</code>   用户执行</p>
-<p><code>S_IRGRP</code>   组读<br><code>S_IWGRP</code>   组写<br><code>S_IXGRP</code>   组执行</p>
-<p><code>S_IROTH</code>   其他读<br><code>S_IWOTH</code>   其他写<br><code>S_IXOTH</code>   其他执行</p>
-<p>规则一,当我们用名字打开任一类型的文件时,对名字中包含的每一个目录,包括<code>.</code>和<code>..</code>都应该具有执行权限,目录的执行权限对应于搜索位.<br>对目录而言,读权限和执行权限的区别:<br>读权限允许我们读目录,获取该目录中所有文件列表名.<br>当一个目录是我们要访问的文件路径名的一个组成部分时,对该目录的执行权限使我们可以通过该目录.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;ll /var/log -d</div><div class="line">drwxrwxr-x 20 root syslog 4096  7月  6 09:05 /var/log</div><div class="line">sudo chmod 774 /var/log</div><div class="line">&gt;ll /var/log -d</div><div class="line">drwxrwxr-- 20 root syslog 4096  7月  6 09:05 /var/log</div></pre></td></tr></table></figure></p>
-<p>结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ll /var/log/dmesg</div><div class="line">ls: cannot access /var/log/dmesg: Permission denied</div><div class="line">/var &gt;cd log</div><div class="line">cd: permission denied: log</div></pre></td></tr></table></figure></p>
-<p>可以ls,但是不能cd<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;sys/types.h&gt;</div><div class="line">#include &lt;dirent.h&gt;</div><div class="line">#include &lt;errno.h&gt;</div><div class="line"></div><div class="line">extern int errno ;</div><div class="line"></div><div class="line">int main(int argc, char** argv) &#123;</div><div class="line"></div><div class="line">	if (argc &lt; 2) &#123;</div><div class="line">		printf(&quot;usage a.out &lt;dirname&gt;\n&quot;);</div><div class="line">		exit(-1);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	DIR *dptr = NULL;</div><div class="line">	struct dirent *entry;</div><div class="line"></div><div class="line">    if ((dptr = opendir(argv[1])) == NULL) &#123;</div><div class="line"></div><div class="line">    	perror(&quot;Error:&quot;);</div><div class="line">    &#125; else &#123;</div><div class="line">    	while (entry = readdir(dptr)) &#123;</div><div class="line">    		printf(&quot;%s\n&quot;, entry-&gt;d_name);</div><div class="line">    	&#125;</div><div class="line">    	closedir(dptr);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>因为对其他人都取消了执行权限,所以其他人无法通过该目录了.</p>
-<p><strong>为了在目录中创建一个新文件,需要有写和执行的权限</strong></p>
-<p><strong>为了删除一个现有文件文件,必须对包含该文件的目录有写权限和执行权限,对该文件本身则不需要读写权限</strong></p>
-<p><strong>如果用7个<code>exec</code>函数中的任何一个执行文件,必须对该文件具有执行权限,并且该文件为普通文件.</strong></p>
-<h2 id="新文件和目录的所有权"><a href="#新文件和目录的所有权" class="headerlink" title="新文件和目录的所有权"></a>新文件和目录的所有权</h2><p>新文件的用户ID设置为进程的有效用户ID,<br>新文件的组ID:可以是进程的有效组ID;也可以是所在目录的组ID.</p>
-<p><em>在ubuntu下是哪种情况?</em><br>使用sudo,改变进程的有效用户,发现组ID是进程的有效组ID.<br>在Mac里面则是所在目录的组ID</p>
-<h2 id="函数access和faccessat"><a href="#函数access和faccessat" class="headerlink" title="函数access和faccessat"></a>函数<code>access</code>和<code>faccessat</code></h2><p>当<code>open</code>函数打开一个文件时,内核以进程的有效用户ID和有效组ID为基础进行访问权限测试.有时候,进程也希望按照实际用户ID和实际组ID来测试其访问能力.可以使用这两个函数.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SYNOPSIS</div><div class="line">       #include &lt;unistd.h&gt;</div><div class="line"></div><div class="line">       int access(const char *pathname, int mode);</div></pre></td></tr></table></figure>
-<h2 id="umask函数"><a href="#umask函数" class="headerlink" title="umask函数"></a><code>umask</code>函数</h2><p>为一个进程设置文件模式创建屏蔽字,在进程创建一个新文件或者目录.参数是设置的umask值,返回的是之前的umask值.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SYNOPSIS</div><div class="line">       #include &lt;sys/types.h&gt;</div><div class="line">       #include &lt;sys/stat.h&gt;</div><div class="line"></div><div class="line">       mode_t umask(mode_t mask);</div></pre></td></tr></table></figure></p>
-<h2 id="函数chmod-fchmod和fchmodat"><a href="#函数chmod-fchmod和fchmodat" class="headerlink" title="函数chmod, fchmod和fchmodat"></a>函数<code>chmod</code>, <code>fchmod</code>和<code>fchmodat</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SYNOPSIS</div><div class="line">       #include &lt;sys/stat.h&gt;</div><div class="line"></div><div class="line">       int chmod(const char *path, mode_t mode);</div><div class="line">       int fchmod(int fd, mode_t mode);</div></pre></td></tr></table></figure>
-<p>为了能够改变一个文件的权限位,进车个的有效用户ID必须等于文件的所有者ID.</p>
-<h2 id="粘着位-sticky-bit"><a href="#粘着位-sticky-bit" class="headerlink" title="粘着位(sticky bit)"></a>粘着位(sticky bit)</h2><p>允许目录设置,如果对一个目录设置了粘着位,只有对该目录具有写权限的用户并且满足下列条件之一,才能删除或者重命名该目录下的文件.</p>
-<ul>
-<li>拥有此文件</li>
-<li>拥有此目录</li>
-<li>是超级用户</li>
-</ul>
-<p><code>/tmp</code>和<code>/var/tmp</code>设置了粘着位,任何用户都可以创建目录,但其他人无法删除.</p>
-<h2 id="chown-fchown-fchownat-lchown"><a href="#chown-fchown-fchownat-lchown" class="headerlink" title="chown,fchown,fchownat, lchown"></a><code>chown</code>,<code>fchown</code>,<code>fchownat</code>, <code>lchown</code></h2><h2 id="文件长度"><a href="#文件长度" class="headerlink" title="文件长度"></a>文件长度</h2><h2 id="其他一些操作"><a href="#其他一些操作" class="headerlink" title="其他一些操作"></a>其他一些操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#include &lt;unistd.h&gt;</div><div class="line">#include &lt;sys/types.h&gt;</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;sys/types.h&gt;</div><div class="line">#include &lt;sys/stat.h&gt;</div><div class="line">#include &lt;fcntl.h&gt;</div><div class="line"></div><div class="line"></div><div class="line">int main(int argv, char ** args) &#123;</div><div class="line">	if(argv &gt; 1) &#123;</div><div class="line">		const char * FILENAME = args[1];</div><div class="line">		int r_fd = open(FILENAME, O_RDWR);</div><div class="line">		printf(&quot;%d\n&quot;, r_fd);</div><div class="line"></div><div class="line">		off_t offeset = 2;</div><div class="line">		int ft_res = ftruncate(r_fd, offeset);</div><div class="line">		close(r_fd);</div><div class="line"></div><div class="line">	&#125; else &#123;</div><div class="line">		printf(&quot;%s &lt;filename&gt;\n&quot;, args[0]);</div><div class="line">	&#125;</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>fstat  获取文件的状态<br>    <code>stat(const char *path, struct stat *buf)</code><br>    <code>fstat(int fd, struct stat *buf)</code><br>    <code>lstat(const char *path, struct *buf)</code>    //链接文件<br>返回：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">struct stat &#123;</div><div class="line">          dev_t    st_dev;    /* ID of device containing file */</div><div class="line">          ino_t    st_ino;    /* inode number */</div><div class="line">          mode_t    st_mode;    /* protection */</div><div class="line">          nlink_t  st_nlink;  /* number of hard links */</div><div class="line">          uid_t    st_uid;    /* user ID of owner */</div><div class="line">          gid_t    st_gid;    /* group ID of owner */</div><div class="line">          dev_t    st_rdev;    /* device ID (if special file) */</div><div class="line">          off_t    st_size;    /* total size, in bytes */ 文件的大小</div><div class="line">          blksize_t st_blksize; /* blocksize for file system I/O */</div><div class="line">          blkcnt_t  st_blocks;  /* number of 512B blocks allocated */</div><div class="line">          time_t    st_atime;  /* time of last access */</div><div class="line">          time_t    st_mtime;  /* time of last modification */</div><div class="line">          time_t    st_ctime;  /* time of last status change */</div><div class="line">      &#125;;</div></pre></td></tr></table></figure></p>
-
-          
+          文件和目录stat, fstat, fstatat 和 lstat1234567891011121314SYNOPSIS       #include &lt;sys/types.h&gt;       #include &lt;sys/stat.h&gt;       #include &lt;u
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/06/30/linuxtcp/2016_06_30_unix基础编程(3)--文件和目录/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1287,84 +1029,16 @@
       
         
           
-            <h1 id="Unix-文件IO"><a href="#Unix-文件IO" class="headerlink" title="Unix 文件IO"></a>Unix 文件IO</h1><h2 id="文件描述符号"><a href="#文件描述符号" class="headerlink" title="文件描述符号"></a>文件描述符号</h2><p>对于内核而言,所有打开的文件通过文件描述符引用,是一个非负整数.<br>在POSIX1中,在<code>&lt;unistd.h&gt;</code>中定义了<br>STDIN_FILENO(0): 标准输入<br>STDOUT_FILENO(1): 标准输出<br>STDERR_FILENO(2): 标准错误输出</p>
-<p>文件描述符号的范围是{0-OPEN_MAX-1}</p>
-<h2 id="函数open和openat"><a href="#函数open和openat" class="headerlink" title="函数open和openat"></a>函数open和openat</h2><p>man 2 open<br>man 2 openat<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">SYNOPSIS</div><div class="line">       #include &lt;sys/types.h&gt;</div><div class="line">       #include &lt;sys/stat.h&gt;</div><div class="line">       #include &lt;fcntl.h&gt;</div><div class="line"></div><div class="line">       int open(const char *pathname, int flags);</div><div class="line">       int open(const char *pathname, int flags, mode_t mode);</div><div class="line">SYNOPSIS</div><div class="line">      #include &lt;fcntl.h&gt;</div><div class="line"></div><div class="line">      int openat(int dirfd, const char *pathname, int flags);</div><div class="line">      int openat(int dirfd, const char *pathname, int flags, mode_t mode);</div></pre></td></tr></table></figure></p>
-<ul>
-<li>pathname: 打开或者是创建文件的名字</li>
-<li><p>flags: 标识,使用下面的常量,多个可以使用</p>
-<ul>
-<li>O_RDONLY  只读打开(0)</li>
-<li>O_WRONLY  只写打开(1)</li>
-<li><p>O_RDWR    读写打开</p>
-</li>
-<li><p>OS_EXEC   只执行打开</p>
-</li>
-<li><p>OS_SEARCH 搜索打开(不支持)</p>
-<p>以上的这5个常量必须指定一个而且只能指定一个,下面的产量是可选的.</p>
-</li>
-<li>O_APPEND</li>
-<li>O_CLOEXEC 把<code>FD_CLOEXEC</code>设置为文件描述符标志</li>
-<li>O_CREAT  若文件不存在,则创建它,此时需要第三个参数(<code>openat</code>第四个)<code>mode</code>,指定权限位以及可以使用进程的<code>umask</code>修改</li>
-<li>O_DIRECTORY   如果不是一个目录就会出错</li>
-<li>O_EXCL    如果指定了<code>O_CREAT</code>并且文件存在则会出错</li>
-<li>O_NOCTTY  如果path引用的是终端设备,则不将该设备分配作为该进程的控制终端.</li>
-<li>O_NOFOLLOW    如果path引用的是符号链接,则出错</li>
-<li>O_NONBLOCK    如果path引用的是一FIFO,一个块特殊文件或者一个字符特殊文件,则此选项为文件的本次打开操作后和后续的I/O操作设置非阻塞方式.</li>
-<li>O_SYNC    使每次write等待物理I/O操作完成</li>
-<li>O_TRUNC   如果此文件存在,而且为只写(或者读写)成功打开,则将其长度截断为0</li>
-<li>O_TTY_INIT    如果打开一个还未打开的终端设备,设置非标准termios参数.<br>下面两个参数是可选择的</li>
-<li>O_DSYNC</li>
-<li>O_RSYNC</li>
-</ul>
-</li>
-</ul>
-<h2 id="creat"><a href="#creat" class="headerlink" title="creat"></a>creat</h2><p>创建一个文件,相当于<br><code>open(path, O_WRONLY| O_CREAT | O_TRUNC, mode)</code></p>
-<h2 id="close"><a href="#close" class="headerlink" title="close"></a>close</h2><p>关闭一个文件,并且释放该进程加在该文件记录上的所有的锁</p>
-<h2 id="lseek"><a href="#lseek" class="headerlink" title="lseek"></a>lseek</h2><p>每打开一个文件都有一个与其相关联的当前文件偏移量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SYNOPSIS</div><div class="line">#include &lt;sys/types.h&gt;</div><div class="line">#include &lt;unistd.h&gt;</div><div class="line"></div><div class="line">off_t lseek(int fd, off_t offset, int whence);</div></pre></td></tr></table></figure>
-<h2 id="read"><a href="#read" class="headerlink" title="read"></a>read</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SYNOPSIS</div><div class="line">       #include &lt;unistd.h&gt;</div><div class="line"></div><div class="line">       ssize_t read(int fd, void *buf, size_t count);</div></pre></td></tr></table></figure>
-<p>read函数需要搞清楚的几个问题在于<br>返回值</p>
-<ul>
-<li>返回读取到的字节数</li>
-<li>若到了文件末尾,返回0</li>
-<li>出错,返回-1</li>
-</ul>
-<h2 id="write"><a href="#write" class="headerlink" title="write"></a>write</h2><p>返回值</p>
-<ul>
-<li>返回写的字节数</li>
-<li>出错,返回-1</li>
-</ul>
-<h2 id="I-O的效率"><a href="#I-O的效率" class="headerlink" title="I/O的效率"></a>I/O的效率</h2><p>在linux的ext4文件系统下,磁盘长度为4096字节<br>read ahead预读技术</p>
-<h2 id="文件共享"><a href="#文件共享" class="headerlink" title="文件共享"></a>文件共享</h2><p>内核使用3种数据结构标示打开文件</p>
-<ul>
-<li>1) 每个进程在进程表中都有一个记录项,记录项中包含了一张打开的文件描述符表,每个文件描述符占有一项,与每个文件描速符相关联的是:<ul>
-<li>a) 文件状态标志</li>
-<li>b) 指向文件表项的指针</li>
-</ul>
-</li>
-<li>2) 内核为所有打开文件维持一张文件表,每个文件表项包含<ul>
-<li>a) 文件状态标志(读,写)</li>
-<li>b) 当前文件偏移量</li>
-<li>c) 指向文件v节点的指针</li>
-</ul>
-</li>
-<li>3) 每个打开的文件(或设备)都有一个v节点</li>
-</ul>
-<p><img src="http://7xrn62.com1.z0.glb.clouddn.com/92f25f9776532b05a345d16161207a9e.png" alt="进程控制文件"></p>
-<p>当两个进程打开同一个文件<br><img src="http://7xrn62.com1.z0.glb.clouddn.com/e8767b4eab3932b6fedb29a8cac69850.png" alt="两个进程打开一个文件"></p>
-<h2 id="fcntl"><a href="#fcntl" class="headerlink" title="fcntl"></a>fcntl</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">SYNOPSIS</div><div class="line">       #include &lt;unistd.h&gt;</div><div class="line">       #include &lt;fcntl.h&gt;</div><div class="line"></div><div class="line">       int fcntl(int fd, int cmd, ... /* arg */ );</div><div class="line">该函数可以改变打开的文件的属性</div></pre></td></tr></table></figure>
-<p><code>fcntl</code>函数有以下5个功能</p>
-<ul>
-<li>(1) 复制一个已有的描述符(cmd=<code>F_DUPFD</code> 或 <code>F_DUPFD_CLOEXEC</code>)</li>
-<li>(2) 获取/设置文件描述符标志(cmd=<code>F_GETFE</code> 或 <code>F_SETFD</code>)</li>
-<li>(3) 获取/设置文件状态标志(cmd=<code>F_GETFL</code> 或 <code>F_SETFL</code>)</li>
-<li>(4) 获取/设置异步I/O所有权(cmd=<code>F_GETOWN</code> 或 <code>F_SETOWN</code>)</li>
-<li>(5) 获取/设置记录锁(cmd=<code>F_GETLK</code>,<code>F_SETLK</code> 或 <code>F_SETLWK</code>)</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">#include &lt;unistd.h&gt;</div><div class="line">#include &lt;fcntl.h&gt;</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line"></div><div class="line">int main(int argc, char **argv) &#123;</div><div class="line">	int val;</div><div class="line"></div><div class="line">	if (argc != 2) &#123;</div><div class="line">		printf(&quot;Usage: a.out &lt;descriptor&gt;\n&quot;);</div><div class="line">		exit(-1);</div><div class="line">	&#125;</div><div class="line">	if ((val = fcntl(atoi(argv[1]), F_GETFL, 0)) &lt; 0 ) &#123;</div><div class="line">		printf(&quot;fcntl error for fd %d\n&quot;, atoi(argv[1]));</div><div class="line">	&#125;</div><div class="line">	switch (val &amp; O_ACCMODE) &#123;</div><div class="line">		case O_RDONLY:</div><div class="line">			printf(&quot;read only\n&quot;);</div><div class="line">			break;</div><div class="line">		case O_WRONLY:</div><div class="line">			printf(&quot;write only\n&quot;);</div><div class="line">			break;</div><div class="line">		case O_RDWR:</div><div class="line">			printf(&quot;read write\n&quot;);</div><div class="line">			break;</div><div class="line">		default:</div><div class="line">			printf(&quot;unkonw access mode&quot;);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	if (val &amp; O_APPEND)</div><div class="line">		printf(&quot;, append\n&quot;);</div><div class="line">	if (val &amp; O_NONBLOCK)</div><div class="line">		printf(&quot;, nonblocking\n&quot;);</div><div class="line">	if (val &amp; O_SYNC) &#123;</div><div class="line">		printf(&quot;, synchronous writes\n&quot;);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">#if !defined(_POSIX_C_SOURCE) &amp;&amp; defined(O_FSYNC) &amp;&amp; (O_FSYNC != O_SYNC)</div><div class="line">	if (val &amp; O_FSYNC)</div><div class="line">		printf(&quot;, synchronous writes\n&quot;);</div><div class="line">#endif</div><div class="line">	putchar(&apos;\n&apos;);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
+          Unix 文件IO文件描述符号对于内核而言,所有打开的文件通过文件描述符引用,是一个非负整数.在POSIX1中,在&lt;unistd.h&gt;中定义了STDIN_FILENO(0): 标准输入STDOUT_FILENO(1): 标准输出STDERR_FILENO(2): 标准错误输出
+文件描述符
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/06/23/linuxtcp/2016_06_23_unix编程基础(2)--文件io/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1507,12 +1181,16 @@
       
         
           
-            <h1 id="任务队列"><a href="#任务队列" class="headerlink" title="任务队列"></a>任务队列</h1><h2 id="new-task"><a href="#new-task" class="headerlink" title="new_task"></a>new_task</h2><p><code>new_task</code>代码:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line">import pika</div><div class="line">import sys</div><div class="line"></div><div class="line">connection = pika.BlockingConnection(pika.ConnectionParameters(</div><div class="line">        host=&apos;localhost&apos;))</div><div class="line">channel = connection.channel()</div><div class="line"></div><div class="line">channel.queue_declare(queue=&apos;task_queue&apos;, durable=True)</div><div class="line"></div><div class="line">message = &apos; &apos;.join(sys.argv[1:]) or &quot;Hello World!&quot;</div><div class="line">channel.basic_publish(exchange=&apos;&apos;,</div><div class="line">                      routing_key=&apos;task_queue&apos;,</div><div class="line">                      body=message,</div><div class="line">                      properties=pika.BasicProperties(</div><div class="line">                         delivery_mode = 2, # make message persistent</div><div class="line">                      ))</div><div class="line">print(&quot; [x] Sent %r&quot; % message)</div><div class="line">connection.close()</div></pre></td></tr></table></figure>
-<p><code>wokrer.py</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">import pika</div><div class="line">import time</div><div class="line"></div><div class="line">connection = pika.BlockingConnection(pika.ConnectionParameters(</div><div class="line">        host=&apos;localhost&apos;))</div><div class="line">channel = connection.channel()</div><div class="line"></div><div class="line">channel.queue_declare(queue=&apos;task_queue&apos;, durable=True)</div><div class="line">print(&apos; [*] Waiting for messages. To exit press CTRL+C&apos;)</div><div class="line"></div><div class="line">def callback(ch, method, properties, body):</div><div class="line">    print(&quot; [x] Received %r&quot; % body)</div><div class="line">    time.sleep(body.count(b&apos;.&apos;))</div><div class="line">    print(&quot; [x] Done&quot;)</div><div class="line">    ch.basic_ack(delivery_tag = method.delivery_tag)</div><div class="line"></div><div class="line">channel.basic_qos(prefetch_count=1)</div><div class="line">channel.basic_consume(callback,</div><div class="line">                      queue=&apos;task_queue&apos;)</div><div class="line"></div><div class="line">channel.start_consuming()</div></pre></td></tr></table></figure>
-
-          
+          任务队列new_tasknew_task代码:
+12345678910111213141516171819#!/usr/bin/env pythonimport pikaimport sysconnection = pika.BlockingConnection(pika.ConnectionPar
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/06/21/tool/2016_06_21_rabbitmq学习(3)--work_queue/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1655,16 +1333,20 @@
       
         
           
-            <h1 id="Unix系统概述"><a href="#Unix系统概述" class="headerlink" title="Unix系统概述"></a>Unix系统概述</h1><h2 id="UNIX的系统架构"><a href="#UNIX的系统架构" class="headerlink" title="UNIX的系统架构"></a>UNIX的系统架构</h2><p>一个比较直观的认识是,操作系统<br><img src="http://7xrn62.com1.z0.glb.clouddn.com/25b7ae3473e8ce7336b4e63d034c482b.png" alt="unix系统架构"></p>
-<p>kernel:运行于硬件之上<br>系统调用(system call): 内核的接口</p>
-<h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><p>登录名<br>shell</p>
-<h2 id="文件和目录"><a href="#文件和目录" class="headerlink" title="文件和目录"></a>文件和目录</h2><p>文件系统<br>文件名<br>路径名</p>
-<h2 id="输入和输出"><a href="#输入和输出" class="headerlink" title="输入和输出"></a>输入和输出</h2><p>文件描述符<br>标准输入,标准输出和标准错误<br>不带缓冲的IO</p>
-<h2 id="程序和进程"><a href="#程序和进程" class="headerlink" title="程序和进程"></a>程序和进程</h2><p>程序<br>进程和进程ID<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">#include &lt;sys/types.h&gt;</div><div class="line">#include &lt;unistd.h&gt;</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line"></div><div class="line"></div><div class="line">int main() &#123;</div><div class="line">	printf(&quot;this pid is %ld\n&quot;, (long)getpid());</div><div class="line">	printf(&quot;this ppid is %ld\n&quot;, (long)getppid());</div><div class="line">	for(;;) &#123;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/***</div><div class="line">pstree</div><div class="line">─gnome-terminal─┬─gnome-pty-helpe</div><div class="line">     │         │         │      │                ├─zsh───sh───node───8*[&#123;node&#125;]</div><div class="line">     │         │         │      │                ├─5*[zsh───ssh]</div><div class="line">     │         │         │      │                ├─5*[zsh]</div><div class="line">     │         │         │      │                ├─zsh───mongo───2*[&#123;mongo&#125;]</div><div class="line">     │         │         │      │                ├─zsh───python─┬─python───5*[&#123;+</div><div class="line">     │         │         │      │                │              └─4*[&#123;python&#125;]</div><div class="line">     │         │         │      │                ├─2*[zsh───python]</div><div class="line">     │         │         │      │                ├─zsh───a.out</div><div class="line">**/</div></pre></td></tr></table></figure></p>
-<p>进程控制<br>线程和线程ID</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">SYNOPSIS</div><div class="line">       #include &lt;sys/types.h&gt;</div><div class="line">       #include &lt;unistd.h&gt;</div><div class="line"></div><div class="line">       pid_t getpid(void);</div><div class="line">       pid_t getppid(void);</div></pre></td></tr></table></figure>
-<h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><h2 id="用户标识-User-id"><a href="#用户标识-User-id" class="headerlink" title="用户标识(User-id)"></a>用户标识(User-id)</h2><h2 id="信号-Signals"><a href="#信号-Signals" class="headerlink" title="信号(Signals)"></a>信号(Signals)</h2><h2 id="时间-Time-Value"><a href="#时间-Time-Value" class="headerlink" title="时间(Time Value)"></a>时间(Time Value)</h2><h2 id="系统调用和库函数"><a href="#系统调用和库函数" class="headerlink" title="系统调用和库函数"></a>系统调用和库函数</h2>
-          
+          Unix系统概述UNIX的系统架构一个比较直观的认识是,操作系统
+kernel:运行于硬件之上系统调用(system call): 内核的接口
+登录登录名shell
+文件和目录文件系统文件名路径名
+输入和输出文件描述符标准输入,标准输出和标准错误不带缓冲的IO
+程序和进程程序进程和进程ID12345
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/06/21/linuxtcp/2016_06_21_unix编程基础(1)--系统概述/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1807,31 +1489,20 @@
       
         
           
-            <h1 id="Angular2基础学习"><a href="#Angular2基础学习" class="headerlink" title="Angular2基础学习"></a>Angular2基础学习</h1><h2 id="Angular初识"><a href="#Angular初识" class="headerlink" title="Angular初识"></a>Angular初识</h2><p>ES6工具链</p>
-<p><img src="http://7xrn62.com1.z0.glb.clouddn.com/062d2a05a05472a2bccf6ca4cbf650cf.png" alt="ES6tool-chain"></p>
-<ul>
-<li>systemjs – 通用模块加载器,支持AMD,CommonJS,ES6等各种格式的JS的模块加载</li>
-<li>es6-module-loader – ES6模块加载器,systemjs会自动加载这个模块</li>
-<li>traceur –ES6转码器,将ES6代码转换为当前浏览器支持的ES5代码.systemjs会自动加载 这个模块.</li>
-</ul>
-<h2 id="Angular应用三步走"><a href="#Angular应用三步走" class="headerlink" title="Angular应用三步走"></a>Angular应用三步走</h2><h3 id="1-引入Angular2预定义类型"><a href="#1-引入Angular2预定义类型" class="headerlink" title="1. 引入Angular2预定义类型"></a>1. 引入Angular2预定义类型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import &#123;Component, View, bootstrap&#125; from &quot;angualr2/anguar&quot;;</div></pre></td></tr></table></figure>
-<h3 id="2-实现一个Angualr2组件"><a href="#2-实现一个Angualr2组件" class="headerlink" title="2. 实现一个Angualr2组件"></a>2. 实现一个Angualr2组件</h3><p>定义一个类,然后在这个类加注解<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[@Component](/user/Component)(&#123;selector:&quot;ez-app&quot;&#125;)</div><div class="line">[@View](/user/View)(&#123;template:&quot;&lt;h1&gt;Hello,Angular2&lt;/h1&gt;&quot;&#125;)</div><div class="line">class EzApp&#123;&#125;</div></pre></td></tr></table></figure></p>
-<p><code>@Component</code>和<code>@View</code>都是给类<code>EzApp</code>附加的元信息， 被称为注解<code>Annotation</code>。</p>
-<p><code>@Component</code>最重要的作用是通过<code>selector</code>属性（值为CSS选择符），指定这个组件渲染到哪个DOM对象上。 <code>@View</code>最重要的作用是通过<code>template</code>属性，指定渲染的模板。</p>
-<h3 id="3-渲染组件到DATE-FORMAT"><a href="#3-渲染组件到DATE-FORMAT" class="headerlink" title="3. 渲染组件到DATE_FORMAT"></a>3. 渲染组件到DATE_FORMAT</h3><p>将组件渲染到DOM上，需要使用自举/bootstrap函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bootstrap(EzApp);</div></pre></td></tr></table></figure></p>
-<p>这个函数的作用就是通知Angular2框架将EzApp组件渲染到DOM树上。</p>
-<h2 id="注解-Annotation"><a href="#注解-Annotation" class="headerlink" title="注解/Annotation"></a>注解<code>/Annotation</code></h2><p>你一定好奇<code>@Component</code>和<code>@View</code>到底是怎么回事。看起来像其他语言（比如python） 的装饰器，是这样吗？</p>
-<p>ES6规范里没有装饰器。这其实利用了traceur的一个实验特性：注解。给一个类 加注解，等同于设置这个类的annotations属性：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//注解写法</div><div class="line">[@Component](/user/Component)(&#123;selector:&quot;ez-app&quot;&#125;)</div><div class="line">class EzApp&#123;...&#125;</div></pre></td></tr></table></figure>
-<p>等同于:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">class EzApp&#123;...&#125;</div><div class="line">EzApp.annotations = [new Component(&#123;selector:&quot;ez-app&quot;&#125;)];</div></pre></td></tr></table></figure>
-<p>注解可以看做编译器（traceur）层面的语法糖，但和python的装饰器不同， 注解在编译时仅仅被放在annotation里，编译器并不进行解释展开 - 这个解释的工作是 Angular2完成的：</p>
-<p><img src="http://7xrn62.com1.z0.glb.clouddn.com/e9ada5202e0f5f1581f7a790f47c9dbb.png" alt="注解"></p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>在Angular2中，bootstrap是围绕组件开始的，你定义一个组件，然后启动它。如果没有一个组件， 你甚至都没有办法使用Angular2！</p>
-<p>支持多种渲染引擎</p>
-<p>以组件而非DOM为核心，意味着Angular2在内核隔离了对DOM的依赖 - DOM仅仅作为一种可选的渲染引擎存在：<br><img src="http://7xrn62.com1.z0.glb.clouddn.com/933d3c64cc1da5d38833f14bbeffe648.png" alt="小结"></p>
+          Angular2基础学习Angular初识ES6工具链
 
-          
+
+systemjs – 通用模块加载器,支持AMD,CommonJS,ES6等各种格式的JS的模块加载
+es6-module-loader – ES6模块加载器,systemjs会自动加载这个模块
+traceur –ES6转码器,将ES6代码
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/06/15/front-end/2016_06_15_angular2基础学习/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1974,44 +1645,16 @@
       
         
           
-            <h1 id="CI持续集成"><a href="#CI持续集成" class="headerlink" title="CI持续集成"></a>CI持续集成</h1><p><a href="https://github.com/aosabook/500lines" target="_blank" rel="external">项目直达</a><br>这是一个500行实现的一个例子.<br><a href="http://qingyunha.github.io/taotao/" target="_blank" rel="external">该文章的中文翻译地址</a></p>
-<h2 id="什么是持续集成系统"><a href="#什么是持续集成系统" class="headerlink" title="什么是持续集成系统"></a>什么是持续集成系统</h2><p>When developing software, we want to be able to verify that our new features or bug fixes are safe and work as expected. We do this by running tests against our code. Sometimes, developers will run tests locally to verify that their changes are safe, but developers may not have the time to test their code on every system their software runs in. Further, as more and more tests are added the amount of time required to run them, even only locally, becomes less viable. Because of this, continuous integration systems have been created.</p>
-<p>当我们开发软件的时候,我们想要能够验证我们的新功能或者是修复的bug能够安全有效的想预期那样运行.我们通过重新测试我们的代码可以实现.有的时候,开发者会在本地来验证他们的代码的变更是否安全,但是开发者没有时间去测试他们的代码能否在所有可能的系统里面运行.进一步讲,需要的测试用例越多,就需要更多的事件去测试,即使是在本地,也只是很少的.因此,持续集成系统被创建了.</p>
-<p>Continuous Integration (CI) systems are dedicated systems used to test new code. Upon a commit to the code repository, it is the responsibility of the continuous integration system to verify that this commit will not break any tests. To do this, the system must be able to fetch the new changes, run the tests and report its results. Like any other system, it should also be failure resistant. This means if any part of the system fails, it should be able to recover and continue from that point.</p>
-<p>Continuous Integration (CI) systems主要集中于测试新的代码.当你提交代码到仓库的时候,持续集成系统应该验证这次提交是否应该测试.要做到中诶但,系统必须能够获取到新的变更,能够得到测试的结果和报告.像其他的系统一样,也是有容错机制的,这意味着你可以恢复到某个个点.</p>
-<p>This test system should also handle load well, so that we can get test results in a reasonable amount of time in the event that commits are being made faster than the tests can be run. We can achieve this by distributing and parallelizing the testing effort. This project will demonstrate a small, bare-bones distributed continuous integration system that is designed for extensibility.</p>
-<p>这个测试系统也应该处理负载,这样我们可以得到测试结果在合理的时间内提交的事件是由速度比测试可以运行。我们可以实现通过分配和并行测试工作。这个项目将展示一个小,持续集成的分布式系统设计的可扩展性。</p>
-<h2 id="Project-Limitations-and-Notes"><a href="#Project-Limitations-and-Notes" class="headerlink" title="Project Limitations and Notes"></a>Project Limitations and Notes</h2><p>Due to the limitations of code length and unittest, I simplified test discovery. We will only run tests that are in a directory named tests within the repository.</p>
-<p>Continuous integration systems monitor a master repository which is usually hosted on a web server, and not local to the CI’s file systems. For the cases of our example, we will use a local repository instead of a remote repository.</p>
-<p>Continuous integration systems need not run on a fixed, regular schedule. You can also have them run every few commits, or per-commit. For our example case, the CI system will run periodically. This means if it is set up to check for changes in five-second periods, it will run tests against the most recent commit made after the five-second period. It won’t test every commit made within that period of time, only the most recent one.</p>
-<p>This CI system is designed to check periodically for changes in a repository. In real-world CI systems, you can also have the repository observer get notified by a hosted repository. Github, for example, provides “post-commit hooks” which send out notifications to a URL. Following this model, the repository observer would be called by the web server hosted at that URL to respond to that notification. Since this is complex to model locally, we’re using an observer model, where the repository observer will check for changes instead of being notified.</p>
-<p>CI systems also have a reporter aspect, where the test runner reports its results to a component that makes them available for people to see, perhaps on a webpage. For simplicity, this project gathers the test results and stores them as files in the file system local to the dispatcher process.</p>
-<p>Note that the architecture this CI system uses is just one possibility among many. This approach has been chosen to simplify our case study into three main components.</p>
-<p>这个项目使用Git存储库的需要测试的代码。只有将使用标准源代码管理调用,所以如果你不熟悉Git但熟悉其他版本控制系统(VCS)像svn或Mercurial,你仍然可以跟随。<br>由于代码长度和unittest的局限性,我简化测试发现。我们只会运行测试在一个目录中指定的测试库。<br>持续集成系统监控主存储库通常驻留在一个web服务器,而不是当地的CI的文件系统。的情况下,我们的示例中,我们将使用一个本地存储库,而不是一个远程存储库。<br>持续集成系统不需要在一个固定的运行,定期。你也可以让他们每隔几提交运行,或per-commit。在我们的示例中,CI系统会周期性地运行。这意味着如果是建立在五秒钟的时间检查更改,它将运行测试对最近提交后五秒的时间。它不会测试每一个提交了在这段时间内,只有最近的一个。<br>这个CI系统旨在定期检查存储库的变化。在现实世界的CI系统中,也可以存储库观察者通过托管库得到通知。Github,例如,提供“post-commit钩子”URL发送通知。在这个模型中,存储库观察者将由web服务器托管调用该URL通知的回应。因为这是在本地复杂的模型,我们使用观察者模式,观察者会检查存储库的变化而不是通知。<br>CI系统也有一个记者方面,测试运行器组件使得他们报道了他们的研究成果可供人们看到的,也许在一个网页。为简单起见,本项目收集测试结果并将它们存储在本地文件系统的文件调度过程。<br>注意,架构这个CI系统使用只是一个在许多可能性。这种方法已被选为简化我们的案例研究分成三个主要组件。</p>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>The basic structure of a continuous integration system consists of three components: an observer, a test job dispatcher, and a test runner. The observer watches the repository. When it notices that a commit has been made, it notifies the job dispatcher. The job dispatcher then finds a test runner and gives it the commit number to test.</p>
-<p>There are many ways to architect a CI system. We could have the observer, dispatcher and runner be the same process on a single machine. This approach is very limited since there is no load handling, so if more changes are added to the repository than the CI system can handle, a large backlog will accrue. This approach is also not fault-tolerant at all; if the computer it is running on fails or there is a power outage, there are no fallback systems, so no tests will run. The ideal system would be one that can handle as many test jobs as requested, and will do its best to compensate when machines go down.</p>
-<p>To build a CI system that is fault-tolerant and load-bearing, in this project, each of these components is its own process. This will let each process be independent of the others, and let us run multiple instances of each process. This is useful when you have more than one test job that needs to be run at the same time. We can then spawn multiple test runners in parallel, allowing us to run as many jobs as needed, and prevent us from accumulating a backlog of queued tests.</p>
-<p>In this project, not only do these components run as separate processes, but they also communicate via sockets, which will let us run each process on a separate, networked machine. A unique host/port address is assigned to each component, and each process can communicate with the others by posting messages at the assigned addresses.</p>
-<p>This design will let us handle hardware failures on the fly by enabling a distributed architecture. We can have the observer run on one machine, the test job dispatcher on another, and the test runners on another, and they can all communicate with each other over a network. If any of these machines go down, we can schedule a new machine to go up on the network, so the system becomes fail-safe.</p>
-<p>This project does not include auto-recovery code, as that is dependent on your distributed system’s architecture, but in the real world, CI systems are run in a distributed environment like this so they can have failover redundancy (i.e., we can fall back to a standby machine if one of the machines a process was running on becomes defunct).</p>
-<p>For the purposes of this project, each of these processes will be locally and manually started distinct local ports.</p>
-<p>持续集成系统的基本结构由三部分组成:一个观察者,一个测试作业调度器,一个测试运行器。观察者观测代码仓库库。当它发现一个commit时,它通知作业调度器。作业调度器然后发现一个测试运行器,使其提交测试。<br>构建CI系统的方法有很多。我们可以有观察者,调度器和runner是相同的进程在同一台计算机上。这种方法是非常有限,由于没有对负载进行处理,如果大量的更改添加到库,CI系统将积累大量积压。这种方法也不是容错;如果计算机上运行发生故障或停电,没有后备系统,所以没有测试运行。理想的系统是一个能够处理请求尽可能多的测试工作,并且能够容灾。<br>建立一个CI系统容错和承载,在这个项目中,每一个组件都是自己的过程。这将让每个过程是独立于他人,让我们每个流程的多个实例运行。这是有用的,当你有不止一个的测试工作,需要同时运行。我们可以产生多个并行测试,让我们尽可能多的工作需要,并阻止我们积累的排队测试。<br>在这个项目中,不仅这些组件作为独立进程运行,但他们也通过套接字进行通信,这将让我们每个进程运行在一个单独的、网络化的机器。独特的主机/端口地址是分配给每个组件,和每个进程可以与别人交流,发布信息的分配地址。<br>这个设计将让我们处理硬件故障动态通过启用一个分布式架构。我们可以有观察者在一台机器上运行,测试作业调度器,测试运行在另一个,他们都能通过网络相互通信。如果这些机器,我们可以安排一个新机器在网络上,所以这个系统就自动防故障装置。<br>这个项目不包括自动恢复代码,因为这是依赖于分布式系统的架构,但在现实世界中,这样的CI系统是运行在分布式环境中,这样他们就可以有故障转移(即冗余。,我们可以回到一个备用计算机如果其中一个机器运行过程成为破产)。<br>对于本项目,这些过程将在本地和手动开始不同的当地的端口。</p>
-<h2 id="Files-in-this-Project"><a href="#Files-in-this-Project" class="headerlink" title="Files in this Project"></a>Files in this Project</h2><p>This project contains Python files for each of these components: the repository observer \newline (repo_observer.py), the test job dispatcher (dispatcher.py), and the test runner \newline (test_runner.py). Each of these three processes communicate with each other using sockets, and since the code used to transmit information is shared by all of them, there is a helpers.py file that contains it, so each process imports the communicate function from here instead of having it duplicated in the file.</p>
-<p>There are also bash script files used by these processes. These script files are used to execute bash and git commands in an easier way than constantly using Python’s operating system-level modules like os and subprocess.</p>
-<p>Lastly, there is a tests directory, which contains two example tests the CI system will run. One test will pass, and the other will fail.</p>
-<p>这个项目包含为每个这些组件:Python文件存储库观察者(repo_observer.py),测试作业调度器(dispatcher.py),并测试运行器(test_runner.py)。这三个过程相互通信使用套接字,因为用于传输信息的代码是由所有人共享helpers.py文件,其中包含它,所以每个流程导入函数从这里交流而不是复制的文件。<br>也有这些进程使用的bash脚本文件。这些脚本文件用于执行bash和git命令在一个更简单的方法比不断使用Python的操作系统级模块如操作系统和子流程。<br>最后,有一个测试目录,它包含了两个示例测试CI系统将运行。一个测试能通过,另一个就会失败。</p>
-<h2 id="Inital-Setup"><a href="#Inital-Setup" class="headerlink" title="Inital Setup"></a>Inital Setup</h2><p>While this CI system is ready to work in a distributed system, let us start by running everything locally on one computer so we can get a grasp on how the CI system works without adding the risk of running into network-related issues. If you wish to run this in a distributed environment, you can run each component on its own machine.</p>
-<p>Continuous integration systems run tests by detecting changes in a code repository, so to start, we will need to set up the repository our CI system will monitor.</p>
-<p>Let’s call this test_repo:</p>
-<p>$ mkdir test_repo<br>$ cd test_repo<br>$ git init<br>This will be our master repository. This is where developers check in their code, so our CI should pull this repository and check for commits, then run tests. The thing that checks for new commits is the repository observer.</p>
-<p>The repository observer works by checking commits, so we need at least one commit in the master repository. Let’s commit our example tests so we have some tests to run.</p>
-<p>Copy the tests folder from this code base to test_repo and commit it:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ cp -r /this/directory/tests /path/to/test_repo/</div><div class="line">$ cd /path/to/test\_repo</div><div class="line">$ git add tests/</div><div class="line">$ git commit -m ”add tests”</div></pre></td></tr></table></figure></p>
-<p>Now you have a commit in the master repository.</p>
-<p>The repo observer component will need its own clone of the code, so it can detect when a new commit is made. Let’s create a clone of our master repository, and call it test_repo_clone_obs:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git clone /path/to/test_repo test_repo_clone_obs</div></pre></td></tr></table></figure></p>
-<p>The test runner will also need its own clone of the code, so it can checkout the repository at a given commit and run the tests. Let’s create another clone of our master repository, and call it test_repo_clone_runner:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git clone /path/to/test_repo test_repo_clone_runner</div></pre></td></tr></table></figure></p>
-<p>虽然这CI系统准备工作在分布式系统中,让我们从一台计算机上本地运行一切我们可以得到一个对CI系统如何工作在不增加的风险跑到网络相关问题。如果你想运行在分布式环境中,您可以运行自己的机器上的每个组件。<br>持续集成系统通过检测运行测试代码库的变化,所以开始,我们将需要设置存储库CI系统将监测。</p>
-
-          
+          CI持续集成项目直达这是一个500行实现的一个例子.该文章的中文翻译地址
+什么是持续集成系统When developing software, we want to be able to verify that our new features or bug fixes are safe and w
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/06/01/devops/2016_06_01_ci持续集成/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2154,12 +1797,16 @@
       
         
           
-            <p>依赖于OpenGL</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install libglew-dev</div><div class="line">sudo apt-get install libsdl-image1.2-dev</div><div class="line">sudo apt-get install libboost-all-dev</div><div class="line">sudo apt-get install libglm-dev</div></pre></td></tr></table></figure>
-<p>使用方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh user@exapmle.com tail -f /var/log/example.com.log | logstalgia</div></pre></td></tr></table></figure>
-
-          
+          依赖于OpenGL
+1234sudo apt-get install libglew-devsudo apt-get install libsdl-image1.2-devsudo apt-get install libboost-all-devsudo apt-get install libglm
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/05/04/tool/2016_05_04_logstalgia介绍/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

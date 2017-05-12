@@ -421,11 +421,18 @@
       
         
           
-            <p>virtualenv的安装和运行都很简单，因为之前一直使用的pyenv，所以<br>这个工具都没怎么用过，只是记录一下命令</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">virtualenv ENV</div><div class="line"><span class="built_in">source</span> bin/activate</div><div class="line"></div><div class="line"></div><div class="line">$ deactivate</div></pre></td></tr></table></figure>
-<p>使用的方法非常简单</p>
+          virtualenv的安装和运行都很简单，因为之前一直使用的pyenv，所以这个工具都没怎么用过，只是记录一下命令
+12345virtualenv ENVsource bin/activate$ deactivate
+使用的方法非常简单
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/11/19/python/2015_11_19_利用virtualenv来管理python运行环境/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -568,13 +575,17 @@
       
         
           
-            <h1 id="在RESTFul中使用Token来进行身份认证"><a href="#在RESTFul中使用Token来进行身份认证" class="headerlink" title="在RESTFul中使用Token来进行身份认证"></a>在RESTFul中使用Token来进行身份认证</h1><p>用户只登录一次<br>下次访问的时候使用cookie而不是username或者是密码</p>
-<p>失效</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">curl -c c.txt \</div><div class="line">    http://localhost:8080/api/v1/login \</div><div class="line">    -u user1:pass1</div><div class="line"></div><div class="line">curl -b c.txt \</div><div class="line">    --data <span class="string">'&#123;titl...&#125;'</span> \</div><div class="line">    http://localhost:8080/api/v1/poems</div></pre></td></tr></table></figure>
-<p>logging in</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">def GET(self):</div><div class="line">    user = require_authenticated_user(</div><div class="line">        self.db)</div><div class="line">    token = generate_token()</div><div class="line">    self.db.tokens[tooken] = &#123;&quot;user&quot;: user&#125;</div></pre></td></tr></table></figure>
-
-          
+          在RESTFul中使用Token来进行身份认证用户只登录一次下次访问的时候使用cookie而不是username或者是密码
+失效
+1234567curl -c c.txt \    http://localhost:8080/api/v1/login \    -u user1:pass1curl 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/11/19/HTTP/2015_11_19_在restful中基于token的认证/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -717,26 +728,15 @@
       
         
           
-            <h1 id="使用Pelican和Github来搭建博客系统"><a href="#使用Pelican和Github来搭建博客系统" class="headerlink" title="使用Pelican和Github来搭建博客系统"></a>使用Pelican和Github来搭建博客系统</h1><h2 id="关于博客"><a href="#关于博客" class="headerlink" title="关于博客"></a>关于博客</h2><p>之前所有的东西都记录在了印象笔记上，可以没有免费的markdown的插件，印象笔记对于记录一些东西来说还不错,不过对于写些东西,感觉还需要一些额外的东西.<br>后来发现这套解决方案还是不错滴！用atom来编辑，下载一些能够预览markdown的插件效果还是蛮不错滴，同步在github上，在哪都可以编辑修改。</p>
-<h2 id="关于github-Page"><a href="#关于github-Page" class="headerlink" title="关于github Page"></a>关于github Page</h2><p><a href="https://pages.github.com/" target="_blank" rel="external">github Page官方地址</a></p>
-<h2 id="关于Pelican"><a href="#关于Pelican" class="headerlink" title="关于Pelican"></a>关于Pelican</h2><p>具体请见<a href="http://docs.getpelican.com/en/3.6.3/" target="_blank" rel="external">Pelican文档</a></p>
-<h2 id="Pelican的主题"><a href="#Pelican的主题" class="headerlink" title="Pelican的主题"></a>Pelican的主题</h2><p>可以很方便的更换主题，只需在配置文件里面简单的修改就好了</p>
-<h2 id="Pelican的插件"><a href="#Pelican的插件" class="headerlink" title="Pelican的插件"></a>Pelican的插件</h2><p>Pelican的插件有很多</p>
-<h3 id="LaTex支持"><a href="#LaTex支持" class="headerlink" title="LaTex支持"></a>LaTex支持</h3><p>LaTex主要是比较方便的来写数学公式<br>首先是配置上, 需要加上render_math的插件：<br>其实用的就是<code>MathJax.js</code></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">PLUGIN_PATHS = [<span class="string">'pelican-plugins'</span>]</div><div class="line">PLUGINS = [<span class="string">'render_math'</span>, <span class="string">'sitemap'</span>, <span class="string">'autopages'</span>, <span class="string">'subcategory'</span> ]</div></pre></td></tr></table></figure>
-<p>接下来比较重要的,也就是比较核心的操作就是,在主题<code>templates/bash.html</code>下的head标签之前加上</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/x-mathjax-config"</span>&gt;</span><span class="undefined"></span></div><div class="line">    MathJax.Hub.Config(&#123;</div><div class="line">    "HTML-CSS": &#123;</div><div class="line">        styles: &#123;</div><div class="line">            ".MathJax .mo, .MathJax .mi": &#123;color: "black ! important"&#125;&#125;</div><div class="line">        &#125;,</div><div class="line">        tex2jax: &#123;inlineMath: [['$','$'], ['\\(','\\)']],processEscapes: true&#125;</div><div class="line">    &#125;);</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>$$E=mc^2$$</p>
-<p>Latex数学符号清参见<a href="http://web.ift.uib.no/Teori/KURS/WRK/TeX/symALL.html" target="_blank" rel="external">Latex数学公式</a></p>
-<h3 id="评论的支持"><a href="#评论的支持" class="headerlink" title="评论的支持"></a>评论的支持</h3><p>静态博客要支持评论,可以使用<a href="https://disqus.com" target="_blank" rel="external">disqus</a>.<br>第一步,你只需要注册一个disqus帐.<br>第二部,需要设置<code>DISQUS_SITENAME</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SITEURL = &apos;http://fsxchen.github.io&apos;</div><div class="line"></div><div class="line">DISQUS_SITENAME = u&quot;coucou-blog&quot;</div><div class="line">RELATIVE_URLS = False</div></pre></td></tr></table></figure></p>
-<p>搞定</p>
-<h2 id="使用Atom编辑博客"><a href="#使用Atom编辑博客" class="headerlink" title="使用Atom编辑博客"></a>使用Atom编辑博客</h2><h3 id="图片上传"><a href="#图片上传" class="headerlink" title="图片上传"></a>图片上传</h3><p>写博客,必须能上传图片嘛,图片得在atom这个编辑器上下功夫,原先的模块,用的是以下模块:<br><code>markclip</code> <code>qiniu-puloader</code> <code>markdown-assistant</code>,本来后面两个应该是可以的,但是在我的大Ubuntu下就是无法使用.所有在github上找了不少,后来把这三个的代码相互改了改,就可以用了,具体办法就是在<code>markclip</code>的配置中,增加一个七牛的配置.</p>
-<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><p>用下面的这个函数，一条命令就搞定了。当然需要fabirc以及<code>fabfile.py</code><br>只需要执行<code>fab public</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># @hosts(production)</div><div class="line">def publish():</div><div class="line">    &quot;&quot;&quot;Publish to production via rsync&quot;&quot;&quot;</div><div class="line">    local(&apos;git add .&apos;)</div><div class="line">    local(&apos;git commit)</div><div class="line">    local(&apos;git push -f origin master&apos;)</div></pre></td></tr></table></figure>
-<p>自动同步<code>output</code>下的到<code>gh-pages</code>,可以编辑<code>.git/pooks/post-commit:</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chmod a+x post-commit</div><div class="line">pelican content -o output <span class="_">-s</span> pelicanconf.py &amp;&amp; ghp-import output &amp;&amp; git push <span class="_">-f</span> origin gh-pages:master</div></pre></td></tr></table></figure>
-
-          
+          使用Pelican和Github来搭建博客系统关于博客之前所有的东西都记录在了印象笔记上，可以没有免费的markdown的插件，印象笔记对于记录一些东西来说还不错,不过对于写些东西,感觉还需要一些额外的东西.后来发现这套解决方案还是不错滴！用atom来编辑，下载一些能够预览markdown的插件效果
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/11/19/MISC/2015_11_19_pelican和github搭建博客系统/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -879,85 +879,15 @@
       
         
           
-            <h1 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h1><h2 id="决策数的构造"><a href="#决策数的构造" class="headerlink" title="决策数的构造"></a>决策数的构造</h2><h3 id="熵和信息增益"><a href="#熵和信息增益" class="headerlink" title="熵和信息增益"></a>熵和信息增益</h3><p>​        划分数据集的大原则是：将无序的数据变得更加有序。划分数据的方式有很多种，但是每种都有相应的优缺点。组织杂乱无章数据的一种方式就是使用信息论度量信息。在划分数据集之前之后信息发生的变化称为<strong>信息增益</strong>.<br>集合信息的度量方式称为香农熵或者简称熵<br>如果待分类的事物可能划分在多个分类之中，则符号<br>$$<br>x_{i}<br>$$<br>的信息定义为</p>
-<p>$$<br>l(x<em>{i})=-\log</em>{2}p(x_{i})<br>$$</p>
-<p>其中$$p(x_{i})$$是选择该分类的概率<br>为了计算熵，我们需要计算所有类别所有可能包含值的信息期望值</p>
-<p>$$<br>H=-\sum<em>{i=1}^{n}p(x</em>{i})log<em>{2}p(x</em>{i})<br>$$</p>
-<p>Eg：计算熵<br><img src="/2014/11/19/machinelearning/2014-12-09-决策树/68b64b56389482cd68c139d2fee78897.png" alt=""></p>
-<p>下面用代码来实现计算数据集合的香农熵</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> math <span class="keyword">import</span> log</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">calcShannonEnt</span><span class="params">(dataSet)</span>:</span></div><div class="line">    numEntries = len(dataSet)</div><div class="line">    lableCounts = &#123;&#125;</div><div class="line">    <span class="keyword">for</span> featVec <span class="keyword">in</span> dataSet:</div><div class="line">        currentLable = featVec[<span class="number">-1</span>]</div><div class="line">        <span class="keyword">if</span> currentLable <span class="keyword">not</span> <span class="keyword">in</span> lableCounts.keys():</div><div class="line">            lableCounts[currentLable] = <span class="number">0</span></div><div class="line">        lableCounts[currentLable] += <span class="number">1</span></div><div class="line"></div><div class="line">    shannonENt = <span class="number">0.0</span></div><div class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> lableCounts:</div><div class="line">        prob = float(lableCounts[key])/ numEntries</div><div class="line">        shannonENt = -= prob * log(prob, <span class="number">2</span>)</div><div class="line">    <span class="keyword">return</span> shannonENt</div></pre></td></tr></table></figure>
-<p><img src="/2014/11/19/machinelearning/2014-12-09-决策树/1f8f79605d845169ea08d2090efbecad.png" alt="信息增益"></p>
-<p>熵的计算<br><img src="/2014/11/19/machinelearning/2014-12-09-决策树/c1860ef516bc123d8d80719c961c376a.png" alt="熵计算"></p>
-<p>计算信息增益<br><img src="/2014/11/19/machinelearning/2014-12-09-决策树/c8d8c4c0a44f0a7e19d9de1fdcae0101.png" alt="信息增益"></p>
-<p>如图所示：计算关于速度的信息增益，因为如果以速度划分，熵为0，由于父数据集的熵为1，所以信息增益为1.这个是一个最好的信息增益，所以应该从这里划分数据集。</p>
-<p><img src="/2014/11/19/machinelearning/2014-12-09-决策树/a5e03fe04ec3b27d730c916f37d4c78f.png" alt=""></p>
-<p>在ipython里面找一个集合测试一下：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">In [1]: import trees</div><div class="line"></div><div class="line">In [2]: myDat, lables = trees.createDataSet()</div><div class="line"></div><div class="line">In [3]: myDat</div><div class="line">Out[3]: [[1, 1, <span class="string">'yes'</span>], [1, 1, <span class="string">'yes'</span>], [1, 0, <span class="string">'no'</span>], [0, 1, <span class="string">'no'</span>], [0, 1, <span class="string">'no'</span>]]</div><div class="line"></div><div class="line">In [4]: lables</div><div class="line">Out[4]: [<span class="string">'no surfacing'</span>, <span class="string">'flippers'</span>]</div><div class="line"></div><div class="line">In [5]: trees.calcShannonEnt(myDat)</div><div class="line">Out[5]: 0.9709505944546686</div></pre></td></tr></table></figure>
-<p>香农熵的计算还是比较简单的，但是使用比较复杂</p>
-<h3 id="划分数据集"><a href="#划分数据集" class="headerlink" title="划分数据集"></a>划分数据集</h3><p>在前面介绍了如何度量集合的无序程度，这里还需要来划分数据集，然后来度量数据集的熵，来看是否正确的划分了数据集。<br>下面的代码实现了集合的划分</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">splitDataSet</span><span class="params">(dataSet, axis, value)</span>:</span></div><div class="line">    retDataSet = []</div><div class="line">    <span class="keyword">for</span> featVec <span class="keyword">in</span> dataSet:</div><div class="line">        <span class="keyword">if</span> featVec[axis] == value:</div><div class="line">            reducedFeatVec = featVec[:axis]</div><div class="line">            reducedFeatVec.extend(featVec[axis+<span class="number">1</span>:])</div><div class="line">            retDataSet.append(reducedFeatVec)</div><div class="line">    <span class="keyword">return</span> retDataSet</div></pre></td></tr></table></figure>
-<p>来看一下splitDataSet(dataSet, axis, value)这个函数，需要3个参数：待划分的数据集、划分数据集的特征、需要返回的特征值。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">In [1]: import trees</div><div class="line"></div><div class="line">In [2]: myDat, labels = trees.createDataSet()</div><div class="line"></div><div class="line">In [3]: myDat</div><div class="line">Out[3]: [[1, 1, <span class="string">'yes'</span>], [1, 1, <span class="string">'yes'</span>], [1, 0, <span class="string">'no'</span>], [0, 1, <span class="string">'no'</span>], [0, 1, <span class="string">'no'</span>]]</div><div class="line"></div><div class="line">In [4]: trees.splitDataSet(myDat, 0, 1)</div><div class="line">Out[4]: [[1, <span class="string">'yes'</span>], [1, <span class="string">'yes'</span>], [0, <span class="string">'no'</span>]]</div><div class="line"></div><div class="line">In [5]: trees.splitDataSet(myDat, 0, 0)</div><div class="line">Out[5]: [[1, <span class="string">'no'</span>], [1, <span class="string">'no'</span>]]</div></pre></td></tr></table></figure>
-<p>下面 来选择最好的数据划分方式</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">chooseBestFeatureToSplit</span><span class="params">(dataSet)</span>:</span></div><div class="line">    numFeatures = len(dataSet[<span class="number">0</span>]) - <span class="number">1</span></div><div class="line">    baseEntropy = calcShannonEnt(dataSet)</div><div class="line">    bestInfoGain = <span class="number">0.0</span>; bestFeature = <span class="number">-1</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(numFeatures):</div><div class="line">        featList = [example[i] <span class="keyword">for</span> example <span class="keyword">in</span> dataSet]</div><div class="line">        uniqueVals = set(featList)</div><div class="line">        newEntropy = <span class="number">0.0</span></div><div class="line">        <span class="keyword">for</span> value <span class="keyword">in</span> uniqueVals:</div><div class="line">            subDataSte = splitDataSet(dataSet, i, value)</div><div class="line">            prob = len(subDataSte) / float(len(dataSet))</div><div class="line">            newEntropy += prob * calcShannonEnt(subDataSte)</div><div class="line">        infoGain = baseEntropy - newEntropy</div><div class="line">        <span class="keyword">if</span> (infoGain &gt; bestInfoGain):</div><div class="line">            bestInfoGain = infoGain</div><div class="line">            bestFeature = i</div><div class="line">    <span class="keyword">return</span> bestFeature</div></pre></td></tr></table></figure>
-<p>这段代码实现了选取特征，划分数据集，计算得出最好的划分数据集的特征。这样划分的意义所在</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">id</th>
-<th style="text-align:left">不浮出水面是否可以生存</th>
-<th style="text-align:left">是否有脚蹼</th>
-<th style="text-align:left">属于鱼类</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">1</td>
-<td style="text-align:left">是</td>
-<td style="text-align:left">是</td>
-<td style="text-align:left">是</td>
-</tr>
-<tr>
-<td style="text-align:left">2</td>
-<td style="text-align:left">是</td>
-<td style="text-align:left">是</td>
-<td style="text-align:left">是</td>
-</tr>
-<tr>
-<td style="text-align:left">3</td>
-<td style="text-align:left">是</td>
-<td style="text-align:left">否</td>
-<td style="text-align:left">否</td>
-</tr>
-<tr>
-<td style="text-align:left">4</td>
-<td style="text-align:left">否</td>
-<td style="text-align:left">是</td>
-<td style="text-align:left">否</td>
-</tr>
-<tr>
-<td style="text-align:left">5</td>
-<td style="text-align:left">否</td>
-<td style="text-align:left">是</td>
-<td style="text-align:left">否</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">In [1]: import trees</div><div class="line"></div><div class="line">In [2]: myDat, labels = trees.createDataSet()</div><div class="line"></div><div class="line">In [3]: myDat</div><div class="line">Out[3]: [[1, 1, <span class="string">'yes'</span>], [1, 1, <span class="string">'yes'</span>], [1, 0, <span class="string">'no'</span>], [0, 1, <span class="string">'no'</span>], [0, 1, <span class="string">'no'</span>]]</div><div class="line"></div><div class="line">In [4]: trees.chooseBestFeatureToSplit(myDat)</div><div class="line">Out[4]: 0</div></pre></td></tr></table></figure>
-<p>通个这个结论，可以看到使用第0个特征是最好的划分方式。结合上表来分析一下。如果按照第一个特征划分数据，则第一组值为1(是)的分一组，否(0)为另一组。‘1’组里面包含两个鱼类和一个非鱼类。‘0’组里面只有非鱼类。</p>
-<h2 id="递归构建决策数"><a href="#递归构建决策数" class="headerlink" title="递归构建决策数"></a>递归构建决策数</h2><p>构建决策树代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">majorityCnt</span><span class="params">(classList)</span>:</span></div><div class="line">    classCount = &#123;&#125;</div><div class="line">    <span class="keyword">for</span> vote <span class="keyword">in</span> classList:</div><div class="line">        <span class="keyword">if</span> vote <span class="keyword">not</span> <span class="keyword">in</span> classCount.keys(): classCount[vote] = <span class="number">0</span></div><div class="line">        classCount += <span class="number">1</span></div><div class="line">        sortedClassCount = sorted(classCount.iteritems(), \</div><div class="line">            key=operator.itemgetter(<span class="number">1</span>), reverse=<span class="keyword">True</span>)</div><div class="line">        <span class="keyword">return</span> sortedClassCount[<span class="number">0</span>][<span class="number">0</span>]</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">createTree</span><span class="params">(dataSet, labels)</span>:</span></div><div class="line">    classList = [example[i] <span class="keyword">for</span> example <span class="keyword">in</span> dataSet]</div><div class="line">    <span class="keyword">if</span> classList.count(classList[<span class="number">0</span>]) == len(classList):</div><div class="line">        <span class="keyword">return</span> classList[<span class="number">0</span>]</div><div class="line">    <span class="keyword">if</span> len(dataSet[<span class="number">0</span>]) == <span class="number">1</span>:</div><div class="line">        <span class="keyword">return</span> majorityCnt(classList)</div><div class="line">    bestFeat = chooseBestFeatureToSplit(dataSet)</div><div class="line">    bestFeatLabel = labels[bestFeat]</div><div class="line">    myTree = &#123;bestFeatLabel:&#123;&#125;&#125;</div><div class="line">    <span class="keyword">del</span>(labels[bestFeat])</div><div class="line">    featValues = [example[bestFeat] <span class="keyword">for</span> example <span class="keyword">in</span> dataSet]</div><div class="line">    uniqueVals = set(featValues)</div><div class="line">    <span class="keyword">for</span> value <span class="keyword">in</span> uniqueVals:</div><div class="line">        subLabels = labels[:]</div><div class="line">        myTree[bestFeatLabel][value] = createTree(splitDataSet \</div><div class="line">            (dataSet, bestFeat, value), subLabels)</div><div class="line">    <span class="keyword">return</span> myTree</div></pre></td></tr></table></figure>
-<p><code>createTree(dataSet, labels)</code>这个函数有两个参数：数据集和标签列表。<br>递归终止的两个条件：1、所有标签都相同。2、使用完了所有的特征。<br>这里使用了字典来存储了树的信息。</p>
-<h2 id="测试和存储分类器"><a href="#测试和存储分类器" class="headerlink" title="测试和存储分类器"></a>测试和存储分类器</h2><h3 id="测试算法：使用决策树执行分类"><a href="#测试算法：使用决策树执行分类" class="headerlink" title="测试算法：使用决策树执行分类"></a>测试算法：使用决策树执行分类</h3><p>代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">classify</span><span class="params">(inputTree, featLabels, testVec)</span>:</span></div><div class="line">    firstStr = inputTree.keys()[<span class="number">0</span>]</div><div class="line">    secondDict = inputTree[firstStr]</div><div class="line">    featIndex = featLabels.index(firstStr)</div><div class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> secondDict.keys():</div><div class="line">        <span class="keyword">if</span> testVec[featIndex] == key:</div><div class="line">            <span class="keyword">if</span> type(secondDict[key]).__name__ == <span class="string">'dict'</span>:</div><div class="line">                classLabel = classify(secondDict[key], featLabels, testVec)</div><div class="line">            <span class="keyword">else</span>: classLabel = secondDict[key]</div><div class="line">    <span class="keyword">return</span> classLabel</div></pre></td></tr></table></figure>
-<h2 id="使用算法：决策数的存储"><a href="#使用算法：决策数的存储" class="headerlink" title="使用算法：决策数的存储"></a>使用算法：决策数的存储</h2><p>使用pickle模块存储决策树，序列化对象可以在磁盘上保存对象。并且在需要的时候读取。任何对象都支持序列化操作。</p>
-<h2 id="sklearn-决策树分类"><a href="#sklearn-决策树分类" class="headerlink" title="sklearn 决策树分类"></a>sklearn 决策树分类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">In [1]: from sklearn import tree</div><div class="line"></div><div class="line">In [2]: x = [[0,0], [1, 1]]</div><div class="line"></div><div class="line">In [3]: y = [0, 1]</div><div class="line"></div><div class="line">In [4]: clf = tree.DecisionTreeClassifier(</div><div class="line">   ...: )</div><div class="line"></div><div class="line">In [5]: clf.fit(x, y)</div><div class="line">Out[5]:</div><div class="line">DecisionTreeClassifier(class_weight=None, criterion=&apos;gini&apos;, max_depth=None,</div><div class="line">            max_features=None, max_leaf_nodes=None,</div><div class="line">            min_impurity_split=1e-07, min_samples_leaf=1,</div><div class="line">            min_samples_split=2, min_weight_fraction_leaf=0.0,</div><div class="line">            presort=False, random_state=None, splitter=&apos;best&apos;)</div><div class="line"></div><div class="line">In [6]: clf.predict([0,0])</div><div class="line">Out[6]: array([0])</div></pre></td></tr></table></figure>
-<h3 id="调节参数提高准确率"><a href="#调节参数提高准确率" class="headerlink" title="调节参数提高准确率"></a>调节参数提高准确率</h3><p><code>min_samples_split</code> 最少分割样本,分割的最小的样本数量</p>
-<p><img src="/2014/11/19/machinelearning/2014-12-09-决策树/54c4eac6875702c2fd379213eb455ecc.png" alt=""></p>
-<p><img src="/2014/11/19/machinelearning/2014-12-09-决策树/3a7547780fc77d84e53236bd39661fa5.png" alt="决策边界简单，精确度越高"></p>
-<h2 id="决策树优缺点"><a href="#决策树优缺点" class="headerlink" title="决策树优缺点"></a>决策树优缺点</h2><p>缺点： 容易过度拟合</p>
-
-          
+          决策树决策数的构造熵和信息增益​        划分数据集的大原则是：将无序的数据变得更加有序。划分数据的方式有很多种，但是每种都有相应的优缺点。组织杂乱无章数据的一种方式就是使用信息论度量信息。在划分数据集之前之后信息发生的变化称为信息增益.集合信息的度量方式称为香农熵或者简称熵如果待分类的事物可
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/11/19/machinelearning/2014-12-09-决策树/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1100,9 +1030,16 @@
       
         
           
-            <p>没事乱写写，技术在于折腾，每天进步一点点!</p>
+          没事乱写写，技术在于折腾，每天进步一点点!
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/03/19/FristBlog/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
