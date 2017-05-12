@@ -1818,7 +1818,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://fsxchen.github.io/2016/07/17/linuxtcp/2016_07_17_unix-network(2)-地址以及字符串操作函数/">
+    <link itemprop="mainEntityOfPage" href="http://fsxchen.github.io/2016/07/17/linuxtcp/2016_07_17_unix-network(3)-基本socket/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="arron">
@@ -1837,7 +1837,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/07/17/linuxtcp/2016_07_17_unix-network(2)-地址以及字符串操作函数/" itemprop="url">Unix-Network(2)-地址以及字符串操作函数</a></h1>
+                <a class="post-title-link" href="/2016/07/17/linuxtcp/2016_07_17_unix-network(3)-基本socket/" itemprop="url">Unix-Network(3)-基本socket</a></h1>
         
 
         <div class="post-meta">
@@ -1889,7 +1889,7 @@
 
           
           
-             <span id="/2016/07/17/linuxtcp/2016_07_17_unix-network(2)-地址以及字符串操作函数/" class="leancloud_visitors" data-flag-title="Unix-Network(2)-地址以及字符串操作函数">
+             <span id="/2016/07/17/linuxtcp/2016_07_17_unix-network(3)-基本socket/" class="leancloud_visitors" data-flag-title="Unix-Network(3)-基本socket">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1919,16 +1919,40 @@
       
         
           
-            <h1 id="套接字地址结构"><a href="#套接字地址结构" class="headerlink" title="套接字地址结构"></a>套接字地址结构</h1><h2 id="IPV4套接字地址结构"><a href="#IPV4套接字地址结构" class="headerlink" title="IPV4套接字地址结构"></a>IPV4套接字地址结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">struct in_addr &#123;</div><div class="line">    in_addr_t s_addr;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">struct sockaddr_in &#123;</div><div class="line">    uint8_t         sin_len;</div><div class="line">    sa_family_t     sin_family;</div><div class="line">    in_port_t       sin_port;</div><div class="line">    struct in_addr  sin_addr;</div><div class="line"></div><div class="line">    char            sin_zero[8];</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h2 id="通用套接字"><a href="#通用套接字" class="headerlink" title="通用套接字"></a>通用套接字</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">## 字节排序函数</div><div class="line">大端机和小端机</div></pre></td></tr></table></figure>
-<p>uint16_t htons(uint16_t host16bitvalue);<br>uint32_t htonl(uint32_t host32bitvalue);</p>
-<p>uint16_t htonl(uint16_t net16bitvalue);<br>uint32_t ntohl(uint32_t net32bitvalue);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 网络字节序和主机字节序</div><div class="line"></div><div class="line">## 字节操纵函数</div><div class="line"></div><div class="line">Berkeley的函数</div></pre></td></tr></table></figure></p>
-<p>#include <strings.h><br>void bzero(void <em>dest, size_t nbytes);<br>void bcopy(const void </em>src, void <em>dest, size_t nbytes);<br>int bcmp(const void </em>ptrl, const void *ptr2, size_t nbytes);</strings.h></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">ANSI C的函数</div></pre></td></tr></table></figure>
-<p>void <em>memset(void </em>dest, int c, size_t len);<br>void <em>memcpy(void </em>dest, const void <em>src, size_t nbytes);<br>int memcmp(const void </em>ptrl, const void *ptr2, size_t nbytes);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 两组地址转换函数</div></pre></td></tr></table></figure></p>
-<p>int inet_aton(const char <em>strptr, struct in_addr </em>addrptr);<br>in_addr_t inet_addr(const char <em>strptr);<br>char </em>inet_ntoa(struct in_addr inaddr);<br>```</p>
-<h2 id="readn-writen和readline函数"><a href="#readn-writen和readline函数" class="headerlink" title="readn, writen和readline函数"></a>readn, writen和readline函数</h2><p>字节流套接字（例如<code>TCP</code>套接字）上的<code>read</code>和<code>write</code>函数所表现的行为不同于通常的文件I/O。字节流套接字上调用<code>read</code>或<code>write</code>输入或输出的字节数可能比请求的数量少，然而这不是出错的状态。这个现象的原因在于内核中用于套接字的缓冲区可能已经达到了极限。</p>
-
+            <h1 id="基本socket"><a href="#基本socket" class="headerlink" title="基本socket"></a>基本socket</h1><h2 id="socket函数"><a href="#socket函数" class="headerlink" title="socket函数"></a><code>socket</code>函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SYNOPSIS</div><div class="line">     #include &lt;sys/socket.h&gt;</div><div class="line"></div><div class="line">     int</div><div class="line">     socket(int domain, int type, int protocol);</div></pre></td></tr></table></figure>
+<p>family: 协议地址族</p>
+<p><code>AF_xxx</code>:表示地址族<br><code>PF_xxx</code>:表示协议族<br>基本上都是采用的<code>AF_xxx</code></p>
+<h2 id="connect函数"><a href="#connect函数" class="headerlink" title="connect函数"></a><code>connect</code>函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">SYNOPSIS</div><div class="line">     #include &lt;sys/types.h&gt;</div><div class="line">     #include &lt;sys/socket.h&gt;</div><div class="line"></div><div class="line">     int</div><div class="line">     connect(int socket, const struct sockaddr *address,</div><div class="line">         socklen_t address_len);</div></pre></td></tr></table></figure>
+<p>如果是TCP套接字，调用<code>connect</code>将发起三次握手，建立成功或出错返回，出错的情况如下：</p>
+<ul>
+<li><p>若TCP客户端没有收到SYN分节的响应，则返回<code>TIMEDOUT</code>错误。举例来说，调用<code>connect</code>函数时，发送一个<code>SYN</code>包后若无响应则等待6s后再发一个，若无响应则再等待24s。若总共75s时仍未收到则出现本错误。</p>
+</li>
+<li><p>若对客户端的｀SYN｀的响应是<code>RST</code>,则表明该服务器主机在我们指定的端口没有进程在等待与之连接。这是一种硬错误，客户端一旦收到<code>RST</code>，则马上返回<code>ECONNREFUSED</code>错误。</p>
+<p>  <strong>产生<code>RST</code>的三个条件：一是目的地为某端口的<code>SYN</code>到达服务器，可是服务器端口并未开放；二是TCP想取消一个已有连接；三是TCP接收到一个根本不存在的连接上的分节。</strong></p>
+</li>
+<li>若客户端发出的<code>RST</code>在中间的某个路由器引发了一个“destination unreachable”的ICMP错误，则认为这是一种软错误。客户机内核保存该消息，然后就像情况一一样继续发送，到规定时间（有的是75s）仍未响应，则把保存的消息作为<code>EHOSTUNREACH</code>或<code>ENETUNREACH</code>返回给进程。  </li>
+</ul>
+<p><strong>端口扫描原理分析</strong><br>NMAP端口扫描<br>TCP扫描的原理主要是三次握手。这种扫描也称为SYN扫描。Scanner向主机发起SYN请求。如果服务器回复SYN、ACK，这说明此端口开放。如果回复TCP、RST，表示端口未开放。如果没有回复，那么就可能没有这个服务器，或者数据包被防火墙丢弃。</p>
+<p>UDP的扫描原理：由于UDP没有三次握手，所以UDP的扫描原理不一样。同样在Scanner发起一次UDP请求。如果服务器回复ICMP的端口不可达。则说明该服务器的此端口关闭。如果没有回应，这说明：一、服务器开放该端口。二、服务器主机不存在。三、被防火墙等设备丢弃。</p>
+<p>ZMAP端口扫描</p>
+<h2 id="bind函数"><a href="#bind函数" class="headerlink" title="bind函数"></a><code>bind</code>函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SYNOPSIS</div><div class="line">     #include &lt;sys/socket.h&gt;</div><div class="line"></div><div class="line">     int</div><div class="line">     bind(int socket, const struct sockaddr *address, socklen_t address_len);</div></pre></td></tr></table></figure>
+<p>第二个参数是一个指向特定于协议的地址结构的指针，第三个为该地址结构的长度。<br>返回的常见错误<code>EADDRINUSE</code>，地址已经被使用。</p>
+<h2 id="listen函数"><a href="#listen函数" class="headerlink" title="listen函数"></a><code>listen</code>函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#include &lt;sys/socket.h&gt;</div><div class="line"></div><div class="line">     int</div><div class="line">     listen(int socket, int backlog);</div></pre></td></tr></table></figure>
+<p>为了理解<code>bloglog</code>参数，我们必须认识到内核为任何一个给定的监听的套结字维护两个队列：</p>
+<ul>
+<li><p>1) 未完成连接队列，每个这样的<code>SYN</code>分节对应其中一项:已由某个客户端发出并到达服务器，而服务器正在等待完成相应的三次握手过程。这些套接字处于<code>SYN_RCVD</code>状态。</p>
+</li>
+<li><p>2）已完成连接队列，每个已完成<code>TCP</code>三路握手过程的客户端对应其中一项。这些套结字处于<code>ESTABLISHED</code>状态。</p>
+</li>
+</ul>
+<p>两队列之和不操过blacklog。</p>
+<h2 id="accept函数"><a href="#accept函数" class="headerlink" title="accept函数"></a><code>accept</code>函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SYNOPSIS</div><div class="line">     #include &lt;sys/socket.h&gt;</div><div class="line">     int</div><div class="line">     accept(int socket, struct sockaddr *restrict address, socklen_t *restrict address_len);</div></pre></td></tr></table></figure>
+<p>参数<code>cliaddr</code>和<code>addrlen</code>用来返回已连接的对端进程的协议地址，调用前，我们将由<code>*addrlen</code>所引用的整数值置为有<code>cliaddr</code>所指的套接字地址结构的长度，返回时，该整数值即为内核存放该套接字地址结构内的确切长度。所以<code>address_len</code>是一个值结果参数。</p>
+<p>如果<code>accept</code>成功，那么其返回值是有内核自动生成的一个全新的描述符。</p>
+<p>如果我们队客户协议地址不感兴趣，可以把后面两个参数均设置成空指针。</p>
+<h2 id="fork和exec函数"><a href="#fork和exec函数" class="headerlink" title="fork和exec函数"></a><code>fork</code>和<code>exec</code>函数</h2><h2 id="并发服务器"><a href="#并发服务器" class="headerlink" title="并发服务器"></a>并发服务器</h2><p>一个最简单的并发服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">for(;;) &#123;</div><div class="line">    connfd = accept(listen, ...);</div><div class="line">    if ((pid = fork()) == 0) &#123;</div><div class="line">        close(listenfd);</div><div class="line">        doit(connfd);</div><div class="line">        close(connfd);</div><div class="line">    &#125;</div><div class="line">    close(connfd);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>对一个套接字调用colse方法，会导致内核发送一个<code>FIN</code>包，但是父进程调用了<code>close(connfd)</code>,并没有发送<code>FIN</code>.<br>因为每个文件或套接字都由一个引用计数，引用计数放在文件表项中维护。</p>
+<h2 id="getsockname和getpeername函数"><a href="#getsockname和getpeername函数" class="headerlink" title="getsockname和getpeername函数"></a><code>getsockname</code>和<code>getpeername</code>函数</h2>
           
         
       

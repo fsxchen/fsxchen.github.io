@@ -214,17 +214,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Unix-Network(2)-地址以及字符串操作函数]]></title>
-    <url>%2F2016%2F07%2F17%2Flinuxtcp%2F2016_07_17_unix-network(2)-%E5%9C%B0%E5%9D%80%E4%BB%A5%E5%8F%8A%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B0%2F</url>
-    <content type="text"><![CDATA[套接字地址结构IPV4套接字地址结构123456789101112struct in_addr &#123; in_addr_t s_addr;&#125;;struct sockaddr_in &#123; uint8_t sin_len; sa_family_t sin_family; in_port_t sin_port; struct in_addr sin_addr; char sin_zero[8];&#125;; 通用套接字1234```## 字节排序函数大端机和小端机 uint16_t htons(uint16_t host16bitvalue);uint32_t htonl(uint32_t host32bitvalue); uint16_t htonl(uint16_t net16bitvalue);uint32_t ntohl(uint32_t net32bitvalue);123456## 网络字节序和主机字节序## 字节操纵函数Berkeley的函数 #include void bzero(void dest, size_t nbytes);void bcopy(const void src, void dest, size_t nbytes);int bcmp(const void ptrl, const void *ptr2, size_t nbytes); 12ANSI C的函数 void memset(void dest, int c, size_t len);void memcpy(void dest, const void src, size_t nbytes);int memcmp(const void ptrl, const void *ptr2, size_t nbytes);12## 两组地址转换函数 int inet_aton(const char strptr, struct in_addr addrptr);in_addr_t inet_addr(const char strptr);char inet_ntoa(struct in_addr inaddr);``` readn, writen和readline函数字节流套接字（例如TCP套接字）上的read和write函数所表现的行为不同于通常的文件I/O。字节流套接字上调用read或write输入或输出的字节数可能比请求的数量少，然而这不是出错的状态。这个现象的原因在于内核中用于套接字的缓冲区可能已经达到了极限。]]></content>
-      <categories>
-        <category>Read</category>
-      </categories>
-      <tags>
-        <tag>Misc</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Unix-Network(3)-基本socket]]></title>
     <url>%2F2016%2F07%2F17%2Flinuxtcp%2F2016_07_17_unix-network(3)-%E5%9F%BA%E6%9C%ACsocket%2F</url>
     <content type="text"><![CDATA[基本socketsocket函数12345SYNOPSIS #include &lt;sys/socket.h&gt; int socket(int domain, int type, int protocol); family: 协议地址族 AF_xxx:表示地址族PF_xxx:表示协议族基本上都是采用的AF_xxx connect函数1234567SYNOPSIS #include &lt;sys/types.h&gt; #include &lt;sys/socket.h&gt; int connect(int socket, const struct sockaddr *address, socklen_t address_len); 如果是TCP套接字，调用connect将发起三次握手，建立成功或出错返回，出错的情况如下： 若TCP客户端没有收到SYN分节的响应，则返回TIMEDOUT错误。举例来说，调用connect函数时，发送一个SYN包后若无响应则等待6s后再发一个，若无响应则再等待24s。若总共75s时仍未收到则出现本错误。 若对客户端的｀SYN｀的响应是RST,则表明该服务器主机在我们指定的端口没有进程在等待与之连接。这是一种硬错误，客户端一旦收到RST，则马上返回ECONNREFUSED错误。 产生RST的三个条件：一是目的地为某端口的SYN到达服务器，可是服务器端口并未开放；二是TCP想取消一个已有连接；三是TCP接收到一个根本不存在的连接上的分节。 若客户端发出的RST在中间的某个路由器引发了一个“destination unreachable”的ICMP错误，则认为这是一种软错误。客户机内核保存该消息，然后就像情况一一样继续发送，到规定时间（有的是75s）仍未响应，则把保存的消息作为EHOSTUNREACH或ENETUNREACH返回给进程。 端口扫描原理分析NMAP端口扫描TCP扫描的原理主要是三次握手。这种扫描也称为SYN扫描。Scanner向主机发起SYN请求。如果服务器回复SYN、ACK，这说明此端口开放。如果回复TCP、RST，表示端口未开放。如果没有回复，那么就可能没有这个服务器，或者数据包被防火墙丢弃。 UDP的扫描原理：由于UDP没有三次握手，所以UDP的扫描原理不一样。同样在Scanner发起一次UDP请求。如果服务器回复ICMP的端口不可达。则说明该服务器的此端口关闭。如果没有回应，这说明：一、服务器开放该端口。二、服务器主机不存在。三、被防火墙等设备丢弃。 ZMAP端口扫描 bind函数12345SYNOPSIS #include &lt;sys/socket.h&gt; int bind(int socket, const struct sockaddr *address, socklen_t address_len); 第二个参数是一个指向特定于协议的地址结构的指针，第三个为该地址结构的长度。返回的常见错误EADDRINUSE，地址已经被使用。 listen函数1234#include &lt;sys/socket.h&gt; int listen(int socket, int backlog); 为了理解bloglog参数，我们必须认识到内核为任何一个给定的监听的套结字维护两个队列： 1) 未完成连接队列，每个这样的SYN分节对应其中一项:已由某个客户端发出并到达服务器，而服务器正在等待完成相应的三次握手过程。这些套接字处于SYN_RCVD状态。 2）已完成连接队列，每个已完成TCP三路握手过程的客户端对应其中一项。这些套结字处于ESTABLISHED状态。 两队列之和不操过blacklog。 accept函数1234SYNOPSIS #include &lt;sys/socket.h&gt; int accept(int socket, struct sockaddr *restrict address, socklen_t *restrict address_len); 参数cliaddr和addrlen用来返回已连接的对端进程的协议地址，调用前，我们将由*addrlen所引用的整数值置为有cliaddr所指的套接字地址结构的长度，返回时，该整数值即为内核存放该套接字地址结构内的确切长度。所以address_len是一个值结果参数。 如果accept成功，那么其返回值是有内核自动生成的一个全新的描述符。 如果我们队客户协议地址不感兴趣，可以把后面两个参数均设置成空指针。 fork和exec函数并发服务器一个最简单的并发服务器123456789for(;;) &#123; connfd = accept(listen, ...); if ((pid = fork()) == 0) &#123; close(listenfd); doit(connfd); close(connfd); &#125; close(connfd);&#125; 对一个套接字调用colse方法，会导致内核发送一个FIN包，但是父进程调用了close(connfd),并没有发送FIN.因为每个文件或套接字都由一个引用计数，引用计数放在文件表项中维护。 getsockname和getpeername函数]]></content>
@@ -233,6 +222,17 @@
       </categories>
       <tags>
         <tag>network program</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Unix-Network(2)-地址以及字符串操作函数]]></title>
+    <url>%2F2016%2F07%2F17%2Flinuxtcp%2F2016_07_17_unix-network(2)-%E5%9C%B0%E5%9D%80%E4%BB%A5%E5%8F%8A%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[套接字地址结构IPV4套接字地址结构123456789101112struct in_addr &#123; in_addr_t s_addr;&#125;;struct sockaddr_in &#123; uint8_t sin_len; sa_family_t sin_family; in_port_t sin_port; struct in_addr sin_addr; char sin_zero[8];&#125;; 通用套接字1234```## 字节排序函数大端机和小端机 uint16_t htons(uint16_t host16bitvalue);uint32_t htonl(uint32_t host32bitvalue); uint16_t htonl(uint16_t net16bitvalue);uint32_t ntohl(uint32_t net32bitvalue);123456## 网络字节序和主机字节序## 字节操纵函数Berkeley的函数 #include void bzero(void dest, size_t nbytes);void bcopy(const void src, void dest, size_t nbytes);int bcmp(const void ptrl, const void *ptr2, size_t nbytes); 12ANSI C的函数 void memset(void dest, int c, size_t len);void memcpy(void dest, const void src, size_t nbytes);int memcmp(const void ptrl, const void *ptr2, size_t nbytes);12## 两组地址转换函数 int inet_aton(const char strptr, struct in_addr addrptr);in_addr_t inet_addr(const char strptr);char inet_ntoa(struct in_addr inaddr);``` readn, writen和readline函数字节流套接字（例如TCP套接字）上的read和write函数所表现的行为不同于通常的文件I/O。字节流套接字上调用read或write输入或输出的字节数可能比请求的数量少，然而这不是出错的状态。这个现象的原因在于内核中用于套接字的缓冲区可能已经达到了极限。]]></content>
+      <categories>
+        <category>Read</category>
+      </categories>
+      <tags>
+        <tag>Misc</tag>
       </tags>
   </entry>
   <entry>
@@ -335,17 +335,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[OAuth授权认证]]></title>
-    <url>%2F2016%2F04%2F27%2FHTTP%2F2016_04_27_oauth%E6%8E%88%E6%9D%83%E8%AE%A4%E8%AF%81%2F</url>
-    <content type="text"></content>
-      <categories>
-        <category>Misc</category>
-      </categories>
-      <tags>
-        <tag>Misc</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[python实现python解释器]]></title>
     <url>%2F2016%2F04%2F27%2Fpython%2F2016_04_27_python%E5%AE%9E%E7%8E%B0python%E8%A7%A3%E9%87%8A%E5%99%A8%2F</url>
     <content type="text"><![CDATA[Python实现的Python解释器原文地址https://github.com/aosabook/500lines/blob/b5ee54148551b2e71991cf0a4858d86b671f6e52/interpreter/interpreter.markdown 项目直达这是一个500行实现的一个例子.该文章的中文翻译地址 介绍Byterun is a Python interpreter implemented in Python. Through my work on Byterun, I was surprised and delighted to discover that the fundamental structure of the Python interpreter fits easily into the 500-line size restriction. This chapter will walk through the structure of the interpreter and give you enough context to explore it further. The goal is not to explain everything there is to know about interpreters—like so many interesting areas of programming and computer science, you could devote years to developing a deep understanding of the topic. Byterun was written by Ned Batchelder and myself, building on the work of Paul Swartz. Its structure is similar to the primary implementation of Python, CPython, so understanding Byterun will help you understand interpreters in general and the CPython interpreter in particular. (If you don’t know which Python you’re using, it’s probably CPython.) Despite its short length, Byterun is capable of running most simple Python programs[^versions]. [^versions]: This chapter is based on bytecode produced by Python 3.5 or earlier, as there were some changes to the bytecode specification in Python 3.6. Python解释器解释器: 指的就是REPL(A read–eval–print loop ) 在解释器接手之前，Python会执行其他3个步骤：词法分析，语法解析和编译。这三步合起来把源代码转换成code object,它包含着解释器可以理解的指令。而解释器的工作就是解释code object中的指令。 A Python Python Interpretergcc就是C语言写的 Building an InterpreterPython解释器是一个虚拟机,模拟真实计算机的软件。我们这个虚拟机是栈机器，它用几个栈来完成操作（与之相对的是寄存器机器，它从特定的内存地址读写数据）。Python解释器是一个字节码解释器：它的输入是一些命令集合称作字节码。当你写Python代码时，词法分析器，语法解析器和编译器生成code object让解释器去操作。每个code object都包含一个要被执行的指令集合 — 它就是字节码 — 另外还有一些解释器需要的信息。字节码是Python代码的一个中间层表示：它以一种解释器可以理解的方式来表示源代码。这和汇编语言作为C语言和机器语言的中间表示很类似。 A Tiny Interpreter理解3个指令LOAD_VALUEADD_TOW_VALUEPRINT_ANSWER 假设你输入的是17+5 生成123456what_to_execute = &#123; &quot;instructions&quot;: [(&quot;LOAD_VALUE&quot;, 0), # the first number (&quot;LOAD_VALUE&quot;, 1), # the second number (&quot;ADD_TWO_VALUES&quot;, None), (&quot;PRINT_ANSWER&quot;, None)], &quot;numbers&quot;: [7, 5] &#125; Python解释器是一个栈机器，所以它必须通过操作栈来完成这个加法。(Figure 1.1)解释器先执行第一条指令，LOAD_VALUE，把第一个数压到栈中。接着它把第二个数也压到栈中。然后，第三条指令，ADD_TWO_VALUES,先把两个数从栈中弹出，加起来，再把结果压入栈中。最后一步，把结果弹出并输出。 12345678910111213141516class Interpreter: def __init__(self): self.stack = [] def LOAD_VALUE(self, number): self.stack.append(number) def PRINT_ANSWER(self): answer = self.stack.pop() print(answer) def ADD_TWO_VALUES(self): first_num = self.stack.pop() second_num = self.stack.pop() total = first_num + second_num self.stack.append(total) 上面3个方法完成了解释器的3个指令. 1234567891011def run_code(self, what_to_execute): instructions = what_to_execute[&quot;instructions&quot;] numbers = what_to_execute[&quot;numbers&quot;] for each_step in instructions: instruction, argument = each_step if instruction == &quot;LOAD_VALUE&quot;: number = numbers[argument] self.LOAD_VALUE(number) elif instruction == &quot;ADD_TWO_VALUES&quot;: self.ADD_TWO_VALUES() elif instruction == &quot;PRINT_ANSWER&quot;: 变量1234567891011what_to_execute = &#123; &quot;instructions&quot;: [(&quot;LOAD_VALUE&quot;, 0), (&quot;STORE_NAME&quot;, 0), (&quot;LOAD_VALUE&quot;, 1), (&quot;STORE_NAME&quot;, 1), (&quot;LOAD_NAME&quot;, 0), (&quot;LOAD_NAME&quot;, 1), (&quot;ADD_TWO_VALUES&quot;, None), (&quot;PRINT_ANSWER&quot;, None)], &quot;numbers&quot;: [1, 2], &quot;names&quot;: [&quot;a&quot;, &quot;b&quot;] &#125; 变量 1234567891011121314151617181920212223242526272829303132333435363738394041class Interpreter: def __init__(self): self.stack = [] self.environment = &#123;&#125; def STORE_NAME(self, name): val = self.stack.pop() self.environment[name] = val def LOAD_NAME(self, name): val = self.environment[name] self.stack.append(val) def parse_argument(self, instruction, argument, what_to_execute): &quot;&quot;&quot; Understand what the argument to each instruction means.&quot;&quot;&quot; numbers = [&quot;LOAD_VALUE&quot;] names = [&quot;LOAD_NAME&quot;, &quot;STORE_NAME&quot;] if instruction in numbers: argument = what_to_execute[&quot;numbers&quot;][argument] elif instruction in names: argument = what_to_execute[&quot;names&quot;][argument] return argument def run_code(self, what_to_execute): instructions = what_to_execute[&quot;instructions&quot;] for each_step in instructions: instruction, argument = each_step argument = self.parse_argument(instruction, argument, what_to_execute) if instruction == &quot;LOAD_VALUE&quot;: self.LOAD_VALUE(argument) elif instruction == &quot;ADD_TWO_VALUES&quot;: self.ADD_TWO_VALUES() elif instruction == &quot;PRINT_ANSWER&quot;: self.PRINT_ANSWER() elif instruction == &quot;STORE_NAME&quot;: self.STORE_NAME(argument) elif instruction == &quot;LOAD_NAME&quot;: self.LOAD_NAME(argument) 可以看到run_code的方法已经很冗长了.使用python的动态方法查找 12345678910def execute(self, what_to_execute): instructions = what_to_execute[&quot;instructions&quot;] for each_step in instructions: instruction, argument = each_step argument = self.parse_argument(instruction, argument, what_to_execute) bytecode_method = getattr(self, instruction) if argument is None: bytecode_method() else: bytecode_method(argument) Real Python Bytecodepython字节码 1234567&gt;&gt;&gt; def cond():... x = 3... if x &lt; 5:... return &apos;yes&apos;... else:... return &apos;no&apos;... 使用cond.__code__可以看到其字节码,但是看上去难以理解 123456&gt;&gt;&gt; cond.__code__.co_code # the bytecode as raw bytesb&apos;d\x01\x00&#125;\x00\x00|\x00\x00d\x02\x00k\x00\x00r\x16\x00d\x03\x00Sd\x04\x00Sd\x00 \x00S&apos;&gt;&gt;&gt; list(cond.__code__.co_code) # the bytecode as numbers[100, 1, 0, 125, 0, 0, 124, 0, 0, 100, 2, 0, 107, 0, 0, 114, 22, 0, 100, 3, 0, 83, 100, 4, 0, 83, 100, 0, 0, 83] 使用标准库中的dis module来解决这个问题. 12345678910111213141516&gt;&gt;&gt; dis.dis(cond) 2 0 LOAD_CONST 1 (3) 3 STORE_FAST 0 (x) 3 6 LOAD_FAST 0 (x) 9 LOAD_CONST 2 (5) 12 COMPARE_OP 0 (&lt;) 15 POP_JUMP_IF_FALSE 22 4 18 LOAD_CONST 3 (&apos;yes&apos;) 21 RETURN_VALUE 6 &gt;&gt; 22 LOAD_CONST 4 (&apos;no&apos;) 25 RETURN_VALUE 26 LOAD_CONST 0 (None) 29 RETURN_VALUE 第一列的数字标示对应的源码行数第二列数字是字节码的索引第三列是指令本省对应的名字第四列标示之列那个 参数第五列标示关于参数的提示 Conditrionals and Loops12345678910111213141516171819202122232425&gt;&gt;&gt; def loop():... x = 1... while x &lt; 5:... x = x + 1... return x...&gt;&gt;&gt; dis.dis(loop) 2 0 LOAD_CONST 1 (1) 3 STORE_FAST 0 (x) 3 6 SETUP_LOOP 26 (to 35) &gt;&gt; 9 LOAD_FAST 0 (x) 12 LOAD_CONST 2 (5) 15 COMPARE_OP 0 (&lt;) 18 POP_JUMP_IF_FALSE 34 4 21 LOAD_FAST 0 (x) 24 LOAD_CONST 1 (1) 27 BINARY_ADD 28 STORE_FAST 0 (x) 31 JUMP_ABSOLUTE 9 &gt;&gt; 34 POP_BLOCK 5 &gt;&gt; 35 LOAD_FAST 0 (x) 38 RETURN_VALUE Explore Bytecode我鼓励你用dis.dis来试试你自己写的函数。一些有趣的问题值得探索： 对解释器而言for循环和while循环有什么不同？ 能不能写出两个不同函数，却能产生相同的字节码? elif是怎么工作的？列表推导呢？ Frames一个frame是一些信息的集合和代码的执行上下文。frames在Python代码执行时动态的创建和销毁。每个frame对应函数的一次调用。— 所以每个frame只有一个code object与之关联，而一个code object可以很多frame。比如你有一个函数递归的调用自己10次，这时有11个frame。总的来说，Python程序的每个作用域有一个frame，比如，每个module，每个函数调用，每个类定义。 ex: 12345678910&gt;&gt;&gt; def bar(y):... z = y + 3 # &lt;--- (3) ... and the interpreter is here.... return z...&gt;&gt;&gt; def foo():... a = 1... b = 2... return a + bar(b) # &lt;--- (2) ... which is returning a call to bar ......&gt;&gt;&gt; foo() # &lt;--- (1) We&apos;re in the middle of a call to foo ... 在，解释器在foo函数的调用中。调用栈中有3个fram：一个对应于module层，一个对应函数foo,别一个对应函数bar。(Figure 1.2)一旦bar返回，与它对应的frame就会从调用栈中弹出并丢弃。 我惊讶的发现Python真的很少依赖于每个frame有一个数据栈这个特性。在Python中几乎所有的操作都会清空数据栈，所以所有的frame公用一个数据栈是没问题的。在上面的例子中，当bar执行完后，它的数据栈为空。即使foo公用这一个栈，它的值也不会受影响。然而，对应生成器，一个关键的特点是它能暂停一个frame的执行，返回到其他的frame，一段时间后它能返回到原来的frame，并以它离开时的同样的状态继续执行。]]></content>
@@ -354,6 +343,17 @@
       </categories>
       <tags>
         <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[OAuth授权认证]]></title>
+    <url>%2F2016%2F04%2F27%2FHTTP%2F2016_04_27_oauth%E6%8E%88%E6%9D%83%E8%AE%A4%E8%AF%81%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>Misc</category>
+      </categories>
+      <tags>
+        <tag>Misc</tag>
       </tags>
   </entry>
   <entry>
@@ -433,7 +433,7 @@
       </categories>
       <tags>
         <tag>Python</tag>
-        <tag>oop</tag>
+        <tag>OOP</tag>
       </tags>
   </entry>
   <entry>
