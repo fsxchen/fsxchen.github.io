@@ -100,21 +100,21 @@
 <meta name="keywords" content="数据挖掘">
 <meta property="og:type" content="article">
 <meta property="og:title" content="决策树">
-<meta property="og:url" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/index.html">
+<meta property="og:url" content="http://blog.kexke.com/2014/11/19/machinelearning/2014-12-09-决策树/index.html">
 <meta property="og:site_name" content="CouCou&#39;s Blog">
 <meta property="og:description" content="决策树决策数的构造熵和信息增益​        划分数据集的大原则是：将无序的数据变得更加有序。划分数据的方式有很多种，但是每种都有相应的优缺点。组织杂乱无章数据的一种方式就是使用信息论度量信息。在划分数据集之前之后信息发生的变化称为信息增益.集合信息的度量方式称为香农熵或者简称熵如果待分类的事物可能划分在多个分类之中，则符号$$x_{i}$$的信息定义为 $$l(x{i})=-\log{2}p(">
-<meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/68b64b56389482cd68c139d2fee78897.png">
-<meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/1f8f79605d845169ea08d2090efbecad.png">
-<meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/c1860ef516bc123d8d80719c961c376a.png">
-<meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/c8d8c4c0a44f0a7e19d9de1fdcae0101.png">
-<meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/a5e03fe04ec3b27d730c916f37d4c78f.png">
-<meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/54c4eac6875702c2fd379213eb455ecc.png">
-<meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/3a7547780fc77d84e53236bd39661fa5.png">
+<meta property="og:image" content="http://blog.kexke.com/2014/11/19/machinelearning/2014-12-09-决策树/68b64b56389482cd68c139d2fee78897.png">
+<meta property="og:image" content="http://blog.kexke.com/2014/11/19/machinelearning/2014-12-09-决策树/1f8f79605d845169ea08d2090efbecad.png">
+<meta property="og:image" content="http://blog.kexke.com/2014/11/19/machinelearning/2014-12-09-决策树/c1860ef516bc123d8d80719c961c376a.png">
+<meta property="og:image" content="http://blog.kexke.com/2014/11/19/machinelearning/2014-12-09-决策树/c8d8c4c0a44f0a7e19d9de1fdcae0101.png">
+<meta property="og:image" content="http://blog.kexke.com/2014/11/19/machinelearning/2014-12-09-决策树/a5e03fe04ec3b27d730c916f37d4c78f.png">
+<meta property="og:image" content="http://blog.kexke.com/2014/11/19/machinelearning/2014-12-09-决策树/54c4eac6875702c2fd379213eb455ecc.png">
+<meta property="og:image" content="http://blog.kexke.com/2014/11/19/machinelearning/2014-12-09-决策树/3a7547780fc77d84e53236bd39661fa5.png">
 <meta property="og:updated_time" content="2017-05-10T07:39:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="决策树">
 <meta name="twitter:description" content="决策树决策数的构造熵和信息增益​        划分数据集的大原则是：将无序的数据变得更加有序。划分数据的方式有很多种，但是每种都有相应的优缺点。组织杂乱无章数据的一种方式就是使用信息论度量信息。在划分数据集之前之后信息发生的变化称为信息增益.集合信息的度量方式称为香农熵或者简称熵如果待分类的事物可能划分在多个分类之中，则符号$$x_{i}$$的信息定义为 $$l(x{i})=-\log{2}p(">
-<meta name="twitter:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/68b64b56389482cd68c139d2fee78897.png">
+<meta name="twitter:image" content="http://blog.kexke.com/2014/11/19/machinelearning/2014-12-09-决策树/68b64b56389482cd68c139d2fee78897.png">
 
 
 
@@ -142,7 +142,7 @@
 
 
 
-  <link rel="canonical" href="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/"/>
+  <link rel="canonical" href="http://blog.kexke.com/2014/11/19/machinelearning/2014-12-09-决策树/"/>
 
 
 
@@ -321,7 +321,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/">
+    <link itemprop="mainEntityOfPage" href="http://blog.kexke.com/2014/11/19/machinelearning/2014-12-09-决策树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="arron">
@@ -385,6 +385,18 @@
           
 
           
+            
+            <!--noindex-->
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2014/11/19/machinelearning/2014-12-09-决策树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2014/11/19/machinelearning/2014-12-09-决策树/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+              <!--/noindex-->
             
           
 
@@ -596,6 +608,8 @@
           
   <div class="comments" id="comments">
     
+      <div id="hypercomments_widget"></div>
+    
   </div>
 
 
@@ -642,7 +656,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-count">57</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -664,7 +678,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -869,23 +883,33 @@
 
 	
 
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 90891, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+		_hcwp.push({widget:"Stream", widget_id: 90891, xid: "2014/11/19/machinelearning/2014-12-09-决策树/"});
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/90891/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
 
 
 
 
-  
 
 
-
-
-
-  
-
-
-
-
-
-  
 
 
 
