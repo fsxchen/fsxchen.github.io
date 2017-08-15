@@ -4,12 +4,12 @@
 
     
   <url>
-    <loc>http://fsxchen.github.io/2017/05/15/%E6%B0%B8%E6%81%92%E4%B9%8B%E8%93%9D%E5%8B%92%E7%B4%A2%E8%BD%AF%E4%BB%B6/</loc>
-    <lastmod>2017-05-15T02:48:00.000Z</lastmod>
+    <loc>http://fsxchen.github.io/2017/07/28/read/%E8%AF%BB%E3%80%8AYOU-%E8%BA%AB%E4%BD%93%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C%E3%80%8B/</loc>
+    <lastmod>2017-07-28T04:47:58.000Z</lastmod>
     <data>
         <display>
-        <title>永恒之蓝勒索软件</title>
-        <pubTime>2017-05-15T02:14:26.000Z</pubTime>
+        <title>读《YOU:身体使用手册》</title>
+        <pubTime>2017-07-28T02:25:29.000Z</pubTime>
         
          
            
@@ -19,8 +19,48 @@
 
     
   <url>
+    <loc>http://fsxchen.github.io/2017/07/19/machinelearning/%E6%B7%B1%E5%BA%A6%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2017-07-19T06:47:38.000Z</lastmod>
+    <data>
+        <display>
+        <title>深度神经网络</title>
+        <pubTime>2017-07-19T06:05:09.000Z</pubTime>
+        
+        <tag>深度学习</tag>
+         
+         
+           
+             
+              <breadCrumb title="MachineLearning" url="http://fsxchen.github.io/categories/MachineLearning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://fsxchen.github.io/2017/05/04/machinelearning/2017_05_04_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2017-07-19T06:01:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>深度学习</title>
+        <pubTime>2017-05-04T08:42:00.000Z</pubTime>
+        
+        <tag>深度学习</tag>
+         
+         
+           
+             
+              <breadCrumb title="MachineLearning" url="http://fsxchen.github.io/categories/MachineLearning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://fsxchen.github.io/2017/05/14/machinelearning/TensorFlow%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2017-05-14T03:04:28.000Z</lastmod>
+    <lastmod>2017-07-18T03:04:34.000Z</lastmod>
     <data>
         <display>
         <title>TensorFlow学习</title>
@@ -33,6 +73,21 @@
              
               <breadCrumb title="MachineLearning" url="http://fsxchen.github.io/categories/MachineLearning/"/>
           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://fsxchen.github.io/2017/05/15/%E6%B0%B8%E6%81%92%E4%B9%8B%E8%93%9D%E5%8B%92%E7%B4%A2%E8%BD%AF%E4%BB%B6/</loc>
+    <lastmod>2017-05-15T02:48:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>永恒之蓝勒索软件</title>
+        <pubTime>2017-05-15T02:14:26.000Z</pubTime>
+        
+         
+           
         </display>
     </data>
     </url>
@@ -928,26 +983,6 @@
         <pubTime>2017-05-04T05:33:00.000Z</pubTime>
         
         <tag>机器学习</tag>
-         
-         
-           
-             
-              <breadCrumb title="MachineLearning" url="http://fsxchen.github.io/categories/MachineLearning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://fsxchen.github.io/2017/05/04/machinelearning/2017_05_04_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2017-05-10T08:15:58.000Z</lastmod>
-    <data>
-        <display>
-        <title>深度学习</title>
-        <pubTime>2017-05-04T08:42:00.000Z</pubTime>
-        
-        <tag>深度学习</tag>
          
          
            
