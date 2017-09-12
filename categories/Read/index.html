@@ -97,11 +97,11 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="CouCou&#39;s Blog">
+<meta property="og:title" content="Arron&#39;s Blog">
 <meta property="og:url" content="http://fsxchen.github.io/categories/read/index.html">
-<meta property="og:site_name" content="CouCou&#39;s Blog">
+<meta property="og:site_name" content="Arron&#39;s Blog">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CouCou&#39;s Blog">
+<meta name="twitter:title" content="Arron&#39;s Blog">
 
 
 
@@ -135,7 +135,7 @@
 
 
 
-  <title>分类: read | CouCou's Blog</title>
+  <title>分类: read | Arron's Blog</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -171,7 +171,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">CouCou's Blog</span>
+        <span class="site-title">Arron's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -333,6 +333,34 @@
 
 
     
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2017/05/03/read/2017_05_03_读《聪明人用方格笔记本》/" itemprop="url">
+              
+                <span itemprop="name">读《聪明人用方格笔记本》</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-05-03T10:27:00+08:00"
+              content="2017-05-03" >
+          05-03
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+    
   </section>
 
   
@@ -379,7 +407,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1096,64 +1124,7 @@
 
 </body>
 </html>
-});
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("m8jV8mMvHNonbLFFLyojmGAU-gzGzoHsz", "hPxoaT3pdfhuxmfdD14JpCcP");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+EF = '.leancloud-visitors-count';
 
           if (results.length === 0) {
             $visitors.find(COUNT_CONTAINER_REF).text(0);
