@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Arron&#39;s Blog</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://fsxchen.github.io/"/>
+  <updated>2017-09-12T07:50:36.000Z</updated>
+  <id>http://fsxchen.github.io/</id>
+  
+  <author>
+    <name>arron</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>读《算法导论》-堆数据结构.md</title>
+    <link href="http://fsxchen.github.io/2017/09/08/read/%E8%AF%BB%E3%80%8A%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA%E3%80%8B-%E5%A0%86%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-md/"/>
+    <id>http://fsxchen.github.io/2017/09/08/read/读《算法导论》-堆数据结构-md/</id>
+    <published>2017-09-08T09:29:06.000Z</published>
+    <updated>2017-09-12T07:50:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>#读《算法导论》-堆数据结构</p><h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><h3 id="栈的操作"><a href="#栈的操作" class="headerlink" title="栈的操作"></a>栈的操作</h3><ul><li><p>INSERT 压入一个数据，或者叫做PUSH</p></li><li><p>DELETE/POP</p></li><li><p>TOP，指向最新插入的元素</p><p>​</p></li></ul><h3 id="栈的应用"><a href="#栈的应用" class="headerlink" title="栈的应用"></a>栈的应用</h3><h4 id="中缀表达式转后缀表达式"><a href="#中缀表达式转后缀表达式" class="headerlink" title="中缀表达式转后缀表达式"></a>中缀表达式转后缀表达式</h4><ul><li>如果是数字，则放入到第一栈S1中</li><li>如果是左括号，则直接将该左括号加入到栈S2中</li><li>如果遇到的是右括号，那么将栈S2中的运算符一次出栈加入到栈S1中，直到遇到左括号，但是该左括号出栈S2并不加入到栈S1中</li><li>如果遇到的是运算符<ul><li>如果此时栈S2为空，则直接将运算符加入到栈S2中</li><li>如果此时栈S2不为空，当前遍历的运算符的优先级大于等(大于也可以)于栈顶运算符的优先级，那么直接入栈S2</li><li>如果此时栈S2不为空，当前遍历的运算符的优先级小于栈顶运算符的优先级，则将栈顶运算符一直出栈加入到栈S1中，直到栈为空或者遇到一个运算符的优先级小于等于当前遍历的运算符的优先级，此时将该运算符加入到栈S2中</li><li>直到遍历完整个中序表达式之后，栈S2中仍然存在运算符，那么将这些运算符依次出栈加入到栈S1中，直到栈为空。</li></ul></li></ul><h4 id="计算后缀表达式"><a href="#计算后缀表达式" class="headerlink" title="计算后缀表达式"></a>计算后缀表达式</h4><p>我们从左至右的遍历栈S1，然后按照下面的规则进行操作栈S3.</p><ul><li>如果遇到的是数字，那么直接将数字压入到S3中</li><li>如果遇到的是单目运算符，那么取S3栈顶的一个元素进行单目运算之后，将结果再次压入到栈S3中</li><li>如果遇到的是双目运算符，那么取S3栈顶的两个元素进行，首先出栈的在左，后出栈的在左进行双目运算符的计算，将结果再次压入到S3中。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;#读《算法导论》-堆数据结构&lt;/p&gt;
+&lt;h2 id=&quot;栈&quot;&gt;&lt;a href=&quot;#栈&quot; class=&quot;headerlink&quot; title=&quot;栈&quot;&gt;&lt;/a&gt;栈&lt;/h2&gt;&lt;h3 id=&quot;栈的操作&quot;&gt;&lt;a href=&quot;#栈的操作&quot; class=&quot;headerlink&quot; title=
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>读《算法导论》--排序算法</title>
+    <link href="http://fsxchen.github.io/2017/08/19/read/%E8%AF%BB%E3%80%8A%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA%E3%80%8B-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
+    <id>http://fsxchen.github.io/2017/08/19/read/读《算法导论》-排序算法/</id>
+    <published>2017-08-19T07:18:53.000Z</published>
+    <updated>2017-09-08T07:36:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="读《算法导论》–排序算法"><a href="#读《算法导论》–排序算法" class="headerlink" title="读《算法导论》–排序算法"></a>读《算法导论》–排序算法</h1><p>直观感受排序算法</p><p><a href="http://www.sorting-algorithms.com/" target="_blank" rel="external">http://www.sorting-algorithms.com/</a>,</p><p>所有代码参考：</p><p><a href="https://github.com/fsxchen/Algorithms_Python" target="_blank" rel="external">https://github.com/fsxchen/Algorithms_Python</a></p><h2 id="插入排序与冒泡排序"><a href="#插入排序与冒泡排序" class="headerlink" title="插入排序与冒泡排序"></a>插入排序与冒泡排序</h2><h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>​    对于插入排序法，最形象的解释就是下面这幅图片。</p><p><img src="/2017/08/19/read/读《算法导论》-排序算法/dc8a5f58ecfcd1af0a5da40abf70794c.png" alt=""></p><p>插入法的主要思想是：遍历一个数组，将遍历的那个数（key）放入到已经排好的数组中。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">INSERT-SORT(A)</div><div class="line">for j = 2, to A.length</div><div class="line">key = A[j]</div><div class="line"></div><div class="line">i = j - 1</div><div class="line">while i &gt; 0 and A[i] &gt; key//key要比当前的对比要大，那么就需要把当前的i往后移动</div><div class="line">A[i+1] = A[i]</div><div class="line">i = i -1</div><div class="line">// 执行完wihle之后，i后面这个坑就留给了key</div><div class="line">//为什么是i，应为A[i] &gt; key 不成立，所以应该放在i+1这个坑</div><div class="line">A[i+1] = key</div></pre></td></tr></table></figure><h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><p>冒泡排序的思想就比较简单，遍历序列，然后用这个数和后面所有的来比较，如果这个书比较小，那么就交换位置。</p><p><img src="/2017/08/19/read/读《算法导论》-排序算法/b6da4f9ced1fbafcc87b8d639c71bbbe.png" alt=""></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">MAOPAO-SORT(A)</div><div class="line">for j = 1, to A.length</div><div class="line">for i = j + 1, to A.length</div><div class="line">if A[j] &gt; A[i]</div><div class="line">exchange(A[i], A[j])</div></pre></td></tr></table></figure><h3 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h3><p><a href="https://github.com/fsxchen/Algorithms_Python" target="_blank" rel="external">https://github.com/fsxchen/Algorithms_Python</a></p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>对于这两个遍历法排序，时间复杂度都是$O(n^2)$,对于冒泡法，已经没有比较好的方法，因为不管怎样，都是需要遍历的，然后对于插入法排序，还是可以分析一下。</p><ul><li><p>如果将要处理的序列是从小到大已经排好序的？</p><p>$O(n)$</p></li><li><p>如果是从大到小排好的</p><p>$O(n^2)$</p></li></ul><h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><p><strong>（二叉）堆</strong>是一个数组，可以近似看成一个完全二叉树。除了底层之外，其他层是完全充满的。</p><p>对于一个数组A,A.heap-size表示堆的长度，A.length表示数组长度</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">def PARRENT(i):</div><div class="line">return i/2</div><div class="line"></div><div class="line">def LEFT (i):</div><div class="line">return 2i</div><div class="line">def RIGHT:</div><div class="line">return 2i + 1</div></pre></td></tr></table></figure><p><img src="/2017/08/19/read/读《算法导论》-排序算法/4e8b9cf2f489d2ab5bd19c6a46c1bedb.png" alt=""></p><p><strong>最小堆／最大堆</strong>是指A[PARRENT(i)] &lt;=/&gt;= A[i]</p><h3 id="堆性质的维护"><a href="#堆性质的维护" class="headerlink" title="堆性质的维护"></a>堆性质的维护</h3><p>当向一个堆中加入一个数据的时候，如何维护</p><p>伪代码如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">MAX-HEAPIFY(A, i):</div><div class="line">left = LEFT(i)</div><div class="line">right = RIGHT(i)</div><div class="line">if l &lt;= A.heap-size and A[l] &gt; A[i]  // 左边的值大于当前节点</div><div class="line">largest = l</div><div class="line">else:</div><div class="line">largest = i                       //注意。这里是记录了当前最大的下标、下标、下标</div><div class="line">if r&lt;= A.heap-seizs and A[r] &gt; A[largest]</div><div class="line">largest = r</div><div class="line">if r != i:</div><div class="line">exchange A[i], A[largest]</div><div class="line">MAX-HEAPIFY(A, largest)</div></pre></td></tr></table></figure><h3 id="建堆"><a href="#建堆" class="headerlink" title="建堆"></a>建堆</h3><p>​        <strong>这里需要注意的是，如果把一个长度为n的数组转化成为一个最大堆，也就是说<code>A.length</code>==<code>A.heap-size</code>那么其叶结点的下标为<code>n/2 + 1, ...n</code>!，这里下标是从1开始！</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">BUILD-M-HEAP(A):</div><div class="line">for i = A.length／2 downto 1</div><div class="line">MAX-HEAPIFY(A, i)</div></pre></td></tr></table></figure><p>​        考虑到这个是自底向上的建堆的方式，从低层，每次都进行一次堆最大性质的维护。那么可以保证该堆是一个最大堆。</p><h3 id="堆排序算法"><a href="#堆排序算法" class="headerlink" title="堆排序算法"></a>堆排序算法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">SORT-HEAP(A):</div><div class="line">BUILD-M-HEAP(A)</div><div class="line">for i = A.length downto 2:</div><div class="line">exchange A[1] with A[i]</div><div class="line">A.heap-size = A.heap-size-1</div><div class="line">MAX-HEAPIFY(A, 1)</div></pre></td></tr></table></figure><h3 id="代码演示-1"><a href="#代码演示-1" class="headerlink" title="代码演示"></a>代码演示</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python</div><div class="line">#coding:utf-8</div><div class="line"></div><div class="line">def PARRENT(i):</div><div class="line">    return int(i/2)</div><div class="line"></div><div class="line">def LEFT(i):</div><div class="line">    return 2 * i + 1</div><div class="line"></div><div class="line">def RIGHT(i):</div><div class="line">    return 2 * i + 2</div><div class="line"></div><div class="line">def MAX_HEAPIFY(A, i, heap_size=None):</div><div class="line">    l = LEFT(i)</div><div class="line">    r = RIGHT(i)</div><div class="line">    if heap_size is None:</div><div class="line">        heap_size = len(A) - 1</div><div class="line">    else:</div><div class="line">        heap_size -= 1</div><div class="line"></div><div class="line">    if l &lt;= heap_size and A[l] &gt; A[i]:</div><div class="line">        largest = l</div><div class="line">    else:</div><div class="line">        largest = i</div><div class="line">    if r &lt;= heap_size and A[r] &gt; A[largest]:</div><div class="line">        largest = r</div><div class="line">    if largest != i:</div><div class="line">        # print &quot;Exchage %d and %d&quot; %(i, largest)</div><div class="line">        A[i], A[largest] = A[largest], A[i]</div><div class="line">        MAX_HEAPIFY(A, largest, heap_size)</div><div class="line"></div><div class="line">def BUILD_MAX_HEAP(A):</div><div class="line">    for i in range(int(len(A))/2, -1, -1):</div><div class="line">        MAX_HEAPIFY(A, i)</div><div class="line"></div><div class="line">def HEAPSORT(A):</div><div class="line">    BUILD_MAX_HEAP(A)</div><div class="line">    heap_size = len(A)</div><div class="line">    print &quot;The MAX_HEAPIFY is&quot;, A</div><div class="line"></div><div class="line">    for i in range((len(A) - 1), 0, -1):</div><div class="line">        A[0], A[i] = A[i], A[0]</div><div class="line">        heap_size -= 1</div><div class="line">        MAX_HEAPIFY(A, 0, heap_size)</div></pre></td></tr></table></figure><h3 id="堆的应用-优先队列"><a href="#堆的应用-优先队列" class="headerlink" title="堆的应用-优先队列"></a>堆的应用-优先队列</h3><p><strong>优先队列</strong>是一种用来维护由一组元素构成的集合S的数据结构，支持</p><ul><li>INSERT(S, x)：把元素x插入到集合S中</li><li>MAXIMUM(S)：返回S中具有最大键字的元素</li><li>EXTRACT-MAX(S)：去掉并返回具有最大键字的元素</li><li>INCREASE-KEY（S, x, k)：将元素x的关键字值增加到k</li></ul><h4 id="如何使用堆来实现优先队列"><a href="#如何使用堆来实现优先队列" class="headerlink" title="如何使用堆来实现优先队列"></a>如何使用堆来实现优先队列</h4><h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>核心思想就是归并排序</p><ul><li>分解： 数组A[p, r]将被划分为两个（可能为空）的子数组A[p..q-1]和A[q+1, r]，使得A[p..q-1]中的每一个元素都小于A[q]，A[q+1, r]中的每一个元素都大于A[q]</li><li>解决：通过递归来对子数组来排序</li><li>合并：不需要合并操作</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">QUICK-SORT(A, p, r)</div><div class="line">if p &lt; r:</div><div class="line">q = PARTITION(A, p, r)</div><div class="line">QUICK-SORT(A, p, q - 1)</div><div class="line">QUICK-SORT(A, q+1 ,r)</div></pre></td></tr></table></figure><p>关键部分在于PARTITION这个函数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">PARTITION(A, p, r):</div><div class="line">x = A[r]//取用最后一个数来分隔</div><div class="line">i = p - 1//i是来跟踪第几个比x小</div><div class="line">for j = p to r -1:</div><div class="line">if A[j] &lt;= x:</div><div class="line">i = i + 1</div><div class="line">exchange A[i] with A[j]</div><div class="line">exchange A[i+1] with A[r]</div><div class="line">return i+1</div></pre></td></tr></table></figure><h3 id="快速排序的随机化版本"><a href="#快速排序的随机化版本" class="headerlink" title="快速排序的随机化版本"></a>快速排序的随机化版本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">RANDOMIZED-PARTITON(A, p, r):</div><div class="line">i = RANDOM(p, r)</div><div class="line">exchange A[i], A[r]</div><div class="line">return PARTITION(A, p, r)</div></pre></td></tr></table></figure><p>快速排序的优势很明显，首先在时间上，其时间复杂度为$nlgn$，其次，不会占用额外的空间，属于原址排序，节省空间，是一种运用最广泛的排序算法。</p><h2 id="线性时间排序"><a href="#线性时间排序" class="headerlink" title="线性时间排序"></a>线性时间排序</h2><p>任何比较排序法所用的时间最短为$nlgn$</p><h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><p>只应用与卡片打孔的机器</p><h3 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h3><h2 id="中位数和顺序统计量"><a href="#中位数和顺序统计量" class="headerlink" title="中位数和顺序统计量"></a>中位数和顺序统计量</h2><h3 id="最小值和最大值"><a href="#最小值和最大值" class="headerlink" title="最小值和最大值"></a>最小值和最大值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">MAXIMUM(A):</div><div class="line">max = A[1]</div><div class="line">for i = 2 ro A.length</div><div class="line">if max &lt; A[i]:</div><div class="line">max = A[i]</div></pre></td></tr></table></figure><p>当想要获取一个序列中的一个最大值或者是最小值的时候，可以看到时间复杂度为$n$</p><h4 id="同时找到最大值和最小值"><a href="#同时找到最大值和最小值" class="headerlink" title="同时找到最大值和最小值"></a>同时找到最大值和最小值</h4><p>理论上来讲，最大值需要一次比较，最小值需要一次，一共需$2(n-1)$比较。<strong>如果在每个元素之间比较，然后小值和最小值比较，大的和最大值比较，只需要比较3*n/2次</strong></p><h4 id="找到第i小／大的元素"><a href="#找到第i小／大的元素" class="headerlink" title="找到第i小／大的元素"></a>找到第i小／大的元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">RANDOMZIED-SELECT(A, p, r):</div><div class="line">if p == r</div><div class="line">return A[p]</div><div class="line">q = RANDOMIZED-PARTITION(A, p, r, i)</div><div class="line">k = p - q + 1</div><div class="line">if i == k</div><div class="line">return A[q]</div><div class="line">else if i &lt; k   //那么要找的就在左边</div><div class="line">return RANDOMZIED-SELECT(A, p, q-1, i)</div><div class="line">else</div><div class="line">return RANDOMZIED-SELECT(A, q+1, r, i -k)</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;读《算法导论》–排序算法&quot;&gt;&lt;a href=&quot;#读《算法导论》–排序算法&quot; class=&quot;headerlink&quot; title=&quot;读《算法导论》–排序算法&quot;&gt;&lt;/a&gt;读《算法导论》–排序算法&lt;/h1&gt;&lt;p&gt;直观感受排序算法&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http:
+      
+    
+    </summary>
+    
+      <category term="read" scheme="http://fsxchen.github.io/categories/read/"/>
+    
+    
+      <category term="algorithm" scheme="http://fsxchen.github.io/tags/algorithm/"/>
+    
+      <category term="算法导论" scheme="http://fsxchen.github.io/tags/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/"/>
+    
+      <category term="排序算法" scheme="http://fsxchen.github.io/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>读《YOU:身体使用手册》</title>
+    <link href="http://fsxchen.github.io/2017/07/28/read/%E8%AF%BB%E3%80%8AYOU-%E8%BA%AB%E4%BD%93%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C%E3%80%8B/"/>
+    <id>http://fsxchen.github.io/2017/07/28/read/读《YOU-身体使用手册》/</id>
+    <published>2017-07-28T02:25:29.000Z</published>
+    <updated>2017-07-28T04:47:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>读《YOU-身体使用手册》.md</p><p>自觉的重视和控制健康，身体健康由自己掌握</p><p>控制血压</p><p>戒烟</p><p>每天运动30分钟</p><p>控制精神压力</p><p>简单易行的饮食习惯</p><p>理想血压 115/76</p><p>HDL（高密度蛋白）</p><p>LDL（低密度蛋白）</p><h2 id="心脏和动脉"><a href="#心脏和动脉" class="headerlink" title="心脏和动脉"></a>心脏和动脉</h2><h3 id="心脏：发动机，"><a href="#心脏：发动机，" class="headerlink" title="心脏：发动机，"></a>心脏：发动机，</h3><p>心脏没有神经</p><p>由特殊细胞(称为起搏细胞)发出的电流，由心脏顶部开始向下流动，刺激心肌，将血液挤出，<br>通过主动脉瓣膜。这就像拧湿毛巾一样，把水挤出来。从心脏中流出的血液自动注入主动脉，主动脉是人最大的动脉血管，将富含氧气的血液输送到人体其他部分。这时，心脏会放松下来，就像双手刚刚放开毛巾一样。心脏放松时，位于心脏表面的冠状动脉血管也会放松。于是，紧密的肌肉细胞之间的间隙会张大，刚刚从心脏中流出的富含氧气的血液会注入心脏表面的动脉血管中，流入细胞间隙里，滋养肌肉细胞。流出的大部分血液会继续流动，为身体其他部分提供能量。但是这些过程都发生在心脏为自己供能之后，心脏自己接收滋养生命的第一股血液。</p><p>​<br>​        </p><h3 id="动脉"><a href="#动脉" class="headerlink" title="动脉"></a>动脉</h3><p>分三层</p><p>内膜：又细又滑</p><p>中膜：支撑</p><p>外膜：像“玻璃纸”</p><p>当血管破裂，如果携带胆固醇的蛋白质是LDL，就会引起发炎，然后白细胞形成血栓</p><p>高半胱氨酸？</p><p>在进行长途飞行前，你还应服用162<br>毫克的阿司匹林(即两片幼儿用阿司匹林或半片普通阿司匹林，<br>喝一杯水服下)，稀释血小板浓度，降底发生深静脉血栓的危险。</p><p>运动</p><p>胆固醇：</p><p>​    LDL端固醇（控制反式脂肪和饱和脂肪20克下），</p><p>​    HDL胆固醇，提高HDL（橄榄油、鱼类、核桃）、体育锻炼、维生素B</p><p>高半胱氨酸这是人体消化蛋白质时生出的一种副产品，它会造成动脉血管壁出现破裂或发炎。究其原因，可能是这样一个简单的物理现象:高半胱氨酸由细小晶体构成，这些晶体会直接冲击血管壁，留下坑洞。只要补充叶酸这种维生素(我们建议每天摄入700微克)，就能将过高的高半胱氨酸含量降到正常值。</p><p>​        高敏 C 反应蛋白衡量的是人体发炎的程度，包括了慢性瘘管<br>炎、尿道感染或牙龈发炎等各种情况。这种蛋白质的含量越高，<br>人体患上心脏病的几率也越高。因为体内发生的明显炎症都会增<br>大血管发炎的可能。</p><p><strong>拒绝愤怒和敌意</strong></p><p> <strong>面对抑郁</strong></p><p> <strong>心里压力</strong> 社交活动、公益活动、宗教活动</p><p><strong>健心食谱</strong> </p><p>​    常吃坚果</p><p>​    润滑：橄榄油（单一不饱和脂肪，每周吃鱼3次</p><p><strong>健康的敌人</strong></p><p>​    反式饱和脂肪（人工脂肪）</p><p>​    避免使用单糖</p><p><strong>良药</strong></p><p>​    阿司匹林 （162毫克，不能达到病理需求）</p><p><strong>规律睡眠</strong></p><h2 id="肺"><a href="#肺" class="headerlink" title="肺"></a>肺</h2><p>睡眠呼吸暂停综合症</p><p><strong>深呼吸</strong>： 感受自己的户籍，吸5秒，呼出7秒</p><p><strong>检测</strong>： 快速爬上两层楼</p><p><strong>植物</strong></p><p><strong>镁</strong></p><h2 id="肠胃"><a href="#肠胃" class="headerlink" title="肠胃"></a>肠胃</h2><h3 id="嘴巴"><a href="#嘴巴" class="headerlink" title="嘴巴"></a>嘴巴</h3><p><strong>多吃纤维多喝水</strong></p><p>​    不溶性纤维常见于葡萄柚、橙、葡萄干、果干、<br>甜马铃薯、豌豆和绿皮西葫芦，特别是在全麦或全谷类面包中含<br>量高(一定要全麦面包才含有足量纤维)。</p><p>​    可溶性纤维溶于水，<br>它能调节新陈代谢和消化作用，稳定人体血糖值。它常见于谷类，<br>例如燕麦、大麦和黑麦。豆类中也有可溶纤维，如蚕豆、豌豆和<br>扁豆，一些麦片中也有。</p><p>​    叶酸</p><p>晚餐。摄入大约70大卡热量对健康有益的单不饱和脂肪，<br>即6颗核桃、12颗榛子或20粒花生。</p><p>   <strong>使用亚麻籽</strong></p><p><strong>速溶阿司匹林</strong></p><p><strong>维生素B</strong></p><ul><li>不用洗涤海绵，使用布</li></ul><h2 id="免疫系统"><a href="#免疫系统" class="headerlink" title="免疫系统"></a>免疫系统</h2><p>​    </p><p>​<br>​<br>​    </p><p>​<br>​<br>​    </p><p>​<br>​<br>​    </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;读《YOU-身体使用手册》.md&lt;/p&gt;
+&lt;p&gt;自觉的重视和控制健康，身体健康由自己掌握&lt;/p&gt;
+&lt;p&gt;控制血压&lt;/p&gt;
+&lt;p&gt;戒烟&lt;/p&gt;
+&lt;p&gt;每天运动30分钟&lt;/p&gt;
+&lt;p&gt;控制精神压力&lt;/p&gt;
+&lt;p&gt;简单易行的饮食习惯&lt;/p&gt;
+&lt;p&gt;理想血压 115/76&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>深度神经网络</title>
+    <link href="http://fsxchen.github.io/2017/07/19/machinelearning/%E6%B7%B1%E5%BA%A6%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    <id>http://fsxchen.github.io/2017/07/19/machinelearning/深度神经网络/</id>
+    <published>2017-07-19T06:05:09.000Z</published>
+    <updated>2017-07-19T06:47:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="多层神经网络"><a href="#多层神经网络" class="headerlink" title="多层神经网络"></a>多层神经网络</h2><p>一个常用的非线性函数叫 <a href="https://en.wikipedia.org/wiki/Rectifier_(neural_networks" target="_blank" rel="external">ReLU（rectified linear unit）</a>)。ReLU 函数对所有负的输入，返回 0；所有 x&gt;0 的输入，返回 x。</p><h3 id="两层神经网络"><a href="#两层神经网络" class="headerlink" title="两层神经网络"></a>两层神经网络</h3><ol><li>第一层由一组 X 的权重和偏差组成并通过 ReLU 函数激活。 这一层的输出会提供给下一层，但是在神经网络的外部不可见，因此被称为<em>隐藏层</em>。</li><li>第二层由隐藏层的权重和偏差组成，隐藏层的输入即为第一层的输出，然后由 softmax 函数来生成概率。</li></ol><p><img src="/2017/07/19/machinelearning/深度神经网络/f1e69551da28b552b7fe657d4133d2cd.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;多层神经网络&quot;&gt;&lt;a href=&quot;#多层神经网络&quot; class=&quot;headerlink&quot; title=&quot;多层神经网络&quot;&gt;&lt;/a&gt;多层神经网络&lt;/h2&gt;&lt;p&gt;一个常用的非线性函数叫 &lt;a href=&quot;https://en.wikipedia.org/wiki/Rec
+      
+    
+    </summary>
+    
+      <category term="MachineLearning" scheme="http://fsxchen.github.io/categories/MachineLearning/"/>
+    
+    
+      <category term="深度学习" scheme="http://fsxchen.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>永恒之蓝勒索软件</title>
+    <link href="http://fsxchen.github.io/2017/05/15/%E6%B0%B8%E6%81%92%E4%B9%8B%E8%93%9D%E5%8B%92%E7%B4%A2%E8%BD%AF%E4%BB%B6/"/>
+    <id>http://fsxchen.github.io/2017/05/15/永恒之蓝勒索软件/</id>
+    <published>2017-05-15T02:14:26.000Z</published>
+    <updated>2017-05-15T02:48:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="影响范围"><a href="#影响范围" class="headerlink" title="影响范围"></a>影响范围</h2><p><a href="https://technet.microsoft.com/en-us/library/security/ms17-010.aspx" target="_blank" rel="external">影响范围详细信息</a></p><p>基本上所有的windows系统都会收影响。</p><h2 id="检查相关的端口"><a href="#检查相关的端口" class="headerlink" title="检查相关的端口"></a>检查相关的端口</h2><p>在win+r调出cmd命令界面，执行：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -ano | findstr &quot;445&quot;</div></pre></td></tr></table></figure><p>如果出现下面输出，说明端口开放</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">C:\Users\Administrator\Desktop&gt;netstat -ano   | findstr &quot;445&quot;</div><div class="line">  TCP    0.0.0.0:445            0.0.0.0:0              LISTENING       4</div><div class="line">  TCP    [::]:445               [::]:0                 LISTENING       4</div></pre></td></tr></table></figure><h2 id="处理方法"><a href="#处理方法" class="headerlink" title="处理方法"></a>处理方法</h2><h3 id="关闭服务"><a href="#关闭服务" class="headerlink" title="关闭服务"></a>关闭服务</h3><p>.请在<strong>控制面板</strong>&gt;<strong>程序</strong>&gt;<strong>启用或关闭windows功能</strong>&gt;<strong>取消勾选SMB1.0/CIFS文件共享</strong>并重启系统。<br>2.打开<strong>控制面板</strong>&gt;<strong>查看网络状态和任务</strong>&gt;<strong>更改适配器设置</strong>&gt;<strong>右键点击正在使用的网卡后点击属性</strong>&gt;<strong>取消勾选Microsoft网络文件和打印机共享</strong>，重启系统。</p><h3 id="修改注册表"><a href="#修改注册表" class="headerlink" title="修改注册表"></a>修改注册表</h3><ul><li>windows 32位关闭445端口批处理（dat）</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">REG ADD HKLM\SYSTEM\CurrentControlSet\services\NetBT\Parameters /v SMBDeviceEnabled /T REG_DWORD /D 0 /F&amp;&amp;sc  config LanmanServer start= disabled&amp;&amp;net stop lanmanserver /y</div></pre></td></tr></table></figure><ul><li>windows 64位关闭445端口批处理（dat）</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">REG ADD HKLM\SYSTEM\CurrentControlSet\services\NetBT\Parameters /v SMBDeviceEnabled /T REG_QWORD /D 0 /F&amp;&amp;sc  config LanmanServer start= disabled&amp;&amp;net stop lanmanserver /y</div></pre></td></tr></table></figure><h3 id="配置访问控制策略"><a href="#配置访问控制策略" class="headerlink" title="配置访问控制策略"></a>配置访问控制策略</h3><ol><li>在<code>开始</code>菜单选择<code>运行</code>，输入<code>gpedit.msc</code>后回车，打开本地组策略编辑器。依次展开<code>计算机配置</code>—<code>windows设置</code>—<code>安全设置</code>—<code>ip安全策略,在本地计算机</code></li></ol><ol><li><p>以关闭445端口为例(其他端口操作相同)：</p><p>在本地组策略编辑器右边空白处 右键单击鼠标，选择<code>创建IP安全策略</code>，弹出<code>IP安全策略向导</code>对话框，单击<code>下一步</code>;在出现的对话框中的名称处写”关闭4455端口”(可随意填写)，点击<code>下一步</code>;对话框中的<code>激活默认响应规则</code>选项不要勾选(默认就行)，然后单击<code>下一步</code>;勾选<code>编辑属性</code>(默认就勾选)，单击<code>完成</code>。</p></li><li><p>在出现的<code>关闭445端口属性</code>对话框中，选择<code>规则</code>选项卡，去掉<code>使用 添加向导</code>前边的勾后(在右下角)，单击<code>添加</code>按钮。</p></li><li><p>在弹出的<code>新规则 属性</code>对话框中，选择<code>IP筛选器列表</code>选项卡，单击左下角的<code>添加</code></p></li><li><p>出现添加对话框，名称出填<code>封端口</code>(可随意填写)，去掉<code>使用 添加向导</code>前边的勾后，单击右边的<code>添加</code>按钮</p></li><li><p>在出现的<code>IP筛选器 属性</code>对话框中，选择<code>地址</code>选项卡，<code>源地址</code>选择<code>任何</code>，<code>目标地址</code>选择<code>我的IP地址</code>; 选择<code>协议</code>选项卡，各项设置如图片中所示。设置好后点击<code>确定</code>。</p></li><li><p>返回到<code>ip筛选器列表</code>，点击<code>确定</code>。返回到<code>新规则 属性</code>对话框</p></li><li><p>在<code>ip筛选器列表中</code>选择刚才添加的<code>封端口</code>，然后选择<code>筛选器操作选项卡，去掉</code>使用 添加向导<code>前面的勾，单击</code>添加`按钮</p></li><li><p>在<code>筛选器操作 属性</code>中，选择<code>安全方法</code>选项卡，选择<code>阻止</code>选项;在<code>常规</code>选项卡中，对该操作命名，点<code>确定</code></p></li><li><p>选中刚才新建的<code>新建1</code>，单击关闭，返回到<code>关闭端口 属性</code>对话框，确认<code>IP安全规则</code>中 <code>封端口</code>规则被选中后，单击<code>确定</code></p></li><li><p>在<code>组策略编辑器</code>中，可以看到刚才新建的<code>关闭端口</code>规则，选中它并单击<code>鼠标右键</code>，选择<code>分配</code>选项，使该规则开始应用!</p></li></ol><h3 id="通过防火墙配置"><a href="#通过防火墙配置" class="headerlink" title="通过防火墙配置"></a>通过防火墙配置</h3><ul><li>防火墙配置<br><img src="/2017/05/15/永恒之蓝勒索软件/f5dec524f8740bf0c773d409df184cec.png" alt=""></li><li><p>新建规则<br><img src="/2017/05/15/永恒之蓝勒索软件/525793dc77165e787f9a784b1e210fc0.png" alt=""></p></li><li><p>类型<br><img src="/2017/05/15/永恒之蓝勒索软件/0a9f6ca492c578d33858529a299972f8.png" alt=""></p></li><li><p>端口<br><img src="/2017/05/15/永恒之蓝勒索软件/fc3d0ddac6ea019d9de38fb806c90ef0.png" alt=""></p></li><li><p>操作</p></li></ul><p><img src="/2017/05/15/永恒之蓝勒索软件/95f741f928bb4751659cbb0fe413c34a.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;影响范围&quot;&gt;&lt;a href=&quot;#影响范围&quot; class=&quot;headerlink&quot; title=&quot;影响范围&quot;&gt;&lt;/a&gt;影响范围&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://technet.microsoft.com/en-us/library/security/
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>TensorFlow学习</title>
+    <link href="http://fsxchen.github.io/2017/05/14/machinelearning/TensorFlow%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://fsxchen.github.io/2017/05/14/machinelearning/TensorFlow学习/</id>
+    <published>2017-05-14T02:59:10.000Z</published>
+    <updated>2017-07-18T03:04:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="TensorFlow学习"><a href="#TensorFlow学习" class="headerlink" title="TensorFlow学习"></a>TensorFlow学习</h1><h2 id="TensorFlow基本概念"><a href="#TensorFlow基本概念" class="headerlink" title="TensorFlow基本概念"></a>TensorFlow基本概念</h2><ul><li>使用graph(图)来表示计算任务</li><li>在使用被称之为<strong>会话</strong>(session)的上下文(contenxt)中执行图</li><li>使用<code>tensor</code>(张量)表示数据</li><li>通过<code>Variable</code>变量维护状态和更新参数。变量包含张量（Tensor）存放于内存的缓存区。</li><li>使用feed和fetch可以为任意的操作(arbitrary operation)赋值或者从其中获取数据</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">In [2]: import tensorflow as tf</div><div class="line"></div><div class="line">In [3]: hello = tf.constant("Hello")</div><div class="line"></div><div class="line">In [4]: s = tf.Session()</div><div class="line"></div><div class="line">In [5]: s.run(hello)</div><div class="line">Out[5]: b'Hello'</div><div class="line"></div><div class="line">In [6]: b = tf.constant(10)</div><div class="line"></div><div class="line">In [7]: a = tf.constant(20)</div><div class="line"></div><div class="line">In [8]: s.run(a+b)</div><div class="line">Out[8]: 30</div></pre></td></tr></table></figure><h2 id="Tensor"><a href="#Tensor" class="headerlink" title="Tensor"></a>Tensor</h2><h2 id="Variable创建变量"><a href="#Variable创建变量" class="headerlink" title="Variable创建变量"></a>Variable创建变量</h2><p>讲一个张量传入构造函数<code>Variable()</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">weights = tf.Variable(tf.random_normal([784, 200], stddev=0.35),</div><div class="line">                      name=&quot;weights&quot;)</div><div class="line">biases = tf.Variable(tf.zeros([200]), name=&quot;biases&quot;)</div></pre></td></tr></table></figure><p>常量</p><h2 id="placeholder"><a href="#placeholder" class="headerlink" title="placeholder"></a>placeholder</h2><p>类似于占位符号</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">import tensorflow as tf</div><div class="line">a = tf.placeholder(tf.int16)</div><div class="line">b = tf.placeholder(tf.int16)</div><div class="line">add = tf.add(a, b)</div><div class="line">mul = tf.mul(a, b)</div><div class="line">with tf.Session() as sess:</div><div class="line">    # Run every operation with variable input</div><div class="line">    print(&quot;Addition with variables: %i&quot; % sess.run(add, feed_dict=&#123;a: 2, b: 3&#125;))</div><div class="line">    print(&quot;Multiplication with variables: %i&quot; % sess.run(mul, feed_dict=&#123;a: 2, b: 3&#125;))</div><div class="line"># output:</div></pre></td></tr></table></figure><h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2><h2 id="最小二乘法"><a href="#最小二乘法" class="headerlink" title="最小二乘法"></a>最小二乘法</h2><h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>损失函数（loss function）是用来估量你模型的预测值$f(x)$与真实值$Y$的不一致程度，它是一个非负实值函数,通常使用$L(Y, f(x))$来表示，损失函数越小，模型的鲁棒性就越好。</p><h3 id="最小二乘法的损失函数"><a href="#最小二乘法的损失函数" class="headerlink" title="最小二乘法的损失函数"></a>最小二乘法的损失函数</h3><p>$$<br>L(Y, f(x)) = \sum^n_{i=1}(Y-f(x))^2<br>$$</p><p>在实际的应用中，常常会使用均方差（MSE）作为衡量指标。<br>$$<br>MSE = \frac{1}{n}(\sum^n_{i=1}(Y-f(x))^2)<br>$$</p><h2 id="线性拟合"><a href="#线性拟合" class="headerlink" title="线性拟合"></a>线性拟合</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">import tensorflow as tf</div><div class="line">import numpy</div><div class="line">import matplotlib.pyplot as plt</div><div class="line">rng = numpy.random</div><div class="line"></div><div class="line"># Parameters</div><div class="line">learning_rate = 0.01</div><div class="line">training_epochs = 2000</div><div class="line">display_step = 50</div><div class="line"></div><div class="line"># Training Data 训练的数据集</div><div class="line">train_X = numpy.asarray([3.3,4.4,5.5,6.71,6.93,4.168,9.779,6.182,7.59,2.167,7.042,10.791,5.313,7.997,5.654,9.27,3.1])</div><div class="line">train_Y = numpy.asarray([1.7,2.76,2.09,3.19,1.694,1.573,3.366,2.596,2.53,1.221,2.827,3.465,1.65,2.904,2.42,2.94,1.3])</div><div class="line">n_samples = train_X.shape[0]</div><div class="line"></div><div class="line"># tf Graph Input</div><div class="line">X = tf.placeholder(&quot;float&quot;)</div><div class="line">Y = tf.placeholder(&quot;float&quot;)</div><div class="line"></div><div class="line"># Create Model</div><div class="line"></div><div class="line"># Set model weights 训练的模型</div><div class="line">W = tf.Variable(rng.randn(), name=&quot;weight&quot;)</div><div class="line">b = tf.Variable(rng.randn(), name=&quot;bias&quot;)</div><div class="line"></div><div class="line"># Construct a linear model 直线模型</div><div class="line">activation = tf.add(tf.mul(X, W), b)</div><div class="line"></div><div class="line"># Minimize the squared errors</div><div class="line">cost = tf.reduce_sum(tf.pow(activation-Y, 2))/(2*n_samples) #L2 loss</div><div class="line">optimizer = tf.train.GradientDescentOptimizer(learning_rate).minimize(cost) #Gradient descent</div><div class="line"></div><div class="line"># Initializing the variables</div><div class="line">init = tf.initialize_all_variables()</div><div class="line"></div><div class="line"># Launch the graph</div><div class="line">with tf.Session() as sess:</div><div class="line">    sess.run(init)</div><div class="line"></div><div class="line">    # Fit all training data</div><div class="line">    for epoch in range(training_epochs):</div><div class="line">        for (x, y) in zip(train_X, train_Y):</div><div class="line">            sess.run(optimizer, feed_dict=&#123;X: x, Y: y&#125;)</div><div class="line"></div><div class="line">        #Display logs per epoch step</div><div class="line">        if epoch % display_step == 0:</div><div class="line">            print &quot;Epoch:&quot;, &apos;%04d&apos; % (epoch+1), &quot;cost=&quot;, \</div><div class="line">                &quot;&#123;:.9f&#125;&quot;.format(sess.run(cost, feed_dict=&#123;X: train_X, Y:train_Y&#125;)), \</div><div class="line">                &quot;W=&quot;, sess.run(W), &quot;b=&quot;, sess.run(b)</div><div class="line"></div><div class="line">    print &quot;Optimization Finished!&quot;</div><div class="line">    print &quot;cost=&quot;, sess.run(cost, feed_dict=&#123;X: train_X, Y: train_Y&#125;), \</div><div class="line">          &quot;W=&quot;, sess.run(W), &quot;b=&quot;, sess.run(b)</div><div class="line"></div><div class="line">    #Graphic display</div><div class="line">    plt.plot(train_X, train_Y, &apos;ro&apos;, label=&apos;Original data&apos;)</div><div class="line">    plt.plot(train_X, sess.run(W) * train_X + sess.run(b), label=&apos;Fitted line&apos;)</div><div class="line">    plt.legend()</div><div class="line">    plt.show()</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;TensorFlow学习&quot;&gt;&lt;a href=&quot;#TensorFlow学习&quot; class=&quot;headerlink&quot; title=&quot;TensorFlow学习&quot;&gt;&lt;/a&gt;TensorFlow学习&lt;/h1&gt;&lt;h2 id=&quot;TensorFlow基本概念&quot;&gt;&lt;a href=&quot;
+      
+    
+    </summary>
+    
+      <category term="MachineLearning" scheme="http://fsxchen.github.io/categories/MachineLearning/"/>
+    
+    
+      <category term="TensorFlow" scheme="http://fsxchen.github.io/tags/TensorFlow/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo、GitPage书写博客</title>
+    <link href="http://fsxchen.github.io/2017/05/11/MISC/Hexo%E3%80%81GitPage%E4%B9%A6%E5%86%99%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://fsxchen.github.io/2017/05/11/MISC/Hexo、GitPage书写博客/</id>
+    <published>2017-05-11T14:51:24.000Z</published>
+    <updated>2017-05-11T15:27:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="使用Hexo、GitPage书写博客"><a href="#使用Hexo、GitPage书写博客" class="headerlink" title="使用Hexo、GitPage书写博客"></a>使用Hexo、GitPage书写博客</h1><h2 id="Hexo、GitPage"><a href="#Hexo、GitPage" class="headerlink" title="Hexo、GitPage"></a>Hexo、GitPage</h2><p>​    以前使用的静态博客工具是<code>Pelican</code>，本来以为有<code>python</code>的基础会好点，然而发现博客和工具的语言没关系，主要还是看方便和外观以及编译的速度，最终了决定选择了<code>HEXO</code>这个工具，从之前的<code>Pelican</code>迁移过来还是很方便，只需要把以前的<code>*.md</code>放到<code>_posts</code>目录中就好了。相关的基础知识就不多说了。</p><h2 id="图片上传"><a href="#图片上传" class="headerlink" title="图片上传"></a>图片上传</h2><p>​    关于图片的问题，有多种解决方案。关于图片，一只很欣赏像马克飞象的从剪贴板能够直接上传。使用<code>Atom</code>编辑器。</p><h3 id="方案一-使用本地图片"><a href="#方案一-使用本地图片" class="headerlink" title="方案一 使用本地图片"></a>方案一 使用本地图片</h3><p>​    gitpages本省有300M的空间，如果图片数据不是很大，那么放在本地是完全足够的。如下配置即可。</p><ul><li><p>Atom插件markclip安装</p><p>这个插件能够处理剪贴板中的图片文件，将图片存放在和文档名称相同的目录中。</p></li><li><p>HEXO的插件<code>hexo-asset-image</code></p><p>首先确认 <code>_config.yml</code> 中有 <code>post_asset_folder:true</code></p><p>然后安装该插件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</div></pre></td></tr></table></figure></li></ul><h3 id="方案二-使用七牛云"><a href="#方案二-使用七牛云" class="headerlink" title="方案二 使用七牛云"></a>方案二 使用七牛云</h3><ul><li><p>Atom插件<code>qiniu-uploader</code>和<code>markdown-assistant</code></p><p>申请APP Key，以及相关的配置就不多说了，在这个过程中，由于zone.js中有一个实用了异步http请求，导致了一个错误，在issus中有相关的解决办法。</p></li></ul><h2 id="Markdown书写处理工具"><a href="#Markdown书写处理工具" class="headerlink" title="Markdown书写处理工具"></a>Markdown书写处理工具</h2><p>​    如果图片比较多，那么Atom结合前面说的插件、非常给力。另外推介<code>Typora</code>工具来写，支持图片的拖拽。更给力的是，将Markdown导出非常给力。</p><h2 id="Next主题"><a href="#Next主题" class="headerlink" title="Next主题"></a>Next主题</h2><p>​    这个主题是相当棒的，本身集成了很多插件，比如Mathjax，搜索，打赏、评论等功能，只需要简单的修改就可以打开相关的功能。</p><p>​    <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">Next官网</a></p><h2 id="发布到coding-net"><a href="#发布到coding-net" class="headerlink" title="发布到coding.net"></a>发布到coding.net</h2><p>​    和<code>github</code>类似，也可以同步发布到<code>coding.net</code>上，在国内访问还是coding会比较快。只需要在coding上创建一个项目，该项目的名字和用户名必须一致（不然无法加载静态文件）。相关配置如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repository:</div><div class="line">    github: https://github.com/username/username.github.io.git</div><div class="line">    coding: https://git.coding.net/username/username.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;使用Hexo、GitPage书写博客&quot;&gt;&lt;a href=&quot;#使用Hexo、GitPage书写博客&quot; class=&quot;headerlink&quot; title=&quot;使用Hexo、GitPage书写博客&quot;&gt;&lt;/a&gt;使用Hexo、GitPage书写博客&lt;/h1&gt;&lt;h2 id=&quot;H
+      
+    
+    </summary>
+    
+      <category term="Misc" scheme="http://fsxchen.github.io/categories/Misc/"/>
+    
+    
+      <category term="HEXO" scheme="http://fsxchen.github.io/tags/HEXO/"/>
+    
+      <category term="GitPages" scheme="http://fsxchen.github.io/tags/GitPages/"/>
+    
+      <category term="Coding Pages" scheme="http://fsxchen.github.io/tags/Coding-Pages/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>主成分分析(PCA)</title>
+    <link href="http://fsxchen.github.io/2017/05/11/machinelearning/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90-PCA/"/>
+    <id>http://fsxchen.github.io/2017/05/11/machinelearning/主成分分析-PCA/</id>
+    <published>2017-05-11T08:53:00.000Z</published>
+    <updated>2017-05-13T13:07:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="主成分分析（PCA）"><a href="#主成分分析（PCA）" class="headerlink" title="主成分分析（PCA）"></a>主成分分析（PCA）</h1><p>一套能够适用于各种训练的数据处理方法</p><p>ex: 数据的维度</p><p><img src="/2017/05/11/machinelearning/主成分分析-PCA/4bc6cdd4f35f6c259cc5dd84d013e8ae.png" alt=""></p><p>PCA，将数据的中心作为新的坐标轴，并且旋转<code>X</code>、<code>Y</code>轴</p><p><img src="/2017/05/11/machinelearning/主成分分析-PCA/dff0f1bc914d4dc7fae88057a65138a6.png" alt=""></p><ul><li>优点<ul><li>降低数据的复杂性，识别重要的多个特征</li></ul></li><li>缺点<ul><li>不一定需要，且有可能损失有效信息。</li></ul></li><li>适用数据类型<ul><li>数值型数据</li></ul></li></ul><h2 id="最大方差方向"><a href="#最大方差方向" class="headerlink" title="最大方差方向"></a>最大方差方向</h2><p><img src="/2017/05/11/machinelearning/主成分分析-PCA/d79494b9355ff3e7be46af26ae3e1184.png" alt=""></p><h2 id="sklearn中的PCA"><a href="#sklearn中的PCA" class="headerlink" title="sklearn中的PCA"></a>sklearn中的PCA</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">doPCA</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">from</span> sklearn.desomposition <span class="keyword">import</span> PCA</div><div class="line">    pca = PCA(n_components=<span class="number">2</span>)</div><div class="line">    pca.fit(data)</div><div class="line">    <span class="keyword">return</span> pac</div></pre></td></tr></table></figure><h2 id="什么时候需要使用PCA"><a href="#什么时候需要使用PCA" class="headerlink" title="什么时候需要使用PCA"></a>什么时候需要使用PCA</h2><ul><li>想要访问隐藏的特征</li><li>降维</li><li>进行预处理</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;主成分分析（PCA）&quot;&gt;&lt;a href=&quot;#主成分分析（PCA）&quot; class=&quot;headerlink&quot; title=&quot;主成分分析（PCA）&quot;&gt;&lt;/a&gt;主成分分析（PCA）&lt;/h1&gt;&lt;p&gt;一套能够适用于各种训练的数据处理方法&lt;/p&gt;
+&lt;p&gt;ex: 数据的维度&lt;/p
+      
+    
+    </summary>
+    
+      <category term="MachineLearning" scheme="http://fsxchen.github.io/categories/MachineLearning/"/>
+    
+    
+      <category term="机器学习" scheme="http://fsxchen.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深度学习</title>
+    <link href="http://fsxchen.github.io/2017/05/04/machinelearning/2017_05_04_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://fsxchen.github.io/2017/05/04/machinelearning/2017_05_04_深度学习/</id>
+    <published>2017-05-04T08:42:00.000Z</published>
+    <updated>2017-07-19T06:01:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="深度学习"><a href="#深度学习" class="headerlink" title="深度学习"></a>深度学习</h1><h2 id="Logistic-函数"><a href="#Logistic-函数" class="headerlink" title="Logistic 函数"></a>Logistic 函数</h2><p>​        <strong>Logistic函数或Logistic曲线</strong>是一种常见的S形函数，它是皮埃尔·弗朗索瓦·韦吕勒在1844或1845年在研究它与人口增长的关系时命名的。广义Logistic曲线可以模仿一些情况人口增长（<em>P</em>）的S形曲线。起初阶段大致是<a href="http://baike.baidu.com/item/%E6%8C%87%E6%95%B0%E5%A2%9E%E9%95%BF" target="_blank" rel="external">指数增长</a>；然后随着开始变得饱和，增加变慢；最后，达到成熟时增加停止。[1]<a href=""> </a></p><p>很像一个“S”型吧，所以又叫 sigmoid曲线（S型曲线）。阶跃函数（激活函数）<br>$$<br>y=\sigma(z)<br>$$<br>$\sigma$ 的定义为<br>$$<br>\sigma={1\over 1+e^{-z}}<br>$$<br>python实现Logistic函数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">import numpy as np</div><div class="line">import matplotlib.pyplot as plt</div><div class="line"></div><div class="line"></div><div class="line">def logistic(z):</div><div class="line">    return 1 / (1 + np.exp(-z))</div><div class="line"></div><div class="line"># Plot the logistic function</div><div class="line">z = np.linspace(-6,6,100)</div><div class="line">plt.plot(z, logistic(z), &apos;b-&apos;)</div><div class="line">plt.xlabel(&apos;$z$&apos;, fontsize=15)</div><div class="line">plt.ylabel(&apos;$\sigma(z)$&apos;, fontsize=15)</div><div class="line">plt.title(&apos;logistic function&apos;)</div><div class="line">plt.grid()</div><div class="line">plt.show()</div></pre></td></tr></table></figure><h2 id="Logistic函数的导数"><a href="#Logistic函数的导数" class="headerlink" title="Logistic函数的导数"></a>Logistic函数的导数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">def logistic_derivative(z):</div><div class="line">return logistic(z) * (1 - logistic(z))</div><div class="line"># Plot the derivative of the logistic function</div><div class="line">z = np.linspace(-6,6,100)</div><div class="line">plt.plot(z, logistic_derivative(z), &apos;r-&apos;)</div><div class="line">plt.xlabel(&apos;$z$&apos;, fontsize=15)</div><div class="line">plt.ylabel(&apos;$\\frac&#123;\\partial \\sigma(z)&#125;&#123;\\partial z&#125;$&apos;, fontsize=15)</div><div class="line">plt.title(&apos;derivative of the logistic function&apos;)</div><div class="line">plt.grid()</div><div class="line">plt.show()</div></pre></td></tr></table></figure><h2 id="Logistic回归"><a href="#Logistic回归" class="headerlink" title="Logistic回归"></a>Logistic回归</h2><p>​        logistic回归是一种广义线性回归（generalized linear model），因此与多重线性回归分析有很多相同之处。它们的模型形式基本上相同，都具有 $w‘x+b$，其中w和b是待求参数，其区别在于他们的<a href="http://baike.baidu.com/item/%E5%9B%A0%E5%8F%98%E9%87%8F" target="_blank" rel="external">因变量</a>不同，多重线性回归直接将w’x+b作为因变量，即y =w‘x+b，而logistic回归则通过函数L将w‘x+b对应一个隐状态p，p =L(w‘x+b),然后根据p 与1-p的大小决定因变量的值。如果L是logistic函数，就是logistic回归，如果L是多项式函数就是多项式回归。</p><h2 id="训练一个Logistic回归训练器"><a href="#训练一个Logistic回归训练器" class="headerlink" title="训练一个Logistic回归训练器"></a>训练一个Logistic回归训练器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&quot;&quot;&quot;Softmax.&quot;&quot;&quot;</div><div class="line"></div><div class="line">scores = [3.0, 1.0, 0.2]</div><div class="line"></div><div class="line">import numpy as np</div><div class="line"></div><div class="line">def softmax(x):</div><div class="line">    &quot;&quot;&quot;Compute softmax values for each sets of scores in x.&quot;&quot;&quot;</div><div class="line">    pass  # TODO: Compute and return softmax(x)</div><div class="line">    return np.exp(x) / np.sum(np.exp(x), axis=0)</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">print(softmax(scores))</div><div class="line"></div><div class="line"># Plot softmax curves</div><div class="line">import matplotlib.pyplot as plt</div><div class="line">x = np.arange(-2.0, 6.0, 0.1)</div><div class="line">scores = np.vstack([x, np.ones_like(x), 0.2 * np.ones_like(x)])</div><div class="line"></div><div class="line">plt.plot(x, softmax(scores).T, linewidth=2)</div><div class="line">plt.show()</div></pre></td></tr></table></figure><h2 id="Softmax"><a href="#Softmax" class="headerlink" title="Softmax"></a>Softmax</h2><p><img src="/2017/05/04/machinelearning/2017_05_04_深度学习/d4478d8d845138b81e02a25415ad064e.png" alt=""></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def softmax(x):</div><div class="line">return np.exp(x) / np.sum(np.exp(x), axis=0)</div></pre></td></tr></table></figure><h2 id="One-hot-编码"><a href="#One-hot-编码" class="headerlink" title="One-hot 编码"></a>One-hot 编码</h2><h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><h2 id="交叉熵"><a href="#交叉熵" class="headerlink" title="交叉熵"></a>交叉熵</h2><h2 id="训练集合"><a href="#训练集合" class="headerlink" title="训练集合"></a>训练集合</h2><p><img src="/2017/05/04/machinelearning/2017_05_04_深度学习/a5d25bd08aa42c104a190f6385399b31.png" alt=""></p><h2 id="多层神经网络"><a href="#多层神经网络" class="headerlink" title="多层神经网络"></a>多层神经网络</h2><p>一个常用的非线性函数叫 <a href="https://en.wikipedia.org/wiki/Rectifier_(neural_networks" target="_blank" rel="external">ReLU（rectified linear unit）</a>)。ReLU 函数对所有负的输入，返回 0；所有 x&gt;0 的输入，返回 x。</p><p>隐藏层用 ReLU 作为激活函数</p><ul><li>最简单的非线性函数</li></ul><p><img src="/2017/05/04/machinelearning/2017_05_04_深度学习/0e94ee90cddcf9aa6e4922e2bab0b071.png" alt=""></p><h2 id="Tensorflow的解决问题步骤"><a href="#Tensorflow的解决问题步骤" class="headerlink" title="Tensorflow的解决问题步骤"></a>Tensorflow的解决问题步骤</h2><ul><li>1、先定义模型的整体图结构，未知的部分，比如输入就用placeholder来代替。</li><li>2、再定义最后与目标的误差函数。</li><li>3、最后选择优化方法。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;深度学习&quot;&gt;&lt;a href=&quot;#深度学习&quot; class=&quot;headerlink&quot; title=&quot;深度学习&quot;&gt;&lt;/a&gt;深度学习&lt;/h1&gt;&lt;h2 id=&quot;Logistic-函数&quot;&gt;&lt;a href=&quot;#Logistic-函数&quot; class=&quot;headerlink&quot; ti
+      
+    
+    </summary>
+    
+      <category term="MachineLearning" scheme="http://fsxchen.github.io/categories/MachineLearning/"/>
+    
+    
+      <category term="深度学习" scheme="http://fsxchen.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>特征选择</title>
+    <link href="http://fsxchen.github.io/2017/05/04/machinelearning/2017_05_04_%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9/"/>
+    <id>http://fsxchen.github.io/2017/05/04/machinelearning/2017_05_04_特征选择/</id>
+    <published>2017-05-04T08:26:00.000Z</published>
+    <updated>2017-05-10T08:17:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="特征的选择"><a href="#特征的选择" class="headerlink" title="特征的选择"></a>特征的选择</h1><ol><li>直觉</li><li>代码找出特征</li><li>可视化</li><li>重复</li></ol><h2 id="去除特征"><a href="#去除特征" class="headerlink" title="去除特征"></a>去除特征</h2><h2 id="特征不等于信息"><a href="#特征不等于信息" class="headerlink" title="特征不等于信息"></a>特征不等于信息</h2><h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><h2 id="lasso回归"><a href="#lasso回归" class="headerlink" title="lasso回归"></a>lasso回归</h2><p>能够将不太影响分类的特征的权重设置为0</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;特征的选择&quot;&gt;&lt;a href=&quot;#特征的选择&quot; class=&quot;headerlink&quot; title=&quot;特征的选择&quot;&gt;&lt;/a&gt;特征的选择&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;直觉&lt;/li&gt;
+&lt;li&gt;代码找出特征&lt;/li&gt;
+&lt;li&gt;可视化&lt;/li&gt;
+&lt;li&gt;重复&lt;/li&gt;
+&lt;/o
+      
+    
+    </summary>
+    
+      <category term="MachineLearning" scheme="http://fsxchen.github.io/categories/MachineLearning/"/>
+    
+    
+      <category term="机器学习" scheme="http://fsxchen.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>文本学习</title>
+    <link href="http://fsxchen.github.io/2017/05/04/machinelearning/2017_05_04_%E6%96%87%E6%9C%AC%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://fsxchen.github.io/2017/05/04/machinelearning/2017_05_04_文本学习/</id>
+    <published>2017-05-04T06:10:00.000Z</published>
+    <updated>2017-05-10T08:15:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="文本学习"><a href="#文本学习" class="headerlink" title="文本学习"></a>文本学习</h1><h2 id="词袋"><a href="#词袋" class="headerlink" title="词袋"></a>词袋</h2><p>每个词的频率</p><h2 id="词袋属性"><a href="#词袋属性" class="headerlink" title="词袋属性"></a>词袋属性</h2><ul><li>无序</li><li>长词</li><li>复合词</li></ul><h2 id="sklearn-词袋"><a href="#sklearn-词袋" class="headerlink" title="sklearn 词袋"></a>sklearn 词袋</h2><h3 id="低信息量词"><a href="#低信息量词" class="headerlink" title="低信息量词"></a>低信息量词</h3><h3 id="停词"><a href="#停词" class="headerlink" title="停词"></a>停词</h3><h3 id="词干提取"><a href="#词干提取" class="headerlink" title="词干提取"></a>词干提取</h3><ul><li>词干提取算法（STEMMER）</li></ul><h3 id="IF-IDF"><a href="#IF-IDF" class="headerlink" title="IF-IDF"></a>IF-IDF</h3><p>IDF：逆向文件频率</p><p>实际上就是IF*IDF</p><p>更注重于罕见的词汇！</p><h2 id="TfidfVectorizer"><a href="#TfidfVectorizer" class="headerlink" title="TfidfVectorizer"></a>TfidfVectorizer</h2><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul><li><code>max_df</code>，0.5，如果在%50的文档中出现了这个词，tfidf就会删除这个词</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;文本学习&quot;&gt;&lt;a href=&quot;#文本学习&quot; class=&quot;headerlink&quot; title=&quot;文本学习&quot;&gt;&lt;/a&gt;文本学习&lt;/h1&gt;&lt;h2 id=&quot;词袋&quot;&gt;&lt;a href=&quot;#词袋&quot; class=&quot;headerlink&quot; title=&quot;词袋&quot;&gt;&lt;/a&gt;词袋&lt;/h
+      
+    
+    </summary>
+    
+      <category term="MachineLearning" scheme="http://fsxchen.github.io/categories/MachineLearning/"/>
+    
+    
+      <category term="机器学习" scheme="http://fsxchen.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>特征缩放</title>
+    <link href="http://fsxchen.github.io/2017/05/04/machinelearning/2017_05_04_%E7%89%B9%E5%BE%81%E7%BC%A9%E6%94%BE/"/>
+    <id>http://fsxchen.github.io/2017/05/04/machinelearning/2017_05_04_特征缩放/</id>
+    <published>2017-05-04T05:33:00.000Z</published>
+    <updated>2017-05-10T08:16:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="特征缩放"><a href="#特征缩放" class="headerlink" title="特征缩放"></a>特征缩放</h1><p>$$<br>x’=（x-x<em>{min}）/（x</em>{max-}x_{min}）<br>$$</p><h3 id="sklearn-MinMaxScaler"><a href="#sklearn-MinMaxScaler" class="headerlink" title="sklearn MinMaxScaler"></a>sklearn MinMaxScaler</h3>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;特征缩放&quot;&gt;&lt;a href=&quot;#特征缩放&quot; class=&quot;headerlink&quot; title=&quot;特征缩放&quot;&gt;&lt;/a&gt;特征缩放&lt;/h1&gt;&lt;p&gt;$$&lt;br&gt;x’=（x-x&lt;em&gt;{min}）/（x&lt;/em&gt;{max-}x_{min}）&lt;br&gt;$$&lt;/p&gt;
+&lt;h3 id
+      
+    
+    </summary>
+    
+      <category term="MachineLearning" scheme="http://fsxchen.github.io/categories/MachineLearning/"/>
+    
+    
+      <category term="机器学习" scheme="http://fsxchen.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>聚类</title>
+    <link href="http://fsxchen.github.io/2017/05/03/machinelearning/2017_05_03_%E8%81%9A%E7%B1%BB/"/>
+    <id>http://fsxchen.github.io/2017/05/03/machinelearning/2017_05_03_聚类/</id>
+    <published>2017-05-03T09:11:00.000Z</published>
+    <updated>2017-05-10T08:37:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="聚类"><a href="#聚类" class="headerlink" title="聚类"></a>聚类</h1><h2 id="非监督学习"><a href="#非监督学习" class="headerlink" title="非监督学习"></a>非监督学习</h2><h2 id="降维"><a href="#降维" class="headerlink" title="降维"></a>降维</h2><h2 id="K均值聚类（K-MEANSs）"><a href="#K均值聚类（K-MEANSs）" class="headerlink" title="K均值聚类（K-MEANSs）"></a>K均值聚类（K-MEANSs）</h2><h3 id="画出聚类的中心"><a href="#画出聚类的中心" class="headerlink" title="画出聚类的中心"></a>画出聚类的中心</h3><ol><li>分配</li><li>优化</li></ol><h2 id="sklearn-cluster"><a href="#sklearn-cluster" class="headerlink" title="sklearn cluster"></a>sklearn cluster</h2><h2 id="K均值聚类的局限"><a href="#K均值聚类的局限" class="headerlink" title="K均值聚类的局限"></a>K均值聚类的局限</h2><ul><li>对于同意的一个集合，相同的聚类中心，得出的结果不一定相投</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;聚类&quot;&gt;&lt;a href=&quot;#聚类&quot; class=&quot;headerlink&quot; title=&quot;聚类&quot;&gt;&lt;/a&gt;聚类&lt;/h1&gt;&lt;h2 id=&quot;非监督学习&quot;&gt;&lt;a href=&quot;#非监督学习&quot; class=&quot;headerlink&quot; title=&quot;非监督学习&quot;&gt;&lt;/a&gt;非监督学
+      
+    
+    </summary>
+    
+      <category term="MachineLearning" scheme="http://fsxchen.github.io/categories/MachineLearning/"/>
+    
+    
+      <category term="机器学习" scheme="http://fsxchen.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>异常值处理</title>
+    <link href="http://fsxchen.github.io/2017/05/03/machinelearning/2017_05_03_%E5%BC%82%E5%B8%B8%E5%80%BC%E5%A4%84%E7%90%86/"/>
+    <id>http://fsxchen.github.io/2017/05/03/machinelearning/2017_05_03_异常值处理/</id>
+    <published>2017-05-03T03:39:00.000Z</published>
+    <updated>2017-05-10T07:43:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="异常值的处理"><a href="#异常值的处理" class="headerlink" title="异常值的处理"></a>异常值的处理</h1><h2 id="异常值的产生"><a href="#异常值的产生" class="headerlink" title="异常值的产生"></a>异常值的产生</h2><ul><li>传感器错误</li><li>录入错误</li><li>异常事件</li></ul><h2 id="异常值处理"><a href="#异常值处理" class="headerlink" title="异常值处理"></a>异常值处理</h2><p><strong> 处理流程</strong></p><ol><li>训练数据集</li><li>去掉%10的数据</li><li>再次训练</li><li>重复第二部，去掉与之前的%10的数据</li></ol><h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>欺诈检测</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;异常值的处理&quot;&gt;&lt;a href=&quot;#异常值的处理&quot; class=&quot;headerlink&quot; title=&quot;异常值的处理&quot;&gt;&lt;/a&gt;异常值的处理&lt;/h1&gt;&lt;h2 id=&quot;异常值的产生&quot;&gt;&lt;a href=&quot;#异常值的产生&quot; class=&quot;headerlink&quot; titl
+      
+    
+    </summary>
+    
+      <category term="MachineLearning" scheme="http://fsxchen.github.io/categories/MachineLearning/"/>
+    
+    
+      <category term="机器学习" scheme="http://fsxchen.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>读《聪明人用方格笔记本》</title>
+    <link href="http://fsxchen.github.io/2017/05/03/read/2017_05_03_%E8%AF%BB%E3%80%8A%E8%81%AA%E6%98%8E%E4%BA%BA%E7%94%A8%E6%96%B9%E6%A0%BC%E7%AC%94%E8%AE%B0%E6%9C%AC%E3%80%8B/"/>
+    <id>http://fsxchen.github.io/2017/05/03/read/2017_05_03_读《聪明人用方格笔记本》/</id>
+    <published>2017-05-03T02:27:00.000Z</published>
+    <updated>2017-09-08T09:27:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="读《聪明人用方格笔记本》"><a href="#读《聪明人用方格笔记本》" class="headerlink" title="读《聪明人用方格笔记本》"></a>读《聪明人用方格笔记本》</h1><h2 id="笔记三法则"><a href="#笔记三法则" class="headerlink" title="笔记三法则"></a>笔记三法则</h2><ul><li>使用方格笔记</li><li>标出题目</li><li>用三分法记录<ul><li>事实</li><li>解释</li><li>行动</li></ul></li></ul><h2 id="使用方格笔记本"><a href="#使用方格笔记本" class="headerlink" title="使用方格笔记本"></a>使用方格笔记本</h2><ul><li>行首对齐</li><li>在行首两三个字的地方写小标题</li><li>在比小标题往后两三个字的地方写内容</li><li>项目改变时空一行</li><li>注意流出空隙，留出进行信息整理的空间</li></ul><p>学习中最重要的是什么？</p><p>“尽可能多地往脑子里塞东西”</p><p>“不怎么往脑子里塞东西”</p><p>一种从有到无的境界</p><p>框架=“整理思路的书架”</p><p>人容易被“框架”左右的生物</p><h2 id="黄金三分法"><a href="#黄金三分法" class="headerlink" title="黄金三分法"></a>黄金三分法</h2><p>康奈尔笔记本分为（板书（Note）、发现点（Queue）、总结（summary））</p><h3 id="麦肯锡的“空-雨-伞”"><a href="#麦肯锡的“空-雨-伞”" class="headerlink" title="麦肯锡的“空-雨-伞”"></a>麦肯锡的“空-雨-伞”</h3><h2 id="横向使用"><a href="#横向使用" class="headerlink" title="横向使用"></a>横向使用</h2><h2 id="A4"><a href="#A4" class="headerlink" title="A4"></a>A4</h2><h2 id="像报纸标出题目"><a href="#像报纸标出题目" class="headerlink" title="像报纸标出题目"></a>像报纸标出题目</h2><h3 id="一页一主题"><a href="#一页一主题" class="headerlink" title="一页一主题"></a>一页一主题</h3><h2 id="10000张纸法则"><a href="#10000张纸法则" class="headerlink" title="10000张纸法则"></a>10000张纸法则</h2><p>出自于咨询公司</p><h2 id="学习笔记本"><a href="#学习笔记本" class="headerlink" title="学习笔记本"></a>学习笔记本</h2><ul><li>记忆性笔记本</li><li>思考性笔记本</li><li>传达性笔记本</li></ul><h3 id="使用空白一秒"><a href="#使用空白一秒" class="headerlink" title="使用空白一秒"></a>使用空白一秒</h3><p>从“看黑板-记笔记”到“看黑板-放到脑袋-记笔记”</p><h3 id="两页一主题"><a href="#两页一主题" class="headerlink" title="两页一主题"></a>两页一主题</h3><p>将A4或者B5作为一页。</p><p>或者直接横向使用</p><h3 id="驾驭两页之间的中部区域"><a href="#驾驭两页之间的中部区域" class="headerlink" title="驾驭两页之间的中部区域"></a>驾驭两页之间的中部区域</h3><p>思维不应该因为笔记本的页面限制而被限制</p><h3 id="善于发现能够进步？"><a href="#善于发现能够进步？" class="headerlink" title="善于发现能够进步？"></a>善于发现能够进步？</h3><p>只有进一步的行动才能进步，将“发现”转变为“故事”</p><h3 id="逻辑连接词"><a href="#逻辑连接词" class="headerlink" title="逻辑连接词"></a>逻辑连接词</h3><ul><li>使用自己的逻辑连词词</li><li>三种箭头<ul><li>展开箭头</li><li>总结箭头</li><li>强调箭头</li></ul></li></ul><h3 id="总结写解决问题的要点"><a href="#总结写解决问题的要点" class="headerlink" title="总结写解决问题的要点"></a>总结写解决问题的要点</h3><h2 id="工作笔记本"><a href="#工作笔记本" class="headerlink" title="工作笔记本"></a>工作笔记本</h2><h3 id="目的是舍弃"><a href="#目的是舍弃" class="headerlink" title="目的是舍弃"></a>目的是舍弃</h3><h3 id="秘术是整理"><a href="#秘术是整理" class="headerlink" title="秘术是整理"></a>秘术是整理</h3><p>整理术和收拾法的关键就是将“舍弃”发挥到极致。</p><h3 id="提问力等于咨询力"><a href="#提问力等于咨询力" class="headerlink" title="提问力等于咨询力"></a>提问力等于咨询力</h3><h2 id="提案笔记本"><a href="#提案笔记本" class="headerlink" title="提案笔记本"></a>提案笔记本</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;读《聪明人用方格笔记本》&quot;&gt;&lt;a href=&quot;#读《聪明人用方格笔记本》&quot; class=&quot;headerlink&quot; title=&quot;读《聪明人用方格笔记本》&quot;&gt;&lt;/a&gt;读《聪明人用方格笔记本》&lt;/h1&gt;&lt;h2 id=&quot;笔记三法则&quot;&gt;&lt;a href=&quot;#笔记三法则&quot; c
+      
+    
+    </summary>
+    
+      <category term="read" scheme="http://fsxchen.github.io/categories/read/"/>
+    
+    
+      <category term="Misc" scheme="http://fsxchen.github.io/tags/Misc/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>回归</title>
+    <link href="http://fsxchen.github.io/2017/04/28/machinelearning/2017_04_28_%E5%9B%9E%E5%BD%92/"/>
+    <id>http://fsxchen.github.io/2017/04/28/machinelearning/2017_04_28_回归/</id>
+    <published>2017-04-28T04:04:00.000Z</published>
+    <updated>2017-05-10T07:40:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="回归"><a href="#回归" class="headerlink" title="回归"></a>回归</h1><h2 id="连续监督学习"><a href="#连续监督学习" class="headerlink" title="连续监督学习"></a>连续监督学习</h2><ul><li>连续输出和离散输出的区别</li></ul><p>这里的连续主要是指输出是连续的</p><p><img src="/2017/04/28/machinelearning/2017_04_28_回归/5ab30599c89a6a6bbf55e921d22497f4.png" alt=""></p><h2 id="回归线性方程"><a href="#回归线性方程" class="headerlink" title="回归线性方程"></a>回归线性方程</h2><p><img src="/2017/04/28/machinelearning/2017_04_28_回归/cf876e389a34ef52288774644873b8d7.png" alt=""></p><p>slope：斜率<br>intercept：截距</p><h3 id="斜率和截距"><a href="#斜率和截距" class="headerlink" title="斜率和截距"></a>斜率和截距</h3><p>斜率越大，上升越快</p><h2 id="Sklearn中的线形拟合"><a href="#Sklearn中的线形拟合" class="headerlink" title="Sklearn中的线形拟合"></a>Sklearn中的线形拟合</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn <span class="keyword">import</span> linear_model</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>reg = linear_model.LinearRegression()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>reg.fit ([[<span class="number">0</span>, <span class="number">0</span>], [<span class="number">1</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">2</span>]], [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>])</div><div class="line">LinearRegression(copy_X=<span class="keyword">True</span>, fit_intercept=<span class="keyword">True</span>, n_jobs=<span class="number">1</span>, normalize=<span class="keyword">False</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>reg.coef_</div><div class="line">array([ <span class="number">0.5</span>,  <span class="number">0.5</span>])</div></pre></td></tr></table></figure><h3 id="线性回归误差"><a href="#线性回归误差" class="headerlink" title="线性回归误差"></a>线性回归误差</h3><p>使误差有最小值。</p><h4 id="最小二乘法（OLS）"><a href="#最小二乘法（OLS）" class="headerlink" title="最小二乘法（OLS）"></a>最小二乘法（OLS）</h4><p><code>sklearn</code>中的线性拟合即使用的是该方法</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">import numpy as np</div><div class="line">import matplotlib.pyplot as plt</div><div class="line"></div><div class="line">dots = np.array([[1,6], [2,5], [3,7], [4,10], [5, 12]])</div><div class="line"></div><div class="line">X = dots[:, 0]</div><div class="line">Y = dots[:, 1]</div><div class="line">plt.scatter(X, Y, color = &quot;b&quot;, label=&quot;fast&quot;)</div><div class="line"></div><div class="line"></div><div class="line">def nihe(k, x, b):</div><div class="line">    return k*x + b</div><div class="line"></div><div class="line"></div><div class="line">#a0 = （∑Yi) / n - a1（∑Xi) / n （式1-8)</div><div class="line">#a1 = [n∑Xi Yi - （∑Xi ∑Yi)] / [n∑Xi2 - （∑Xi)2 )] （式1-9)</div><div class="line"></div><div class="line">n = dots.shape[0]</div><div class="line">a1 = (n*sum(X*Y) - sum(X)*sum(Y)) / (n*sum(X**2)-(sum(X)**2))</div><div class="line">a0 = sum(Y)/n - a1*(sum(X))/n</div><div class="line">print(a0, a1)</div><div class="line"></div><div class="line">R_Y = [nihe(a1, x, a0) for x in X]</div><div class="line">plt.plot(X, R_Y)</div><div class="line">plt.show()</div></pre></td></tr></table></figure><h5 id="使用平方误差和来评估拟合的效果？"><a href="#使用平方误差和来评估拟合的效果？" class="headerlink" title="使用平方误差和来评估拟合的效果？"></a>使用平方误差和来评估拟合的效果？</h5><p><img src="/2017/04/28/machinelearning/2017_04_28_回归/30d49cd753e2024b5f3155f4836c570e.png" alt=""></p><p>​        如上图所示，如果只是使用绝对值，那么途中的3种拟合方式没有什么区别，然而如果使用平方的方式，只有中间的误差是最小的。</p><ul><li>使用平方误差和的方式的不足只处<br><img src="/2017/04/28/machinelearning/2017_04_28_回归/6012fb4f957b0177e9647771ab32aa0b.png" alt=""></li></ul><h5 id="R平方指标"><a href="#R平方指标" class="headerlink" title="R平方指标"></a>R平方指标</h5><p>R平方指标弥补了平方误差和的不足之处。</p><h4 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h4><h3 id="什么数据适用于线性回归"><a href="#什么数据适用于线性回归" class="headerlink" title="什么数据适用于线性回归"></a>什么数据适用于线性回归</h3><p>线性的，可以拟合成<br>$$<br>y = ax + b<br>$$</p><h3 id="回归于分类的比较"><a href="#回归于分类的比较" class="headerlink" title="回归于分类的比较"></a>回归于分类的比较</h3><table><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td>比较</td><td>监督分类</td><td>回归</td></tr><tr><td>输出类型</td><td>离散（类型标签）</td><td>连续（数字）</td></tr><tr><td>目的</td><td>找到决策边界</td><td>最优拟合线</td></tr><tr><td>评估指标</td><td>准确率</td><td>R平方值</td></tr></tbody></table><h2 id="多变量（多元）回归（MULTI-VARIATE-REGRESSION"><a href="#多变量（多元）回归（MULTI-VARIATE-REGRESSION" class="headerlink" title="多变量（多元）回归（MULTI-VARIATE REGRESSION)"></a>多变量（多元）回归（MULTI-VARIATE REGRESSION)</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;回归&quot;&gt;&lt;a href=&quot;#回归&quot; class=&quot;headerlink&quot; title=&quot;回归&quot;&gt;&lt;/a&gt;回归&lt;/h1&gt;&lt;h2 id=&quot;连续监督学习&quot;&gt;&lt;a href=&quot;#连续监督学习&quot; class=&quot;headerlink&quot; title=&quot;连续监督学习&quot;&gt;&lt;/a&gt;连
+      
+    
+    </summary>
+    
+      <category term="MachineLearning" scheme="http://fsxchen.github.io/categories/MachineLearning/"/>
+    
+    
+      <category term="机器学习" scheme="http://fsxchen.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据以及数据的处理</title>
+    <link href="http://fsxchen.github.io/2017/04/27/machinelearning/2017_04_27_%E6%95%B0%E6%8D%AE%E4%BB%A5%E5%8F%8A%E6%95%B0%E6%8D%AE%E7%9A%84%E5%A4%84%E7%90%86/"/>
+    <id>http://fsxchen.github.io/2017/04/27/machinelearning/2017_04_27_数据以及数据的处理/</id>
+    <published>2017-04-27T14:27:00.000Z</published>
+    <updated>2017-05-10T07:40:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="机器学习中的数据处理"><a href="#机器学习中的数据处理" class="headerlink" title="机器学习中的数据处理"></a>机器学习中的数据处理</h1><h2 id="数据的类型"><a href="#数据的类型" class="headerlink" title="数据的类型"></a>数据的类型</h2><ul><li>数值类型<ul><li>eg：薪水、年龄、评分</li></ul></li><li>类别变量<ul><li>eg：职位</li></ul></li><li>时间序列<ul><li>时间戳</li></ul></li><li>文本数据<ul><li>邮件类容</li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;机器学习中的数据处理&quot;&gt;&lt;a href=&quot;#机器学习中的数据处理&quot; class=&quot;headerlink&quot; title=&quot;机器学习中的数据处理&quot;&gt;&lt;/a&gt;机器学习中的数据处理&lt;/h1&gt;&lt;h2 id=&quot;数据的类型&quot;&gt;&lt;a href=&quot;#数据的类型&quot; class=&quot;he
+      
+    
+    </summary>
+    
+      <category term="MachineLearning" scheme="http://fsxchen.github.io/categories/MachineLearning/"/>
+    
+    
+      <category term="机器学习" scheme="http://fsxchen.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>支持向量机</title>
+    <link href="http://fsxchen.github.io/2017/04/25/machinelearning/2017_04_25_%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/"/>
+    <id>http://fsxchen.github.io/2017/04/25/machinelearning/2017_04_25_支持向量机/</id>
+    <published>2017-04-25T07:44:00.000Z</published>
+    <updated>2017-05-10T07:39:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="支持向量机（SVM）"><a href="#支持向量机（SVM）" class="headerlink" title="支持向量机（SVM）"></a>支持向量机（SVM）</h1><h2 id="sklearn-SVM分类"><a href="#sklearn-SVM分类" class="headerlink" title="sklearn SVM分类"></a>sklearn SVM分类</h2><h2 id="SVC的参数"><a href="#SVC的参数" class="headerlink" title="SVC的参数"></a>SVC的参数</h2><p>C：</p><p>kernel：</p><h2 id="过度拟合"><a href="#过度拟合" class="headerlink" title="过度拟合"></a>过度拟合</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;支持向量机（SVM）&quot;&gt;&lt;a href=&quot;#支持向量机（SVM）&quot; class=&quot;headerlink&quot; title=&quot;支持向量机（SVM）&quot;&gt;&lt;/a&gt;支持向量机（SVM）&lt;/h1&gt;&lt;h2 id=&quot;sklearn-SVM分类&quot;&gt;&lt;a href=&quot;#sklearn-
+      
+    
+    </summary>
+    
+      <category term="MachineLearning" scheme="http://fsxchen.github.io/categories/MachineLearning/"/>
+    
+    
+      <category term="MachineLearning" scheme="http://fsxchen.github.io/tags/MachineLearning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>朴素贝叶斯</title>
+    <link href="http://fsxchen.github.io/2017/04/25/machinelearning/2017_04_25_%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF/"/>
+    <id>http://fsxchen.github.io/2017/04/25/machinelearning/2017_04_25_朴素贝叶斯/</id>
+    <published>2017-04-25T07:43:00.000Z</published>
+    <updated>2017-05-10T08:44:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="贝叶斯算法"><a href="#贝叶斯算法" class="headerlink" title="贝叶斯算法"></a>贝叶斯算法</h1><h2 id="sklearn-贝叶斯分类"><a href="#sklearn-贝叶斯分类" class="headerlink" title="sklearn 贝叶斯分类"></a>sklearn 贝叶斯分类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">from sklearn.naive_bayes import GaussianNB</div><div class="line">from sklearn.metrics import accuracy_score</div><div class="line"></div><div class="line">clf = GaussianNB()</div><div class="line"># print(labels_train)</div><div class="line">clf.fit(features_train, labels_train)</div><div class="line">pred = clf.predict(features_test)</div><div class="line">accuracy = accuracy_score(pred, labels_test)</div><div class="line">print(&quot;准确率:%f&quot;,accuracy)</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;贝叶斯算法&quot;&gt;&lt;a href=&quot;#贝叶斯算法&quot; class=&quot;headerlink&quot; title=&quot;贝叶斯算法&quot;&gt;&lt;/a&gt;贝叶斯算法&lt;/h1&gt;&lt;h2 id=&quot;sklearn-贝叶斯分类&quot;&gt;&lt;a href=&quot;#sklearn-贝叶斯分类&quot; class=&quot;header
+      
+    
+    </summary>
+    
+      <category term="MachineLearning" scheme="http://fsxchen.github.io/categories/MachineLearning/"/>
+    
+    
+      <category term="MachineLearning" scheme="http://fsxchen.github.io/tags/MachineLearning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IP首部详解</title>
+    <link href="http://fsxchen.github.io/2016/12/26/linuxtcp/2016_12_26_ip%E9%A6%96%E9%83%A8%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://fsxchen.github.io/2016/12/26/linuxtcp/2016_12_26_ip首部详解/</id>
+    <published>2016-12-26T14:45:00.000Z</published>
+    <updated>2017-05-10T08:36:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="IP地址首部"><a href="#IP地址首部" class="headerlink" title="IP地址首部"></a>IP地址首部</h1><p><img src="http://7xrn62.com1.z0.glb.clouddn.com/c55969a688139ea87938f115e871ff2b.png" alt="IPv4首部"></p><p><img src="http://7xrn62.com1.z0.glb.clouddn.com/14e5016192d3d137fc512e21f298e91f.png" alt="IPv6首部"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;IP地址首部&quot;&gt;&lt;a href=&quot;#IP地址首部&quot; class=&quot;headerlink&quot; title=&quot;IP地址首部&quot;&gt;&lt;/a&gt;IP地址首部&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;http://7xrn62.com1.z0.glb.clouddn.com/c55969
+      
+    
+    </summary>
+    
+      <category term="Read" scheme="http://fsxchen.github.io/categories/Read/"/>
+    
+    
+      <category term="network" scheme="http://fsxchen.github.io/tags/network/"/>
+    
+      <category term="tcp/ip" scheme="http://fsxchen.github.io/tags/tcp-ip/"/>
+    
+  </entry>
+  
+</feed>
