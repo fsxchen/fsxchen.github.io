@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://fsxchen.github.io/"/>
-  <updated>2017-09-12T07:50:36.000Z</updated>
+  <updated>2017-09-18T08:28:13.000Z</updated>
   <id>http://fsxchen.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>读《算法导论》-堆数据结构.md</title>
+    <title>读《算法导论》-堆数据结构</title>
     <link href="http://fsxchen.github.io/2017/09/08/read/%E8%AF%BB%E3%80%8A%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA%E3%80%8B-%E5%A0%86%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     <id>http://fsxchen.github.io/2017/09/08/read/读《算法导论》-堆数据结构/</id>
     <published>2017-09-08T09:29:06.000Z</published>
-    <updated>2017-09-12T07:50:36.000Z</updated>
+    <updated>2017-09-18T08:28:13.000Z</updated>
     
     <content type="html"><![CDATA[<p>#读《算法导论》-堆数据结构</p><h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><h3 id="栈的操作"><a href="#栈的操作" class="headerlink" title="栈的操作"></a>栈的操作</h3><ul><li><p>INSERT 压入一个数据，或者叫做PUSH</p></li><li><p>DELETE/POP</p></li><li><p>TOP，指向最新插入的元素</p><p>​</p></li></ul><h3 id="栈的应用"><a href="#栈的应用" class="headerlink" title="栈的应用"></a>栈的应用</h3><h4 id="中缀表达式转后缀表达式"><a href="#中缀表达式转后缀表达式" class="headerlink" title="中缀表达式转后缀表达式"></a>中缀表达式转后缀表达式</h4><ul><li>如果是数字，则放入到第一栈S1中</li><li>如果是左括号，则直接将该左括号加入到栈S2中</li><li>如果遇到的是右括号，那么将栈S2中的运算符一次出栈加入到栈S1中，直到遇到左括号，但是该左括号出栈S2并不加入到栈S1中</li><li>如果遇到的是运算符<ul><li>如果此时栈S2为空，则直接将运算符加入到栈S2中</li><li>如果此时栈S2不为空，当前遍历的运算符的优先级大于等(大于也可以)于栈顶运算符的优先级，那么直接入栈S2</li><li>如果此时栈S2不为空，当前遍历的运算符的优先级小于栈顶运算符的优先级，则将栈顶运算符一直出栈加入到栈S1中，直到栈为空或者遇到一个运算符的优先级小于等于当前遍历的运算符的优先级，此时将该运算符加入到栈S2中</li><li>直到遍历完整个中序表达式之后，栈S2中仍然存在运算符，那么将这些运算符依次出栈加入到栈S1中，直到栈为空。</li></ul></li></ul><h4 id="计算后缀表达式"><a href="#计算后缀表达式" class="headerlink" title="计算后缀表达式"></a>计算后缀表达式</h4><p>我们从左至右的遍历栈S1，然后按照下面的规则进行操作栈S3.</p><ul><li>如果遇到的是数字，那么直接将数字压入到S3中</li><li>如果遇到的是单目运算符，那么取S3栈顶的一个元素进行单目运算之后，将结果再次压入到栈S3中</li><li>如果遇到的是双目运算符，那么取S3栈顶的两个元素进行，首先出栈的在左，后出栈的在左进行双目运算符的计算，将结果再次压入到S3中。</li></ul>]]></content>
     
