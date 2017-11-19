@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://fsxchen.github.io/"/>
-  <updated>2017-09-18T08:28:13.000Z</updated>
+  <updated>2017-11-18T10:22:01.000Z</updated>
   <id>http://fsxchen.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python函数介绍</title>
+    <link href="http://fsxchen.github.io/2017/11/03/python/Python%E5%87%BD%E6%95%B0%E4%BB%8B%E7%BB%8D/"/>
+    <id>http://fsxchen.github.io/2017/11/03/python/Python函数介绍/</id>
+    <published>2017-11-03T04:52:16.000Z</published>
+    <updated>2017-11-18T10:22:01.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Python函数介绍"><a href="#Python函数介绍" class="headerlink" title="Python函数介绍"></a>Python函数介绍</h1><h2 id="可变长的函数"><a href="#可变长的函数" class="headerlink" title="可变长的函数"></a>可变长的函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">def foo(arg1, *)</div></pre></td></tr></table></figure><h2 id="键值对参数"><a href="#键值对参数" class="headerlink" title="键值对参数"></a>键值对参数</h2><h2 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def func(arg1, arg2=value):</div><div class="line">pass</div></pre></td></tr></table></figure><p><strong>⚠️⚠️</strong></p><ul><li><strong>如果使用变量来进行初始，只会作用一次</strong></li><li><strong>默认值不能是引用变量</strong></li></ul><h2 id="限制参数类型"><a href="#限制参数类型" class="headerlink" title="限制参数类型"></a>限制参数类型</h2><pre><code>def add(x:int, y:int) -&gt; int    return x + y”</code></pre><h2 id="偏函数"><a href="#偏函数" class="headerlink" title="偏函数"></a>偏函数</h2><p>python2.5 以后的特性</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure><h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">def prefix(pre):</div><div class="line">def name(name):</div><div class="line">print(pre, name)</div><div class="line">return name</div></pre></td></tr></table></figure><p>闭包只是形式上的函数，但是可以用一个实例来理解</p><h3 id="构建闭包"><a href="#构建闭包" class="headerlink" title="构建闭包"></a>构建闭包</h3><ul><li>闭包函数必须有内嵌函数</li><li>内嵌函数需要引用该嵌套函数上一级namespace中的变量</li><li>闭包函数必须返回内嵌函数</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Python函数介绍&quot;&gt;&lt;a href=&quot;#Python函数介绍&quot; class=&quot;headerlink&quot; title=&quot;Python函数介绍&quot;&gt;&lt;/a&gt;Python函数介绍&lt;/h1&gt;&lt;h2 id=&quot;可变长的函数&quot;&gt;&lt;a href=&quot;#可变长的函数&quot; class=&quot;
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>读《算法导论》-堆数据结构</title>
@@ -283,9 +304,9 @@
     <link href="http://fsxchen.github.io/2017/05/04/machinelearning/2017_05_04_%E6%96%87%E6%9C%AC%E5%AD%A6%E4%B9%A0/"/>
     <id>http://fsxchen.github.io/2017/05/04/machinelearning/2017_05_04_文本学习/</id>
     <published>2017-05-04T06:10:00.000Z</published>
-    <updated>2017-05-10T08:15:20.000Z</updated>
+    <updated>2017-09-27T08:46:12.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="文本学习"><a href="#文本学习" class="headerlink" title="文本学习"></a>文本学习</h1><h2 id="词袋"><a href="#词袋" class="headerlink" title="词袋"></a>词袋</h2><p>每个词的频率</p><h2 id="词袋属性"><a href="#词袋属性" class="headerlink" title="词袋属性"></a>词袋属性</h2><ul><li>无序</li><li>长词</li><li>复合词</li></ul><h2 id="sklearn-词袋"><a href="#sklearn-词袋" class="headerlink" title="sklearn 词袋"></a>sklearn 词袋</h2><h3 id="低信息量词"><a href="#低信息量词" class="headerlink" title="低信息量词"></a>低信息量词</h3><h3 id="停词"><a href="#停词" class="headerlink" title="停词"></a>停词</h3><h3 id="词干提取"><a href="#词干提取" class="headerlink" title="词干提取"></a>词干提取</h3><ul><li>词干提取算法（STEMMER）</li></ul><h3 id="IF-IDF"><a href="#IF-IDF" class="headerlink" title="IF-IDF"></a>IF-IDF</h3><p>IDF：逆向文件频率</p><p>实际上就是IF*IDF</p><p>更注重于罕见的词汇！</p><h2 id="TfidfVectorizer"><a href="#TfidfVectorizer" class="headerlink" title="TfidfVectorizer"></a>TfidfVectorizer</h2><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul><li><code>max_df</code>，0.5，如果在%50的文档中出现了这个词，tfidf就会删除这个词</li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="文本学习"><a href="#文本学习" class="headerlink" title="文本学习"></a>文本学习</h1><h2 id="词袋"><a href="#词袋" class="headerlink" title="词袋"></a>词袋</h2><p>每个词的频率</p><h2 id="词袋属性"><a href="#词袋属性" class="headerlink" title="词袋属性"></a>词袋属性</h2><ul><li>无序</li><li>长词</li><li>复合词</li></ul><h2 id="sklearn-词袋"><a href="#sklearn-词袋" class="headerlink" title="sklearn 词袋"></a>sklearn 词袋</h2><h3 id="低信息量词"><a href="#低信息量词" class="headerlink" title="低信息量词"></a>低信息量词</h3><h3 id="停词"><a href="#停词" class="headerlink" title="停词"></a>停词</h3><h3 id="词干提取"><a href="#词干提取" class="headerlink" title="词干提取"></a>词干提取</h3><ul><li>词干提取算法（STEMMER）</li></ul><h3 id="TF-IDF"><a href="#TF-IDF" class="headerlink" title="TF-IDF"></a>TF-IDF</h3><p>Term Frequency： 词频</p><p>Inverse Document Frequency：逆向文件频率</p><p>实际上就是TF*IDF</p><p>更注重于罕见的词汇！有的时候，越是罕见的词越能够代表文章的相关意思！</p><h2 id="TfidfVectorizer"><a href="#TfidfVectorizer" class="headerlink" title="TfidfVectorizer"></a>TfidfVectorizer</h2><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul><li><code>max_df</code>，0.5，如果在%50的文档中出现了这个词，tfidf就会删除这个词</li></ul>]]></content>
     
     <summary type="html">
     
@@ -501,33 +522,6 @@
     
     
       <category term="MachineLearning" scheme="http://fsxchen.github.io/tags/MachineLearning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IP首部详解</title>
-    <link href="http://fsxchen.github.io/2016/12/26/linuxtcp/2016_12_26_ip%E9%A6%96%E9%83%A8%E8%AF%A6%E8%A7%A3/"/>
-    <id>http://fsxchen.github.io/2016/12/26/linuxtcp/2016_12_26_ip首部详解/</id>
-    <published>2016-12-26T14:45:00.000Z</published>
-    <updated>2017-05-10T08:36:20.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="IP地址首部"><a href="#IP地址首部" class="headerlink" title="IP地址首部"></a>IP地址首部</h1><p><img src="http://7xrn62.com1.z0.glb.clouddn.com/c55969a688139ea87938f115e871ff2b.png" alt="IPv4首部"></p><p><img src="http://7xrn62.com1.z0.glb.clouddn.com/14e5016192d3d137fc512e21f298e91f.png" alt="IPv6首部"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;IP地址首部&quot;&gt;&lt;a href=&quot;#IP地址首部&quot; class=&quot;headerlink&quot; title=&quot;IP地址首部&quot;&gt;&lt;/a&gt;IP地址首部&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;http://7xrn62.com1.z0.glb.clouddn.com/c55969
-      
-    
-    </summary>
-    
-      <category term="Read" scheme="http://fsxchen.github.io/categories/Read/"/>
-    
-    
-      <category term="network" scheme="http://fsxchen.github.io/tags/network/"/>
-    
-      <category term="tcp/ip" scheme="http://fsxchen.github.io/tags/tcp-ip/"/>
     
   </entry>
   

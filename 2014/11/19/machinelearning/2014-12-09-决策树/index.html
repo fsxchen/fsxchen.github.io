@@ -80,7 +80,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="数据挖掘," />
+  <meta name="keywords" content="数据挖掘,决策树," />
 
 
 
@@ -98,13 +98,13 @@
 
 
 
-<meta name="description" content="决策树决策数的构造熵和信息增益​        划分数据集的大原则是：将无序的数据变得更加有序。划分数据的方式有很多种，但是每种都有相应的优缺点。组织杂乱无章数据的一种方式就是使用信息论度量信息。在划分数据集之前之后信息发生的变化称为信息增益.集合信息的度量方式称为香农熵或者简称熵如果待分类的事物可能划分在多个分类之中，则符号$$x_{i}$$的信息定义为 $$l(x{i})=-\log{2}p(">
-<meta name="keywords" content="数据挖掘">
+<meta name="description" content="决策树决策数的构造熵和信息增益​        划分数据集的大原则是：将无序的数据变得更加有序。划分数据的方式有很多种，但是每种都有相应的优缺点。组织杂乱无章数据的一种方式就是使用信息论度量信息。在划分数据集之前之后信息发生的变化称为信息增益.集合信息的度量方式称为香农熵或者简称熵如果待分类的事物可能划分在多个分类之中，则符号$$xi$$的信息定义为$$l(x{i})=-\log{2}p(x{i}">
+<meta name="keywords" content="数据挖掘,决策树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="决策树">
 <meta property="og:url" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/index.html">
 <meta property="og:site_name" content="Arron&#39;s Blog">
-<meta property="og:description" content="决策树决策数的构造熵和信息增益​        划分数据集的大原则是：将无序的数据变得更加有序。划分数据的方式有很多种，但是每种都有相应的优缺点。组织杂乱无章数据的一种方式就是使用信息论度量信息。在划分数据集之前之后信息发生的变化称为信息增益.集合信息的度量方式称为香农熵或者简称熵如果待分类的事物可能划分在多个分类之中，则符号$$x_{i}$$的信息定义为 $$l(x{i})=-\log{2}p(">
+<meta property="og:description" content="决策树决策数的构造熵和信息增益​        划分数据集的大原则是：将无序的数据变得更加有序。划分数据的方式有很多种，但是每种都有相应的优缺点。组织杂乱无章数据的一种方式就是使用信息论度量信息。在划分数据集之前之后信息发生的变化称为信息增益.集合信息的度量方式称为香农熵或者简称熵如果待分类的事物可能划分在多个分类之中，则符号$$xi$$的信息定义为$$l(x{i})=-\log{2}p(x{i}">
 <meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/68b64b56389482cd68c139d2fee78897.png">
 <meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/1f8f79605d845169ea08d2090efbecad.png">
 <meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/c1860ef516bc123d8d80719c961c376a.png">
@@ -112,10 +112,10 @@
 <meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/a5e03fe04ec3b27d730c916f37d4c78f.png">
 <meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/54c4eac6875702c2fd379213eb455ecc.png">
 <meta property="og:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/3a7547780fc77d84e53236bd39661fa5.png">
-<meta property="og:updated_time" content="2017-05-10T07:39:24.000Z">
+<meta property="og:updated_time" content="2017-09-27T06:16:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="决策树">
-<meta name="twitter:description" content="决策树决策数的构造熵和信息增益​        划分数据集的大原则是：将无序的数据变得更加有序。划分数据的方式有很多种，但是每种都有相应的优缺点。组织杂乱无章数据的一种方式就是使用信息论度量信息。在划分数据集之前之后信息发生的变化称为信息增益.集合信息的度量方式称为香农熵或者简称熵如果待分类的事物可能划分在多个分类之中，则符号$$x_{i}$$的信息定义为 $$l(x{i})=-\log{2}p(">
+<meta name="twitter:description" content="决策树决策数的构造熵和信息增益​        划分数据集的大原则是：将无序的数据变得更加有序。划分数据的方式有很多种，但是每种都有相应的优缺点。组织杂乱无章数据的一种方式就是使用信息论度量信息。在划分数据集之前之后信息发生的变化称为信息增益.集合信息的度量方式称为香农熵或者简称熵如果待分类的事物可能划分在多个分类之中，则符号$$xi$$的信息定义为$$l(x{i})=-\log{2}p(x{i}">
 <meta name="twitter:image" content="http://fsxchen.github.io/2014/11/19/machinelearning/2014-12-09-决策树/68b64b56389482cd68c139d2fee78897.png">
 
 
@@ -432,8 +432,7 @@
       
 
       
-        <h1 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h1><h2 id="决策数的构造"><a href="#决策数的构造" class="headerlink" title="决策数的构造"></a>决策数的构造</h2><h3 id="熵和信息增益"><a href="#熵和信息增益" class="headerlink" title="熵和信息增益"></a>熵和信息增益</h3><p>​        划分数据集的大原则是：将无序的数据变得更加有序。划分数据的方式有很多种，但是每种都有相应的优缺点。组织杂乱无章数据的一种方式就是使用信息论度量信息。在划分数据集之前之后信息发生的变化称为<strong>信息增益</strong>.<br>集合信息的度量方式称为香农熵或者简称熵<br>如果待分类的事物可能划分在多个分类之中，则符号<br>$$<br>x_{i}<br>$$<br>的信息定义为</p>
-<p>$$<br>l(x<em>{i})=-\log</em>{2}p(x_{i})<br>$$</p>
+        <h1 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h1><h2 id="决策数的构造"><a href="#决策数的构造" class="headerlink" title="决策数的构造"></a>决策数的构造</h2><h3 id="熵和信息增益"><a href="#熵和信息增益" class="headerlink" title="熵和信息增益"></a>熵和信息增益</h3><p>​        划分数据集的大原则是：<strong>将无序的数据变得更加有序</strong>。划分数据的方式有很多种，但是每种都有相应的优缺点。组织杂乱无章数据的一种方式就是使用信息论度量信息。在划分数据集之前之后信息发生的变化称为<strong>信息增益</strong>.<br>集合信息的度量方式称为<strong>香农熵或者简称熵</strong><br>如果待分类的事物可能划分在多个分类之中，则符号$$x<em>i$$的信息定义为<br>$$<br>l(x</em>{i})=-\log<em>{2}p(x</em>{i})<br>$$</p>
 <p>其中$$p(x_{i})$$是选择该分类的概率<br>为了计算熵，我们需要计算所有类别所有可能包含值的信息期望值</p>
 <p>$$<br>H=-\sum<em>{i=1}^{n}p(x</em>{i})log<em>{2}p(x</em>{i})<br>$$</p>
 <p>Eg：计算熵<br><img src="/2014/11/19/machinelearning/2014-12-09-决策树/68b64b56389482cd68c139d2fee78897.png" alt=""></p>
@@ -561,6 +560,8 @@
           
             <a href="/tags/数据挖掘/" rel="tag"># 数据挖掘</a>
           
+            <a href="/tags/决策树/" rel="tag"># 决策树</a>
+          
         </div>
       
 
@@ -658,7 +659,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">61</span>
+                <span class="site-state-item-count">62</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -680,7 +681,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
