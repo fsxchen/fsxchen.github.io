@@ -403,14 +403,11 @@
       
         
           
-          Python函数介绍可变长的函数1def foo(arg1, *)
-键值对参数默认参数12def func(arg1, arg2=value):	pass
-⚠️⚠️
-
-如果使用变量来进行初始，只会作用一次
-默认值不能是引用变量
-
-限制参数类型def add(x:int, y:int) -&gt; i
+          Python函数介绍可变长的函数12def foo(arg1, *args):	pass
+把后面所有的参数都放入到args的列表中。使用如下的方式，可以接受可变长的键值对参数。
+12def foo(arg1, **kargs):	pass
+这个时候kargs是一个字典。
+键值对参数默认参数12def
           ...
           <!--noindex-->
           <div class="post-button text-center">

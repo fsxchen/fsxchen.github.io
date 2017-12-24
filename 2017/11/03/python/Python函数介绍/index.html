@@ -98,16 +98,16 @@
 
 
 
-<meta name="description" content="Python函数介绍可变长的函数1def foo(arg1, *) 键值对参数默认参数12def func(arg1, arg2=value):	pass ⚠️⚠️  如果使用变量来进行初始，只会作用一次 默认值不能是引用变量  限制参数类型def add(x:int, y:int) -&amp;gt; int     return x + y” 偏函数python2.5 以后的特性 12 闭包1234d">
+<meta name="description" content="Python函数介绍可变长的函数12def foo(arg1, *args):	pass 把后面所有的参数都放入到args的列表中。使用如下的方式，可以接受可变长的键值对参数。 12def foo(arg1, **kargs):	pass 这个时候kargs是一个字典。 键值对参数默认参数12def func(arg1, arg2=value):	pass 默认参数很方便，当你不传值的时候，就有一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python函数介绍">
 <meta property="og:url" content="http://fsxchen.github.io/2017/11/03/python/Python函数介绍/index.html">
 <meta property="og:site_name" content="Arron&#39;s Blog">
-<meta property="og:description" content="Python函数介绍可变长的函数1def foo(arg1, *) 键值对参数默认参数12def func(arg1, arg2=value):	pass ⚠️⚠️  如果使用变量来进行初始，只会作用一次 默认值不能是引用变量  限制参数类型def add(x:int, y:int) -&amp;gt; int     return x + y” 偏函数python2.5 以后的特性 12 闭包1234d">
-<meta property="og:updated_time" content="2017-11-18T10:22:01.000Z">
+<meta property="og:description" content="Python函数介绍可变长的函数12def foo(arg1, *args):	pass 把后面所有的参数都放入到args的列表中。使用如下的方式，可以接受可变长的键值对参数。 12def foo(arg1, **kargs):	pass 这个时候kargs是一个字典。 键值对参数默认参数12def func(arg1, arg2=value):	pass 默认参数很方便，当你不传值的时候，就有一">
+<meta property="og:updated_time" content="2017-12-24T10:02:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python函数介绍">
-<meta name="twitter:description" content="Python函数介绍可变长的函数1def foo(arg1, *) 键值对参数默认参数12def func(arg1, arg2=value):	pass ⚠️⚠️  如果使用变量来进行初始，只会作用一次 默认值不能是引用变量  限制参数类型def add(x:int, y:int) -&amp;gt; int     return x + y” 偏函数python2.5 以后的特性 12 闭包1234d">
+<meta name="twitter:description" content="Python函数介绍可变长的函数12def foo(arg1, *args):	pass 把后面所有的参数都放入到args的列表中。使用如下的方式，可以接受可变长的键值对参数。 12def foo(arg1, **kargs):	pass 这个时候kargs是一个字典。 键值对参数默认参数12def func(arg1, arg2=value):	pass 默认参数很方便，当你不传值的时候，就有一">
 
 
 
@@ -401,21 +401,36 @@
       
 
       
-        <h1 id="Python函数介绍"><a href="#Python函数介绍" class="headerlink" title="Python函数介绍"></a>Python函数介绍</h1><h2 id="可变长的函数"><a href="#可变长的函数" class="headerlink" title="可变长的函数"></a>可变长的函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">def foo(arg1, *)</div></pre></td></tr></table></figure>
+        <h1 id="Python函数介绍"><a href="#Python函数介绍" class="headerlink" title="Python函数介绍"></a>Python函数介绍</h1><h2 id="可变长的函数"><a href="#可变长的函数" class="headerlink" title="可变长的函数"></a>可变长的函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def foo(arg1, *args):</div><div class="line">	pass</div></pre></td></tr></table></figure>
+<p>把后面所有的参数都放入到args的列表中。使用如下的方式，可以接受可变长的键值对参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def foo(arg1, **kargs):</div><div class="line">	pass</div></pre></td></tr></table></figure>
+<p>这个时候kargs是一个字典。</p>
 <h2 id="键值对参数"><a href="#键值对参数" class="headerlink" title="键值对参数"></a>键值对参数</h2><h2 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def func(arg1, arg2=value):</div><div class="line">	pass</div></pre></td></tr></table></figure>
-<p><strong>⚠️⚠️</strong></p>
+<p>默认参数很方便，当你不传值的时候，就有一个默认值</p>
+<p><strong>注意⚠️⚠️</strong></p>
 <ul>
 <li><strong>如果使用变量来进行初始，只会作用一次</strong></li>
 <li><strong>默认值不能是引用变量</strong></li>
 </ul>
-<h2 id="限制参数类型"><a href="#限制参数类型" class="headerlink" title="限制参数类型"></a>限制参数类型</h2><pre><code>def add(x:int, y:int) -&gt; int
+<p>1、举个🌰</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">In [1]: x = 10</div><div class="line"></div><div class="line">In [2]: def foo(a, b=x):</div><div class="line">   ...:     print(a, b)</div><div class="line">   ...:</div><div class="line"></div><div class="line">In [3]: foo(1)</div><div class="line">1 10</div><div class="line"></div><div class="line">In [4]: x = 20</div><div class="line"></div><div class="line">In [5]: foo(2)</div><div class="line">2 10     # 不会再次初始化，所以还是10</div></pre></td></tr></table></figure>
+<p>2、🌰</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">In [7]: def span(a, b = []):</div><div class="line">   ...:     print(b)</div><div class="line">   ...:     return b</div><div class="line">   ...:</div><div class="line"></div><div class="line">In [8]: x = span(1)</div><div class="line">[]</div><div class="line"></div><div class="line">In [9]: x.append(&quot;hello&quot;)</div><div class="line"></div><div class="line">In [10]: x</div><div class="line">Out[10]: [&apos;hello&apos;]</div><div class="line"></div><div class="line">In [11]: y = span(2)</div><div class="line">[&apos;hello&apos;]</div></pre></td></tr></table></figure>
+<p>其本质原因在于默认参数只会初始化一次值，如果是默认值是引用变量，那么引用的对象发生变化，会对其他的调用产生影响。</p>
+<h2 id="增加参数的元信息"><a href="#增加参数的元信息" class="headerlink" title="增加参数的元信息"></a>增加参数的元信息</h2><pre><code>def add(x:int, y:int) -&gt; int:
     return x + y”
-</code></pre><h2 id="偏函数"><a href="#偏函数" class="headerlink" title="偏函数"></a>偏函数</h2><p>python2.5 以后的特性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">def prefix(pre):</div><div class="line">	def name(name):</div><div class="line">		print(pre, name)</div><div class="line">	return name</div></pre></td></tr></table></figure>
-<p>闭包只是形式上的函数，但是可以用一个实例来理解</p>
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Help on function add in module __main__:</div><div class="line"></div><div class="line">add(x:int, y:int) -&gt; int</div></pre></td></tr></table></figure>
+<p>虽然是这样，但是我们仍然能够给add函数传递任意类型的参数。</p>
+<h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">In [18]: add = lambda a, b: a + b</div><div class="line"></div><div class="line">In [19]: 3+add(4, 5)</div><div class="line">Out[19]: 12</div></pre></td></tr></table></figure>
+<p>匿名函数的好处就是能够把函数当作表达式的一部分来说过，比较常见的用法在<code>sorted</code>函数中。</p>
+<h2 id="偏函数"><a href="#偏函数" class="headerlink" title="偏函数"></a>偏函数</h2><p>python2.5 以后的特性，偏函数是在函数式编程中的用。简单点的解释就是固定住参数重的某个参数，以此来形成一个新的函数。也有的语言叫这种函数为偏应用函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">In [21]: def foo(a, b, c, d):</div><div class="line">    ...:     print(a, b,c,d)</div><div class="line">In [23]: f1 = partial(foo,1)   # 构成了一个新的函数，这个函数中第一个参数始终为1</div></pre></td></tr></table></figure>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">In [25]: def prefix(pre):</div><div class="line">    ...:     def name(name):</div><div class="line">    ...:         print(pre, name)</div><div class="line">    ...:     return name</div><div class="line">    ...:</div><div class="line"></div><div class="line">In [26]: f = prefix(&quot;hello:&quot;)</div><div class="line"></div><div class="line">In [27]: f(&quot;zhang san&quot;)</div><div class="line">hello: zhang san</div></pre></td></tr></table></figure>
+<p>实际上，闭包是使用<code>__closure__</code>这个属性来实现的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">In [28]: f.__closure__</div><div class="line">Out[28]: (&lt;cell at 0x10bae03d8: str object at 0x10bb1bdf8&gt;,)</div></pre></td></tr></table></figure>
+<p>这点，闭包和类有点类似。</p>
 <h3 id="构建闭包"><a href="#构建闭包" class="headerlink" title="构建闭包"></a>构建闭包</h3><ul>
-<li>闭包函数必须有内嵌函数</li>
+<li>闭包函数必须有内嵌函数，内嵌函数不能和外面函数同名</li>
 <li>内嵌函数需要引用该嵌套函数上一级namespace中的变量</li>
 <li>闭包函数必须返回内嵌函数</li>
 </ul>
@@ -651,7 +666,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python函数介绍"><span class="nav-number">1.</span> <span class="nav-text">Python函数介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#可变长的函数"><span class="nav-number">1.1.</span> <span class="nav-text">可变长的函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#键值对参数"><span class="nav-number">1.2.</span> <span class="nav-text">键值对参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认参数"><span class="nav-number">1.3.</span> <span class="nav-text">默认参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#限制参数类型"><span class="nav-number">1.4.</span> <span class="nav-text">限制参数类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#偏函数"><span class="nav-number">1.5.</span> <span class="nav-text">偏函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-number">1.6.</span> <span class="nav-text">闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构建闭包"><span class="nav-number">1.6.1.</span> <span class="nav-text">构建闭包</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python函数介绍"><span class="nav-number">1.</span> <span class="nav-text">Python函数介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#可变长的函数"><span class="nav-number">1.1.</span> <span class="nav-text">可变长的函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#键值对参数"><span class="nav-number">1.2.</span> <span class="nav-text">键值对参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认参数"><span class="nav-number">1.3.</span> <span class="nav-text">默认参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增加参数的元信息"><span class="nav-number">1.4.</span> <span class="nav-text">增加参数的元信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名函数"><span class="nav-number">1.5.</span> <span class="nav-text">匿名函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#偏函数"><span class="nav-number">1.6.</span> <span class="nav-text">偏函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-number">1.7.</span> <span class="nav-text">闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构建闭包"><span class="nav-number">1.7.1.</span> <span class="nav-text">构建闭包</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
