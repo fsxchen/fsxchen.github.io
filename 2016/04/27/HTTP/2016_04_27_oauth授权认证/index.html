@@ -98,14 +98,19 @@
 
 
 
+<meta name="description" content="OAuth授权认证允许第三方网站在用户授权的前提下访问在用户在服务商那里存储的各种信息 而这种授权无需将用户提供用户名和密码提供给该第三方网站。OAuth允许用户提供一个令牌给第三方网站，一个令牌对应一个特定的第三方网站，同时该令牌只能在特定的时间内访问特定的资源。 OAuth的参与者至少有以下四个：  RO(Resource Owner)：资源所有者，对资源具有授权能力的人。如上文的小明。 RS">
 <meta name="keywords" content="Misc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OAuth授权认证">
 <meta property="og:url" content="http://fsxchen.github.io/2016/04/27/HTTP/2016_04_27_oauth授权认证/index.html">
 <meta property="og:site_name" content="Arron&#39;s Blog">
-<meta property="og:updated_time" content="2017-05-10T07:39:12.000Z">
+<meta property="og:description" content="OAuth授权认证允许第三方网站在用户授权的前提下访问在用户在服务商那里存储的各种信息 而这种授权无需将用户提供用户名和密码提供给该第三方网站。OAuth允许用户提供一个令牌给第三方网站，一个令牌对应一个特定的第三方网站，同时该令牌只能在特定的时间内访问特定的资源。 OAuth的参与者至少有以下四个：  RO(Resource Owner)：资源所有者，对资源具有授权能力的人。如上文的小明。 RS">
+<meta property="og:image" content="http://7xrn62.com1.z0.glb.clouddn.com/23b76c9174a3b8942157be5ffd96e477.png">
+<meta property="og:updated_time" content="2018-08-18T15:48:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OAuth授权认证">
+<meta name="twitter:description" content="OAuth授权认证允许第三方网站在用户授权的前提下访问在用户在服务商那里存储的各种信息 而这种授权无需将用户提供用户名和密码提供给该第三方网站。OAuth允许用户提供一个令牌给第三方网站，一个令牌对应一个特定的第三方网站，同时该令牌只能在特定的时间内访问特定的资源。 OAuth的参与者至少有以下四个：  RO(Resource Owner)：资源所有者，对资源具有授权能力的人。如上文的小明。 RS">
+<meta name="twitter:image" content="http://7xrn62.com1.z0.glb.clouddn.com/23b76c9174a3b8942157be5ffd96e477.png">
 
 
 
@@ -364,8 +369,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Misc/" itemprop="url" rel="index">
-                    <span itemprop="name">Misc</span>
+                  <a href="/categories/front-end/" itemprop="url" rel="index">
+                    <span itemprop="name">front-end</span>
                   </a>
                 </span>
 
@@ -421,7 +426,60 @@
       
 
       
-        
+        <h1 id="OAuth授权认证"><a href="#OAuth授权认证" class="headerlink" title="OAuth授权认证"></a>OAuth授权认证</h1><p>允许第三方网站在用户授权的前提下访问在用户在服务商那里存储的各种信息</p>
+<p>而这种授权无需将用户提供用户名和密码提供给该第三方网站。<br>OAuth允许用户提供一个令牌给第三方网站，一个令牌对应一个特定的第三方网站，同时该令牌只能在特定的时间内访问特定的资源。</p>
+<p>OAuth的参与者至少有以下四个：</p>
+<ul>
+<li>RO(Resource Owner)：资源所有者，对资源具有授权能力的人。如上文的小明。</li>
+<li>RS(Resource Server)：资源服务器，它存储资源，并处理对资源的访问请求。如上文的新浪微博资源服务器。</li>
+<li>Client：第三方应用，它获取RO的授权后就可以访问RO的资源。如上文的第三方客户端。</li>
+<li>AS(Authorization Server)：授权服务器，它认证RO的身份，为RO提供授权审批流程，并最终颁发授权令牌(Access Token)。AS和RS的功能可以由同一个服务器来提供。</li>
+</ul>
+<p><img src="http://7xrn62.com1.z0.glb.clouddn.com/23b76c9174a3b8942157be5ffd96e477.png" alt=""></p>
+<h2 id="OAuth-介绍"><a href="#OAuth-介绍" class="headerlink" title="OAuth 介绍"></a>OAuth 介绍</h2><p>图表 1 OAuth 流程图</p>
+<ul>
+<li>第一步：申请成为yahoo的客户端应用（Application），yahoo颁发consumer_key和shared_secret，以后客户端应用就通过这个confidentials标示自己并和yahoo交互；</li>
+<li>第二步：获取oauth_token，客户端应用将请求参数编码后用指定的oauth_signature_method及shared_secret&amp;签名，yahoo获得请求参数用同样的方法对参数签名，然后和请求参数里的oauth_signature对比，如果相同则客户端认证通过，授予临时的oauth_token和oauth_secret；</li>
+<li>第三步：客户端应用重定向用户浏览器到yahoo的登录页面，请求参数带oauth_token，yahoo验证该token是否是自己颁发，如果是则可能让用户登录（可能用户已经登录），并明确告知用户客户端应用要获取用户什么个人数据，用户同意后，yahoo重定向用户浏览器到客户端应用的oauth_callback页面，并带参数oauth_verifier；</li>
+<li>第四步：客户端应用请求一个长期有效的oauth_token，同样对请求参数编码并用shared_secret&amp;oauth_token_secret签名，注意参数里要包含上一步获取的oauth_verifier，yahoo验证通过后返回长期有效的oauth_token和oauth_secret，以及过期时间：oauth_expire_in；接着客户端应用用这个token获取用户个人数据，直到token过期；</li>
+<li>第五步：客户端应用用之前的oauth_access_token获取新的token;</li>
+</ul>
+<p>注意：这里的oauth_timestamp和oauth_nonce是为防止重放攻击而设置的。具体的来讲：请求者不能在一段时间（服务器允许的客户端和服务端的时间差）内发送同样的请求两次或以上，如果在这个时间段之后再次发生这个请求，则会因为超出服务端允许的时间差而被拒绝。</p>
+<h2 id="2-2-Core1-0-的安全漏洞"><a href="#2-2-Core1-0-的安全漏洞" class="headerlink" title="2.2     Core1.0 的安全漏洞"></a>2.2     Core1.0 的安全漏洞</h2><p>2009 年 4 月 23 日， OAuth 宣告了一个 1.0 协议的安全漏洞。该漏洞影响了 OAuth 1.0 核心规范第 6 节的 OAuth 的认证流程（也称作 3 阶段 OAuth ）， OAuth Core 协议 1.0a 版本解决了这一问题。<br>问题描述<br>攻击者到一个合法的 Consumer 站点获得一个 request token<br>利用 trap site 让受害者授权这个 request token<br>之后针对 callback 的不同，有几种不同的处理方法：<br>a)       如果 Provider 站点对第二步（请求用户授权 , 图中第 3 步）中的 callback 没有限制，那么攻击者可以利用 trap site 将 callback 设为自己的站点，然后通过这个 callback 判断受害者何时完成授权。等到受害者授权后，攻击者访问合法的 callback 来获得受害者的 access token<br>b)       其他的情况下（使用预定义的静态 callback 、没有 callback 由用户手工完成授权），那么攻击者和受害者之间进行竞争，当攻击者恰好在受害者授权和访问 callback 的间隙访问合法的 callback ，那么攻击者就获得了受害者的 access token<br>解决方案<br>1.0a 的版本提供了以下改进：</p>
+<ol>
+<li>oauth_callback 在第一步即获取 Request Token 时（ Get Request Token ，图中第二步）就必须提供，如果不需要重定向，则其值必须为 oob （ out_of_band configuration ），服务提供方此时返回参数 oauth_callback_confirmed ，且值为 true 。在第二步即验证阶段（图中第三步）不接受该参数。</li>
+<li>验证完成后会返回验证码（ oauth_verifier ）为的是在没有 callback 的时候，服务提供方显示给用户，然后用户可以在第三方应用的设备上输入，标示自己已经授权（和未授权的用户分开），然后第三方应用必须加上该验证码去获取 Access Token<br>然而实际上 OAuth1.0 最终版（已经成为 RFC5849 标准）已经没有这个安全的漏洞了。</li>
+</ol>
+<h2 id="OAuth2-0"><a href="#OAuth2-0" class="headerlink" title="OAuth2.0"></a>OAuth2.0</h2><p>在开放授权中，第三方应用(Client)可能是一个Web站点，也可能是在浏览器中运行的一段JavaScript代码，还可能是安装在本地的一个应用程序。这些第三方应用都有各自的安全特性。对于Web站点来说，它与RO浏览器是分离的，它可以自己保存协议中的敏感数据，这些密钥可以不暴露给RO；对于JavaScript代码和本地安全的应用程序来说，它本来就运行在RO的浏览器中，RO是可以访问到Client在协议中的敏感数据。<br>客户端必须得到用户的授权（authorization grant），才能获得令牌（access token）。OAuth 2.0定义了四种授权方式。</p>
+<ul>
+<li>授权码模式（authorization code）</li>
+<li>简化模式（implicit）</li>
+<li>密码模式（resource owner password credentials）</li>
+<li>客户端模式（client credentials）</li>
+</ul>
+<h2 id="1-0-和2-0区别"><a href="#1-0-和2-0区别" class="headerlink" title="1.0 和2.0区别"></a>1.0 和2.0区别</h2><p>auth1.0与Oauth2.0是相互不兼容的，所以他们为我们提供了不同的授权方式：</p>
+<p>2.0的用户授权过程有3步：</p>
+<pre><code>A)用户到授权服务器，请求授权，然后返回授权码(AuthorizationCode)
+
+B)客户端由授权码到授权服务器换取访问令牌(access token)
+
+C)用访问令牌去访问得到授权的资源、
+</code></pre><p>总结：获取授权码(Authorization Code)—&gt;换取访问令牌（access_token）—&gt;访问资源:</p>
+<p>1.0的授权分4步,</p>
+<pre><code> A)客户端到授权服务器请求一个授权令牌(requesttoken&amp;secret)
+
+B)引导用户到授权服务器请求授权
+
+C)用访问令牌到授权服务器换取访问令牌(accesstoken&amp;secret)
+
+D)用访问令牌去访问得到授权的资源
+</code></pre><p>总结：请求授权令牌（request token&amp;secret）—&gt;换取访问令牌（access token&amp;secret）—&gt;访问资源</p>
+<p>②1.0协议每个token都有一个加密，2.0则不需要。这样来看1.0似乎更加安全，但是2.0要求使用https协议，安全性也更高一筹。</p>
+<p>③2.0充分考虑了客户端的各种子态，因而提供了多种途径获取访问令牌，有：授权码、</p>
+<p>客户端私有证书、资源拥有者密码证书、刷新令牌等方式，而且验证过程更为简洁。</p>
+<p>相比之下 1.0只有一个用户授权流程。</p>
+<p>  在了解OAuth的过程中参考了很多网站的资料以及前辈的总结，在这里把自己的总结和感悟写出来，也希望和大家分享、讨论，一起进步。</p>
+
       
     </div>
 
@@ -484,8 +542,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/27/python/2016_04_27_python实现python解释器/" rel="next" title="python实现python解释器">
-                <i class="fa fa-chevron-left"></i> python实现python解释器
+              <a href="/2016/04/21/MISC/2016_04_21_mysql出现lock-wait-timeout/" rel="next" title="mysql出现Lock-Wait-Timeout">
+                <i class="fa fa-chevron-left"></i> mysql出现Lock-Wait-Timeout
               </a>
             
           </div>
@@ -494,8 +552,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/05/04/tool/2016_05_04_logstalgia介绍/" rel="prev" title="Logstalgia介绍">
-                Logstalgia介绍 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/04/27/python/2016_04_27_python实现python解释器/" rel="prev" title="python实现python解释器">
+                python实现python解释器 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -545,8 +603,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/img/ar.gif"
@@ -583,7 +650,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">43</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -644,6 +711,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OAuth授权认证"><span class="nav-number">1.</span> <span class="nav-text">OAuth授权认证</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OAuth-介绍"><span class="nav-number">1.1.</span> <span class="nav-text">OAuth 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Core1-0-的安全漏洞"><span class="nav-number">1.2.</span> <span class="nav-text">2.2     Core1.0 的安全漏洞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OAuth2-0"><span class="nav-number">1.3.</span> <span class="nav-text">OAuth2.0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-0-和2-0区别"><span class="nav-number">1.4.</span> <span class="nav-text">1.0 和2.0区别</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

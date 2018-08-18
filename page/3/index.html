@@ -1666,9 +1666,10 @@ kernel：
 猜测解的形式
 使用数学归纳法找出使解真正有效的常熟
 
-递归树法主方法定理设$a&gt;1$和 $b&gt;1$ 为常数,设 $f(n)$ 为一函数, $T(n)$ 由递归式
+递归树法可以推导出一些公式
+主方法定理设$a&gt;1$和 $b&gt;1$ 为常数,设 $f(n)$ 为一函数, $T(n)$ 由递归式
 $$T(n) = aT(n/b) + f(n)$$
-对非负整数定义,其中$n/b$是指$\lflo
+对非负整数定义,其中$n/
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1893,7 +1894,7 @@ actionstorereducer
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://fsxchen.github.io/2016/07/17/linuxtcp/2016_07_17_unix-network(2)-地址以及字符串操作函数/">
+    <link itemprop="mainEntityOfPage" href="http://fsxchen.github.io/2016/07/17/linuxtcp/2016_07_17_unix-network(3)-基本socket/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="arron">
@@ -1912,7 +1913,7 @@ actionstorereducer
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/07/17/linuxtcp/2016_07_17_unix-network(2)-地址以及字符串操作函数/" itemprop="url">Unix-Network(2)-地址以及字符串操作函数</a></h1>
+                <a class="post-title-link" href="/2016/07/17/linuxtcp/2016_07_17_unix-network(3)-基本socket/" itemprop="url">Unix-Network(3)-基本socket</a></h1>
         
 
         <div class="post-meta">
@@ -1966,8 +1967,8 @@ actionstorereducer
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/07/17/linuxtcp/2016_07_17_unix-network(2)-地址以及字符串操作函数/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count hc-comment-count" data-xid="2016/07/17/linuxtcp/2016_07_17_unix-network(2)-地址以及字符串操作函数/" itemprop="commentsCount"></span>
+                <a href="/2016/07/17/linuxtcp/2016_07_17_unix-network(3)-基本socket/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2016/07/17/linuxtcp/2016_07_17_unix-network(3)-基本socket/" itemprop="commentsCount"></span>
                 </a>
               </span>
               <!--/noindex-->
@@ -1976,7 +1977,7 @@ actionstorereducer
 
           
           
-             <span id="/2016/07/17/linuxtcp/2016_07_17_unix-network(2)-地址以及字符串操作函数/" class="leancloud_visitors" data-flag-title="Unix-Network(2)-地址以及字符串操作函数">
+             <span id="/2016/07/17/linuxtcp/2016_07_17_unix-network(3)-基本socket/" class="leancloud_visitors" data-flag-title="Unix-Network(3)-基本socket">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2006,11 +2007,13 @@ actionstorereducer
       
         
           
-          套接字地址结构IPV4套接字地址结构123456789101112struct in_addr &#123;    in_addr_t s_addr;&#125;;struct sockaddr_in &#123;    uint8_t         sin_len;    sa_family_t
+          基本socketsocket函数12345SYNOPSIS     #include &lt;sys/socket.h&gt;     int     socket(int domain, int type, int protocol);
+family: 协议地址族
+AF_xxx:表示地址族PF_x
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2016/07/17/linuxtcp/2016_07_17_unix-network(2)-地址以及字符串操作函数/#more" rel="contents">
+            <a class="btn" href="/2016/07/17/linuxtcp/2016_07_17_unix-network(3)-基本socket/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2118,7 +2121,7 @@ actionstorereducer
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">43</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -98,17 +98,17 @@
 
 
 
-<meta name="description" content="常见的解递归的方法 代换法 猜测解的形式 使用数学归纳法找出使解真正有效的常熟  递归树法主方法定理设$a&amp;gt;1$和 $b&amp;gt;1$ 为常数,设 $f(n)$ 为一函数, $T(n)$ 由递归式 $$T(n) = aT(n/b) + f(n)$$ 对非负整数定义,其中$n/b$是指$\lfloor n/b \rfloor$或者是$\lceil n/b \rceil$.那么T(n)有如下的渐进">
+<meta name="description" content="常见的解递归的方法 代换法 猜测解的形式 使用数学归纳法找出使解真正有效的常熟  递归树法可以推导出一些公式 主方法定理设$a&amp;gt;1$和 $b&amp;gt;1$ 为常数,设 $f(n)$ 为一函数, $T(n)$ 由递归式 $$T(n) = aT(n/b) + f(n)$$ 对非负整数定义,其中$n/b$是指$\lfloor n/b \rfloor$或者是$\lceil n/b \rceil$.那么">
 <meta name="keywords" content="Misc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="主方法定理">
 <meta property="og:url" content="http://fsxchen.github.io/2016/09/19/算法/2016_09_19_主方法定理/index.html">
 <meta property="og:site_name" content="Arron&#39;s Blog">
-<meta property="og:description" content="常见的解递归的方法 代换法 猜测解的形式 使用数学归纳法找出使解真正有效的常熟  递归树法主方法定理设$a&amp;gt;1$和 $b&amp;gt;1$ 为常数,设 $f(n)$ 为一函数, $T(n)$ 由递归式 $$T(n) = aT(n/b) + f(n)$$ 对非负整数定义,其中$n/b$是指$\lfloor n/b \rfloor$或者是$\lceil n/b \rceil$.那么T(n)有如下的渐进">
-<meta property="og:updated_time" content="2017-05-10T08:17:48.000Z">
+<meta property="og:description" content="常见的解递归的方法 代换法 猜测解的形式 使用数学归纳法找出使解真正有效的常熟  递归树法可以推导出一些公式 主方法定理设$a&amp;gt;1$和 $b&amp;gt;1$ 为常数,设 $f(n)$ 为一函数, $T(n)$ 由递归式 $$T(n) = aT(n/b) + f(n)$$ 对非负整数定义,其中$n/b$是指$\lfloor n/b \rfloor$或者是$\lceil n/b \rceil$.那么">
+<meta property="og:updated_time" content="2018-08-18T13:27:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="主方法定理">
-<meta name="twitter:description" content="常见的解递归的方法 代换法 猜测解的形式 使用数学归纳法找出使解真正有效的常熟  递归树法主方法定理设$a&amp;gt;1$和 $b&amp;gt;1$ 为常数,设 $f(n)$ 为一函数, $T(n)$ 由递归式 $$T(n) = aT(n/b) + f(n)$$ 对非负整数定义,其中$n/b$是指$\lfloor n/b \rfloor$或者是$\lceil n/b \rceil$.那么T(n)有如下的渐进">
+<meta name="twitter:description" content="常见的解递归的方法 代换法 猜测解的形式 使用数学归纳法找出使解真正有效的常熟  递归树法可以推导出一些公式 主方法定理设$a&amp;gt;1$和 $b&amp;gt;1$ 为常数,设 $f(n)$ 为一函数, $T(n)$ 由递归式 $$T(n) = aT(n/b) + f(n)$$ 对非负整数定义,其中$n/b$是指$\lfloor n/b \rfloor$或者是$\lceil n/b \rceil$.那么">
 
 
 
@@ -429,7 +429,8 @@
 <li>猜测解的形式</li>
 <li>使用数学归纳法找出使解真正有效的常熟</li>
 </ul>
-<h2 id="递归树法"><a href="#递归树法" class="headerlink" title="递归树法"></a>递归树法</h2><h2 id="主方法定理"><a href="#主方法定理" class="headerlink" title="主方法定理"></a>主方法定理</h2><p>设$a&gt;1$和 $b&gt;1$ 为常数,设 $f(n)$ 为一函数, $T(n)$ 由递归式</p>
+<h2 id="递归树法"><a href="#递归树法" class="headerlink" title="递归树法"></a>递归树法</h2><p>可以推导出一些公式</p>
+<h2 id="主方法定理"><a href="#主方法定理" class="headerlink" title="主方法定理"></a>主方法定理</h2><p>设$a&gt;1$和 $b&gt;1$ 为常数,设 $f(n)$ 为一函数, $T(n)$ 由递归式</p>
 <p>$$T(n) = aT(n/b) + f(n)$$</p>
 <p>对非负整数定义,其中$n/b$是指$\lfloor n/b \rfloor$或者是$\lceil n/b \rceil$.那么T(n)有如下的渐进界.</p>
 <ul>
@@ -441,7 +442,7 @@
 </li>
 </ul>
 <h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>比较$f(n)$和$n^{log_a^b}$的大小.</p>
-<p>在第一种情况中,可以看到应该是$n^{log_a^b}$比$f(n)$大.也就是说,<br>$$ T(n)=\left{<br>\begin{aligned}<br>\Theta (n^{log_b^{a }}) &amp; &amp;{ n^{log_a^b}<f(n), \varepsilon=""> 0}\<br>\Theta(n^{log_b^a}lg^n)  &amp; &amp; {n^{log_a^b}=f(n), af(n/b)\le cf(n)}\<br>\Theta(f(n))  &amp; &amp; {n^{log_a^b}}&gt;f(n)<br>\end{aligned}<br>\right.<br>$$</f(n),></p>
+<p>在第一种情况中,可以看到应该是$n^{log_a^b}$比$f(n)$大.也就是说,<br>$$<br>T(n)=\left{<br>\begin{aligned}<br>\Theta (n^{log_b^{a }}) &amp; &amp;{ n^{log_a^b}<f(n), \varepsilon=""> 0}\<br>\Theta(n^{log_b^a}lg^n)  &amp; &amp; {n^{log_a^b}=f(n), af(n/b)\le cf(n)}\<br>\Theta(f(n))  &amp; &amp; {n^{log_a^b}}&gt;f(n)<br>\end{aligned}<br>\right.<br>$$</f(n),></p>
 <h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2>
       
     </div>
@@ -613,7 +614,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">43</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
