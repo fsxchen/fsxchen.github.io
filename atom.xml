@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://fsxchen.github.io/"/>
-  <updated>2018-09-30T06:55:17.000Z</updated>
+  <updated>2019-01-07T15:14:30.791Z</updated>
   <id>http://fsxchen.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>操作系统学习之进程和线程</title>
+    <link href="http://fsxchen.github.io/2019/01/07/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/"/>
+    <id>http://fsxchen.github.io/2019/01/07/操作系统学习之进程和线程/</id>
+    <published>2019-01-07T14:38:10.000Z</published>
+    <updated>2019-01-07T15:14:30.791Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h1><h2 id="进程模型"><a href="#进程模型" class="headerlink" title="进程模型"></a>进程模型</h2><p>为什么会存在进程模型？<br>一个进程就是一个正在运行的程序，进程需要有自己的程序计数器（PC），内存空间以及CPU，真实的情况是在计算机中存在有多个进程，然后多个进程在同一时间只有一个使用CPU，所以需要来回切换，于是需要使用进程模型来管理。</p><h2 id="创建进程"><a href="#创建进程" class="headerlink" title="创建进程"></a>创建进程</h2><ul><li>系统初始化</li><li>进程创建的系统调用</li><li>用户创建了一个进程</li><li>批处理作业</li></ul><h2 id="进程退出"><a href="#进程退出" class="headerlink" title="进程退出"></a>进程退出</h2><ul><li>正常退出(自愿)</li><li>出错退出(自愿)<br>区别于下面的严重错误，这里面的错误是程序逻辑上抛出的错误，也就是说按照默认的规定返回的不是0</li><li>严重错误(非自愿)<br>这里可以理解成我们常说的异常，eg：空指针，除数为0</li><li>被其他进程杀死(非自愿)</li></ul><h2 id="进程的层次结构"><a href="#进程的层次结构" class="headerlink" title="进程的层次结构"></a>进程的层次结构</h2><p>Posix系统中，有子进程和父进程的概念，Posix</p><h2 id="进程的状态"><a href="#进程的状态" class="headerlink" title="进程的状态"></a>进程的状态</h2><ul><li>运行态</li><li>就绪态（和1类似，但是暂时没有CPU分配）</li><li>阻塞态</li></ul><h2 id="进程模型的实现"><a href="#进程模型的实现" class="headerlink" title="进程模型的实现"></a>进程模型的实现</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;进程和线程&quot;&gt;&lt;a href=&quot;#进程和线程&quot; class=&quot;headerlink&quot; title=&quot;进程和线程&quot;&gt;&lt;/a&gt;进程和线程&lt;/h1&gt;&lt;h2 id=&quot;进程模型&quot;&gt;&lt;a href=&quot;#进程模型&quot; class=&quot;headerlink&quot; title=&quot;进程模型&quot;
+      
+    
+    </summary>
+    
+      <category term="categories" scheme="http://fsxchen.github.io/categories/categories/"/>
+    
+    
+      <category term="tag" scheme="http://fsxchen.github.io/tags/tag/"/>
+    
+  </entry>
   
   <entry>
     <title>python字符串与编码</title>
@@ -503,31 +528,6 @@
     
     
       <category term="机器学习" scheme="http://fsxchen.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>读《聪明人用方格笔记本》</title>
-    <link href="http://fsxchen.github.io/2017/05/03/read/2017_05_03_%E8%AF%BB%E3%80%8A%E8%81%AA%E6%98%8E%E4%BA%BA%E7%94%A8%E6%96%B9%E6%A0%BC%E7%AC%94%E8%AE%B0%E6%9C%AC%E3%80%8B/"/>
-    <id>http://fsxchen.github.io/2017/05/03/read/2017_05_03_读《聪明人用方格笔记本》/</id>
-    <published>2017-05-03T02:27:00.000Z</published>
-    <updated>2017-09-08T09:27:57.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="读《聪明人用方格笔记本》"><a href="#读《聪明人用方格笔记本》" class="headerlink" title="读《聪明人用方格笔记本》"></a>读《聪明人用方格笔记本》</h1><h2 id="笔记三法则"><a href="#笔记三法则" class="headerlink" title="笔记三法则"></a>笔记三法则</h2><ul><li>使用方格笔记</li><li>标出题目</li><li>用三分法记录<ul><li>事实</li><li>解释</li><li>行动</li></ul></li></ul><h2 id="使用方格笔记本"><a href="#使用方格笔记本" class="headerlink" title="使用方格笔记本"></a>使用方格笔记本</h2><ul><li>行首对齐</li><li>在行首两三个字的地方写小标题</li><li>在比小标题往后两三个字的地方写内容</li><li>项目改变时空一行</li><li>注意流出空隙，留出进行信息整理的空间</li></ul><p>学习中最重要的是什么？</p><p>“尽可能多地往脑子里塞东西”</p><p>“不怎么往脑子里塞东西”</p><p>一种从有到无的境界</p><p>框架=“整理思路的书架”</p><p>人容易被“框架”左右的生物</p><h2 id="黄金三分法"><a href="#黄金三分法" class="headerlink" title="黄金三分法"></a>黄金三分法</h2><p>康奈尔笔记本分为（板书（Note）、发现点（Queue）、总结（summary））</p><h3 id="麦肯锡的“空-雨-伞”"><a href="#麦肯锡的“空-雨-伞”" class="headerlink" title="麦肯锡的“空-雨-伞”"></a>麦肯锡的“空-雨-伞”</h3><h2 id="横向使用"><a href="#横向使用" class="headerlink" title="横向使用"></a>横向使用</h2><h2 id="A4"><a href="#A4" class="headerlink" title="A4"></a>A4</h2><h2 id="像报纸标出题目"><a href="#像报纸标出题目" class="headerlink" title="像报纸标出题目"></a>像报纸标出题目</h2><h3 id="一页一主题"><a href="#一页一主题" class="headerlink" title="一页一主题"></a>一页一主题</h3><h2 id="10000张纸法则"><a href="#10000张纸法则" class="headerlink" title="10000张纸法则"></a>10000张纸法则</h2><p>出自于咨询公司</p><h2 id="学习笔记本"><a href="#学习笔记本" class="headerlink" title="学习笔记本"></a>学习笔记本</h2><ul><li>记忆性笔记本</li><li>思考性笔记本</li><li>传达性笔记本</li></ul><h3 id="使用空白一秒"><a href="#使用空白一秒" class="headerlink" title="使用空白一秒"></a>使用空白一秒</h3><p>从“看黑板-记笔记”到“看黑板-放到脑袋-记笔记”</p><h3 id="两页一主题"><a href="#两页一主题" class="headerlink" title="两页一主题"></a>两页一主题</h3><p>将A4或者B5作为一页。</p><p>或者直接横向使用</p><h3 id="驾驭两页之间的中部区域"><a href="#驾驭两页之间的中部区域" class="headerlink" title="驾驭两页之间的中部区域"></a>驾驭两页之间的中部区域</h3><p>思维不应该因为笔记本的页面限制而被限制</p><h3 id="善于发现能够进步？"><a href="#善于发现能够进步？" class="headerlink" title="善于发现能够进步？"></a>善于发现能够进步？</h3><p>只有进一步的行动才能进步，将“发现”转变为“故事”</p><h3 id="逻辑连接词"><a href="#逻辑连接词" class="headerlink" title="逻辑连接词"></a>逻辑连接词</h3><ul><li>使用自己的逻辑连词词</li><li>三种箭头<ul><li>展开箭头</li><li>总结箭头</li><li>强调箭头</li></ul></li></ul><h3 id="总结写解决问题的要点"><a href="#总结写解决问题的要点" class="headerlink" title="总结写解决问题的要点"></a>总结写解决问题的要点</h3><h2 id="工作笔记本"><a href="#工作笔记本" class="headerlink" title="工作笔记本"></a>工作笔记本</h2><h3 id="目的是舍弃"><a href="#目的是舍弃" class="headerlink" title="目的是舍弃"></a>目的是舍弃</h3><h3 id="秘术是整理"><a href="#秘术是整理" class="headerlink" title="秘术是整理"></a>秘术是整理</h3><p>整理术和收拾法的关键就是将“舍弃”发挥到极致。</p><h3 id="提问力等于咨询力"><a href="#提问力等于咨询力" class="headerlink" title="提问力等于咨询力"></a>提问力等于咨询力</h3><h2 id="提案笔记本"><a href="#提案笔记本" class="headerlink" title="提案笔记本"></a>提案笔记本</h2>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;读《聪明人用方格笔记本》&quot;&gt;&lt;a href=&quot;#读《聪明人用方格笔记本》&quot; class=&quot;headerlink&quot; title=&quot;读《聪明人用方格笔记本》&quot;&gt;&lt;/a&gt;读《聪明人用方格笔记本》&lt;/h1&gt;&lt;h2 id=&quot;笔记三法则&quot;&gt;&lt;a href=&quot;#笔记三法则&quot; c
-      
-    
-    </summary>
-    
-      <category term="read" scheme="http://fsxchen.github.io/categories/read/"/>
-    
-    
-      <category term="Misc" scheme="http://fsxchen.github.io/tags/Misc/"/>
     
   </entry>
   
