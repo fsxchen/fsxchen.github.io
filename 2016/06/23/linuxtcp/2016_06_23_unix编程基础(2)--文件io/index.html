@@ -6,18 +6,18 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -35,7 +35,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -75,23 +75,23 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Misc," />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
-
-
-
-  <link rel="alternate" href="/atom.xml" title="Arron's Blog" type="application/atom+xml" />
+  <meta name="keywords" content="Misc,">
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+  <link rel="alternate" href="/atom.xml" title="Arron's Blog" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
 
 
 
@@ -105,6 +105,7 @@
 <meta property="og:url" content="http://fsxchen.github.io/2016/06/23/linuxtcp/2016_06_23_unix编程基础(2)--文件io/index.html">
 <meta property="og:site_name" content="Arron&#39;s Blog">
 <meta property="og:description" content="Unix 文件IO文件描述符号对于内核而言,所有打开的文件通过文件描述符引用,是一个非负整数.在POSIX1中,在&amp;lt;unistd.h&amp;gt;中定义了STDIN_FILENO(0): 标准输入STDOUT_FILENO(1): 标准输出STDERR_FILENO(2): 标准错误输出 文件描述符号的范围是{0-OPEN_MAX-1} 函数open和openatman 2 openman 2 o">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7xrn62.com1.z0.glb.clouddn.com/92f25f9776532b05a345d16161207a9e.png">
 <meta property="og:image" content="http://7xrn62.com1.z0.glb.clouddn.com/e8767b4eab3932b6fedb29a8cac69850.png">
 <meta property="og:updated_time" content="2017-05-10T08:30:00.000Z">
@@ -139,7 +140,7 @@
 
 
 
-  <link rel="canonical" href="http://fsxchen.github.io/2016/06/23/linuxtcp/2016_06_23_unix编程基础(2)--文件io/"/>
+  <link rel="canonical" href="http://fsxchen.github.io/2016/06/23/linuxtcp/2016_06_23_unix编程基础(2)--文件io/">
 
 
 
@@ -148,7 +149,7 @@
   <title>unix编程基础(2)--文件IO | Arron's Blog</title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -173,13 +174,13 @@
   <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Arron's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -209,7 +210,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -219,7 +220,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -229,7 +230,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -239,7 +240,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -249,7 +250,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -262,7 +263,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
             搜索
           </a>
@@ -283,9 +284,7 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -317,16 +316,16 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://fsxchen.github.io/2016/06/23/linuxtcp/2016_06_23_unix编程基础(2)--文件io/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="arron">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/img/ar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Arron's Blog">
     </span>
 
@@ -358,7 +357,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -369,7 +368,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
                   <a href="/categories/Read/" itemprop="url" rel="index">
                     <span itemprop="name">Read</span>
                   </a>
@@ -429,7 +428,7 @@
       
         <h1 id="Unix-文件IO"><a href="#Unix-文件IO" class="headerlink" title="Unix 文件IO"></a>Unix 文件IO</h1><h2 id="文件描述符号"><a href="#文件描述符号" class="headerlink" title="文件描述符号"></a>文件描述符号</h2><p>对于内核而言,所有打开的文件通过文件描述符引用,是一个非负整数.<br>在POSIX1中,在<code>&lt;unistd.h&gt;</code>中定义了<br>STDIN_FILENO(0): 标准输入<br>STDOUT_FILENO(1): 标准输出<br>STDERR_FILENO(2): 标准错误输出</p>
 <p>文件描述符号的范围是{0-OPEN_MAX-1}</p>
-<h2 id="函数open和openat"><a href="#函数open和openat" class="headerlink" title="函数open和openat"></a>函数open和openat</h2><p>man 2 open<br>man 2 openat<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">SYNOPSIS</div><div class="line">       #include &lt;sys/types.h&gt;</div><div class="line">       #include &lt;sys/stat.h&gt;</div><div class="line">       #include &lt;fcntl.h&gt;</div><div class="line"></div><div class="line">       int open(const char *pathname, int flags);</div><div class="line">       int open(const char *pathname, int flags, mode_t mode);</div><div class="line">SYNOPSIS</div><div class="line">      #include &lt;fcntl.h&gt;</div><div class="line"></div><div class="line">      int openat(int dirfd, const char *pathname, int flags);</div><div class="line">      int openat(int dirfd, const char *pathname, int flags, mode_t mode);</div></pre></td></tr></table></figure></p>
+<h2 id="函数open和openat"><a href="#函数open和openat" class="headerlink" title="函数open和openat"></a>函数open和openat</h2><p>man 2 open<br>man 2 openat<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SYNOPSIS</span><br><span class="line">       #include &lt;sys/types.h&gt;</span><br><span class="line">       #include &lt;sys/stat.h&gt;</span><br><span class="line">       #include &lt;fcntl.h&gt;</span><br><span class="line"></span><br><span class="line">       int open(const char *pathname, int flags);</span><br><span class="line">       int open(const char *pathname, int flags, mode_t mode);</span><br><span class="line">SYNOPSIS</span><br><span class="line">      #include &lt;fcntl.h&gt;</span><br><span class="line"></span><br><span class="line">      int openat(int dirfd, const char *pathname, int flags);</span><br><span class="line">      int openat(int dirfd, const char *pathname, int flags, mode_t mode);</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>pathname: 打开或者是创建文件的名字</li>
 <li><p>flags: 标识,使用下面的常量,多个可以使用</p>
@@ -462,8 +461,8 @@
 <h2 id="creat"><a href="#creat" class="headerlink" title="creat"></a>creat</h2><p>创建一个文件,相当于<br><code>open(path, O_WRONLY| O_CREAT | O_TRUNC, mode)</code></p>
 <h2 id="close"><a href="#close" class="headerlink" title="close"></a>close</h2><p>关闭一个文件,并且释放该进程加在该文件记录上的所有的锁</p>
 <h2 id="lseek"><a href="#lseek" class="headerlink" title="lseek"></a>lseek</h2><p>每打开一个文件都有一个与其相关联的当前文件偏移量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SYNOPSIS</div><div class="line">#include &lt;sys/types.h&gt;</div><div class="line">#include &lt;unistd.h&gt;</div><div class="line"></div><div class="line">off_t lseek(int fd, off_t offset, int whence);</div></pre></td></tr></table></figure>
-<h2 id="read"><a href="#read" class="headerlink" title="read"></a>read</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SYNOPSIS</div><div class="line">       #include &lt;unistd.h&gt;</div><div class="line"></div><div class="line">       ssize_t read(int fd, void *buf, size_t count);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SYNOPSIS</span><br><span class="line">#include &lt;sys/types.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">off_t lseek(int fd, off_t offset, int whence);</span><br></pre></td></tr></table></figure>
+<h2 id="read"><a href="#read" class="headerlink" title="read"></a>read</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SYNOPSIS</span><br><span class="line">       #include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">       ssize_t read(int fd, void *buf, size_t count);</span><br></pre></td></tr></table></figure>
 <p>read函数需要搞清楚的几个问题在于<br>返回值</p>
 <ul>
 <li>返回读取到的字节数</li>
@@ -493,7 +492,7 @@
 </ul>
 <p><img src="http://7xrn62.com1.z0.glb.clouddn.com/92f25f9776532b05a345d16161207a9e.png" alt="进程控制文件"></p>
 <p>当两个进程打开同一个文件<br><img src="http://7xrn62.com1.z0.glb.clouddn.com/e8767b4eab3932b6fedb29a8cac69850.png" alt="两个进程打开一个文件"></p>
-<h2 id="fcntl"><a href="#fcntl" class="headerlink" title="fcntl"></a>fcntl</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">SYNOPSIS</div><div class="line">       #include &lt;unistd.h&gt;</div><div class="line">       #include &lt;fcntl.h&gt;</div><div class="line"></div><div class="line">       int fcntl(int fd, int cmd, ... /* arg */ );</div><div class="line">该函数可以改变打开的文件的属性</div></pre></td></tr></table></figure>
+<h2 id="fcntl"><a href="#fcntl" class="headerlink" title="fcntl"></a>fcntl</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SYNOPSIS</span><br><span class="line">       #include &lt;unistd.h&gt;</span><br><span class="line">       #include &lt;fcntl.h&gt;</span><br><span class="line"></span><br><span class="line">       int fcntl(int fd, int cmd, ... /* arg */ );</span><br><span class="line">该函数可以改变打开的文件的属性</span><br></pre></td></tr></table></figure>
 <p><code>fcntl</code>函数有以下5个功能</p>
 <ul>
 <li>(1) 复制一个已有的描述符(cmd=<code>F_DUPFD</code> 或 <code>F_DUPFD_CLOEXEC</code>)</li>
@@ -502,7 +501,7 @@
 <li>(4) 获取/设置异步I/O所有权(cmd=<code>F_GETOWN</code> 或 <code>F_SETOWN</code>)</li>
 <li>(5) 获取/设置记录锁(cmd=<code>F_GETLK</code>,<code>F_SETLK</code> 或 <code>F_SETLWK</code>)</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">#include &lt;unistd.h&gt;</div><div class="line">#include &lt;fcntl.h&gt;</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line"></div><div class="line">int main(int argc, char **argv) &#123;</div><div class="line">	int val;</div><div class="line"></div><div class="line">	if (argc != 2) &#123;</div><div class="line">		printf(&quot;Usage: a.out &lt;descriptor&gt;\n&quot;);</div><div class="line">		exit(-1);</div><div class="line">	&#125;</div><div class="line">	if ((val = fcntl(atoi(argv[1]), F_GETFL, 0)) &lt; 0 ) &#123;</div><div class="line">		printf(&quot;fcntl error for fd %d\n&quot;, atoi(argv[1]));</div><div class="line">	&#125;</div><div class="line">	switch (val &amp; O_ACCMODE) &#123;</div><div class="line">		case O_RDONLY:</div><div class="line">			printf(&quot;read only\n&quot;);</div><div class="line">			break;</div><div class="line">		case O_WRONLY:</div><div class="line">			printf(&quot;write only\n&quot;);</div><div class="line">			break;</div><div class="line">		case O_RDWR:</div><div class="line">			printf(&quot;read write\n&quot;);</div><div class="line">			break;</div><div class="line">		default:</div><div class="line">			printf(&quot;unkonw access mode&quot;);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	if (val &amp; O_APPEND)</div><div class="line">		printf(&quot;, append\n&quot;);</div><div class="line">	if (val &amp; O_NONBLOCK)</div><div class="line">		printf(&quot;, nonblocking\n&quot;);</div><div class="line">	if (val &amp; O_SYNC) &#123;</div><div class="line">		printf(&quot;, synchronous writes\n&quot;);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">#if !defined(_POSIX_C_SOURCE) &amp;&amp; defined(O_FSYNC) &amp;&amp; (O_FSYNC != O_SYNC)</div><div class="line">	if (val &amp; O_FSYNC)</div><div class="line">		printf(&quot;, synchronous writes\n&quot;);</div><div class="line">#endif</div><div class="line">	putchar(&apos;\n&apos;);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;fcntl.h&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">int main(int argc, char **argv) &#123;</span><br><span class="line">	int val;</span><br><span class="line"></span><br><span class="line">	if (argc != 2) &#123;</span><br><span class="line">		printf(&quot;Usage: a.out &lt;descriptor&gt;\n&quot;);</span><br><span class="line">		exit(-1);</span><br><span class="line">	&#125;</span><br><span class="line">	if ((val = fcntl(atoi(argv[1]), F_GETFL, 0)) &lt; 0 ) &#123;</span><br><span class="line">		printf(&quot;fcntl error for fd %d\n&quot;, atoi(argv[1]));</span><br><span class="line">	&#125;</span><br><span class="line">	switch (val &amp; O_ACCMODE) &#123;</span><br><span class="line">		case O_RDONLY:</span><br><span class="line">			printf(&quot;read only\n&quot;);</span><br><span class="line">			break;</span><br><span class="line">		case O_WRONLY:</span><br><span class="line">			printf(&quot;write only\n&quot;);</span><br><span class="line">			break;</span><br><span class="line">		case O_RDWR:</span><br><span class="line">			printf(&quot;read write\n&quot;);</span><br><span class="line">			break;</span><br><span class="line">		default:</span><br><span class="line">			printf(&quot;unkonw access mode&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	if (val &amp; O_APPEND)</span><br><span class="line">		printf(&quot;, append\n&quot;);</span><br><span class="line">	if (val &amp; O_NONBLOCK)</span><br><span class="line">		printf(&quot;, nonblocking\n&quot;);</span><br><span class="line">	if (val &amp; O_SYNC) &#123;</span><br><span class="line">		printf(&quot;, synchronous writes\n&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">#if !defined(_POSIX_C_SOURCE) &amp;&amp; defined(O_FSYNC) &amp;&amp; (O_FSYNC != O_SYNC)</span><br><span class="line">	if (val &amp; O_FSYNC)</span><br><span class="line">		printf(&quot;, synchronous writes\n&quot;);</span><br><span class="line">#endif</span><br><span class="line">	putchar(&apos;\n&apos;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -525,13 +524,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/pay/wechatpay.png" alt="arron WeChat Pay"/>
+          <img id="wechat_qr" src="/pay/wechatpay.png" alt="arron WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/pay/alipay.png" alt="arron Alipay"/>
+          <img id="alipay_qr" src="/pay/alipay.png" alt="arron Alipay">
           <p>支付宝打赏</p>
         </div>
       
@@ -628,7 +627,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -638,10 +637,8 @@
       
 
       <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/img/ar.gif"
-               alt="arron" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/img/ar.gif" alt="arron">
           <p class="site-author-name" itemprop="name">arron</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
@@ -652,7 +649,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -765,7 +762,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2019</span>

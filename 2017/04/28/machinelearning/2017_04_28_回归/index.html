@@ -6,18 +6,18 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -35,7 +35,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -75,23 +75,23 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="机器学习," />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
-
-
-
-  <link rel="alternate" href="/atom.xml" title="Arron's Blog" type="application/atom+xml" />
+  <meta name="keywords" content="机器学习,">
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+  <link rel="alternate" href="/atom.xml" title="Arron's Blog" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
 
 
 
@@ -105,6 +105,7 @@
 <meta property="og:url" content="http://fsxchen.github.io/2017/04/28/machinelearning/2017_04_28_回归/index.html">
 <meta property="og:site_name" content="Arron&#39;s Blog">
 <meta property="og:description" content="回归连续监督学习 连续输出和离散输出的区别  这里的连续主要是指输出是连续的  回归线性方程 slope：斜率intercept：截距 斜率和截距斜率越大，上升越快 Sklearn中的线形拟合123456&amp;gt;&amp;gt;&amp;gt; from sklearn import linear_model&amp;gt;&amp;gt;&amp;gt; reg = linear_model.LinearRegression()&amp;gt">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://fsxchen.github.io/2017/04/28/machinelearning/2017_04_28_回归/5ab30599c89a6a6bbf55e921d22497f4.png">
 <meta property="og:image" content="http://fsxchen.github.io/2017/04/28/machinelearning/2017_04_28_回归/cf876e389a34ef52288774644873b8d7.png">
 <meta property="og:image" content="http://fsxchen.github.io/2017/04/28/machinelearning/2017_04_28_回归/30d49cd753e2024b5f3155f4836c570e.png">
@@ -141,7 +142,7 @@
 
 
 
-  <link rel="canonical" href="http://fsxchen.github.io/2017/04/28/machinelearning/2017_04_28_回归/"/>
+  <link rel="canonical" href="http://fsxchen.github.io/2017/04/28/machinelearning/2017_04_28_回归/">
 
 
 
@@ -150,7 +151,7 @@
   <title>回归 | Arron's Blog</title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -175,13 +176,13 @@
   <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Arron's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -211,7 +212,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -221,7 +222,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -231,7 +232,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -241,7 +242,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -251,7 +252,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -264,7 +265,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
             搜索
           </a>
@@ -285,9 +286,7 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -319,16 +318,16 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://fsxchen.github.io/2017/04/28/machinelearning/2017_04_28_回归/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="arron">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/img/ar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Arron's Blog">
     </span>
 
@@ -360,7 +359,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -371,7 +370,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
                   <a href="/categories/MachineLearning/" itemprop="url" rel="index">
                     <span itemprop="name">MachineLearning</span>
                   </a>
@@ -437,10 +436,10 @@
 <h2 id="回归线性方程"><a href="#回归线性方程" class="headerlink" title="回归线性方程"></a>回归线性方程</h2><p><img src="/2017/04/28/machinelearning/2017_04_28_回归/cf876e389a34ef52288774644873b8d7.png" alt=""></p>
 <p>slope：斜率<br>intercept：截距</p>
 <h3 id="斜率和截距"><a href="#斜率和截距" class="headerlink" title="斜率和截距"></a>斜率和截距</h3><p>斜率越大，上升越快</p>
-<h2 id="Sklearn中的线形拟合"><a href="#Sklearn中的线形拟合" class="headerlink" title="Sklearn中的线形拟合"></a>Sklearn中的线形拟合</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn <span class="keyword">import</span> linear_model</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>reg = linear_model.LinearRegression()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>reg.fit ([[<span class="number">0</span>, <span class="number">0</span>], [<span class="number">1</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">2</span>]], [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>])</div><div class="line">LinearRegression(copy_X=<span class="keyword">True</span>, fit_intercept=<span class="keyword">True</span>, n_jobs=<span class="number">1</span>, normalize=<span class="keyword">False</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>reg.coef_</div><div class="line">array([ <span class="number">0.5</span>,  <span class="number">0.5</span>])</div></pre></td></tr></table></figure>
+<h2 id="Sklearn中的线形拟合"><a href="#Sklearn中的线形拟合" class="headerlink" title="Sklearn中的线形拟合"></a>Sklearn中的线形拟合</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn <span class="keyword">import</span> linear_model</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>reg = linear_model.LinearRegression()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>reg.fit ([[<span class="number">0</span>, <span class="number">0</span>], [<span class="number">1</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">2</span>]], [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>])</span><br><span class="line">LinearRegression(copy_X=<span class="keyword">True</span>, fit_intercept=<span class="keyword">True</span>, n_jobs=<span class="number">1</span>, normalize=<span class="keyword">False</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>reg.coef_</span><br><span class="line">array([ <span class="number">0.5</span>,  <span class="number">0.5</span>])</span><br></pre></td></tr></table></figure>
 <h3 id="线性回归误差"><a href="#线性回归误差" class="headerlink" title="线性回归误差"></a>线性回归误差</h3><p>使误差有最小值。</p>
 <h4 id="最小二乘法（OLS）"><a href="#最小二乘法（OLS）" class="headerlink" title="最小二乘法（OLS）"></a>最小二乘法（OLS）</h4><p><code>sklearn</code>中的线性拟合即使用的是该方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">import numpy as np</div><div class="line">import matplotlib.pyplot as plt</div><div class="line"></div><div class="line">dots = np.array([[1,6], [2,5], [3,7], [4,10], [5, 12]])</div><div class="line"></div><div class="line">X = dots[:, 0]</div><div class="line">Y = dots[:, 1]</div><div class="line">plt.scatter(X, Y, color = &quot;b&quot;, label=&quot;fast&quot;)</div><div class="line"></div><div class="line"></div><div class="line">def nihe(k, x, b):</div><div class="line">    return k*x + b</div><div class="line"></div><div class="line"></div><div class="line">#a0 = （∑Yi) / n - a1（∑Xi) / n （式1-8)</div><div class="line">#a1 = [n∑Xi Yi - （∑Xi ∑Yi)] / [n∑Xi2 - （∑Xi)2 )] （式1-9)</div><div class="line"></div><div class="line">n = dots.shape[0]</div><div class="line">a1 = (n*sum(X*Y) - sum(X)*sum(Y)) / (n*sum(X**2)-(sum(X)**2))</div><div class="line">a0 = sum(Y)/n - a1*(sum(X))/n</div><div class="line">print(a0, a1)</div><div class="line"></div><div class="line">R_Y = [nihe(a1, x, a0) for x in X]</div><div class="line">plt.plot(X, R_Y)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">dots = np.array([[1,6], [2,5], [3,7], [4,10], [5, 12]])</span><br><span class="line"></span><br><span class="line">X = dots[:, 0]</span><br><span class="line">Y = dots[:, 1]</span><br><span class="line">plt.scatter(X, Y, color = &quot;b&quot;, label=&quot;fast&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def nihe(k, x, b):</span><br><span class="line">    return k*x + b</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#a0 = （∑Yi) / n - a1（∑Xi) / n （式1-8)</span><br><span class="line">#a1 = [n∑Xi Yi - （∑Xi ∑Yi)] / [n∑Xi2 - （∑Xi)2 )] （式1-9)</span><br><span class="line"></span><br><span class="line">n = dots.shape[0]</span><br><span class="line">a1 = (n*sum(X*Y) - sum(X)*sum(Y)) / (n*sum(X**2)-(sum(X)**2))</span><br><span class="line">a0 = sum(Y)/n - a1*(sum(X))/n</span><br><span class="line">print(a0, a1)</span><br><span class="line"></span><br><span class="line">R_Y = [nihe(a1, x, a0) for x in X]</span><br><span class="line">plt.plot(X, R_Y)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <h5 id="使用平方误差和来评估拟合的效果？"><a href="#使用平方误差和来评估拟合的效果？" class="headerlink" title="使用平方误差和来评估拟合的效果？"></a>使用平方误差和来评估拟合的效果？</h5><p><img src="/2017/04/28/machinelearning/2017_04_28_回归/30d49cd753e2024b5f3155f4836c570e.png" alt=""></p>
 <p>​        如上图所示，如果只是使用绝对值，那么途中的3种拟合方式没有什么区别，然而如果使用平方的方式，只有中间的误差是最小的。</p>
 <ul>
@@ -501,13 +500,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/pay/wechatpay.png" alt="arron WeChat Pay"/>
+          <img id="wechat_qr" src="/pay/wechatpay.png" alt="arron WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/pay/alipay.png" alt="arron Alipay"/>
+          <img id="alipay_qr" src="/pay/alipay.png" alt="arron Alipay">
           <p>支付宝打赏</p>
         </div>
       
@@ -604,7 +603,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -614,10 +613,8 @@
       
 
       <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/img/ar.gif"
-               alt="arron" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/img/ar.gif" alt="arron">
           <p class="site-author-name" itemprop="name">arron</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
@@ -628,7 +625,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -741,7 +738,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2019</span>

@@ -6,18 +6,18 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -35,7 +35,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -75,23 +75,23 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Misc," />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
-
-
-
-  <link rel="alternate" href="/atom.xml" title="Arron's Blog" type="application/atom+xml" />
+  <meta name="keywords" content="Misc,">
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+  <link rel="alternate" href="/atom.xml" title="Arron's Blog" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
 
 
 
@@ -105,6 +105,7 @@
 <meta property="og:url" content="http://fsxchen.github.io/2016/12/19/linuxtcp/2016_12_19_arp的帧格式/index.html">
 <meta property="og:site_name" content="Arron&#39;s Blog">
 <meta property="og:description" content="arp的帧格式以及arp举例arp的帧和以太网帧格式对比以太网的帧结构    字段 字段长度（字节） 目的     目的地址（DST） 6 目的地址   源地址（SRC） 6 源地址   长度或者类型 2 长度或者类型   硬件类型 2 指明了发送方想知道的硬件接口类型，以太网的值为1   协议类型 2 指明了发送方提供的高层协议类型，IP为0800（16进制）；   硬件的长度 1 指明了硬件地">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7xrn62.com1.z0.glb.clouddn.com/be3be0846258e2778c7eede0ca67fc0a.png">
 <meta property="og:image" content="http://7xrn62.com1.z0.glb.clouddn.com/2022a3006b4e0a3b3dc0b3f2ea031e46.png">
 <meta property="og:image" content="http://7xrn62.com1.z0.glb.clouddn.com/ca2b6dcb10e0f3d0f9a076a349b6bbd7.png">
@@ -140,7 +141,7 @@
 
 
 
-  <link rel="canonical" href="http://fsxchen.github.io/2016/12/19/linuxtcp/2016_12_19_arp的帧格式/"/>
+  <link rel="canonical" href="http://fsxchen.github.io/2016/12/19/linuxtcp/2016_12_19_arp的帧格式/">
 
 
 
@@ -149,7 +150,7 @@
   <title>arp的帧格式 | Arron's Blog</title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -174,13 +175,13 @@
   <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Arron's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -210,7 +211,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -220,7 +221,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -230,7 +231,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -240,7 +241,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -250,7 +251,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -263,7 +264,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
             搜索
           </a>
@@ -284,9 +285,7 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -318,16 +317,16 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://fsxchen.github.io/2016/12/19/linuxtcp/2016_12_19_arp的帧格式/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="arron">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/img/ar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Arron's Blog">
     </span>
 
@@ -359,7 +358,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -370,7 +369,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
                   <a href="/categories/Misc/" itemprop="url" rel="index">
                     <span itemprop="name">Misc</span>
                   </a>
@@ -500,8 +499,8 @@
 </tr>
 </tbody>
 </table>
-<h2 id="arp举例"><a href="#arp举例" class="headerlink" title="arp举例"></a>arp举例</h2><h3 id="正常的访问"><a href="#正常的访问" class="headerlink" title="正常的访问"></a>正常的访问</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">➜  ~ sudo tcpdump <span class="_">-e</span> arp</div></pre></td></tr></table></figure>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">tcpdump: data link type PKTAP</div><div class="line">tcpdump: verbose output suppressed, use -v or -vv for full protocol decode</div><div class="line">listening on pktap, link-type PKTAP (Packet Tap), capture size 262144 bytes</div><div class="line">21:14:28.443833 94:77:2b:88:80:6e (oui Unknown) &gt; 70:71:bc:79:ae:a4 (oui Unknown), ethertype ARP (0x0806), length 42: Request who-has 192.168.3.5 tell 192.168.3.1, length 28</div><div class="line">21:14:28.443853 70:71:bc:79:ae:a4 (oui Unknown) &gt; 94:77:2b:88:80:6e (oui Unknown), ethertype ARP (0x0806), length 42: Reply 192.168.3.5 is-at 70:71:bc:79:ae:a4 (oui Unknown), length 28</div><div class="line">21:14:36.448013 94:77:2b:88:80:6e (oui Unknown) &gt; Broadcast, ethertype ARP (0x0806), length 60: Request who-has 192.168.3.71 tell 192.168.3.1, length 46</div><div class="line">21:14:43.923325 dc:f0:90:87:22:bb (oui Unknown) &gt; Broadcast, ethertype ARP (0x0806), length 42: Request who-has 192.168.3.3 tell 192.168.3.86, length 28</div><div class="line">21:14:48.121289 e8:03:9a:cd:72:c8 (oui Unknown) &gt; Broadcast, ethertype ARP (0x0806), length 42: Request who-has 192.168.3.65 tell 192.168.3.62, length 28</div><div class="line">21:14:48.122152 02:22:6c:06:8f:d4 (oui Unknown) &gt; Broadcast, ethertype ARP (0x0806), length 42: Request who-has 192.168.3.62 tell 192.168.3.65, length 28</div></pre></td></tr></table></figure></p>
+<h2 id="arp举例"><a href="#arp举例" class="headerlink" title="arp举例"></a>arp举例</h2><h3 id="正常的访问"><a href="#正常的访问" class="headerlink" title="正常的访问"></a>正常的访问</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo tcpdump -e arp</span><br></pre></td></tr></table></figure>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tcpdump: data link type PKTAP</span><br><span class="line">tcpdump: verbose output suppressed, use -v or -vv for full protocol decode</span><br><span class="line">listening on pktap, link-type PKTAP (Packet Tap), capture size 262144 bytes</span><br><span class="line">21:14:28.443833 94:77:2b:88:80:6e (oui Unknown) &gt; 70:71:bc:79:ae:a4 (oui Unknown), ethertype ARP (0x0806), length 42: Request who-has 192.168.3.5 tell 192.168.3.1, length 28</span><br><span class="line">21:14:28.443853 70:71:bc:79:ae:a4 (oui Unknown) &gt; 94:77:2b:88:80:6e (oui Unknown), ethertype ARP (0x0806), length 42: Reply 192.168.3.5 is-at 70:71:bc:79:ae:a4 (oui Unknown), length 28</span><br><span class="line">21:14:36.448013 94:77:2b:88:80:6e (oui Unknown) &gt; Broadcast, ethertype ARP (0x0806), length 60: Request who-has 192.168.3.71 tell 192.168.3.1, length 46</span><br><span class="line">21:14:43.923325 dc:f0:90:87:22:bb (oui Unknown) &gt; Broadcast, ethertype ARP (0x0806), length 42: Request who-has 192.168.3.3 tell 192.168.3.86, length 28</span><br><span class="line">21:14:48.121289 e8:03:9a:cd:72:c8 (oui Unknown) &gt; Broadcast, ethertype ARP (0x0806), length 42: Request who-has 192.168.3.65 tell 192.168.3.62, length 28</span><br><span class="line">21:14:48.122152 02:22:6c:06:8f:d4 (oui Unknown) &gt; Broadcast, ethertype ARP (0x0806), length 42: Request who-has 192.168.3.62 tell 192.168.3.65, length 28</span><br></pre></td></tr></table></figure></p>
 <h3 id="访问地址不存在"><a href="#访问地址不存在" class="headerlink" title="访问地址不存在"></a>访问地址不存在</h3><h3 id="arp欺骗"><a href="#arp欺骗" class="headerlink" title="arp欺骗"></a>arp欺骗</h3><p><img src="http://7xrn62.com1.z0.glb.clouddn.com/ca2b6dcb10e0f3d0f9a076a349b6bbd7.png" alt="arp欺骗"></p>
 
       
@@ -525,13 +524,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/pay/wechatpay.png" alt="arron WeChat Pay"/>
+          <img id="wechat_qr" src="/pay/wechatpay.png" alt="arron WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/pay/alipay.png" alt="arron Alipay"/>
+          <img id="alipay_qr" src="/pay/alipay.png" alt="arron Alipay">
           <p>支付宝打赏</p>
         </div>
       
@@ -628,7 +627,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -638,10 +637,8 @@
       
 
       <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/img/ar.gif"
-               alt="arron" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/img/ar.gif" alt="arron">
           <p class="site-author-name" itemprop="name">arron</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
@@ -652,7 +649,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -765,7 +762,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2019</span>

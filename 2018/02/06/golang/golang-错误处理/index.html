@@ -6,18 +6,18 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -35,7 +35,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -75,23 +75,23 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="golang,error," />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
-
-
-
-  <link rel="alternate" href="/atom.xml" title="Arron's Blog" type="application/atom+xml" />
+  <meta name="keywords" content="golang,error,">
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+  <link rel="alternate" href="/atom.xml" title="Arron's Blog" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
 
 
 
@@ -105,6 +105,7 @@
 <meta property="og:url" content="http://fsxchen.github.io/2018/02/06/golang/golang-错误处理/index.html">
 <meta property="og:site_name" content="Arron&#39;s Blog">
 <meta property="og:description" content="golang 错误处理error接口error的定义 123type error interface &amp;#123;  Error() string&amp;#125; 大多数情况下，error会作为函数的最后一个返回值  自定义一个错误  123456789type PathError struct &amp;#123;  Op string  Path string  Err error&amp;#125;func (">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-06-13T03:18:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="golang-错误处理">
@@ -136,7 +137,7 @@
 
 
 
-  <link rel="canonical" href="http://fsxchen.github.io/2018/02/06/golang/golang-错误处理/"/>
+  <link rel="canonical" href="http://fsxchen.github.io/2018/02/06/golang/golang-错误处理/">
 
 
 
@@ -145,7 +146,7 @@
   <title>golang-错误处理 | Arron's Blog</title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -170,13 +171,13 @@
   <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Arron's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -206,7 +207,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -216,7 +217,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -226,7 +227,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -236,7 +237,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -246,7 +247,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -259,7 +260,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
             搜索
           </a>
@@ -280,9 +281,7 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -314,16 +313,16 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://fsxchen.github.io/2018/02/06/golang/golang-错误处理/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="arron">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/img/ar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Arron's Blog">
     </span>
 
@@ -355,7 +354,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -366,7 +365,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
                   <a href="/categories/golang/" itemprop="url" rel="index">
                     <span itemprop="name">golang</span>
                   </a>
@@ -425,17 +424,17 @@
 
       
         <h1 id="golang-错误处理"><a href="#golang-错误处理" class="headerlink" title="golang 错误处理"></a>golang 错误处理</h1><h2 id="error接口"><a href="#error接口" class="headerlink" title="error接口"></a>error接口</h2><p>error的定义</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">type error interface &#123;</div><div class="line">  Error() string</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type error interface &#123;</span><br><span class="line">  Error() string</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>大多数情况下，error会作为函数的最后一个返回值</strong></p>
 <ul>
 <li>自定义一个错误</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">type PathError struct &#123;</div><div class="line">  Op string</div><div class="line">  Path string</div><div class="line">  Err error</div><div class="line">&#125;</div><div class="line"></div><div class="line">func (e *PathError) Error() string &#123;</div><div class="line">  return e.Op + &quot; &quot; + e.Path + &quot;:&quot; + e.Err.Error()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">type PathError struct &#123;</span><br><span class="line">  Op string</span><br><span class="line">  Path string</span><br><span class="line">  Err error</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (e *PathError) Error() string &#123;</span><br><span class="line">  return e.Op + &quot; &quot; + e.Path + &quot;:&quot; + e.Err.Error()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="defer"><a href="#defer" class="headerlink" title="defer"></a>defer</h2><p>在<code>defer</code>关键字后面的函数，能够在函数<code>return</code>之前条用。</p>
 <p>用途：</p>
 <p>​    可以用来处理打开的文件描述符等。</p>
 <h2 id="panic-函数和recover（）-函数"><a href="#panic-函数和recover（）-函数" class="headerlink" title="panic() 函数和recover（） 函数"></a>panic() 函数和recover（） 函数</h2><p>用来报告和处理运行时错误和程序中的错误</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">func panic(interface())</div><div class="line">func recover() interface()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">func panic(interface())</span><br><span class="line">func recover() interface()</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -458,13 +457,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/pay/wechatpay.png" alt="arron WeChat Pay"/>
+          <img id="wechat_qr" src="/pay/wechatpay.png" alt="arron WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/pay/alipay.png" alt="arron Alipay"/>
+          <img id="alipay_qr" src="/pay/alipay.png" alt="arron Alipay">
           <p>支付宝打赏</p>
         </div>
       
@@ -563,7 +562,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -573,10 +572,8 @@
       
 
       <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/img/ar.gif"
-               alt="arron" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/img/ar.gif" alt="arron">
           <p class="site-author-name" itemprop="name">arron</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
@@ -587,7 +584,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -700,7 +697,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2019</span>
