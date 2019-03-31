@@ -4,12 +4,12 @@
 
     
   <url>
-    <loc>http://fsxchen.github.io/2019/02/26/%E9%87%91%E5%AD%97%E5%A1%94%E5%8E%9F%E7%90%86/</loc>
-    <lastmod>2019-02-26T12:25:50.265Z</lastmod>
+    <loc>http://fsxchen.github.io/2019/01/07/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/</loc>
+    <lastmod>2019-03-31T05:07:54.855Z</lastmod>
     <data>
         <display>
-        <title>金字塔原理</title>
-        <pubTime>2019-02-26T12:00:08.000Z</pubTime>
+        <title>操作系统学习之进程和线程</title>
+        <pubTime>2019-01-07T14:38:10.000Z</pubTime>
         
         <tag>tag</tag>
          
@@ -25,7 +25,7 @@
     
   <url>
     <loc>http://fsxchen.github.io/2019/02/21/%E5%BF%83%E7%90%86%E5%AD%A6%E5%85%A5%E9%97%A8/</loc>
-    <lastmod>2019-02-26T11:58:59.985Z</lastmod>
+    <lastmod>2019-03-27T13:46:52.662Z</lastmod>
     <data>
         <display>
         <title>心理学入门</title>
@@ -44,12 +44,32 @@
 
     
   <url>
-    <loc>http://fsxchen.github.io/2019/01/07/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/</loc>
-    <lastmod>2019-01-07T15:24:48.805Z</lastmod>
+    <loc>http://fsxchen.github.io/2019/03/24/%E5%89%8D%E7%AB%AF%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86-vuex/</loc>
+    <lastmod>2019-03-24T05:09:55.145Z</lastmod>
     <data>
         <display>
-        <title>操作系统学习之进程和线程</title>
-        <pubTime>2019-01-07T14:38:10.000Z</pubTime>
+        <title>前端状态管理--vuex</title>
+        <pubTime>2019-03-24T01:33:50.000Z</pubTime>
+        
+        <tag>tag</tag>
+         
+         
+           
+             
+              <breadCrumb title="categories" url="http://fsxchen.github.io/categories/categories/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://fsxchen.github.io/2019/02/26/%E9%87%91%E5%AD%97%E5%A1%94%E5%8E%9F%E7%90%86/</loc>
+    <lastmod>2019-02-26T12:25:50.265Z</lastmod>
+    <data>
+        <display>
+        <title>金字塔原理</title>
+        <pubTime>2019-02-26T12:00:08.000Z</pubTime>
         
         <tag>tag</tag>
          
