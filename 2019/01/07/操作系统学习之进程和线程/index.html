@@ -6,18 +6,18 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
 
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -35,7 +35,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -75,23 +75,23 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="tag,">
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-
-
-
-  <link rel="alternate" href="/atom.xml" title="Arron's Blog" type="application/atom+xml">
+  <meta name="keywords" content="tag," />
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
+
+  <link rel="alternate" href="/atom.xml" title="Arron's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
@@ -105,9 +105,8 @@
 <meta property="og:url" content="http://fsxchen.github.io/2019/01/07/操作系统学习之进程和线程/index.html">
 <meta property="og:site_name" content="Arron&#39;s Blog">
 <meta property="og:description" content="进程和线程为什么会有进程进程是一个计算机工程概念，进程包含一个程序运行的所有资源。进程提供程序的抽象  一个独立的逻辑流 一个私有的地址空间逻辑控制流如果使用调试器调试一个程序，就能看到一些列的（PC），这些PC的序列就是逻辑控制流。并发流一个逻辑流的执行在时间上与另一个流重叠，成为并发流，多个流并发地执行的一般现象称为并发。简单理解为同时做多件事。  并行： 一般出现在多个CPU上。 多任务：">
-<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://fsxchen.github.io/2019/01/07/操作系统学习之进程和线程/images/2019/03/31/e4039280-5371-11e9-b8a1-f33e16296d42.png">
-<meta property="og:updated_time" content="2019-03-31T05:17:45.489Z">
+<meta property="og:updated_time" content="2019-05-27T06:37:55.161Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统学习之进程和线程">
 <meta name="twitter:description" content="进程和线程为什么会有进程进程是一个计算机工程概念，进程包含一个程序运行的所有资源。进程提供程序的抽象  一个独立的逻辑流 一个私有的地址空间逻辑控制流如果使用调试器调试一个程序，就能看到一些列的（PC），这些PC的序列就是逻辑控制流。并发流一个逻辑流的执行在时间上与另一个流重叠，成为并发流，多个流并发地执行的一般现象称为并发。简单理解为同时做多件事。  并行： 一般出现在多个CPU上。 多任务：">
@@ -139,7 +138,7 @@
 
 
 
-  <link rel="canonical" href="http://fsxchen.github.io/2019/01/07/操作系统学习之进程和线程/">
+  <link rel="canonical" href="http://fsxchen.github.io/2019/01/07/操作系统学习之进程和线程/"/>
 
 
 
@@ -148,7 +147,7 @@
   <title>操作系统学习之进程和线程 | Arron's Blog</title>
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -173,13 +172,13 @@
   <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Arron's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -209,7 +208,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -219,7 +218,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -229,7 +228,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -239,7 +238,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -249,7 +248,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -262,7 +261,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
             搜索
           </a>
@@ -283,7 +282,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -315,16 +316,16 @@
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://fsxchen.github.io/2019/01/07/操作系统学习之进程和线程/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="arron">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/img/ar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Arron's Blog">
     </span>
 
@@ -356,7 +357,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -367,7 +368,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/categories/" itemprop="url" rel="index">
                     <span itemprop="name">categories</span>
                   </a>
@@ -437,7 +438,7 @@
 <h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>docker虚拟化技术，基于进程的隔离。</p>
 <h2 id="进程模型"><a href="#进程模型" class="headerlink" title="进程模型"></a>进程模型</h2><p>为什么会存在进程模型？<br>一个进程就是一个正在运行的程序，进程需要有自己的程序计数器（PC），内存空间以及CPU，真实的情况是在计算机中存在有多个进程，然后多个进程在同一时间只有一个使用CPU，所以需要来回切换，于是需要使用进程模型来管理。</p>
 <h3 id="用户模式和内核模式"><a href="#用户模式和内核模式" class="headerlink" title="用户模式和内核模式"></a>用户模式和内核模式</h3><p>处理器通常是用某个控制寄存器的一个模式位（mode bit）来提供。进入内核模式<br>中断、系统错误、系统调用。</p>
-<h3 id="上下文切换"><a href="#上下文切换" class="headerlink" title="上下文切换"></a>上下文切换</h3><h2 id="创建进程、控制"><a href="#创建进程、控制" class="headerlink" title="创建进程、控制"></a>创建进程、控制</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;stdio.h&quot;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    pid_t pid;</span><br><span class="line">    int x = 1;</span><br><span class="line"></span><br><span class="line">    pid = fork();</span><br><span class="line">    if (pid == 0) &#123;</span><br><span class="line">        // child</span><br><span class="line">        printf(&quot;child: x=%d\n&quot;, ++x);</span><br><span class="line">        exit(0);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;parrent: x=%d\n&quot;, --x);</span><br><span class="line">    exit(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="上下文切换"><a href="#上下文切换" class="headerlink" title="上下文切换"></a>上下文切换</h3><h2 id="创建进程、控制"><a href="#创建进程、控制" class="headerlink" title="创建进程、控制"></a>创建进程、控制</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">#include &quot;stdio.h&quot;</div><div class="line">#include &lt;unistd.h&gt;</div><div class="line"></div><div class="line">int main() &#123;</div><div class="line">    pid_t pid;</div><div class="line">    int x = 1;</div><div class="line"></div><div class="line">    pid = fork();</div><div class="line">    if (pid == 0) &#123;</div><div class="line">        // child</div><div class="line">        printf(&quot;child: x=%d\n&quot;, ++x);</div><div class="line">        exit(0);</div><div class="line">    &#125;</div><div class="line">    printf(&quot;parrent: x=%d\n&quot;, --x);</div><div class="line">    exit(0);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><strong>为什么返回0的是子进程，而在父进程中返回子进程的进程id？</strong><br>在这里fork函数返回了2个值。0和子进程的id，一个父进程有多个子进程，但是一个父进程有多个子进程，如果在子进程中，直接通过getParrentPid这种函数直击就能获取子进程的id了。</p>
 <ul>
 <li>系统初始化</li>
@@ -460,7 +461,7 @@
 </ul>
 <h2 id="进程模型的实现"><a href="#进程模型的实现" class="headerlink" title="进程模型的实现"></a>进程模型的实现</h2><p>进程表，由操作系统维护，有的叫做进程控制块。</p>
 <p><strong>理解单CPU如何维护多个进程的错觉？</strong><br>每一个IO关联着一个<em>中断向量</em>的位置，靠近内存底部的固定位置。所有的中断都是从保存寄存器开始，这些会动进程的进程表中获取，然后保存起来。堆栈中删除由寄存器保存起来的信息，然后将堆栈指针跳转到中断向量中的地址，</p>
-<h1 id="ps、kill、killall以及proc目录"><a href="#ps、kill、killall以及proc目录" class="headerlink" title="ps、kill、killall以及proc目录"></a>ps、kill、killall以及proc目录</h1>
+<h1 id="ps、kill、killall以及proc目录"><a href="#ps、kill、killall以及proc目录" class="headerlink" title="ps、kill、killall以及proc目录"></a>ps、kill、killall以及proc目录</h1><h1 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h1>
       
     </div>
 
@@ -482,13 +483,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/pay/wechatpay.png" alt="arron WeChat Pay">
+          <img id="wechat_qr" src="/pay/wechatpay.png" alt="arron WeChat Pay"/>
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/pay/alipay.png" alt="arron Alipay">
+          <img id="alipay_qr" src="/pay/alipay.png" alt="arron Alipay"/>
           <p>支付宝打赏</p>
         </div>
       
@@ -585,7 +586,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -595,8 +596,10 @@
       
 
       <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/img/ar.gif" alt="arron">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/ar.gif"
+               alt="arron" />
           <p class="site-author-name" itemprop="name">arron</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
@@ -607,7 +610,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">68</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -618,7 +621,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -700,7 +703,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#进程和线程"><span class="nav-number">1.</span> <span class="nav-text">进程和线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么会有进程"><span class="nav-number">1.1.</span> <span class="nav-text">为什么会有进程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑控制流"><span class="nav-number">1.1.1.</span> <span class="nav-text">逻辑控制流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并发流"><span class="nav-number">1.1.2.</span> <span class="nav-text">并发流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#私有地址空间"><span class="nav-number">1.1.3.</span> <span class="nav-text">私有地址空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思考"><span class="nav-number">1.1.4.</span> <span class="nav-text">思考</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程模型"><span class="nav-number">1.2.</span> <span class="nav-text">进程模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用户模式和内核模式"><span class="nav-number">1.2.1.</span> <span class="nav-text">用户模式和内核模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上下文切换"><span class="nav-number">1.2.2.</span> <span class="nav-text">上下文切换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建进程、控制"><span class="nav-number">1.3.</span> <span class="nav-text">创建进程、控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程退出"><span class="nav-number">1.4.</span> <span class="nav-text">进程退出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的层次结构"><span class="nav-number">1.5.</span> <span class="nav-text">进程的层次结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的状态"><span class="nav-number">1.6.</span> <span class="nav-text">进程的状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程模型的实现"><span class="nav-number">1.7.</span> <span class="nav-text">进程模型的实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ps、kill、killall以及proc目录"><span class="nav-number">2.</span> <span class="nav-text">ps、kill、killall以及proc目录</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#进程和线程"><span class="nav-number">1.</span> <span class="nav-text">进程和线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么会有进程"><span class="nav-number">1.1.</span> <span class="nav-text">为什么会有进程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑控制流"><span class="nav-number">1.1.1.</span> <span class="nav-text">逻辑控制流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并发流"><span class="nav-number">1.1.2.</span> <span class="nav-text">并发流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#私有地址空间"><span class="nav-number">1.1.3.</span> <span class="nav-text">私有地址空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思考"><span class="nav-number">1.1.4.</span> <span class="nav-text">思考</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程模型"><span class="nav-number">1.2.</span> <span class="nav-text">进程模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用户模式和内核模式"><span class="nav-number">1.2.1.</span> <span class="nav-text">用户模式和内核模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上下文切换"><span class="nav-number">1.2.2.</span> <span class="nav-text">上下文切换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建进程、控制"><span class="nav-number">1.3.</span> <span class="nav-text">创建进程、控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程退出"><span class="nav-number">1.4.</span> <span class="nav-text">进程退出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的层次结构"><span class="nav-number">1.5.</span> <span class="nav-text">进程的层次结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的状态"><span class="nav-number">1.6.</span> <span class="nav-text">进程的状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程模型的实现"><span class="nav-number">1.7.</span> <span class="nav-text">进程模型的实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ps、kill、killall以及proc目录"><span class="nav-number">2.</span> <span class="nav-text">ps、kill、killall以及proc目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程"><span class="nav-number">3.</span> <span class="nav-text">线程</span></a></li></ol></div>
             
 
           </div>
@@ -720,10 +723,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
+        <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -6,18 +6,18 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
 
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -35,7 +35,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -75,23 +75,23 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="Misc,">
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-
-
-
-  <link rel="alternate" href="/atom.xml" title="Arron's Blog" type="application/atom+xml">
+  <meta name="keywords" content="Misc," />
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
+
+  <link rel="alternate" href="/atom.xml" title="Arron's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
@@ -105,7 +105,6 @@
 <meta property="og:url" content="http://fsxchen.github.io/2016/06/01/devops/2016_06_01_ci持续集成/index.html">
 <meta property="og:site_name" content="Arron&#39;s Blog">
 <meta property="og:description" content="CI持续集成项目直达这是一个500行实现的一个例子.该文章的中文翻译地址 什么是持续集成系统When developing software, we want to be able to verify that our new features or bug fixes are safe and work as expected. We do this by running tests again">
-<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-05-10T08:42:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ci持续集成">
@@ -137,7 +136,7 @@
 
 
 
-  <link rel="canonical" href="http://fsxchen.github.io/2016/06/01/devops/2016_06_01_ci持续集成/">
+  <link rel="canonical" href="http://fsxchen.github.io/2016/06/01/devops/2016_06_01_ci持续集成/"/>
 
 
 
@@ -146,7 +145,7 @@
   <title>ci持续集成 | Arron's Blog</title>
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -171,13 +170,13 @@
   <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Arron's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -207,7 +206,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -217,7 +216,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -227,7 +226,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -237,7 +236,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -247,7 +246,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -260,7 +259,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
             搜索
           </a>
@@ -281,7 +280,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -313,16 +314,16 @@
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://fsxchen.github.io/2016/06/01/devops/2016_06_01_ci持续集成/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="arron">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/img/ar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Arron's Blog">
     </span>
 
@@ -354,7 +355,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -365,7 +366,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Misc/" itemprop="url" rel="index">
                     <span itemprop="name">Misc</span>
                   </a>
@@ -423,7 +424,7 @@
       
 
       
-        <h1 id="CI持续集成"><a href="#CI持续集成" class="headerlink" title="CI持续集成"></a>CI持续集成</h1><p><a href="https://github.com/aosabook/500lines" target="_blank" rel="noopener">项目直达</a><br>这是一个500行实现的一个例子.<br><a href="http://qingyunha.github.io/taotao/" target="_blank" rel="noopener">该文章的中文翻译地址</a></p>
+        <h1 id="CI持续集成"><a href="#CI持续集成" class="headerlink" title="CI持续集成"></a>CI持续集成</h1><p><a href="https://github.com/aosabook/500lines" target="_blank" rel="external">项目直达</a><br>这是一个500行实现的一个例子.<br><a href="http://qingyunha.github.io/taotao/" target="_blank" rel="external">该文章的中文翻译地址</a></p>
 <h2 id="什么是持续集成系统"><a href="#什么是持续集成系统" class="headerlink" title="什么是持续集成系统"></a>什么是持续集成系统</h2><p>When developing software, we want to be able to verify that our new features or bug fixes are safe and work as expected. We do this by running tests against our code. Sometimes, developers will run tests locally to verify that their changes are safe, but developers may not have the time to test their code on every system their software runs in. Further, as more and more tests are added the amount of time required to run them, even only locally, becomes less viable. Because of this, continuous integration systems have been created.</p>
 <p>当我们开发软件的时候,我们想要能够验证我们的新功能或者是修复的bug能够安全有效的想预期那样运行.我们通过重新测试我们的代码可以实现.有的时候,开发者会在本地来验证他们的代码的变更是否安全,但是开发者没有时间去测试他们的代码能否在所有可能的系统里面运行.进一步讲,需要的测试用例越多,就需要更多的事件去测试,即使是在本地,也只是很少的.因此,持续集成系统被创建了.</p>
 <p>Continuous Integration (CI) systems are dedicated systems used to test new code. Upon a commit to the code repository, it is the responsibility of the continuous integration system to verify that this commit will not break any tests. To do this, the system must be able to fetch the new changes, run the tests and report its results. Like any other system, it should also be failure resistant. This means if any part of the system fails, it should be able to recover and continue from that point.</p>
@@ -454,10 +455,10 @@
 <p>Let’s call this test_repo:</p>
 <p>$ mkdir test_repo<br>$ cd test_repo<br>$ git init<br>This will be our master repository. This is where developers check in their code, so our CI should pull this repository and check for commits, then run tests. The thing that checks for new commits is the repository observer.</p>
 <p>The repository observer works by checking commits, so we need at least one commit in the master repository. Let’s commit our example tests so we have some tests to run.</p>
-<p>Copy the tests folder from this code base to test_repo and commit it:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ cp -r /this/directory/tests /path/to/test_repo/</span><br><span class="line">$ cd /path/to/test\_repo</span><br><span class="line">$ git add tests/</span><br><span class="line">$ git commit -m ”add tests”</span><br></pre></td></tr></table></figure></p>
+<p>Copy the tests folder from this code base to test_repo and commit it:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ cp -r /this/directory/tests /path/to/test_repo/</div><div class="line">$ cd /path/to/test\_repo</div><div class="line">$ git add tests/</div><div class="line">$ git commit -m ”add tests”</div></pre></td></tr></table></figure></p>
 <p>Now you have a commit in the master repository.</p>
-<p>The repo observer component will need its own clone of the code, so it can detect when a new commit is made. Let’s create a clone of our master repository, and call it test_repo_clone_obs:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone /path/to/test_repo test_repo_clone_obs</span><br></pre></td></tr></table></figure></p>
-<p>The test runner will also need its own clone of the code, so it can checkout the repository at a given commit and run the tests. Let’s create another clone of our master repository, and call it test_repo_clone_runner:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone /path/to/test_repo test_repo_clone_runner</span><br></pre></td></tr></table></figure></p>
+<p>The repo observer component will need its own clone of the code, so it can detect when a new commit is made. Let’s create a clone of our master repository, and call it test_repo_clone_obs:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git clone /path/to/test_repo test_repo_clone_obs</div></pre></td></tr></table></figure></p>
+<p>The test runner will also need its own clone of the code, so it can checkout the repository at a given commit and run the tests. Let’s create another clone of our master repository, and call it test_repo_clone_runner:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git clone /path/to/test_repo test_repo_clone_runner</div></pre></td></tr></table></figure></p>
 <p>虽然这CI系统准备工作在分布式系统中,让我们从一台计算机上本地运行一切我们可以得到一个对CI系统如何工作在不增加的风险跑到网络相关问题。如果你想运行在分布式环境中,您可以运行自己的机器上的每个组件。<br>持续集成系统通过检测运行测试代码库的变化,所以开始,我们将需要设置存储库CI系统将监测。</p>
 
       
@@ -481,13 +482,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/pay/wechatpay.png" alt="arron WeChat Pay">
+          <img id="wechat_qr" src="/pay/wechatpay.png" alt="arron WeChat Pay"/>
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/pay/alipay.png" alt="arron Alipay">
+          <img id="alipay_qr" src="/pay/alipay.png" alt="arron Alipay"/>
           <p>支付宝打赏</p>
         </div>
       
@@ -584,7 +585,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -594,8 +595,10 @@
       
 
       <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/img/ar.gif" alt="arron">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/ar.gif"
+               alt="arron" />
           <p class="site-author-name" itemprop="name">arron</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
@@ -606,7 +609,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">68</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -617,7 +620,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -719,10 +722,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
+        <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
